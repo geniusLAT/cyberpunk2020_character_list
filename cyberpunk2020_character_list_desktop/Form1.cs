@@ -20,6 +20,9 @@ namespace cyberpunk2020_character_list_desktop
         Random rand = new Random();
         NumericUpDown[] create_numerics;
         Character chosen_character = null;
+
+        List<Panel> panels = new List<Panel>();
+
         public Form1()
         {
             InitializeComponent();
@@ -43,13 +46,72 @@ namespace cyberpunk2020_character_list_desktop
 
         }
 
+        bool IsProfessionalSkill(string skill)
+        {
+            if (chosen_character == null) return false;
+
+            string[] professionals = chosen_character.GetProfessionalSkillsNames(chosen_character.Role);
+            if(professionals.Contains(skill)) { return true; }
+            return false;
+        }
+
+        
+
+        int count_skill_sum(bool professinal)
+        {
+            int count = 0;
+            foreach (Control item in panels)
+            {
+                if(item.Controls.Count <2) continue;  
+                string skill_name = ((Label)item.Controls[0]).Text;
+                if(IsProfessionalSkill(skill_name.Replace("_",""))==professinal)
+                {
+
+                    count += (int) ((NumericUpDown)item.Controls[1]).Value;
+                }
+            }
+            return count;
+        }
+
+        private void skill_point_changed(object sender, EventArgs e)
+        {
+            label16.Text = ">";
+            if(sender is NumericUpDown)
+            {
+                NumericUpDown numeric = (NumericUpDown)sender;
+                Panel ParentPanel = (Panel)numeric.Parent;
+                //label16.Text +=ParentPanel.Controls.ToString();
+                string skill_name = ((Label)ParentPanel.Controls[0]).Text;
+
+                if (chosen_character.createStep == Character.CreateStep.prof)
+                {
+                    int sum = count_skill_sum(true);
+                    CommentLabel.Text = "Необходимая сумма:40\nТекущая сумма:" + sum.ToString();
+                    if(sum==40)CreateButton.Enabled = true;
+                    else CreateButton.Enabled = false;  
+
+                }
+                if (chosen_character.createStep == Character.CreateStep.unprof)
+                {
+                    int sum = count_skill_sum(true);
+                    CommentLabel.Text = "Необходимая сумма:"+(chosen_character.global_ref_stat+chosen_character.int_stat).ToString()+ "\nТекущая сумма:" + sum.ToString();
+                    if (sum == 40) CreateButton.Enabled = true;
+                    else CreateButton.Enabled = false;
+
+                }
+            }
+            
+        }
+
         Control render_skill_panel(string text,int i, int column, bool header,int s, int l)
         {
             int g = 14;
             int text_size = 180;
             int extra_size = 60;
 
+
             Panel skill_panel = new Panel();
+            panels.Add(skill_panel);
             tabPage1.Controls.Add(skill_panel);
             Label that_label = new Label();
             that_label.Size = new Size(text_size, g);
@@ -58,8 +120,15 @@ namespace cyberpunk2020_character_list_desktop
             skill_panel.Size = new Size(extra_size + text_size, g);
             //skill_panel.BackColor = Color.Yellow;
             that_label.Text = text+"____________________________________";// "skill" + i.ToString();
+
+            if (IsProfessionalSkill(text))
+            {
+                that_label.ForeColor= Color.Blue;
+            }
+
             //that_label.Text =  "skill" + i.ToString();
             skill_panel.Location = new Point((extra_size + text_size)*column, i * g);
+
 
             if (header) 
             {
@@ -76,9 +145,10 @@ namespace cyberpunk2020_character_list_desktop
                 skillNumeric.Location = new Point(l, 0);
                 //that_label.Text = skillNumeric.Size.Width.ToString()+", "+ skillNumeric.Size.Height.ToString();
                 skillNumeric.Size = new Size(s, 20);
-                skillNumeric.Value = 1;
+                skillNumeric.Value = 0;
                 skillNumeric.Minimum = 0;
                 skillNumeric.Maximum = 10;
+                skillNumeric.ValueChanged += skill_point_changed;
             }
             return skill_panel;
 
@@ -88,10 +158,12 @@ namespace cyberpunk2020_character_list_desktop
         {
             int n = 0;
             int c = 0;
-            foreach(Control item in tabPage1.Controls)
+
+            foreach(Control item in panels)
             {
                 tabPage1.Controls.Remove(item);
             }
+            panels = new List<Panel>();
             render_skill_panel("особые способности", n++,c, true, s, l);
             for (int i = 0; i < Character.role_skills_name.Length; i++)
             {
@@ -389,9 +461,16 @@ namespace cyberpunk2020_character_list_desktop
                     case Character.CreateStep.stat:
                         gen_way_panel.Visible = false;
                         Calculate_state();
-
+                        //Render_skills(31, 178);
+                        Activate_professionals();
+                        CreateButton.Enabled = false;
+                        chosen_character.createStep = Character.CreateStep.prof;
+                        CommentLabel.Text = "Необходимая сумма:40\nТекущая сумма:0";
                         break;
                     case Character.CreateStep.prof:
+                        CommentLabel.Text = "";
+                        Activate_professionals(false);
+                        CreateButton.Enabled = false;
                         break;
                     case Character.CreateStep.unprof:
                         break;
@@ -581,6 +660,34 @@ namespace cyberpunk2020_character_list_desktop
         {
             Render_skills((int)skillNumeric2.Value, (int)Skill_numeric.Value);
         }
+
+        void Activate_professionals()
+        {
+            Activate_professionals(true);
+        }
+        void Activate_professionals(bool professinal)
+        {
+            string[] professional_skills=chosen_character.GetProfessionalSkillsNames(chosen_character.Role);
+            foreach (Panel that_panel in panels)
+            {
+                if (that_panel.Controls.Count < 2) continue;
+                Label label = (Label)that_panel.Controls[0];
+                if (label == null) continue;
+                //label.Text = chosen_character.name;
+                
+                NumericUpDown numeric = (NumericUpDown)that_panel.Controls[1];
+                if (professinal == professional_skills.Contains(label.Text.Replace("_", "")))
+                {
+                    if(professinal)label.ForeColor = Color.Blue;
+                    if(professinal || (!professinal && !Character.role_skills_name.Contains(label.Text.Replace("_", ""))))numeric.Enabled=true;
+                    else numeric.Enabled = false;
+
+                }
+                else                numeric.Enabled = false;
+
+
+            }
+        }
     }
 
     class Character
@@ -630,6 +737,198 @@ namespace cyberpunk2020_character_list_desktop
         public int cur_emp_stat = 0;
         public int global_emp_stat = 0;
 
+
+        public static string[] solo_skills_name = {
+        "Чувство боя(соло)",
+                "Осведомлённость/наблюдательность",
+                "Пистолеты",
+                "Драка",
+                "Ближний бой",
+                "Оружейник",
+                "Винтовки",
+                "Атлетика",
+                "Скрытность",
+        "Пистолеты-Пулемёты"
+
+
+
+        };
+        public static string[] corp_skills_name = {
+            "Ресурсы(корпорат)",
+            "Осведомлённость/наблюдательность",
+            "Понимание людей",
+            "Обр. и общие знания",
+            "Поиск информации",
+            "Социальность",
+            "Убеждение и забалтывание",
+            "Фондовый рынок",
+            "Гардероб и Стиль",
+            "Уход за собой",
+           
+
+
+
+
+        };
+        public static string[] media_skills_name = {
+
+            "Достоверность (медиа)",
+            "Осведомлённость/наблюдательность",
+            "Сочинение",
+            "Обр. и общие знания",
+            "Убеждение и забалтывание",
+            "Понимание людей",
+            "Социальность",
+            "Знание улиц",
+            "Фотография и кинофильмы"
+
+
+
+
+
+
+
+        };
+        public static string[] nomad_skills_name = {
+            "Семья(номад)",
+             "Осведомлённость/наблюдательность",
+             "Выносливость",
+             "Ближний бой",
+             "Винтовки",
+             "Вождение",
+             "Базовые технологии",
+             "Выживание в дикой местности",
+             "Драка",
+             "Атлетика",
+
+
+
+
+
+
+
+
+
+
+        };
+        public static string[] tech_class_skills_name = {
+            "Импр.Ремонт(Техник)",
+             "Осведомлённость/наблюдательность",
+             "Базовые технологии",
+             "Кибер-технологии",
+             "Преподавание",
+             "Электроника",
+             "Вертолётная техника",
+             "Авиатехника",
+             "Оружейник",
+             "Электронная безопасность"
+        };
+        public static string[] cop_skills_name = {
+            "Авторитет(коп)",
+            "Осведомлённость/наблюдательность",
+            "Пистолеты",
+            "Понимание людей",
+            "Атлетика",
+            "Обр. и общие знания",
+            "Драка",
+            "Ближний бой",
+            "Допрос",
+            "Знание улиц"
+
+
+
+        };
+        public static string[] rocker_skills_name = {
+           "Хар. (Рокер)",
+           "Осведомлённость/наблюдательность",
+           "Выступление",
+           "Гардероб и Стиль",
+           "Сочинение",
+           "Драка",
+           "Игра на инструментах",
+           "Знание улиц",
+           "Убеждение и забалтывание",
+           "Соблазнение",
+
+
+
+
+
+
+
+        };
+        public static string[] medtech_skills_name = {
+           "Мед.Техник(медтехник)",
+           "Осведомлённость/наблюдательность",
+           "Базовые технологии",
+           "Диагностика болезней",
+           "Обр. и общие знания",
+           "Эксплуатация криокамеры",
+           "Поиск информации",
+           "Фармацевтика ",
+           "Зоология",
+           "Понимание людей"
+
+
+
+
+
+        };
+        public static string[] fixer_skills_name = {
+           "Уличная сделка(фиксер)",
+           "Осведомлённость/наблюдательность",
+           "Подделка",
+           "Пистолеты",
+           "Драка",
+           "Ближний бой",
+           "Взлом замков",
+           "Карманная кража",
+           "Запугивание",
+           "Убеждение и забалтывание",
+
+
+
+
+
+
+        };
+        public static string[] netrunner_skills_name = {
+           "Интерфейс(нетраннер)",
+            "Осведомлённость/наблюдательность",
+            "Базовые технологии",
+            "Обр. и общие знания",
+            "Системные знания",
+            "Кибер-технологии",
+            "Конструирования кибердек",
+            "Сочинение",
+            "Электроника",
+            "Программирование"
+
+
+
+
+
+
+        };
+
+        public string[] GetProfessionalSkillsNames(role that_role)
+        {
+           switch (that_role) 
+            {
+                case role.solo: return solo_skills_name;
+                case role.rocker: return rocker_skills_name;
+                case role.netrunner: return netrunner_skills_name;
+                case role.media: return media_skills_name;
+                case role.nomad: return nomad_skills_name;
+                case role.fixer: return fixer_skills_name;
+                case role.cop: return cop_skills_name;
+                case role.corp: return corp_skills_name;
+                case role.tech: return tech_class_skills_name;
+                case role.medtech: return medtech_skills_name;
+                
+            }
+            return solo_skills_name;
+        }
 
         public static string[] role_skills_name =
         {"Авторитет(коп)",
@@ -720,7 +1019,7 @@ namespace cyberpunk2020_character_list_desktop
         "Пилот(Транспорт с вект. тягой)",
         "Винтовки",
         "Скрытность",
-        "Пситолеты-Пулемёты"};
+        "Пистолеты-Пулемёты"};
 
         public static string[] tech_skills_name =
         {"Авиатехника",

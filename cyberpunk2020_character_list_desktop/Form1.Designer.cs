@@ -78,6 +78,7 @@
             this.skillNumeric2 = new System.Windows.Forms.NumericUpDown();
             this.Skill_numeric = new System.Windows.Forms.NumericUpDown();
             this.label16 = new System.Windows.Forms.Label();
+            this.CommentLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.global_emp_numeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cur_emp_numeric)).BeginInit();
@@ -548,7 +549,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(797, 545);
+            this.tabPage2.Size = new System.Drawing.Size(797, 663);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -628,11 +629,21 @@
             this.label16.TabIndex = 0;
             this.label16.Text = "skill";
             // 
+            // CommentLabel
+            // 
+            this.CommentLabel.AutoSize = true;
+            this.CommentLabel.Location = new System.Drawing.Point(391, 182);
+            this.CommentLabel.Name = "CommentLabel";
+            this.CommentLabel.Size = new System.Drawing.Size(73, 13);
+            this.CommentLabel.TabIndex = 13;
+            this.CommentLabel.Text = " sdfbdskfgdks";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1484, 985);
+            this.Controls.Add(this.CommentLabel);
             this.Controls.Add(this.SkillPanel);
             this.Controls.Add(this.skills_tab_control);
             this.Controls.Add(this.gen_way_panel);
@@ -728,6 +739,7 @@
         private System.Windows.Forms.NumericUpDown skillNumeric2;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label CommentLabel;
     }
 }
 
