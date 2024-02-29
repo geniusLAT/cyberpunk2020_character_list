@@ -93,9 +93,9 @@ namespace cyberpunk2020_character_list_desktop
                 }
                 if (chosen_character.createStep == Character.CreateStep.unprof)
                 {
-                    int sum = count_skill_sum(true);
+                    int sum = count_skill_sum(false);
                     CommentLabel.Text = "Необходимая сумма:"+(chosen_character.global_ref_stat+chosen_character.int_stat).ToString()+ "\nТекущая сумма:" + sum.ToString();
-                    if (sum == 40) CreateButton.Enabled = true;
+                    if (sum == chosen_character.global_ref_stat + chosen_character.int_stat) CreateButton.Enabled = true;
                     else CreateButton.Enabled = false;
 
                 }
@@ -395,6 +395,149 @@ namespace cyberpunk2020_character_list_desktop
             + " поднять:" + (chosen_character.body_stat * 40).ToString();
         }
 
+        void GenerateIncome()
+        {
+            int role_skill = 0;
+            bool first=true;
+            foreach (Panel that_panel in panels)
+            {
+                if(that_panel.Controls.Count<2)
+                {
+                    if (first)
+                    {
+                        first = false;
+                        continue;
+                    }
+                    else break;
+                }
+
+                NumericUpDown numeric = (NumericUpDown)that_panel.Controls[1];
+                if (numeric.Value > 0)
+                {
+                    role_skill=(int)numeric.Value; break;    
+                }
+            }
+
+            switch (chosen_character.Role)
+            {
+                case Character.role.none:
+                    break;
+                case Character.role.solo:
+
+                    chosen_character.MonthIncome = 2000;
+
+                    if (role_skill == 10) chosen_character.MonthIncome = 12000;
+                    if (role_skill == 9) chosen_character.MonthIncome = 9000;
+                    if (role_skill == 8) chosen_character.MonthIncome = 7000;
+                    if (role_skill == 7) chosen_character.MonthIncome = 4500;
+                    if (role_skill == 6) chosen_character.MonthIncome = 3000;
+
+
+                    break;
+                case Character.role.rocker:
+                    chosen_character.MonthIncome = 1000;
+
+                    if (role_skill == 10) chosen_character.MonthIncome = 12000;
+                    if (role_skill == 9) chosen_character.MonthIncome = 8000;
+                    if (role_skill == 8) chosen_character.MonthIncome = 5000;
+                    if (role_skill == 7) chosen_character.MonthIncome = 2500;
+                    if (role_skill == 6) chosen_character.MonthIncome = 1500;
+
+                    break;
+                case Character.role.netrunner:
+                    chosen_character.MonthIncome = 1000;
+
+                    if (role_skill == 10) chosen_character.MonthIncome = 10000;
+                    if (role_skill == 9) chosen_character.MonthIncome = 7000;
+                    if (role_skill == 8) chosen_character.MonthIncome = 5000;
+                    if (role_skill == 7) chosen_character.MonthIncome = 3000;
+                    if (role_skill == 6) chosen_character.MonthIncome = 2000;
+                    break;
+                case Character.role.media:
+                    chosen_character.MonthIncome = 1000;
+
+                    if (role_skill == 10) chosen_character.MonthIncome = 10000;
+                    if (role_skill == 9) chosen_character.MonthIncome = 7000;
+                    if (role_skill == 8) chosen_character.MonthIncome = 5000;
+                    if (role_skill == 7) chosen_character.MonthIncome = 3000;
+                    if (role_skill == 6) chosen_character.MonthIncome = 1200;
+
+                    
+                    break;
+                case Character.role.nomad:
+                    chosen_character.MonthIncome = 1000;
+
+                    if (role_skill == 10) chosen_character.MonthIncome = 5000;
+                    if (role_skill == 9) chosen_character.MonthIncome = 4000;
+                    if (role_skill == 8) chosen_character.MonthIncome = 3000;
+                    if (role_skill == 7) chosen_character.MonthIncome = 2000;
+                    if (role_skill == 6) chosen_character.MonthIncome = 1500;
+                    break;
+                case Character.role.fixer:
+                    chosen_character.MonthIncome = 1500;
+
+                    if (role_skill == 10) chosen_character.MonthIncome = 10000;
+                    if (role_skill == 9) chosen_character.MonthIncome = 8000;
+                    if (role_skill == 8) chosen_character.MonthIncome = 7000;
+                    if (role_skill == 7) chosen_character.MonthIncome = 5000;
+                    if (role_skill == 6) chosen_character.MonthIncome = 3000;
+
+                    break;
+                case Character.role.cop:
+
+                    chosen_character.MonthIncome = 1000;
+
+                    if (role_skill == 10) chosen_character.MonthIncome = 9000;
+                    if (role_skill == 9) chosen_character.MonthIncome = 7000;
+                    if (role_skill == 8) chosen_character.MonthIncome = 5000;
+                    if (role_skill == 7) chosen_character.MonthIncome = 3000;
+                    if (role_skill == 6) chosen_character.MonthIncome = 1500;
+
+                    break;
+                case Character.role.corp:
+                    chosen_character.MonthIncome = 1500;
+
+                    if (role_skill == 10) chosen_character.MonthIncome = 12000;
+                    if (role_skill == 9) chosen_character.MonthIncome = 9000;
+                    if (role_skill == 8) chosen_character.MonthIncome = 7000;
+                    if (role_skill == 7) chosen_character.MonthIncome = 5000;
+                    if (role_skill == 6) chosen_character.MonthIncome = 3000;
+
+                    break;
+                case Character.role.tech:
+                    chosen_character.MonthIncome = 1000;
+
+                    if (role_skill == 10) chosen_character.MonthIncome = 8000;
+                    if (role_skill == 9) chosen_character.MonthIncome = 5000;
+                    if (role_skill == 8) chosen_character.MonthIncome = 4000;
+                    if (role_skill == 7) chosen_character.MonthIncome = 3000;
+                    if (role_skill == 6) chosen_character.MonthIncome = 2000;
+
+                    break;
+                case Character.role.medtech:
+                    chosen_character.MonthIncome = 1600;
+
+                    if (role_skill == 10) chosen_character.MonthIncome = 15000;
+                    if (role_skill == 9) chosen_character.MonthIncome = 10000;
+                    if (role_skill == 8) chosen_character.MonthIncome = 7000;
+                    if (role_skill == 7) chosen_character.MonthIncome = 5000;
+                    if (role_skill == 6) chosen_character.MonthIncome = 2000;
+
+                    break;
+                default:
+                    break;
+            }
+
+            int random_hit = rand.Next(1, 7);
+            MoneyLabel.Text = "Доход:" + chosen_character.MonthIncome.ToString() + " ("+random_hit.ToString()+") Баланс:";
+            chosen_character.CurrentMoney =(int)(random_hit * chosen_character.MonthIncome / 3.0f);
+            Money_numeric.Enabled = true;
+            Money_numeric.Value = chosen_character.CurrentMoney;
+
+        }
+
+      
+
         private void CreateButton_Click(object sender, EventArgs e)
         {
            
@@ -414,6 +557,8 @@ namespace cyberpunk2020_character_list_desktop
                 move_numeric.Enabled = body_numeric.Enabled =
                 cur_emp_numeric.Enabled = global_emp_numeric.Enabled =
                 false;
+
+                MoneyLabel.Text = "";
 
             }
             else
@@ -471,8 +616,13 @@ namespace cyberpunk2020_character_list_desktop
                         CommentLabel.Text = "";
                         Activate_professionals(false);
                         CreateButton.Enabled = false;
+                        chosen_character.createStep = Character.CreateStep.unprof;
                         break;
                     case Character.CreateStep.unprof:
+                        CreateButton.Enabled = false;
+                        chosen_character.createStep = Character.CreateStep.Money;
+                        Deactivate_skills();
+                        GenerateIncome();
                         break;
                     case Character.CreateStep.Money:
                         break;
@@ -661,6 +811,16 @@ namespace cyberpunk2020_character_list_desktop
             Render_skills((int)skillNumeric2.Value, (int)Skill_numeric.Value);
         }
 
+
+        void Deactivate_skills()
+        {
+            foreach (Panel that_panel in panels)
+            {
+                if (that_panel.Controls.Count < 2) continue;
+                NumericUpDown numeric = (NumericUpDown)that_panel.Controls[1];
+                numeric.Enabled = false;    
+            }
+        }
         void Activate_professionals()
         {
             Activate_professionals(true);
@@ -687,6 +847,11 @@ namespace cyberpunk2020_character_list_desktop
 
 
             }
+        }
+
+        private void Money_numeric_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
@@ -723,6 +888,8 @@ namespace cyberpunk2020_character_list_desktop
         public string name = "";
         public role Role = role.none;
 
+        public int MonthIncome = 0;
+        public int CurrentMoney = 0;
 
         public int int_stat = 0;
         public int cur_ref_stat = 0;

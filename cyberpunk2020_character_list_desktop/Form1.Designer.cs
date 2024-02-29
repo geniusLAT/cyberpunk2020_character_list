@@ -71,6 +71,7 @@
             this.random_char = new System.Windows.Forms.Button();
             this.skills_tab_control = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label19 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.SkillPanel = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
@@ -79,6 +80,8 @@
             this.Skill_numeric = new System.Windows.Forms.NumericUpDown();
             this.label16 = new System.Windows.Forms.Label();
             this.CommentLabel = new System.Windows.Forms.Label();
+            this.MoneyLabel = new System.Windows.Forms.Label();
+            this.Money_numeric = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.global_emp_numeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cur_emp_numeric)).BeginInit();
@@ -96,9 +99,11 @@
             this.gen_way_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.const_num_numeric)).BeginInit();
             this.skills_tab_control.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SkillPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.skillNumeric2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Skill_numeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Money_numeric)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -536,6 +541,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label19);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -543,6 +549,15 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Навыки";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(20, 304);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(41, 13);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "label19";
             // 
             // tabPage2
             // 
@@ -561,7 +576,7 @@
             this.SkillPanel.Controls.Add(this.skillNumeric2);
             this.SkillPanel.Controls.Add(this.Skill_numeric);
             this.SkillPanel.Controls.Add(this.label16);
-            this.SkillPanel.Location = new System.Drawing.Point(483, 286);
+            this.SkillPanel.Location = new System.Drawing.Point(610, 286);
             this.SkillPanel.Name = "SkillPanel";
             this.SkillPanel.Size = new System.Drawing.Size(200, 26);
             this.SkillPanel.TabIndex = 0;
@@ -638,11 +653,40 @@
             this.CommentLabel.TabIndex = 13;
             this.CommentLabel.Text = " sdfbdskfgdks";
             // 
+            // MoneyLabel
+            // 
+            this.MoneyLabel.AutoSize = true;
+            this.MoneyLabel.Location = new System.Drawing.Point(385, 292);
+            this.MoneyLabel.Name = "MoneyLabel";
+            this.MoneyLabel.Size = new System.Drawing.Size(0, 13);
+            this.MoneyLabel.TabIndex = 14;
+            // 
+            // Money_numeric
+            // 
+            this.Money_numeric.Enabled = false;
+            this.Money_numeric.Location = new System.Drawing.Point(518, 290);
+            this.Money_numeric.Maximum = new decimal(new int[] {
+            1569325056,
+            23283064,
+            0,
+            0});
+            this.Money_numeric.Minimum = new decimal(new int[] {
+            1569325056,
+            23283064,
+            0,
+            -2147483648});
+            this.Money_numeric.Name = "Money_numeric";
+            this.Money_numeric.Size = new System.Drawing.Size(92, 20);
+            this.Money_numeric.TabIndex = 15;
+            this.Money_numeric.ValueChanged += new System.EventHandler(this.Money_numeric_ValueChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1484, 985);
+            this.Controls.Add(this.Money_numeric);
+            this.Controls.Add(this.MoneyLabel);
             this.Controls.Add(this.CommentLabel);
             this.Controls.Add(this.SkillPanel);
             this.Controls.Add(this.skills_tab_control);
@@ -678,10 +722,13 @@
             this.gen_way_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.const_num_numeric)).EndInit();
             this.skills_tab_control.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.SkillPanel.ResumeLayout(false);
             this.SkillPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.skillNumeric2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Skill_numeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Money_numeric)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -740,6 +787,9 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label CommentLabel;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label MoneyLabel;
+        private System.Windows.Forms.NumericUpDown Money_numeric;
     }
 }
 
