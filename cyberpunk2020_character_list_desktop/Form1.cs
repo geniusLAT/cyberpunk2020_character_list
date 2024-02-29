@@ -38,7 +38,7 @@ namespace cyberpunk2020_character_list_desktop
             gen_way_panel.Visible = false;
             const_num_numeric.Enabled = false;
             const_num_numeric.Visible = false;
-            Render_skills(31,78);
+            Render_skills(31,178);
 
 
         }
@@ -46,7 +46,7 @@ namespace cyberpunk2020_character_list_desktop
         Control render_skill_panel(string text,int i, int column, bool header,int s, int l)
         {
             int g = 14;
-            int text_size = 50;
+            int text_size = 180;
             int extra_size = 60;
 
             Panel skill_panel = new Panel();
@@ -56,8 +56,9 @@ namespace cyberpunk2020_character_list_desktop
 
             skill_panel.Controls.Add(that_label);
             skill_panel.Size = new Size(extra_size + text_size, g);
-            skill_panel.BackColor = Color.Yellow;
-            that_label.Text = text;// "skill" + i.ToString();
+            //skill_panel.BackColor = Color.Yellow;
+            that_label.Text = text+"____________________________________";// "skill" + i.ToString();
+            //that_label.Text =  "skill" + i.ToString();
             skill_panel.Location = new Point((extra_size + text_size)*column, i * g);
 
             if (header) 
@@ -572,6 +573,7 @@ namespace cyberpunk2020_character_list_desktop
         private void skillNumeric2_ValueChanged(object sender, EventArgs e)
         {
             //31, 38
+            //31,167
             Render_skills((int)skillNumeric2.Value, (int)Skill_numeric.Value);
         }
 
