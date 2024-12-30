@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cyberpunk2020CharacterManagerWindowsApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7935745782cb6628184bc9ff9b58ba703711f12")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f67a8ea58e70c425038a45d16281eac184b59678")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cyberpunk2020CharacterManagerWindowsApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cyberpunk2020CharacterManagerWindowsApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
