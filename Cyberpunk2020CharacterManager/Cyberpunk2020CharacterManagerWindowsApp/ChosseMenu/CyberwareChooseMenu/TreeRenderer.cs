@@ -71,8 +71,7 @@ internal partial class CyberwareChooseMenu : Form
 
     private void HandleChildClick(string childName)
     {
-        _chosenImplant =   CreateInstance(childName);
-        MessageBox.Show(_chosenImplant.Cost.ToString());
+        ChooseCyberware( CreateInstance(childName));
     }
 
     static Implant CreateInstance(string className)
@@ -101,5 +100,14 @@ internal partial class CyberwareChooseMenu : Form
         {
             throw new NotImplementedException(className);
         }
+    }
+
+    private void ChooseCyberware(Implant implant)
+    {
+        Implant_Description.Text = implant.Name +
+            $"\n\nСтоимость: {implant.Cost} " +
+            $"\nХирургический код: {implant.SurgeryCode}\n"
+            + implant.Description; 
+
     }
 }

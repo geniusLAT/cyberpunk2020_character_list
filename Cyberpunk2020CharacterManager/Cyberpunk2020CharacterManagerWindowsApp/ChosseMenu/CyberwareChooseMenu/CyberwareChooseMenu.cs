@@ -7,6 +7,7 @@ internal partial class CyberwareChooseMenu : Form
 {
     Form1 _form1;
     private TreeView AvaliableCyberWareTreeView;
+    private Label Implant_Description;
     Character _character;
 
     public CyberwareChooseMenu(Form1 form1, Character character)
@@ -24,6 +25,7 @@ internal partial class CyberwareChooseMenu : Form
     {
         add_chosen_cyberware_button = new Button();
         AvaliableCyberWareTreeView = new TreeView();
+        Implant_Description = new Label();
         SuspendLayout();
         // 
         // add_chosen_cyberware_button
@@ -43,14 +45,25 @@ internal partial class CyberwareChooseMenu : Form
         AvaliableCyberWareTreeView.Size = new Size(260, 529);
         AvaliableCyberWareTreeView.TabIndex = 1;
         // 
+        // Implant_Description
+        // 
+        Implant_Description.AutoSize = true;
+        Implant_Description.Location = new Point(278, 47);
+        Implant_Description.Name = "Implant_Description";
+        Implant_Description.Size = new Size(114, 30);
+        Implant_Description.TabIndex = 2;
+        Implant_Description.Text = "Выберите имлант в\r\n списке слева";
+        // 
         // CyberwareChooseMenu
         // 
         ClientSize = new Size(447, 617);
+        Controls.Add(Implant_Description);
         Controls.Add(AvaliableCyberWareTreeView);
         Controls.Add(add_chosen_cyberware_button);
         Name = "CyberwareChooseMenu";
         Text = "Добавление кибероснашения";
         ResumeLayout(false);
+        PerformLayout();
     }
 
     private void add_chosen_cyberware_button_Click(object sender, EventArgs e)
