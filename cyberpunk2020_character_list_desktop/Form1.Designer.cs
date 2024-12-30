@@ -60,6 +60,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.NameField = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.CharacterChoser = new System.Windows.Forms.ComboBox();
             this.ErrorLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.RoleChoser = new System.Windows.Forms.ComboBox();
@@ -82,6 +83,7 @@
             this.CommentLabel = new System.Windows.Forms.Label();
             this.MoneyLabel = new System.Windows.Forms.Label();
             this.Money_numeric = new System.Windows.Forms.NumericUpDown();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.global_emp_numeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cur_emp_numeric)).BeginInit();
@@ -408,12 +410,36 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.CharacterChoser);
             this.panel3.Controls.Add(this.ErrorLabel);
             this.panel3.Controls.Add(this.CreateButton);
             this.panel3.Location = new System.Drawing.Point(-2, 1);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(819, 39);
             this.panel3.TabIndex = 4;
+            // 
+            // CharacterChoser
+            // 
+            this.CharacterChoser.Enabled = false;
+            this.CharacterChoser.FormattingEnabled = true;
+            this.CharacterChoser.Items.AddRange(new object[] {
+            "Нет",
+            "Соло",
+            "Рокер",
+            "Нетраннер",
+            "Медиа",
+            "Номад",
+            "Фиксер",
+            "Коп",
+            "Корп",
+            "Техник",
+            "Медтехник"});
+            this.CharacterChoser.Location = new System.Drawing.Point(570, 11);
+            this.CharacterChoser.Name = "CharacterChoser";
+            this.CharacterChoser.Size = new System.Drawing.Size(121, 21);
+            this.CharacterChoser.TabIndex = 16;
+            this.CharacterChoser.Text = "Нет";
+            this.CharacterChoser.SelectedIndexChanged += new System.EventHandler(this.CharacterChoser_SelectedIndexChanged);
             // 
             // ErrorLabel
             // 
@@ -533,6 +559,7 @@
             // 
             this.skills_tab_control.Controls.Add(this.tabPage1);
             this.skills_tab_control.Controls.Add(this.tabPage2);
+            this.skills_tab_control.Controls.Add(this.tabPage3);
             this.skills_tab_control.Location = new System.Drawing.Point(12, 296);
             this.skills_tab_control.Name = "skills_tab_control";
             this.skills_tab_control.SelectedIndex = 0;
@@ -566,7 +593,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(797, 663);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Импланты";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // SkillPanel
@@ -580,6 +607,7 @@
             this.SkillPanel.Name = "SkillPanel";
             this.SkillPanel.Size = new System.Drawing.Size(200, 26);
             this.SkillPanel.TabIndex = 0;
+            this.SkillPanel.Visible = false;
             // 
             // label18
             // 
@@ -649,9 +677,9 @@
             this.CommentLabel.AutoSize = true;
             this.CommentLabel.Location = new System.Drawing.Point(391, 182);
             this.CommentLabel.Name = "CommentLabel";
-            this.CommentLabel.Size = new System.Drawing.Size(73, 13);
+            this.CommentLabel.Size = new System.Drawing.Size(10, 13);
             this.CommentLabel.TabIndex = 13;
-            this.CommentLabel.Text = " sdfbdskfgdks";
+            this.CommentLabel.Text = " ";
             // 
             // MoneyLabel
             // 
@@ -679,6 +707,15 @@
             this.Money_numeric.Size = new System.Drawing.Size(92, 20);
             this.Money_numeric.TabIndex = 15;
             this.Money_numeric.ValueChanged += new System.EventHandler(this.Money_numeric_ValueChanged);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(797, 663);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Инвентарь";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -790,6 +827,8 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label MoneyLabel;
         private System.Windows.Forms.NumericUpDown Money_numeric;
+        private System.Windows.Forms.ComboBox CharacterChoser;
+        private System.Windows.Forms.TabPage tabPage3;
     }
 }
 

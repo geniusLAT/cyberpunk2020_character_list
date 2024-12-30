@@ -8,3 +8,6 @@ D:\Dev\cyberpunk2020_character_list\cyberpunk2020_character_list_desktop\obj\Deb
 D:\Dev\cyberpunk2020_character_list\cyberpunk2020_character_list_desktop\obj\Debug\cyberpunk2020_character_list_desktop.exe
 D:\Dev\cyberpunk2020_character_list\cyberpunk2020_character_list_desktop\obj\Debug\cyberpunk2020_character_list_desktop.pdb
 D:\Dev\cyberpunk2020_character_list\cyberpunk2020_character_list_desktop\obj\Debug\cyberpunk2020_character_list_desktop.Form1.resources
+D:\Dev\cyberpunk2020_character_list\cyberpunk2020_character_list_desktop\bin\Debug\Newtonsoft.Json.dll
+D:\Dev\cyberpunk2020_character_list\cyberpunk2020_character_list_desktop\bin\Debug\Newtonsoft.Json.xml
+D:\Dev\cyberpunk2020_character_list\cyberpunk2020_character_list_desktop\obj\Debug\cyberpun.AB816818.Up2Date
