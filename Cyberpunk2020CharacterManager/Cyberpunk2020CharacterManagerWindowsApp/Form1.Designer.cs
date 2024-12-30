@@ -28,710 +28,713 @@ partial class Form1
     /// </summary>
     private void InitializeComponent()
     {
-        this.panel1 = new System.Windows.Forms.Panel();
-        this.Extra_stat_label = new System.Windows.Forms.Label();
-        this.label14 = new System.Windows.Forms.Label();
-        this.global_emp_numeric = new System.Windows.Forms.NumericUpDown();
-        this.label15 = new System.Windows.Forms.Label();
-        this.cur_emp_numeric = new System.Windows.Forms.NumericUpDown();
-        this.label9 = new System.Windows.Forms.Label();
-        this.global_luck_numeric = new System.Windows.Forms.NumericUpDown();
-        this.label10 = new System.Windows.Forms.Label();
-        this.body_numeric = new System.Windows.Forms.NumericUpDown();
-        this.label11 = new System.Windows.Forms.Label();
-        this.move_numeric = new System.Windows.Forms.NumericUpDown();
-        this.label12 = new System.Windows.Forms.Label();
-        this.cur_luck_numeric = new System.Windows.Forms.NumericUpDown();
-        this.label13 = new System.Windows.Forms.Label();
-        this.attr_numeric = new System.Windows.Forms.NumericUpDown();
-        this.label8 = new System.Windows.Forms.Label();
-        this.global_ref_numeric = new System.Windows.Forms.NumericUpDown();
-        this.label7 = new System.Windows.Forms.Label();
-        this.cool_numeric = new System.Windows.Forms.NumericUpDown();
-        this.label6 = new System.Windows.Forms.Label();
-        this.tech_numeric = new System.Windows.Forms.NumericUpDown();
-        this.label5 = new System.Windows.Forms.Label();
-        this.cur_reflex_numeric = new System.Windows.Forms.NumericUpDown();
-        this.label4 = new System.Windows.Forms.Label();
-        this.numeric_int = new System.Windows.Forms.NumericUpDown();
-        this.label1 = new System.Windows.Forms.Label();
-        this.CreateButton = new System.Windows.Forms.Button();
-        this.panel2 = new System.Windows.Forms.Panel();
-        this.label2 = new System.Windows.Forms.Label();
-        this.NameField = new System.Windows.Forms.TextBox();
-        this.panel3 = new System.Windows.Forms.Panel();
-        this.ErrorLabel = new System.Windows.Forms.Label();
-        this.label3 = new System.Windows.Forms.Label();
-        this.RoleChoser = new System.Windows.Forms.ComboBox();
-        this.sum_label = new System.Windows.Forms.Label();
-        this.gen_way_panel = new System.Windows.Forms.Panel();
-        this.const_num_numeric = new System.Windows.Forms.NumericUpDown();
-        this.const_stat_num_button = new System.Windows.Forms.Button();
-        this.random_stat_sum_button = new System.Windows.Forms.Button();
-        this.random_char = new System.Windows.Forms.Button();
-        this.skills_tab_control = new System.Windows.Forms.TabControl();
-        this.tabPage1 = new System.Windows.Forms.TabPage();
-        this.label19 = new System.Windows.Forms.Label();
-        this.tabPage2 = new System.Windows.Forms.TabPage();
-        this.SkillPanel = new System.Windows.Forms.Panel();
-        this.label18 = new System.Windows.Forms.Label();
-        this.label17 = new System.Windows.Forms.Label();
-        this.skillNumeric2 = new System.Windows.Forms.NumericUpDown();
-        this.Skill_numeric = new System.Windows.Forms.NumericUpDown();
-        this.label16 = new System.Windows.Forms.Label();
-        this.CommentLabel = new System.Windows.Forms.Label();
-        this.MoneyLabel = new System.Windows.Forms.Label();
-        this.Money_numeric = new System.Windows.Forms.NumericUpDown();
-        this.panel1.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)(this.global_emp_numeric)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.cur_emp_numeric)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.global_luck_numeric)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.body_numeric)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.move_numeric)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.cur_luck_numeric)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.attr_numeric)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.global_ref_numeric)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.cool_numeric)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.tech_numeric)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.cur_reflex_numeric)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.numeric_int)).BeginInit();
-        this.panel3.SuspendLayout();
-        this.gen_way_panel.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)(this.const_num_numeric)).BeginInit();
-        this.skills_tab_control.SuspendLayout();
-        this.tabPage1.SuspendLayout();
-        this.SkillPanel.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)(this.skillNumeric2)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.Skill_numeric)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.Money_numeric)).BeginInit();
-        this.SuspendLayout();
+        panel1 = new Panel();
+        Extra_stat_label = new Label();
+        label14 = new Label();
+        global_emp_numeric = new NumericUpDown();
+        label15 = new Label();
+        cur_emp_numeric = new NumericUpDown();
+        label9 = new Label();
+        global_luck_numeric = new NumericUpDown();
+        label10 = new Label();
+        body_numeric = new NumericUpDown();
+        label11 = new Label();
+        move_numeric = new NumericUpDown();
+        label12 = new Label();
+        cur_luck_numeric = new NumericUpDown();
+        label13 = new Label();
+        attr_numeric = new NumericUpDown();
+        label8 = new Label();
+        global_ref_numeric = new NumericUpDown();
+        label7 = new Label();
+        cool_numeric = new NumericUpDown();
+        label6 = new Label();
+        tech_numeric = new NumericUpDown();
+        label5 = new Label();
+        cur_reflex_numeric = new NumericUpDown();
+        label4 = new Label();
+        numeric_int = new NumericUpDown();
+        label1 = new Label();
+        CreateButton = new Button();
+        panel2 = new Panel();
+        label2 = new Label();
+        NameField = new TextBox();
+        panel3 = new Panel();
+        ErrorLabel = new Label();
+        label3 = new Label();
+        RoleChoser = new ComboBox();
+        sum_label = new Label();
+        gen_way_panel = new Panel();
+        const_num_numeric = new NumericUpDown();
+        const_stat_num_button = new Button();
+        random_stat_sum_button = new Button();
+        random_char = new Button();
+        skills_tab_control = new TabControl();
+        tabPage1 = new TabPage();
+        label19 = new Label();
+        tabPage2 = new TabPage();
+        SkillPanel = new Panel();
+        label18 = new Label();
+        label17 = new Label();
+        skillNumeric2 = new NumericUpDown();
+        Skill_numeric = new NumericUpDown();
+        label16 = new Label();
+        CommentLabel = new Label();
+        MoneyLabel = new Label();
+        Money_numeric = new NumericUpDown();
+        panel1.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)global_emp_numeric).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)cur_emp_numeric).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)global_luck_numeric).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)body_numeric).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)move_numeric).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)cur_luck_numeric).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)attr_numeric).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)global_ref_numeric).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)cool_numeric).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)tech_numeric).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)cur_reflex_numeric).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)numeric_int).BeginInit();
+        panel3.SuspendLayout();
+        gen_way_panel.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)const_num_numeric).BeginInit();
+        skills_tab_control.SuspendLayout();
+        tabPage1.SuspendLayout();
+        SkillPanel.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)skillNumeric2).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)Skill_numeric).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)Money_numeric).BeginInit();
+        SuspendLayout();
         // 
         // panel1
         // 
-        this.panel1.Controls.Add(this.Extra_stat_label);
-        this.panel1.Controls.Add(this.label14);
-        this.panel1.Controls.Add(this.global_emp_numeric);
-        this.panel1.Controls.Add(this.label15);
-        this.panel1.Controls.Add(this.cur_emp_numeric);
-        this.panel1.Controls.Add(this.label9);
-        this.panel1.Controls.Add(this.global_luck_numeric);
-        this.panel1.Controls.Add(this.label10);
-        this.panel1.Controls.Add(this.body_numeric);
-        this.panel1.Controls.Add(this.label11);
-        this.panel1.Controls.Add(this.move_numeric);
-        this.panel1.Controls.Add(this.label12);
-        this.panel1.Controls.Add(this.cur_luck_numeric);
-        this.panel1.Controls.Add(this.label13);
-        this.panel1.Controls.Add(this.attr_numeric);
-        this.panel1.Controls.Add(this.label8);
-        this.panel1.Controls.Add(this.global_ref_numeric);
-        this.panel1.Controls.Add(this.label7);
-        this.panel1.Controls.Add(this.cool_numeric);
-        this.panel1.Controls.Add(this.label6);
-        this.panel1.Controls.Add(this.tech_numeric);
-        this.panel1.Controls.Add(this.label5);
-        this.panel1.Controls.Add(this.cur_reflex_numeric);
-        this.panel1.Controls.Add(this.label4);
-        this.panel1.Controls.Add(this.numeric_int);
-        this.panel1.Location = new System.Drawing.Point(12, 76);
-        this.panel1.Name = "panel1";
-        this.panel1.Size = new System.Drawing.Size(370, 100);
-        this.panel1.TabIndex = 0;
+        panel1.Controls.Add(Extra_stat_label);
+        panel1.Controls.Add(label14);
+        panel1.Controls.Add(global_emp_numeric);
+        panel1.Controls.Add(label15);
+        panel1.Controls.Add(cur_emp_numeric);
+        panel1.Controls.Add(label9);
+        panel1.Controls.Add(global_luck_numeric);
+        panel1.Controls.Add(label10);
+        panel1.Controls.Add(body_numeric);
+        panel1.Controls.Add(label11);
+        panel1.Controls.Add(move_numeric);
+        panel1.Controls.Add(label12);
+        panel1.Controls.Add(cur_luck_numeric);
+        panel1.Controls.Add(label13);
+        panel1.Controls.Add(attr_numeric);
+        panel1.Controls.Add(label8);
+        panel1.Controls.Add(global_ref_numeric);
+        panel1.Controls.Add(label7);
+        panel1.Controls.Add(cool_numeric);
+        panel1.Controls.Add(label6);
+        panel1.Controls.Add(tech_numeric);
+        panel1.Controls.Add(label5);
+        panel1.Controls.Add(cur_reflex_numeric);
+        panel1.Controls.Add(label4);
+        panel1.Controls.Add(numeric_int);
+        panel1.Location = new Point(14, 88);
+        panel1.Margin = new Padding(4, 3, 4, 3);
+        panel1.Name = "panel1";
+        panel1.Size = new Size(432, 115);
+        panel1.TabIndex = 0;
         // 
         // Extra_stat_label
         // 
-        this.Extra_stat_label.AutoSize = true;
-        this.Extra_stat_label.Location = new System.Drawing.Point(127, 51);
-        this.Extra_stat_label.Name = "Extra_stat_label";
-        this.Extra_stat_label.Size = new System.Drawing.Size(10, 13);
-        this.Extra_stat_label.TabIndex = 24;
-        this.Extra_stat_label.Text = " ";
+        Extra_stat_label.AutoSize = true;
+        Extra_stat_label.Location = new Point(148, 59);
+        Extra_stat_label.Margin = new Padding(4, 0, 4, 0);
+        Extra_stat_label.Name = "Extra_stat_label";
+        Extra_stat_label.Size = new Size(10, 15);
+        Extra_stat_label.TabIndex = 24;
+        Extra_stat_label.Text = " ";
         // 
         // label14
         // 
-        this.label14.AutoSize = true;
-        this.label14.Location = new System.Drawing.Point(77, 51);
-        this.label14.Name = "label14";
-        this.label14.Size = new System.Drawing.Size(12, 13);
-        this.label14.TabIndex = 23;
-        this.label14.Text = "/";
+        label14.AutoSize = true;
+        label14.Location = new Point(90, 59);
+        label14.Margin = new Padding(4, 0, 4, 0);
+        label14.Name = "label14";
+        label14.Size = new Size(12, 15);
+        label14.TabIndex = 23;
+        label14.Text = "/";
         // 
         // global_emp_numeric
         // 
-        this.global_emp_numeric.Location = new System.Drawing.Point(95, 49);
-        this.global_emp_numeric.Name = "global_emp_numeric";
-        this.global_emp_numeric.Size = new System.Drawing.Size(32, 20);
-        this.global_emp_numeric.TabIndex = 22;
+        global_emp_numeric.Location = new Point(111, 57);
+        global_emp_numeric.Margin = new Padding(4, 3, 4, 3);
+        global_emp_numeric.Name = "global_emp_numeric";
+        global_emp_numeric.Size = new Size(37, 23);
+        global_emp_numeric.TabIndex = 22;
         // 
         // label15
         // 
-        this.label15.AutoSize = true;
-        this.label15.Location = new System.Drawing.Point(6, 51);
-        this.label15.Name = "label15";
-        this.label15.Size = new System.Drawing.Size(31, 13);
-        this.label15.TabIndex = 21;
-        this.label15.Text = "ЭМП";
+        label15.AutoSize = true;
+        label15.Location = new Point(7, 59);
+        label15.Margin = new Padding(4, 0, 4, 0);
+        label15.Name = "label15";
+        label15.Size = new Size(34, 15);
+        label15.TabIndex = 21;
+        label15.Text = "ЭМП";
         // 
         // cur_emp_numeric
         // 
-        this.cur_emp_numeric.Location = new System.Drawing.Point(39, 49);
-        this.cur_emp_numeric.Name = "cur_emp_numeric";
-        this.cur_emp_numeric.Size = new System.Drawing.Size(32, 20);
-        this.cur_emp_numeric.TabIndex = 20;
+        cur_emp_numeric.Location = new Point(46, 57);
+        cur_emp_numeric.Margin = new Padding(4, 3, 4, 3);
+        cur_emp_numeric.Name = "cur_emp_numeric";
+        cur_emp_numeric.Size = new Size(37, 23);
+        cur_emp_numeric.TabIndex = 20;
         // 
         // label9
         // 
-        this.label9.AutoSize = true;
-        this.label9.Location = new System.Drawing.Point(148, 25);
-        this.label9.Name = "label9";
-        this.label9.Size = new System.Drawing.Size(12, 13);
-        this.label9.TabIndex = 19;
-        this.label9.Text = "/";
-        this.label9.Click += new System.EventHandler(this.label9_Click);
+        label9.AutoSize = true;
+        label9.Location = new Point(173, 29);
+        label9.Margin = new Padding(4, 0, 4, 0);
+        label9.Name = "label9";
+        label9.Size = new Size(12, 15);
+        label9.TabIndex = 19;
+        label9.Text = "/";
+        label9.Click += label9_Click;
         // 
         // global_luck_numeric
         // 
-        this.global_luck_numeric.Location = new System.Drawing.Point(166, 23);
-        this.global_luck_numeric.Name = "global_luck_numeric";
-        this.global_luck_numeric.Size = new System.Drawing.Size(32, 20);
-        this.global_luck_numeric.TabIndex = 18;
-        this.global_luck_numeric.ValueChanged += new System.EventHandler(this.numericUpDown6_ValueChanged);
+        global_luck_numeric.Location = new Point(194, 27);
+        global_luck_numeric.Margin = new Padding(4, 3, 4, 3);
+        global_luck_numeric.Name = "global_luck_numeric";
+        global_luck_numeric.Size = new Size(37, 23);
+        global_luck_numeric.TabIndex = 18;
+        global_luck_numeric.ValueChanged += numericUpDown6_ValueChanged;
         // 
         // label10
         // 
-        this.label10.AutoSize = true;
-        this.label10.Location = new System.Drawing.Point(270, 25);
-        this.label10.Name = "label10";
-        this.label10.Size = new System.Drawing.Size(37, 13);
-        this.label10.TabIndex = 17;
-        this.label10.Text = "ТЕЛО";
-        this.label10.Click += new System.EventHandler(this.label10_Click);
+        label10.AutoSize = true;
+        label10.Location = new Point(315, 29);
+        label10.Margin = new Padding(4, 0, 4, 0);
+        label10.Name = "label10";
+        label10.Size = new Size(36, 15);
+        label10.TabIndex = 17;
+        label10.Text = "ТЕЛО";
+        label10.Click += label10_Click;
         // 
         // body_numeric
         // 
-        this.body_numeric.Location = new System.Drawing.Point(312, 23);
-        this.body_numeric.Name = "body_numeric";
-        this.body_numeric.Size = new System.Drawing.Size(32, 20);
-        this.body_numeric.TabIndex = 16;
-        this.body_numeric.ValueChanged += new System.EventHandler(this.numericUpDown7_ValueChanged);
+        body_numeric.Location = new Point(364, 27);
+        body_numeric.Margin = new Padding(4, 3, 4, 3);
+        body_numeric.Name = "body_numeric";
+        body_numeric.Size = new Size(37, 23);
+        body_numeric.TabIndex = 16;
+        body_numeric.ValueChanged += numericUpDown7_ValueChanged;
         // 
         // label11
         // 
-        this.label11.AutoSize = true;
-        this.label11.Location = new System.Drawing.Point(204, 25);
-        this.label11.Name = "label11";
-        this.label11.Size = new System.Drawing.Size(29, 13);
-        this.label11.TabIndex = 15;
-        this.label11.Text = "ПЕР";
-        this.label11.Click += new System.EventHandler(this.label11_Click);
+        label11.AutoSize = true;
+        label11.Location = new Point(238, 29);
+        label11.Margin = new Padding(4, 0, 4, 0);
+        label11.Name = "label11";
+        label11.Size = new Size(29, 15);
+        label11.TabIndex = 15;
+        label11.Text = "ПЕР";
+        label11.Click += label11_Click;
         // 
         // move_numeric
         // 
-        this.move_numeric.Location = new System.Drawing.Point(232, 23);
-        this.move_numeric.Name = "move_numeric";
-        this.move_numeric.Size = new System.Drawing.Size(32, 20);
-        this.move_numeric.TabIndex = 14;
-        this.move_numeric.ValueChanged += new System.EventHandler(this.numericUpDown8_ValueChanged);
+        move_numeric.Location = new Point(271, 27);
+        move_numeric.Margin = new Padding(4, 3, 4, 3);
+        move_numeric.Name = "move_numeric";
+        move_numeric.Size = new Size(37, 23);
+        move_numeric.TabIndex = 14;
+        move_numeric.ValueChanged += numericUpDown8_ValueChanged;
         // 
         // label12
         // 
-        this.label12.AutoSize = true;
-        this.label12.Location = new System.Drawing.Point(77, 25);
-        this.label12.Name = "label12";
-        this.label12.Size = new System.Drawing.Size(32, 13);
-        this.label12.TabIndex = 13;
-        this.label12.Text = "УДЧ";
-        this.label12.Click += new System.EventHandler(this.label12_Click);
+        label12.AutoSize = true;
+        label12.Location = new Point(90, 29);
+        label12.Margin = new Padding(4, 0, 4, 0);
+        label12.Name = "label12";
+        label12.Size = new Size(30, 15);
+        label12.TabIndex = 13;
+        label12.Text = "УДЧ";
+        label12.Click += label12_Click;
         // 
         // cur_luck_numeric
         // 
-        this.cur_luck_numeric.Location = new System.Drawing.Point(110, 23);
-        this.cur_luck_numeric.Name = "cur_luck_numeric";
-        this.cur_luck_numeric.Size = new System.Drawing.Size(32, 20);
-        this.cur_luck_numeric.TabIndex = 12;
-        this.cur_luck_numeric.ValueChanged += new System.EventHandler(this.numericUpDown9_ValueChanged);
+        cur_luck_numeric.Location = new Point(128, 27);
+        cur_luck_numeric.Margin = new Padding(4, 3, 4, 3);
+        cur_luck_numeric.Name = "cur_luck_numeric";
+        cur_luck_numeric.Size = new Size(37, 23);
+        cur_luck_numeric.TabIndex = 12;
+        cur_luck_numeric.ValueChanged += numericUpDown9_ValueChanged;
         // 
         // label13
         // 
-        this.label13.AutoSize = true;
-        this.label13.Location = new System.Drawing.Point(4, 25);
-        this.label13.Name = "label13";
-        this.label13.Size = new System.Drawing.Size(37, 13);
-        this.label13.TabIndex = 11;
-        this.label13.Text = "ПРВЛ";
-        this.label13.Click += new System.EventHandler(this.label13_Click);
+        label13.AutoSize = true;
+        label13.Location = new Point(5, 29);
+        label13.Margin = new Padding(4, 0, 4, 0);
+        label13.Name = "label13";
+        label13.Size = new Size(38, 15);
+        label13.TabIndex = 11;
+        label13.Text = "ПРВЛ";
+        label13.Click += label13_Click;
         // 
         // attr_numeric
         // 
-        this.attr_numeric.Location = new System.Drawing.Point(39, 23);
-        this.attr_numeric.Name = "attr_numeric";
-        this.attr_numeric.Size = new System.Drawing.Size(32, 20);
-        this.attr_numeric.TabIndex = 10;
-        this.attr_numeric.ValueChanged += new System.EventHandler(this.numericUpDown10_ValueChanged);
+        attr_numeric.Location = new Point(46, 27);
+        attr_numeric.Margin = new Padding(4, 3, 4, 3);
+        attr_numeric.Name = "attr_numeric";
+        attr_numeric.Size = new Size(37, 23);
+        attr_numeric.TabIndex = 10;
+        attr_numeric.ValueChanged += numericUpDown10_ValueChanged;
         // 
         // label8
         // 
-        this.label8.AutoSize = true;
-        this.label8.Location = new System.Drawing.Point(148, 4);
-        this.label8.Name = "label8";
-        this.label8.Size = new System.Drawing.Size(12, 13);
-        this.label8.TabIndex = 9;
-        this.label8.Text = "/";
-        this.label8.Click += new System.EventHandler(this.label8_Click);
+        label8.AutoSize = true;
+        label8.Location = new Point(173, 5);
+        label8.Margin = new Padding(4, 0, 4, 0);
+        label8.Name = "label8";
+        label8.Size = new Size(12, 15);
+        label8.TabIndex = 9;
+        label8.Text = "/";
+        label8.Click += label8_Click;
         // 
         // global_ref_numeric
         // 
-        this.global_ref_numeric.Location = new System.Drawing.Point(166, 2);
-        this.global_ref_numeric.Name = "global_ref_numeric";
-        this.global_ref_numeric.Size = new System.Drawing.Size(32, 20);
-        this.global_ref_numeric.TabIndex = 8;
-        this.global_ref_numeric.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
+        global_ref_numeric.Location = new Point(194, 2);
+        global_ref_numeric.Margin = new Padding(4, 3, 4, 3);
+        global_ref_numeric.Name = "global_ref_numeric";
+        global_ref_numeric.Size = new Size(37, 23);
+        global_ref_numeric.TabIndex = 8;
+        global_ref_numeric.ValueChanged += numericUpDown5_ValueChanged;
         // 
         // label7
         // 
-        this.label7.AutoSize = true;
-        this.label7.Location = new System.Drawing.Point(270, 4);
-        this.label7.Name = "label7";
-        this.label7.Size = new System.Drawing.Size(36, 13);
-        this.label7.TabIndex = 7;
-        this.label7.Text = "КРУТ";
-        this.label7.Click += new System.EventHandler(this.label7_Click);
+        label7.AutoSize = true;
+        label7.Location = new Point(315, 5);
+        label7.Margin = new Padding(4, 0, 4, 0);
+        label7.Name = "label7";
+        label7.Size = new Size(34, 15);
+        label7.TabIndex = 7;
+        label7.Text = "КРУТ";
+        label7.Click += label7_Click;
         // 
         // cool_numeric
         // 
-        this.cool_numeric.Location = new System.Drawing.Point(312, 2);
-        this.cool_numeric.Name = "cool_numeric";
-        this.cool_numeric.Size = new System.Drawing.Size(32, 20);
-        this.cool_numeric.TabIndex = 6;
-        this.cool_numeric.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
+        cool_numeric.Location = new Point(364, 2);
+        cool_numeric.Margin = new Padding(4, 3, 4, 3);
+        cool_numeric.Name = "cool_numeric";
+        cool_numeric.Size = new Size(37, 23);
+        cool_numeric.TabIndex = 6;
+        cool_numeric.ValueChanged += numericUpDown4_ValueChanged;
         // 
         // label6
         // 
-        this.label6.AutoSize = true;
-        this.label6.Location = new System.Drawing.Point(204, 4);
-        this.label6.Name = "label6";
-        this.label6.Size = new System.Drawing.Size(28, 13);
-        this.label6.TabIndex = 5;
-        this.label6.Text = "ТЕХ";
-        this.label6.Click += new System.EventHandler(this.label6_Click);
+        label6.AutoSize = true;
+        label6.Location = new Point(238, 5);
+        label6.Margin = new Padding(4, 0, 4, 0);
+        label6.Name = "label6";
+        label6.Size = new Size(26, 15);
+        label6.TabIndex = 5;
+        label6.Text = "ТЕХ";
+        label6.Click += label6_Click;
         // 
         // tech_numeric
         // 
-        this.tech_numeric.Location = new System.Drawing.Point(232, 2);
-        this.tech_numeric.Name = "tech_numeric";
-        this.tech_numeric.Size = new System.Drawing.Size(32, 20);
-        this.tech_numeric.TabIndex = 4;
-        this.tech_numeric.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
+        tech_numeric.Location = new Point(271, 2);
+        tech_numeric.Margin = new Padding(4, 3, 4, 3);
+        tech_numeric.Name = "tech_numeric";
+        tech_numeric.Size = new Size(37, 23);
+        tech_numeric.TabIndex = 4;
+        tech_numeric.ValueChanged += numericUpDown3_ValueChanged;
         // 
         // label5
         // 
-        this.label5.AutoSize = true;
-        this.label5.Location = new System.Drawing.Point(77, 4);
-        this.label5.Name = "label5";
-        this.label5.Size = new System.Drawing.Size(32, 13);
-        this.label5.TabIndex = 3;
-        this.label5.Text = "РЕФ";
+        label5.AutoSize = true;
+        label5.Location = new Point(90, 5);
+        label5.Margin = new Padding(4, 0, 4, 0);
+        label5.Name = "label5";
+        label5.Size = new Size(29, 15);
+        label5.TabIndex = 3;
+        label5.Text = "РЕФ";
         // 
         // cur_reflex_numeric
         // 
-        this.cur_reflex_numeric.Location = new System.Drawing.Point(110, 2);
-        this.cur_reflex_numeric.Name = "cur_reflex_numeric";
-        this.cur_reflex_numeric.Size = new System.Drawing.Size(32, 20);
-        this.cur_reflex_numeric.TabIndex = 2;
-        this.cur_reflex_numeric.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+        cur_reflex_numeric.Location = new Point(128, 2);
+        cur_reflex_numeric.Margin = new Padding(4, 3, 4, 3);
+        cur_reflex_numeric.Name = "cur_reflex_numeric";
+        cur_reflex_numeric.Size = new Size(37, 23);
+        cur_reflex_numeric.TabIndex = 2;
+        cur_reflex_numeric.ValueChanged += numericUpDown2_ValueChanged;
         // 
         // label4
         // 
-        this.label4.AutoSize = true;
-        this.label4.Location = new System.Drawing.Point(4, 4);
-        this.label4.Name = "label4";
-        this.label4.Size = new System.Drawing.Size(30, 13);
-        this.label4.TabIndex = 1;
-        this.label4.Text = "ИНТ";
+        label4.AutoSize = true;
+        label4.Location = new Point(5, 5);
+        label4.Margin = new Padding(4, 0, 4, 0);
+        label4.Name = "label4";
+        label4.Size = new Size(31, 15);
+        label4.TabIndex = 1;
+        label4.Text = "ИНТ";
         // 
         // numeric_int
         // 
-        this.numeric_int.Location = new System.Drawing.Point(39, 2);
-        this.numeric_int.Maximum = new decimal(new int[] {
-        10,
-        0,
-        0,
-        0});
-        this.numeric_int.Name = "numeric_int";
-        this.numeric_int.Size = new System.Drawing.Size(32, 20);
-        this.numeric_int.TabIndex = 0;
-        this.numeric_int.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+        numeric_int.Location = new Point(46, 2);
+        numeric_int.Margin = new Padding(4, 3, 4, 3);
+        numeric_int.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+        numeric_int.Name = "numeric_int";
+        numeric_int.Size = new Size(37, 23);
+        numeric_int.TabIndex = 0;
+        numeric_int.ValueChanged += numericUpDown1_ValueChanged;
         // 
         // label1
         // 
-        this.label1.AutoSize = true;
-        this.label1.Location = new System.Drawing.Point(316, 47);
-        this.label1.Name = "label1";
-        this.label1.Size = new System.Drawing.Size(35, 13);
-        this.label1.TabIndex = 1;
-        this.label1.Text = "label1";
-        this.label1.Click += new System.EventHandler(this.label1_Click);
+        label1.AutoSize = true;
+        label1.Location = new Point(369, 54);
+        label1.Margin = new Padding(4, 0, 4, 0);
+        label1.Name = "label1";
+        label1.Size = new Size(38, 15);
+        label1.TabIndex = 1;
+        label1.Text = "label1";
+        label1.Click += label1_Click;
         // 
         // CreateButton
         // 
-        this.CreateButton.Location = new System.Drawing.Point(741, 11);
-        this.CreateButton.Name = "CreateButton";
-        this.CreateButton.Size = new System.Drawing.Size(75, 23);
-        this.CreateButton.TabIndex = 0;
-        this.CreateButton.Text = "Новый персонаж";
-        this.CreateButton.UseVisualStyleBackColor = true;
-        this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
+        CreateButton.Location = new Point(864, 13);
+        CreateButton.Margin = new Padding(4, 3, 4, 3);
+        CreateButton.Name = "CreateButton";
+        CreateButton.Size = new Size(88, 27);
+        CreateButton.TabIndex = 0;
+        CreateButton.Text = "Новый персонаж";
+        CreateButton.UseVisualStyleBackColor = true;
+        CreateButton.Click += CreateButton_Click;
         // 
         // panel2
         // 
-        this.panel2.Location = new System.Drawing.Point(12, 182);
-        this.panel2.Name = "panel2";
-        this.panel2.Size = new System.Drawing.Size(370, 107);
-        this.panel2.TabIndex = 1;
+        panel2.Location = new Point(14, 210);
+        panel2.Margin = new Padding(4, 3, 4, 3);
+        panel2.Name = "panel2";
+        panel2.Size = new Size(432, 123);
+        panel2.TabIndex = 1;
         // 
         // label2
         // 
-        this.label2.AutoSize = true;
-        this.label2.Location = new System.Drawing.Point(9, 43);
-        this.label2.Name = "label2";
-        this.label2.Size = new System.Drawing.Size(29, 13);
-        this.label2.TabIndex = 2;
-        this.label2.Text = "Имя";
+        label2.AutoSize = true;
+        label2.Location = new Point(10, 50);
+        label2.Margin = new Padding(4, 0, 4, 0);
+        label2.Name = "label2";
+        label2.Size = new Size(31, 15);
+        label2.TabIndex = 2;
+        label2.Text = "Имя";
         // 
         // NameField
         // 
-        this.NameField.Location = new System.Drawing.Point(44, 43);
-        this.NameField.Name = "NameField";
-        this.NameField.Size = new System.Drawing.Size(100, 20);
-        this.NameField.TabIndex = 3;
-        this.NameField.Leave += new System.EventHandler(this.NameEntered);
+        NameField.Location = new Point(51, 50);
+        NameField.Margin = new Padding(4, 3, 4, 3);
+        NameField.Name = "NameField";
+        NameField.Size = new Size(116, 23);
+        NameField.TabIndex = 3;
+        NameField.Leave += NameEntered;
         // 
         // panel3
         // 
-        this.panel3.Controls.Add(this.ErrorLabel);
-        this.panel3.Controls.Add(this.CreateButton);
-        this.panel3.Location = new System.Drawing.Point(-2, 1);
-        this.panel3.Name = "panel3";
-        this.panel3.Size = new System.Drawing.Size(819, 39);
-        this.panel3.TabIndex = 4;
+        panel3.Controls.Add(ErrorLabel);
+        panel3.Controls.Add(CreateButton);
+        panel3.Location = new Point(-2, 1);
+        panel3.Margin = new Padding(4, 3, 4, 3);
+        panel3.Name = "panel3";
+        panel3.Size = new Size(955, 45);
+        panel3.TabIndex = 4;
         // 
         // ErrorLabel
         // 
-        this.ErrorLabel.AutoSize = true;
-        this.ErrorLabel.ForeColor = System.Drawing.Color.Red;
-        this.ErrorLabel.Location = new System.Drawing.Point(3, 8);
-        this.ErrorLabel.Name = "ErrorLabel";
-        this.ErrorLabel.Size = new System.Drawing.Size(10, 13);
-        this.ErrorLabel.TabIndex = 1;
-        this.ErrorLabel.Text = " ";
+        ErrorLabel.AutoSize = true;
+        ErrorLabel.ForeColor = Color.Red;
+        ErrorLabel.Location = new Point(4, 9);
+        ErrorLabel.Margin = new Padding(4, 0, 4, 0);
+        ErrorLabel.Name = "ErrorLabel";
+        ErrorLabel.Size = new Size(10, 15);
+        ErrorLabel.TabIndex = 1;
+        ErrorLabel.Text = " ";
         // 
         // label3
         // 
-        this.label3.AutoSize = true;
-        this.label3.Location = new System.Drawing.Point(151, 47);
-        this.label3.Name = "label3";
-        this.label3.Size = new System.Drawing.Size(32, 13);
-        this.label3.TabIndex = 5;
-        this.label3.Text = "Роль";
+        label3.AutoSize = true;
+        label3.Location = new Point(176, 54);
+        label3.Margin = new Padding(4, 0, 4, 0);
+        label3.Name = "label3";
+        label3.Size = new Size(34, 15);
+        label3.TabIndex = 5;
+        label3.Text = "Роль";
         // 
         // RoleChoser
         // 
-        this.RoleChoser.Enabled = false;
-        this.RoleChoser.FormattingEnabled = true;
-        this.RoleChoser.Items.AddRange(new object[] {
-        "Нет",
-        "Соло",
-        "Рокер",
-        "Нетраннер",
-        "Медиа",
-        "Номад",
-        "Фиксер",
-        "Коп",
-        "Корп",
-        "Техник",
-        "Медтехник"});
-        this.RoleChoser.Location = new System.Drawing.Point(189, 43);
-        this.RoleChoser.Name = "RoleChoser";
-        this.RoleChoser.Size = new System.Drawing.Size(121, 21);
-        this.RoleChoser.TabIndex = 7;
-        this.RoleChoser.Text = "Нет";
+        RoleChoser.Enabled = false;
+        RoleChoser.FormattingEnabled = true;
+        RoleChoser.Items.AddRange(new object[] { "Нет", "Соло", "Рокер", "Нетраннер", "Медиа", "Номад", "Фиксер", "Коп", "Корп", "Техник", "Медтехник" });
+        RoleChoser.Location = new Point(220, 50);
+        RoleChoser.Margin = new Padding(4, 3, 4, 3);
+        RoleChoser.Name = "RoleChoser";
+        RoleChoser.Size = new Size(140, 23);
+        RoleChoser.TabIndex = 7;
+        RoleChoser.Text = "Нет";
         // 
         // sum_label
         // 
-        this.sum_label.AutoSize = true;
-        this.sum_label.Location = new System.Drawing.Point(3, 9);
-        this.sum_label.Name = "sum_label";
-        this.sum_label.Size = new System.Drawing.Size(10, 13);
-        this.sum_label.TabIndex = 8;
-        this.sum_label.Text = " ";
+        sum_label.AutoSize = true;
+        sum_label.Location = new Point(4, 10);
+        sum_label.Margin = new Padding(4, 0, 4, 0);
+        sum_label.Name = "sum_label";
+        sum_label.Size = new Size(10, 15);
+        sum_label.TabIndex = 8;
+        sum_label.Text = " ";
         // 
         // gen_way_panel
         // 
-        this.gen_way_panel.Controls.Add(this.const_num_numeric);
-        this.gen_way_panel.Controls.Add(this.const_stat_num_button);
-        this.gen_way_panel.Controls.Add(this.random_stat_sum_button);
-        this.gen_way_panel.Controls.Add(this.random_char);
-        this.gen_way_panel.Controls.Add(this.sum_label);
-        this.gen_way_panel.Location = new System.Drawing.Point(388, 76);
-        this.gen_way_panel.Name = "gen_way_panel";
-        this.gen_way_panel.Size = new System.Drawing.Size(266, 100);
-        this.gen_way_panel.TabIndex = 2;
+        gen_way_panel.Controls.Add(const_num_numeric);
+        gen_way_panel.Controls.Add(const_stat_num_button);
+        gen_way_panel.Controls.Add(random_stat_sum_button);
+        gen_way_panel.Controls.Add(random_char);
+        gen_way_panel.Controls.Add(sum_label);
+        gen_way_panel.Location = new Point(453, 88);
+        gen_way_panel.Margin = new Padding(4, 3, 4, 3);
+        gen_way_panel.Name = "gen_way_panel";
+        gen_way_panel.Size = new Size(310, 115);
+        gen_way_panel.TabIndex = 2;
         // 
         // const_num_numeric
         // 
-        this.const_num_numeric.Location = new System.Drawing.Point(82, 64);
-        this.const_num_numeric.Maximum = new decimal(new int[] {
-        90,
-        0,
-        0,
-        0});
-        this.const_num_numeric.Minimum = new decimal(new int[] {
-        9,
-        0,
-        0,
-        0});
-        this.const_num_numeric.Name = "const_num_numeric";
-        this.const_num_numeric.Size = new System.Drawing.Size(42, 20);
-        this.const_num_numeric.TabIndex = 12;
-        this.const_num_numeric.Value = new decimal(new int[] {
-        60,
-        0,
-        0,
-        0});
+        const_num_numeric.Location = new Point(96, 74);
+        const_num_numeric.Margin = new Padding(4, 3, 4, 3);
+        const_num_numeric.Maximum = new decimal(new int[] { 90, 0, 0, 0 });
+        const_num_numeric.Minimum = new decimal(new int[] { 9, 0, 0, 0 });
+        const_num_numeric.Name = "const_num_numeric";
+        const_num_numeric.Size = new Size(49, 23);
+        const_num_numeric.TabIndex = 12;
+        const_num_numeric.Value = new decimal(new int[] { 60, 0, 0, 0 });
         // 
         // const_stat_num_button
         // 
-        this.const_stat_num_button.Location = new System.Drawing.Point(130, 62);
-        this.const_stat_num_button.Name = "const_stat_num_button";
-        this.const_stat_num_button.Size = new System.Drawing.Size(133, 23);
-        this.const_stat_num_button.TabIndex = 11;
-        this.const_stat_num_button.Text = "Заданное число";
-        this.const_stat_num_button.UseVisualStyleBackColor = true;
-        this.const_stat_num_button.Click += new System.EventHandler(this.const_stat_num_button_Click);
+        const_stat_num_button.Location = new Point(152, 72);
+        const_stat_num_button.Margin = new Padding(4, 3, 4, 3);
+        const_stat_num_button.Name = "const_stat_num_button";
+        const_stat_num_button.Size = new Size(155, 27);
+        const_stat_num_button.TabIndex = 11;
+        const_stat_num_button.Text = "Заданное число";
+        const_stat_num_button.UseVisualStyleBackColor = true;
+        const_stat_num_button.Click += const_stat_num_button_Click;
         // 
         // random_stat_sum_button
         // 
-        this.random_stat_sum_button.Location = new System.Drawing.Point(130, 33);
-        this.random_stat_sum_button.Name = "random_stat_sum_button";
-        this.random_stat_sum_button.Size = new System.Drawing.Size(133, 23);
-        this.random_stat_sum_button.TabIndex = 10;
-        this.random_stat_sum_button.Text = "Случайное число";
-        this.random_stat_sum_button.UseVisualStyleBackColor = true;
-        this.random_stat_sum_button.Click += new System.EventHandler(this.random_stat_sum_button_Click);
+        random_stat_sum_button.Location = new Point(152, 38);
+        random_stat_sum_button.Margin = new Padding(4, 3, 4, 3);
+        random_stat_sum_button.Name = "random_stat_sum_button";
+        random_stat_sum_button.Size = new Size(155, 27);
+        random_stat_sum_button.TabIndex = 10;
+        random_stat_sum_button.Text = "Случайное число";
+        random_stat_sum_button.UseVisualStyleBackColor = true;
+        random_stat_sum_button.Click += random_stat_sum_button_Click;
         // 
         // random_char
         // 
-        this.random_char.Location = new System.Drawing.Point(130, 4);
-        this.random_char.Name = "random_char";
-        this.random_char.Size = new System.Drawing.Size(133, 23);
-        this.random_char.TabIndex = 9;
-        this.random_char.Text = "Случайный персонаж";
-        this.random_char.UseVisualStyleBackColor = true;
-        this.random_char.Click += new System.EventHandler(this.random_char_Click);
+        random_char.Location = new Point(152, 5);
+        random_char.Margin = new Padding(4, 3, 4, 3);
+        random_char.Name = "random_char";
+        random_char.Size = new Size(155, 27);
+        random_char.TabIndex = 9;
+        random_char.Text = "Случайный персонаж";
+        random_char.UseVisualStyleBackColor = true;
+        random_char.Click += random_char_Click;
         // 
         // skills_tab_control
         // 
-        this.skills_tab_control.Controls.Add(this.tabPage1);
-        this.skills_tab_control.Controls.Add(this.tabPage2);
-        this.skills_tab_control.Location = new System.Drawing.Point(12, 296);
-        this.skills_tab_control.Name = "skills_tab_control";
-        this.skills_tab_control.SelectedIndex = 0;
-        this.skills_tab_control.Size = new System.Drawing.Size(805, 689);
-        this.skills_tab_control.TabIndex = 8;
+        skills_tab_control.Controls.Add(tabPage1);
+        skills_tab_control.Controls.Add(tabPage2);
+        skills_tab_control.Location = new Point(14, 342);
+        skills_tab_control.Margin = new Padding(4, 3, 4, 3);
+        skills_tab_control.Name = "skills_tab_control";
+        skills_tab_control.SelectedIndex = 0;
+        skills_tab_control.Size = new Size(939, 795);
+        skills_tab_control.TabIndex = 8;
         // 
         // tabPage1
         // 
-        this.tabPage1.Controls.Add(this.label19);
-        this.tabPage1.Location = new System.Drawing.Point(4, 22);
-        this.tabPage1.Name = "tabPage1";
-        this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-        this.tabPage1.Size = new System.Drawing.Size(797, 663);
-        this.tabPage1.TabIndex = 0;
-        this.tabPage1.Text = "Навыки";
-        this.tabPage1.UseVisualStyleBackColor = true;
+        tabPage1.Controls.Add(label19);
+        tabPage1.Location = new Point(4, 24);
+        tabPage1.Margin = new Padding(4, 3, 4, 3);
+        tabPage1.Name = "tabPage1";
+        tabPage1.Padding = new Padding(4, 3, 4, 3);
+        tabPage1.Size = new Size(931, 767);
+        tabPage1.TabIndex = 0;
+        tabPage1.Text = "Навыки";
+        tabPage1.UseVisualStyleBackColor = true;
         // 
         // label19
         // 
-        this.label19.AutoSize = true;
-        this.label19.Location = new System.Drawing.Point(20, 304);
-        this.label19.Name = "label19";
-        this.label19.Size = new System.Drawing.Size(41, 13);
-        this.label19.TabIndex = 0;
-        this.label19.Text = "label19";
+        label19.AutoSize = true;
+        label19.Location = new Point(23, 351);
+        label19.Margin = new Padding(4, 0, 4, 0);
+        label19.Name = "label19";
+        label19.Size = new Size(44, 15);
+        label19.TabIndex = 0;
+        label19.Text = "label19";
         // 
         // tabPage2
         // 
-        this.tabPage2.Location = new System.Drawing.Point(4, 22);
-        this.tabPage2.Name = "tabPage2";
-        this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-        this.tabPage2.Size = new System.Drawing.Size(797, 663);
-        this.tabPage2.TabIndex = 1;
-        this.tabPage2.Text = "tabPage2";
-        this.tabPage2.UseVisualStyleBackColor = true;
+        tabPage2.Location = new Point(4, 24);
+        tabPage2.Margin = new Padding(4, 3, 4, 3);
+        tabPage2.Name = "tabPage2";
+        tabPage2.Padding = new Padding(4, 3, 4, 3);
+        tabPage2.Size = new Size(931, 767);
+        tabPage2.TabIndex = 1;
+        tabPage2.Text = "Кибернетика";
+        tabPage2.UseVisualStyleBackColor = true;
         // 
         // SkillPanel
         // 
-        this.SkillPanel.Controls.Add(this.label18);
-        this.SkillPanel.Controls.Add(this.label17);
-        this.SkillPanel.Controls.Add(this.skillNumeric2);
-        this.SkillPanel.Controls.Add(this.Skill_numeric);
-        this.SkillPanel.Controls.Add(this.label16);
-        this.SkillPanel.Location = new System.Drawing.Point(610, 286);
-        this.SkillPanel.Name = "SkillPanel";
-        this.SkillPanel.Size = new System.Drawing.Size(200, 26);
-        this.SkillPanel.TabIndex = 0;
+        SkillPanel.Controls.Add(label18);
+        SkillPanel.Controls.Add(label17);
+        SkillPanel.Controls.Add(skillNumeric2);
+        SkillPanel.Controls.Add(Skill_numeric);
+        SkillPanel.Controls.Add(label16);
+        SkillPanel.Location = new Point(712, 330);
+        SkillPanel.Margin = new Padding(4, 3, 4, 3);
+        SkillPanel.Name = "SkillPanel";
+        SkillPanel.Size = new Size(233, 30);
+        SkillPanel.TabIndex = 0;
         // 
         // label18
         // 
-        this.label18.AutoSize = true;
-        this.label18.Location = new System.Drawing.Point(122, 9);
-        this.label18.Name = "label18";
-        this.label18.Size = new System.Drawing.Size(44, 13);
-        this.label18.TabIndex = 4;
-        this.label18.Text = "location";
+        label18.AutoSize = true;
+        label18.Location = new Point(142, 10);
+        label18.Margin = new Padding(4, 0, 4, 0);
+        label18.Name = "label18";
+        label18.Size = new Size(50, 15);
+        label18.TabIndex = 4;
+        label18.Text = "location";
         // 
         // label17
         // 
-        this.label17.AutoSize = true;
-        this.label17.Location = new System.Drawing.Point(54, 9);
-        this.label17.Name = "label17";
-        this.label17.Size = new System.Drawing.Size(25, 13);
-        this.label17.TabIndex = 3;
-        this.label17.Text = "size";
+        label17.AutoSize = true;
+        label17.Location = new Point(63, 10);
+        label17.Margin = new Padding(4, 0, 4, 0);
+        label17.Name = "label17";
+        label17.Size = new Size(26, 15);
+        label17.TabIndex = 3;
+        label17.Text = "size";
         // 
         // skillNumeric2
         // 
-        this.skillNumeric2.Location = new System.Drawing.Point(85, 3);
-        this.skillNumeric2.Maximum = new decimal(new int[] {
-        1000,
-        0,
-        0,
-        0});
-        this.skillNumeric2.Minimum = new decimal(new int[] {
-        1000,
-        0,
-        0,
-        -2147483648});
-        this.skillNumeric2.Name = "skillNumeric2";
-        this.skillNumeric2.Size = new System.Drawing.Size(31, 20);
-        this.skillNumeric2.TabIndex = 2;
-        this.skillNumeric2.ValueChanged += new System.EventHandler(this.skillNumeric2_ValueChanged);
+        skillNumeric2.Location = new Point(99, 3);
+        skillNumeric2.Margin = new Padding(4, 3, 4, 3);
+        skillNumeric2.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+        skillNumeric2.Minimum = new decimal(new int[] { 1000, 0, 0, int.MinValue });
+        skillNumeric2.Name = "skillNumeric2";
+        skillNumeric2.Size = new Size(36, 23);
+        skillNumeric2.TabIndex = 2;
+        skillNumeric2.ValueChanged += skillNumeric2_ValueChanged;
         // 
         // Skill_numeric
         // 
-        this.Skill_numeric.Location = new System.Drawing.Point(166, 4);
-        this.Skill_numeric.Maximum = new decimal(new int[] {
-        1000,
-        0,
-        0,
-        0});
-        this.Skill_numeric.Minimum = new decimal(new int[] {
-        1000,
-        0,
-        0,
-        -2147483648});
-        this.Skill_numeric.Name = "Skill_numeric";
-        this.Skill_numeric.Size = new System.Drawing.Size(31, 20);
-        this.Skill_numeric.TabIndex = 1;
-        this.Skill_numeric.ValueChanged += new System.EventHandler(this.Skill_numeric_ValueChanged);
+        Skill_numeric.Location = new Point(194, 5);
+        Skill_numeric.Margin = new Padding(4, 3, 4, 3);
+        Skill_numeric.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+        Skill_numeric.Minimum = new decimal(new int[] { 1000, 0, 0, int.MinValue });
+        Skill_numeric.Name = "Skill_numeric";
+        Skill_numeric.Size = new Size(36, 23);
+        Skill_numeric.TabIndex = 1;
+        Skill_numeric.ValueChanged += Skill_numeric_ValueChanged;
         // 
         // label16
         // 
-        this.label16.AutoSize = true;
-        this.label16.Location = new System.Drawing.Point(4, 4);
-        this.label16.Name = "label16";
-        this.label16.Size = new System.Drawing.Size(24, 13);
-        this.label16.TabIndex = 0;
-        this.label16.Text = "skill";
+        label16.AutoSize = true;
+        label16.Location = new Point(5, 5);
+        label16.Margin = new Padding(4, 0, 4, 0);
+        label16.Name = "label16";
+        label16.Size = new Size(27, 15);
+        label16.TabIndex = 0;
+        label16.Text = "skill";
         // 
         // CommentLabel
         // 
-        this.CommentLabel.AutoSize = true;
-        this.CommentLabel.Location = new System.Drawing.Point(391, 182);
-        this.CommentLabel.Name = "CommentLabel";
-        this.CommentLabel.Size = new System.Drawing.Size(73, 13);
-        this.CommentLabel.TabIndex = 13;
-        this.CommentLabel.Text = " sdfbdskfgdks";
+        CommentLabel.AutoSize = true;
+        CommentLabel.Location = new Point(456, 210);
+        CommentLabel.Margin = new Padding(4, 0, 4, 0);
+        CommentLabel.Name = "CommentLabel";
+        CommentLabel.Size = new Size(80, 15);
+        CommentLabel.TabIndex = 13;
+        CommentLabel.Text = " sdfbdskfgdks";
         // 
         // MoneyLabel
         // 
-        this.MoneyLabel.AutoSize = true;
-        this.MoneyLabel.Location = new System.Drawing.Point(385, 292);
-        this.MoneyLabel.Name = "MoneyLabel";
-        this.MoneyLabel.Size = new System.Drawing.Size(0, 13);
-        this.MoneyLabel.TabIndex = 14;
+        MoneyLabel.AutoSize = true;
+        MoneyLabel.Location = new Point(449, 337);
+        MoneyLabel.Margin = new Padding(4, 0, 4, 0);
+        MoneyLabel.Name = "MoneyLabel";
+        MoneyLabel.Size = new Size(0, 15);
+        MoneyLabel.TabIndex = 14;
         // 
         // Money_numeric
         // 
-        this.Money_numeric.Enabled = false;
-        this.Money_numeric.Location = new System.Drawing.Point(518, 290);
-        this.Money_numeric.Maximum = new decimal(new int[] {
-        1569325056,
-        23283064,
-        0,
-        0});
-        this.Money_numeric.Minimum = new decimal(new int[] {
-        1569325056,
-        23283064,
-        0,
-        -2147483648});
-        this.Money_numeric.Name = "Money_numeric";
-        this.Money_numeric.Size = new System.Drawing.Size(92, 20);
-        this.Money_numeric.TabIndex = 15;
-        this.Money_numeric.ValueChanged += new System.EventHandler(this.Money_numeric_ValueChanged);
+        Money_numeric.Enabled = false;
+        Money_numeric.Location = new Point(604, 335);
+        Money_numeric.Margin = new Padding(4, 3, 4, 3);
+        Money_numeric.Maximum = new decimal(new int[] { 1569325056, 23283064, 0, 0 });
+        Money_numeric.Minimum = new decimal(new int[] { 1569325056, 23283064, 0, int.MinValue });
+        Money_numeric.Name = "Money_numeric";
+        Money_numeric.Size = new Size(107, 23);
+        Money_numeric.TabIndex = 15;
+        Money_numeric.ValueChanged += Money_numeric_ValueChanged;
         // 
         // Form1
         // 
-        this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(1484, 985);
-        this.Controls.Add(this.Money_numeric);
-        this.Controls.Add(this.MoneyLabel);
-        this.Controls.Add(this.CommentLabel);
-        this.Controls.Add(this.SkillPanel);
-        this.Controls.Add(this.skills_tab_control);
-        this.Controls.Add(this.gen_way_panel);
-        this.Controls.Add(this.label1);
-        this.Controls.Add(this.RoleChoser);
-        this.Controls.Add(this.label3);
-        this.Controls.Add(this.panel3);
-        this.Controls.Add(this.NameField);
-        this.Controls.Add(this.label2);
-        this.Controls.Add(this.panel2);
-        this.Controls.Add(this.panel1);
-        this.Name = "Form1";
-        this.Text = "Form1";
-        this.Load += new System.EventHandler(this.Form1_Load);
-        this.panel1.ResumeLayout(false);
-        this.panel1.PerformLayout();
-        ((System.ComponentModel.ISupportInitialize)(this.global_emp_numeric)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.cur_emp_numeric)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.global_luck_numeric)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.body_numeric)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.move_numeric)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.cur_luck_numeric)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.attr_numeric)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.global_ref_numeric)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.cool_numeric)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.tech_numeric)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.cur_reflex_numeric)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.numeric_int)).EndInit();
-        this.panel3.ResumeLayout(false);
-        this.panel3.PerformLayout();
-        this.gen_way_panel.ResumeLayout(false);
-        this.gen_way_panel.PerformLayout();
-        ((System.ComponentModel.ISupportInitialize)(this.const_num_numeric)).EndInit();
-        this.skills_tab_control.ResumeLayout(false);
-        this.tabPage1.ResumeLayout(false);
-        this.tabPage1.PerformLayout();
-        this.SkillPanel.ResumeLayout(false);
-        this.SkillPanel.PerformLayout();
-        ((System.ComponentModel.ISupportInitialize)(this.skillNumeric2)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.Skill_numeric)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.Money_numeric)).EndInit();
-        this.ResumeLayout(false);
-        this.PerformLayout();
-
+        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(1731, 1061);
+        Controls.Add(Money_numeric);
+        Controls.Add(MoneyLabel);
+        Controls.Add(CommentLabel);
+        Controls.Add(SkillPanel);
+        Controls.Add(skills_tab_control);
+        Controls.Add(gen_way_panel);
+        Controls.Add(label1);
+        Controls.Add(RoleChoser);
+        Controls.Add(label3);
+        Controls.Add(panel3);
+        Controls.Add(NameField);
+        Controls.Add(label2);
+        Controls.Add(panel2);
+        Controls.Add(panel1);
+        Margin = new Padding(4, 3, 4, 3);
+        Name = "Form1";
+        Text = "Form1";
+        Load += Form1_Load;
+        panel1.ResumeLayout(false);
+        panel1.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)global_emp_numeric).EndInit();
+        ((System.ComponentModel.ISupportInitialize)cur_emp_numeric).EndInit();
+        ((System.ComponentModel.ISupportInitialize)global_luck_numeric).EndInit();
+        ((System.ComponentModel.ISupportInitialize)body_numeric).EndInit();
+        ((System.ComponentModel.ISupportInitialize)move_numeric).EndInit();
+        ((System.ComponentModel.ISupportInitialize)cur_luck_numeric).EndInit();
+        ((System.ComponentModel.ISupportInitialize)attr_numeric).EndInit();
+        ((System.ComponentModel.ISupportInitialize)global_ref_numeric).EndInit();
+        ((System.ComponentModel.ISupportInitialize)cool_numeric).EndInit();
+        ((System.ComponentModel.ISupportInitialize)tech_numeric).EndInit();
+        ((System.ComponentModel.ISupportInitialize)cur_reflex_numeric).EndInit();
+        ((System.ComponentModel.ISupportInitialize)numeric_int).EndInit();
+        panel3.ResumeLayout(false);
+        panel3.PerformLayout();
+        gen_way_panel.ResumeLayout(false);
+        gen_way_panel.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)const_num_numeric).EndInit();
+        skills_tab_control.ResumeLayout(false);
+        tabPage1.ResumeLayout(false);
+        tabPage1.PerformLayout();
+        SkillPanel.ResumeLayout(false);
+        SkillPanel.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)skillNumeric2).EndInit();
+        ((System.ComponentModel.ISupportInitialize)Skill_numeric).EndInit();
+        ((System.ComponentModel.ISupportInitialize)Money_numeric).EndInit();
+        ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion

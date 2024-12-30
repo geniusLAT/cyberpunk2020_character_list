@@ -579,11 +579,6 @@ public partial class Form1 : Form
                     _chosenCharacter.createStep = CreateStep.Role;
                     _chosenCharacter.name = NameField.Text;
                     RoleChoser.Enabled = true;
-
-                    
-
-
-
                     return;
                     break;
                 case CreateStep.Role:
@@ -599,7 +594,6 @@ public partial class Form1 : Form
                     // global_emp_numeric.Enabled =
                     //true;
 
-
                     foreach (NumericUpDown item in _createNumerics)
                     {
                         //item.Enabled = true;
@@ -610,8 +604,11 @@ public partial class Form1 : Form
                     CreateButton.Enabled = false;
                     gen_way_panel.Visible = true;
 
+                    skills_tab_control.SelectTab(0);
+
                     break;
                 case CreateStep.stat:
+                    skills_tab_control.SelectTab(0);
                     gen_way_panel.Visible = false;
                     CalculateState();
                     //Render_skills(31, 178);
@@ -621,20 +618,26 @@ public partial class Form1 : Form
                     CommentLabel.Text = "Необходимая сумма:40\nТекущая сумма:0";
                     break;
                 case CreateStep.prof:
+                    skills_tab_control.SelectTab(0);
                     CommentLabel.Text = "";
                     Activate_professionals(false);
                     CreateButton.Enabled = false;
                     _chosenCharacter.createStep = CreateStep.unprof;
                     break;
                 case CreateStep.unprof:
-                    CreateButton.Enabled = false;
+                    skills_tab_control.SelectTab(0);
+                    //CreateButton.Enabled = false;
                     _chosenCharacter.createStep = CreateStep.Money;
                     Deactivate_skills();
                     GenerateIncome();
                     break;
                 case CreateStep.Money:
+                    _chosenCharacter.createStep = CreateStep.implants;
                     break;
                 case CreateStep.implants:
+                    Money_numeric.Enabled = false;
+                    //tabPage2.Select();
+                    skills_tab_control.SelectTab(1);
                     break;
                 case CreateStep.inventory:
                     break;
