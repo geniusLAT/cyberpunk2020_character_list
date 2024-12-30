@@ -8,6 +8,8 @@ internal partial class CyberwareChooseMenu : Form
     Form1 _form1;
     private TreeView AvaliableCyberWareTreeView;
     private Label Implant_Description;
+    private Label problem_list_table;
+    private ComboBox comboBox1;
     Character _character;
 
     public CyberwareChooseMenu(Form1 form1, Character character)
@@ -23,9 +25,12 @@ internal partial class CyberwareChooseMenu : Form
 
     private void InitializeComponent()
     {
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CyberwareChooseMenu));
         add_chosen_cyberware_button = new Button();
         AvaliableCyberWareTreeView = new TreeView();
         Implant_Description = new Label();
+        problem_list_table = new Label();
+        comboBox1 = new ComboBox();
         SuspendLayout();
         // 
         // add_chosen_cyberware_button
@@ -48,15 +53,38 @@ internal partial class CyberwareChooseMenu : Form
         // Implant_Description
         // 
         Implant_Description.AutoSize = true;
+        Implant_Description.ImageAlign = ContentAlignment.TopLeft;
         Implant_Description.Location = new Point(278, 47);
+        Implant_Description.MaximumSize = new Size(155, 300);
         Implant_Description.Name = "Implant_Description";
-        Implant_Description.Size = new Size(114, 30);
+        Implant_Description.Size = new Size(151, 300);
         Implant_Description.TabIndex = 2;
-        Implant_Description.Text = "Выберите имлант в\r\n списке слева";
+        Implant_Description.Text = resources.GetString("Implant_Description.Text");
+        // 
+        // problem_list_table
+        // 
+        problem_list_table.AutoSize = true;
+        problem_list_table.ImageAlign = ContentAlignment.TopLeft;
+        problem_list_table.Location = new Point(278, 426);
+        problem_list_table.MaximumSize = new Size(155, 150);
+        problem_list_table.Name = "problem_list_table";
+        problem_list_table.Size = new Size(151, 150);
+        problem_list_table.TabIndex = 3;
+        problem_list_table.Text = resources.GetString("problem_list_table.Text");
+        // 
+        // comboBox1
+        // 
+        comboBox1.FormattingEnabled = true;
+        comboBox1.Location = new Point(278, 359);
+        comboBox1.Name = "comboBox1";
+        comboBox1.Size = new Size(157, 23);
+        comboBox1.TabIndex = 4;
         // 
         // CyberwareChooseMenu
         // 
         ClientSize = new Size(447, 617);
+        Controls.Add(comboBox1);
+        Controls.Add(problem_list_table);
         Controls.Add(Implant_Description);
         Controls.Add(AvaliableCyberWareTreeView);
         Controls.Add(add_chosen_cyberware_button);

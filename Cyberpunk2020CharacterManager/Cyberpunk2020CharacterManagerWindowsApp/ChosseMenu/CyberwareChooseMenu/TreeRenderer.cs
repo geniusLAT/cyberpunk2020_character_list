@@ -107,7 +107,30 @@ internal partial class CyberwareChooseMenu : Form
         Implant_Description.Text = implant.Name +
             $"\n\nСтоимость: {implant.Cost} " +
             $"\nХирургический код: {implant.SurgeryCode}\n"
-            + implant.Description; 
+            + implant.Description;
 
+        var problems = implant.BarriersForChipIn(_character);
+        problems += PricePotentialProblem(implant);
+
+        problem_list_table.Text = problems;
+        if(problems == string.Empty) 
+        {
+            add_chosen_cyberware_button.Enabled = true;
+        }
+        else
+        {
+            add_chosen_cyberware_button.Enabled = false;
+        }
+
+        add_chosen_cyberware_button.Text = "Добавить выбранное кибероснащение";
+    }
+
+    private string PricePotentialProblem(Implant implant)
+    {
+        if (implant.Cost > _character.CurrentMoney)
+        {
+            return $"для покупки не хватает {implant.Cost - _character.CurrentMoney} евродолларов.";
+        }
+        return string.Empty;
     }
 }
