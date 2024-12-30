@@ -71,9 +71,9 @@ partial class Form1
         random_char = new Button();
         skills_tab_control = new TabControl();
         tabPage1 = new TabPage();
-        humanity_counter_label = new Label();
         label19 = new Label();
         tabPage2 = new TabPage();
+        humanity_counter_label = new Label();
         SkillPanel = new Panel();
         label18 = new Label();
         label17 = new Label();
@@ -83,6 +83,7 @@ partial class Form1
         CommentLabel = new Label();
         MoneyLabel = new Label();
         Money_numeric = new NumericUpDown();
+        add_cyberware_button = new Button();
         panel1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)global_emp_numeric).BeginInit();
         ((System.ComponentModel.ISupportInitialize)cur_emp_numeric).BeginInit();
@@ -568,15 +569,6 @@ partial class Form1
         tabPage1.Text = "Навыки";
         tabPage1.UseVisualStyleBackColor = true;
         // 
-        // humanity_counter_label
-        // 
-        humanity_counter_label.AutoSize = true;
-        humanity_counter_label.Location = new Point(7, 3);
-        humanity_counter_label.Name = "humanity_counter_label";
-        humanity_counter_label.Size = new Size(88, 15);
-        humanity_counter_label.TabIndex = 1;
-        humanity_counter_label.Text = "Человечность:";
-        // 
         // label19
         // 
         label19.AutoSize = true;
@@ -589,6 +581,7 @@ partial class Form1
         // 
         // tabPage2
         // 
+        tabPage2.Controls.Add(add_cyberware_button);
         tabPage2.Controls.Add(humanity_counter_label);
         tabPage2.Location = new Point(4, 24);
         tabPage2.Margin = new Padding(4, 3, 4, 3);
@@ -598,6 +591,15 @@ partial class Form1
         tabPage2.TabIndex = 1;
         tabPage2.Text = "Кибернетика";
         tabPage2.UseVisualStyleBackColor = true;
+        // 
+        // humanity_counter_label
+        // 
+        humanity_counter_label.AutoSize = true;
+        humanity_counter_label.Location = new Point(7, 3);
+        humanity_counter_label.Name = "humanity_counter_label";
+        humanity_counter_label.Size = new Size(88, 15);
+        humanity_counter_label.TabIndex = 1;
+        humanity_counter_label.Text = "Человечность:";
         // 
         // SkillPanel
         // 
@@ -694,6 +696,16 @@ partial class Form1
         Money_numeric.Size = new Size(107, 23);
         Money_numeric.TabIndex = 15;
         Money_numeric.ValueChanged += Money_numeric_ValueChanged;
+        // 
+        // add_cyberware_button
+        // 
+        add_cyberware_button.Location = new Point(763, 3);
+        add_cyberware_button.Name = "add_cyberware_button";
+        add_cyberware_button.Size = new Size(161, 23);
+        add_cyberware_button.TabIndex = 2;
+        add_cyberware_button.Text = "Добавить кибернетику";
+        add_cyberware_button.UseVisualStyleBackColor = true;
+        add_cyberware_button.Click += add_cyberware_button_Click;
         // 
         // Form1
         // 
@@ -808,4 +820,5 @@ partial class Form1
     private System.Windows.Forms.Label MoneyLabel;
     private System.Windows.Forms.NumericUpDown Money_numeric;
     private Label humanity_counter_label;
+    private Button add_cyberware_button;
 }
