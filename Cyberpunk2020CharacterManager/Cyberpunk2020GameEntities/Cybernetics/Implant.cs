@@ -2,6 +2,8 @@
 
 public abstract class Implant : BodyPart
 {
+    public SurgeryCode SurgeryCode { get; set; }
+
     public override bool IsImplant 
     { 
         get {
@@ -9,7 +11,7 @@ public abstract class Implant : BodyPart
         } 
     }
 
-    public int cost { get; set; }
+    public int Cost { get; set; }
 
     public virtual string BarriersForChipIn(Character character)
     {

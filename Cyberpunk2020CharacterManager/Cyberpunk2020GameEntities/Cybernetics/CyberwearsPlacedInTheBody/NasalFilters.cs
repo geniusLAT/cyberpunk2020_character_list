@@ -6,7 +6,8 @@ public  class NasalFilters : CyberwearPlacedInTheBody
 
     NasalFilters() 
     {
+        SurgeryCode = SurgeryCode.Minor;
         HumanityLoss = 2;
-        cost = 60;
+        Cost = 60;
     }
 }

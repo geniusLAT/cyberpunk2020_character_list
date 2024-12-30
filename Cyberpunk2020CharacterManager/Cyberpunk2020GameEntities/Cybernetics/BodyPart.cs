@@ -8,7 +8,5 @@ public abstract class BodyPart
 
     public abstract bool IsImplant { get; }
 
-    public int cost { get; set; } = 0;
-
     public int HumanityLoss { get; set; } = 0;
 }
