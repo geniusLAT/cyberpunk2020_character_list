@@ -17,24 +17,22 @@ public partial class Form1 : Form
         _panels.Add(CyberwarePanel);
         tabPage2.Controls.Add(CyberwarePanel);
 
-        Label NamePanel = new()
-        {
-            Size = new Size(text_size, g)
-        };
-
-        CyberwarePanel.Controls.Add(NamePanel);
         CyberwarePanel.Size = new Size(extra_size + text_size, g);
-        
-        NamePanel.Text = part.Name;
         CyberwarePanel.Location = new Point(0, i * g);
+
+        CyberwarePanel.Controls.Add(
+        new Label()
+        {
+            Size = new Size(text_size, g),
+            Text = part.Name
+        });
 
         CyberwarePanel.Controls.Add(new Label()
         {
             Location = new Point(HumanilyLossLabelMargin, 0),
             Text = part.HumanityLoss.ToString(),
             Size = new Size(HumanilyLossLabelSize, g)
-        }
-            );
+        });
 
         return CyberwarePanel;
     }
