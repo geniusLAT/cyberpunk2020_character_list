@@ -4,6 +4,9 @@
     <Compile Update="ChosseMenu\CyberwareChooseMenu\CyberwareChooseMenu.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ChosseMenu\CyberwareChooseMenu\TreeRenderer.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="CyberwareRenderer.cs">
       <SubType>Form</SubType>
     </Compile>

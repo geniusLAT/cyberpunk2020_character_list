@@ -1,16 +1,14 @@
 ﻿using Cyberpunk2020GameEntities;
+using Cyberpunk2020GameEntities.Cybernetics;
 using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
 using System.Reflection;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
 
-public class exampleClass
-{
-    public exampleClass() { }
-}
-
 internal partial class CyberwareChooseMenu : Form
 {
+    Implant _chosenImplant;
+
     private void RenderTree()
     {
         PopulateTreeView();
@@ -18,8 +16,10 @@ internal partial class CyberwareChooseMenu : Form
 
     private void RenderCyberwearPlaceInTheBodyTreePart()
     {
+        string baseNamespace = "Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody.";
+
         string[] namesToShow = new string[] { "Назальные фильтры" };
-        string[] namesToCall = new string[] { "NasalFilters" };
+        string[] namesToCall = new string[] { $"{baseNamespace}NasalFilters" };
 
         RenderTreePart("Кибер-оснащение, размещенное в теле",namesToShow,namesToCall);
     }
@@ -65,36 +65,41 @@ internal partial class CyberwareChooseMenu : Form
         if (e.Node.Level == 1) 
         {
             
-            HandleChildClick(e.Node.Text);
+            HandleChildClick(e.Node.Name);
         }
     }
 
     private void HandleChildClick(string childName)
     {
-        // Здесь вы можете обработать клик по дочернему элементу
-        //MessageBox.Show($"Кликнули на: {childName}");
-
-        //CreateInstance("Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody.NasalFilters");
-
-        CreateInstance("Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu.exampleClass");
+        _chosenImplant =   CreateInstance(childName);
+        MessageBox.Show(_chosenImplant.Cost.ToString());
     }
 
-    static void CreateInstance(string className)
+    static Implant CreateInstance(string className)
     {
-        // Получаем тип класса по имени
-        Type type = Type.GetType(className);
+        var assembly = Assembly.Load("Cyberpunk2020GameEntities");
+        var type = assembly.GetType(className);
 
         if (type != null)
         {
             // Создаем экземпляр класса с помощью конструктора по умолчанию
             object instance = Activator.CreateInstance(type);
 
-            MessageBox.Show("OK");
-            // Если нужно, можно использовать instance для дальнейшей работы с объектом
+            if (instance is null) throw new NullReferenceException();
+
+            if(instance is Implant)
+            {
+                return (Implant)instance;
+            }
+            else
+            {
+                throw new NotImplementedException();
+                //return new Implant();
+            }
         }
         else
         {
-            MessageBox.Show($"Класс с именем {className} не найден.");
+            throw new NotImplementedException(className);
         }
     }
 }
