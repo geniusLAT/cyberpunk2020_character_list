@@ -12,4 +12,10 @@
     <ProjectReference Include="..\Cyberpunk2020GameEntities\Cyberpunk2020GameEntities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="SkillRenderer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>
