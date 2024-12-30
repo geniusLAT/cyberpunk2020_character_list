@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Newtonsoft.Json;
+
 namespace cyberpunk2020_character_list_desktop
 {
    
@@ -23,6 +25,7 @@ namespace cyberpunk2020_character_list_desktop
 
         List<Panel> panels = new List<Panel>();
 
+        List<Character> characters = new List<Character>();
         public Form1()
         {
             InitializeComponent();
@@ -43,8 +46,46 @@ namespace cyberpunk2020_character_list_desktop
             const_num_numeric.Visible = false;
             Render_skills(31,178);
 
+            //LoadCharacterFromFile("Hunter.character");
+            //ShowCharacter();
+            LoadListOfCharacters();
+            CreateButton.Enabled = false;
 
         }
+
+        void LoadListOfCharacters()
+        {
+            characters.Clear();
+            CharacterChoser.Items.Clear();
+            string folderPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string[] files = Directory.GetFiles(folderPath);
+            foreach (string that_file in files)
+            {
+                if (that_file.Contains(".character"))
+                {
+                    try
+                    {
+                        characters.Add(LoadCharacterFromFile(that_file));
+                    }
+                    catch (Exception)
+                    {
+
+                        //throw;
+                    }
+                }
+            }
+
+            foreach (Character that_character in characters)
+            {
+                CharacterChoser.Items.Add(that_character.name);
+            }
+            CharacterChoser.Items.Add("Добавить персонажа");
+            if (characters.Count > 0) CharacterChoser.Text = characters[0].name;
+            CharacterChoser.Enabled = true;
+
+        }
+
+        ///
 
         bool IsProfessionalSkill(string skill)
         {
@@ -536,7 +577,120 @@ namespace cyberpunk2020_character_list_desktop
 
         }
 
+        void CollectSkillData()
+        {
+            List<int> skill_list = new List<int>();
+            foreach (Panel that_panel in panels)
+            {
+                if (that_panel.Controls.Count < 2) continue;
+                Label label = (Label)that_panel.Controls[0];
+                if (label == null) continue;
+                //label.Text = chosen_character.name;
+
+                NumericUpDown numeric = (NumericUpDown)that_panel.Controls[1];
+               skill_list.Add((int)numeric.Value);
+
+
+            }
+            chosen_character.skills = skill_list.ToArray();
+        }
       
+        void PutCharacterToFile()
+        {
+            string characterJson =JsonConvert.SerializeObject(chosen_character);
+            File.WriteAllText(chosen_character.name+".character", characterJson);
+
+
+
+        }
+
+        Character LoadCharacterFromFile(string filePath)
+        {
+            string characterJson = File.ReadAllText(filePath);
+            Character character = JsonConvert.DeserializeObject<Character>(characterJson);
+
+            return character;
+        }
+
+        void ShowCharacter()//all fields should show data from the character
+        {
+            NameField.Text = chosen_character.name;
+
+            switch (chosen_character.Role)
+            {
+                case Character.role.none:
+                    RoleChoser.Text = "Нет";
+                    break;
+                case Character.role.solo:
+                    RoleChoser.Text = "Соло";
+                    break;
+                case Character.role.rocker:
+                    RoleChoser.Text = "Рокер";
+                    break;
+                case Character.role.netrunner:
+                    RoleChoser.Text = "Нетраннер";
+                    break;
+                case Character.role.media:
+                    RoleChoser.Text = "Медиа";
+                    break;
+                case Character.role.nomad:
+                    RoleChoser.Text = "Номад";
+                    break;
+                case Character.role.fixer:
+                    RoleChoser.Text = "Фиксер";
+                    break;
+                case Character.role.cop:
+                    RoleChoser.Text = "Коп";
+                    break;
+                case Character.role.corp:
+                    RoleChoser.Text = "Корп";
+                    break;
+                case Character.role.tech:
+                    RoleChoser.Text = "Техник";
+                    break;
+                case Character.role.medtech:
+                    RoleChoser.Text = "Медтехник";
+                    break;
+                default:
+                    break;
+            }
+
+
+            numeric_int.Value = chosen_character.int_stat;
+            cur_reflex_numeric.Value = chosen_character.cur_ref_stat;
+            global_ref_numeric.Value = chosen_character.global_ref_stat;
+            cool_numeric.Value = chosen_character.cool_stat;
+            tech_numeric.Value = chosen_character.tech_stat;
+            attr_numeric.Value = chosen_character.attr_stat;
+            cur_luck_numeric.Value = chosen_character.cur_luck_stat;
+            global_luck_numeric.Value = chosen_character.global_luck_stat;
+            move_numeric.Value = chosen_character.movement_stat;
+            body_numeric.Value = chosen_character.body_stat;
+            cur_emp_numeric.Value = chosen_character.cur_emp_stat;
+            global_emp_numeric.Value = chosen_character.global_emp_stat;
+
+            MoneyLabel.Text = "Доход:" + chosen_character.MonthIncome.ToString() + "  Баланс:";
+           
+            Money_numeric.Enabled = true;
+            Money_numeric.Value = chosen_character.CurrentMoney;
+
+            Extra_stat_label.Text = "Бег:" + (chosen_character.movement_stat * 3).ToString() +
+           " прыжок:" + (chosen_character.movement_stat * 4).ToString()
+           + " перенести:" + (chosen_character.body_stat * 10).ToString()
+           + " поднять:" + (chosen_character.body_stat * 40).ToString();
+
+            int i = 0;
+            foreach (Panel that_panel in panels)
+            {
+                if (that_panel.Controls.Count < 2) continue;
+                NumericUpDown numeric = (NumericUpDown)that_panel.Controls[1];
+                //numeric.Enabled = false;
+                if (chosen_character.skills.Length == 0) numeric.Value = 0;
+                else numeric.Value = chosen_character.skills[i++];
+            }
+            Activate_professionals(true);
+            Deactivate_skills();
+        }
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
@@ -622,7 +776,14 @@ namespace cyberpunk2020_character_list_desktop
                         CreateButton.Enabled = false;
                         chosen_character.createStep = Character.CreateStep.Money;
                         Deactivate_skills();
+                        CollectSkillData();
                         GenerateIncome();
+                        PutCharacterToFile();
+
+                        CharacterChoser.Enabled=true;
+                        LoadListOfCharacters();
+
+
                         break;
                     case Character.CreateStep.Money:
                         break;
@@ -809,6 +970,13 @@ namespace cyberpunk2020_character_list_desktop
         private void Skill_numeric_ValueChanged(object sender, EventArgs e)
         {
             Render_skills((int)skillNumeric2.Value, (int)Skill_numeric.Value);
+
+            foreach (Panel that_panel in panels)
+            {
+                if (that_panel.Controls.Count < 2) continue;
+                NumericUpDown numeric = (NumericUpDown)that_panel.Controls[1];
+                numeric.Enabled = false;
+            }
         }
 
 
@@ -838,8 +1006,8 @@ namespace cyberpunk2020_character_list_desktop
                 NumericUpDown numeric = (NumericUpDown)that_panel.Controls[1];
                 if (professinal == professional_skills.Contains(label.Text.Replace("_", "")))
                 {
-                    if(professinal)label.ForeColor = Color.Blue;
-                    if(professinal || (!professinal && !Character.role_skills_name.Contains(label.Text.Replace("_", ""))))numeric.Enabled=true;
+                    if(professinal)label.ForeColor = Color.Blue;else label.ForeColor = Color.Black;
+                    if (professinal || (!professinal && !Character.role_skills_name.Contains(label.Text.Replace("_", ""))))numeric.Enabled=true;
                     else numeric.Enabled = false;
 
                 }
@@ -853,8 +1021,60 @@ namespace cyberpunk2020_character_list_desktop
         {
 
         }
+
+        private void CharacterChoser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            
+
+            string his_name = CharacterChoser.Text;
+            if(his_name=="Добавить персонажа")
+            {
+                CharacterChoser.Enabled = false;
+                CreateButton.Enabled = true;
+                chosen_character = new Character();
+
+                //chosen_character = new Character();
+
+                ShowCharacter();
+
+                NameField.Enabled = true;
+                ErrorLabel.Text = " ";
+                CreateButton.Text = "Далее";
+
+
+                numeric_int.Enabled = cur_reflex_numeric.Enabled =
+                global_ref_numeric.Enabled = cool_numeric.Enabled =
+                tech_numeric.Enabled = attr_numeric.Enabled =
+                cur_luck_numeric.Enabled = global_luck_numeric.Enabled =
+                move_numeric.Enabled = body_numeric.Enabled =
+                cur_emp_numeric.Enabled = global_emp_numeric.Enabled =
+                false;
+
+                MoneyLabel.Text = "";
+
+                RoleChoser.Text = "Нет";
+
+                return;
+
+            }
+
+            foreach (Character that_chracter in characters)
+            {
+                if(that_chracter.name==his_name)
+                {
+                    chosen_character = that_chracter;
+                    ShowCharacter();
+                    break;
+                }
+            }
+        }
     }
 
+    class InventoryItem
+    {
+
+    }
     class Character
     {
         public enum CreateStep
@@ -904,6 +1124,7 @@ namespace cyberpunk2020_character_list_desktop
         public int cur_emp_stat = 0;
         public int global_emp_stat = 0;
 
+        public int[] skills= { };
 
         public static string[] solo_skills_name = {
         "Чувство боя(соло)",
