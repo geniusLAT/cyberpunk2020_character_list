@@ -10,45 +10,38 @@ public partial class Form1 : Form
         int text_size = 180;
         int extra_size = 60;
 
+        int HumanilyLossLabelSize = 25;
+        int CostLabelSize = 80;
+
         Panel CyberwarePanel = new Panel();
         _panels.Add(CyberwarePanel);
         tabPage2.Controls.Add(CyberwarePanel);
-        Label that_label = new()
-        {
-            Size = new Size(text_size, g)
-        };
 
-        CyberwarePanel.Controls.Add(that_label);
-        CyberwarePanel.Size = new Size(extra_size + text_size, g);
-        CyberwarePanel.BackColor = Color.Yellow;
-        that_label.Text = part.Name;
-
-        ////that_label.Text =  "skill" + i.ToString();
+        CyberwarePanel.Size = new Size(extra_size + text_size + CostLabelSize + HumanilyLossLabelSize, g);
         CyberwarePanel.Location = new Point(0, i * g);
 
+        CyberwarePanel.Controls.Add(
+        new Label()
+        {
+            Size = new Size(text_size, g),
+            Text = part.Name + " " + part.BodyPlace()
+        });
 
-        //if (header)
-        //{
+        CyberwarePanel.Controls.Add(new Label()
+        {
+            Location = new Point(text_size, 0),
+            Text = part.HumanityLoss.ToString(),
+            Size = new Size(HumanilyLossLabelSize, g)
+        });
 
+        CyberwarePanel.Controls.Add(new Label()
+        {
+            Location = new Point(text_size + HumanilyLossLabelSize, 0),
+            Text = part.Cost.ToString(),
+            Size = new Size(CostLabelSize, g)
+        });
 
-        //    that_label.Font = new Font(that_label.Font, that_label.Font.Style | FontStyle.Bold);
-
-        //}
-        //else
-        //{
-        //    NumericUpDown skillNumeric = new NumericUpDown();
-        //    //skillNumeric.Enabled= false;
-        //    skill_panel.Controls.Add(skillNumeric);
-        //    skillNumeric.Location = new Point(l, 0);
-        //    //that_label.Text = skillNumeric.Size.Width.ToString()+", "+ skillNumeric.Size.Height.ToString();
-        //    skillNumeric.Size = new Size(s, 20);
-        //    skillNumeric.Value = 0;
-        //    skillNumeric.Minimum = 0;
-        //    skillNumeric.Maximum = 10;
-        //    skillNumeric.ValueChanged += SkillPointChanged;
-        //}
         return CyberwarePanel;
-
     }
 
     void RenderCyberwares(int s, int l)

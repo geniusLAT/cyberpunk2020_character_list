@@ -8,5 +8,9 @@ public abstract class BodyPart
 
     public abstract bool IsImplant { get; }
 
+    public int Cost { get; set; }
+
+    public virtual string BodyPlace() {  return string.Empty; }
+
     public int HumanityLoss { get; set; } = 0;
 }

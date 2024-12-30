@@ -40,6 +40,9 @@ public partial class Form1 : Form
         //test block
         _chosenCharacter = new Character();
         _chosenCharacter.BodyParts.Add(new NasalFilters());
+        _chosenCharacter.BodyParts.Add(new NasalFilters());
+        _chosenCharacter.BodyParts.Add(new NasalFilters());
+        _chosenCharacter.BodyParts.Add(new NasalFilters());
         RenderCyberwares(0,0);
     }
 
