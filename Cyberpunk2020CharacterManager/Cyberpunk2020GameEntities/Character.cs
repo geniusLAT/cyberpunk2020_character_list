@@ -2,18 +2,7 @@
 
 public class Character
 {
-    public enum CreateStep
-    {
-        Name,
-        Role,
-        stat,
-        prof,
-        unprof,
-        Money,
-        implants,
-        inventory,
-        finished
-    }
+   
    
     public CreateStep createStep = CreateStep.Name;
     public string name = "";

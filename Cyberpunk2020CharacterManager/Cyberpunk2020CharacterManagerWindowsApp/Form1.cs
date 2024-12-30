@@ -83,7 +83,7 @@ public partial class Form1 : Form
             //label16.Text +=ParentPanel.Controls.ToString();
             string skill_name = ((Label)ParentPanel.Controls[0]).Text;
 
-            if (_chosenCharacter!.createStep == Character.CreateStep.prof)
+            if (_chosenCharacter!.createStep == CreateStep.prof)
             {
                 int sum = CountSkillSum(true);
                 CommentLabel.Text = "Необходимая сумма:40\nТекущая сумма:" + sum.ToString();
@@ -91,7 +91,7 @@ public partial class Form1 : Form
                 else CreateButton.Enabled = false;  
 
             }
-            if (_chosenCharacter.createStep == Character.CreateStep.unprof)
+            if (_chosenCharacter.createStep == CreateStep.unprof)
             {
                 int sum = CountSkillSum(false);
                 CommentLabel.Text = "Необходимая сумма:"+(_chosenCharacter.global_ref_stat+_chosenCharacter.int_stat).ToString()+ "\nТекущая сумма:" + sum.ToString();
@@ -573,10 +573,10 @@ public partial class Form1 : Form
         {
             switch (_chosenCharacter.createStep)
             {
-                case Character.CreateStep.Name:
+                case CreateStep.Name:
                     if(!ValidateName())return;
                     NameField.Enabled = false;
-                    _chosenCharacter.createStep = Character.CreateStep.Role;
+                    _chosenCharacter.createStep = CreateStep.Role;
                     _chosenCharacter.name = NameField.Text;
                     RoleChoser.Enabled = true;
 
@@ -586,10 +586,10 @@ public partial class Form1 : Form
 
                     return;
                     break;
-                case Character.CreateStep.Role:
+                case CreateStep.Role:
                     if (!ValidateRole()) return;
                     RoleChoser.Enabled = false;
-                    _chosenCharacter.createStep = Character.CreateStep.stat;
+                    _chosenCharacter.createStep = CreateStep.stat;
 
                     //numeric_int.Enabled = 
                     //global_ref_numeric.Enabled = cool_numeric.Enabled =
@@ -611,34 +611,34 @@ public partial class Form1 : Form
                     gen_way_panel.Visible = true;
 
                     break;
-                case Character.CreateStep.stat:
+                case CreateStep.stat:
                     gen_way_panel.Visible = false;
                     CalculateState();
                     //Render_skills(31, 178);
                     Activate_professionals();
                     CreateButton.Enabled = false;
-                    _chosenCharacter.createStep = Character.CreateStep.prof;
+                    _chosenCharacter.createStep = CreateStep.prof;
                     CommentLabel.Text = "Необходимая сумма:40\nТекущая сумма:0";
                     break;
-                case Character.CreateStep.prof:
+                case CreateStep.prof:
                     CommentLabel.Text = "";
                     Activate_professionals(false);
                     CreateButton.Enabled = false;
-                    _chosenCharacter.createStep = Character.CreateStep.unprof;
+                    _chosenCharacter.createStep = CreateStep.unprof;
                     break;
-                case Character.CreateStep.unprof:
+                case CreateStep.unprof:
                     CreateButton.Enabled = false;
-                    _chosenCharacter.createStep = Character.CreateStep.Money;
+                    _chosenCharacter.createStep = CreateStep.Money;
                     Deactivate_skills();
                     GenerateIncome();
                     break;
-                case Character.CreateStep.Money:
+                case CreateStep.Money:
                     break;
-                case Character.CreateStep.implants:
+                case CreateStep.implants:
                     break;
-                case Character.CreateStep.inventory:
+                case CreateStep.inventory:
                     break;
-                case Character.CreateStep.finished:
+                case CreateStep.finished:
                     break;
                 default:
                     break;
@@ -651,7 +651,7 @@ public partial class Form1 : Form
         if (_chosenCharacter != null)
         {
             NameField.Enabled = false;
-            _chosenCharacter.createStep = Character.CreateStep.Role;
+            _chosenCharacter.createStep = CreateStep.Role;
             _chosenCharacter.name = NameField.Text;
         }
     }

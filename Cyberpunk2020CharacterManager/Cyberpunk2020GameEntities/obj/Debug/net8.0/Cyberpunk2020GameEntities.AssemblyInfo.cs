@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cyberpunk2020GameEntities")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+990295df63c36579e4bc82ca6eef56d24f616884")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7e2cf28e8ed69767429aba9d7b87e3c48ca3b48")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cyberpunk2020GameEntities")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cyberpunk2020GameEntities")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
