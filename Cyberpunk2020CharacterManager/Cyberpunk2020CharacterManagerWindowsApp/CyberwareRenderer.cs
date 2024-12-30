@@ -24,7 +24,7 @@ public partial class Form1 : Form
         new Label()
         {
             Size = new Size(text_size, g),
-            Text = part.Name
+            Text = part.Name + " " + part.BodyPlace()
         });
 
         CyberwarePanel.Controls.Add(new Label()
@@ -37,7 +37,7 @@ public partial class Form1 : Form
         CyberwarePanel.Controls.Add(new Label()
         {
             Location = new Point(text_size + HumanilyLossLabelSize, 0),
-            Text = "100000",//part.HumanityLoss.ToString(),
+            Text = part.Cost.ToString(),
             Size = new Size(CostLabelSize, g)
         });
 
