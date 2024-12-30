@@ -1,4 +1,5 @@
 ﻿using Cyberpunk2020GameEntities.Cybernetics;
+using Cyberpunk2020GameEntities.Cybernetics.Natural;
 
 namespace Cyberpunk2020GameEntities;
 
@@ -49,6 +50,13 @@ public class Character
     
     public List<BodyPart> BodyParts = [];
 
+
+    public Character()
+    {
+
+
+        //BodyParts.AddRange([new NaturalLeg(), new NaturalLeg()]);
+    }
 
     public int[] skills = { };
 
