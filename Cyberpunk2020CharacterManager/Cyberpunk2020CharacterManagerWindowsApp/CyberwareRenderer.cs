@@ -10,14 +10,14 @@ public partial class Form1 : Form
         int text_size = 180;
         int extra_size = 60;
 
-        int HumanilyLossLabelMargin = 180;
         int HumanilyLossLabelSize = 25;
+        int CostLabelSize = 80;
 
         Panel CyberwarePanel = new Panel();
         _panels.Add(CyberwarePanel);
         tabPage2.Controls.Add(CyberwarePanel);
 
-        CyberwarePanel.Size = new Size(extra_size + text_size, g);
+        CyberwarePanel.Size = new Size(extra_size + text_size + CostLabelSize + HumanilyLossLabelSize, g);
         CyberwarePanel.Location = new Point(0, i * g);
 
         CyberwarePanel.Controls.Add(
@@ -29,9 +29,16 @@ public partial class Form1 : Form
 
         CyberwarePanel.Controls.Add(new Label()
         {
-            Location = new Point(HumanilyLossLabelMargin, 0),
+            Location = new Point(text_size, 0),
             Text = part.HumanityLoss.ToString(),
             Size = new Size(HumanilyLossLabelSize, g)
+        });
+
+        CyberwarePanel.Controls.Add(new Label()
+        {
+            Location = new Point(text_size + HumanilyLossLabelSize, 0),
+            Text = "100000",//part.HumanityLoss.ToString(),
+            Size = new Size(CostLabelSize, g)
         });
 
         return CyberwarePanel;
