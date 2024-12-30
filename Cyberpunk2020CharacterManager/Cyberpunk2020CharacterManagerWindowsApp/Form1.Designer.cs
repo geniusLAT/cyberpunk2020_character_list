@@ -71,6 +71,7 @@ partial class Form1
         random_char = new Button();
         skills_tab_control = new TabControl();
         tabPage1 = new TabPage();
+        humanity_counter_label = new Label();
         label19 = new Label();
         tabPage2 = new TabPage();
         SkillPanel = new Panel();
@@ -100,6 +101,7 @@ partial class Form1
         ((System.ComponentModel.ISupportInitialize)const_num_numeric).BeginInit();
         skills_tab_control.SuspendLayout();
         tabPage1.SuspendLayout();
+        tabPage2.SuspendLayout();
         SkillPanel.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)skillNumeric2).BeginInit();
         ((System.ComponentModel.ISupportInitialize)Skill_numeric).BeginInit();
@@ -566,6 +568,15 @@ partial class Form1
         tabPage1.Text = "Навыки";
         tabPage1.UseVisualStyleBackColor = true;
         // 
+        // humanity_counter_label
+        // 
+        humanity_counter_label.AutoSize = true;
+        humanity_counter_label.Location = new Point(7, 3);
+        humanity_counter_label.Name = "humanity_counter_label";
+        humanity_counter_label.Size = new Size(88, 15);
+        humanity_counter_label.TabIndex = 1;
+        humanity_counter_label.Text = "Человечность:";
+        // 
         // label19
         // 
         label19.AutoSize = true;
@@ -578,6 +589,7 @@ partial class Form1
         // 
         // tabPage2
         // 
+        tabPage2.Controls.Add(humanity_counter_label);
         tabPage2.Location = new Point(4, 24);
         tabPage2.Margin = new Padding(4, 3, 4, 3);
         tabPage2.Name = "tabPage2";
@@ -728,6 +740,8 @@ partial class Form1
         skills_tab_control.ResumeLayout(false);
         tabPage1.ResumeLayout(false);
         tabPage1.PerformLayout();
+        tabPage2.ResumeLayout(false);
+        tabPage2.PerformLayout();
         SkillPanel.ResumeLayout(false);
         SkillPanel.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)skillNumeric2).EndInit();
@@ -793,4 +807,5 @@ partial class Form1
     private System.Windows.Forms.Label label19;
     private System.Windows.Forms.Label MoneyLabel;
     private System.Windows.Forms.NumericUpDown Money_numeric;
+    private Label humanity_counter_label;
 }

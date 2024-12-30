@@ -616,6 +616,7 @@ public partial class Form1 : Form
                     CreateButton.Enabled = false;
                     _chosenCharacter.createStep = CreateStep.prof;
                     CommentLabel.Text = "Необходимая сумма:40\nТекущая сумма:0";
+                    ShowHumanity();
                     break;
                 case CreateStep.prof:
                     skills_tab_control.SelectTab(0);
@@ -646,6 +647,16 @@ public partial class Form1 : Form
                 default:
                     break;
             }
+        }
+    }
+
+    private void ShowHumanity()
+    {
+        var humanity = _chosenCharacter!.humanity;
+        humanity_counter_label.Text = $"Человечность: {_chosenCharacter.humanity}";
+        if (humanity < 1)
+        {
+            humanity_counter_label.Text += " КИБЕРПСИХОЗ";
         }
     }
 

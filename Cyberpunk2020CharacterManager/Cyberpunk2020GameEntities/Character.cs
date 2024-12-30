@@ -2,30 +2,52 @@
 
 public class Character
 {
-   
-   
     public CreateStep createStep = CreateStep.Name;
+
     public string name = "";
+
     public role Role = role.none;
 
     public int MonthIncome = 0;
+
     public int CurrentMoney = 0;
 
+    #region stats
     public int int_stat = 0;
+
     public int cur_ref_stat = 0;
+
     public int global_ref_stat = 0;
+
     public int tech_stat = 0;
+
     public int cool_stat = 0;
+
     public int attr_stat = 0;
+
     public int cur_luck_stat = 0;
+
     public int global_luck_stat = 0;
+
     public int movement_stat = 0;
+
     public int body_stat = 0;
+
     public int cur_emp_stat = 0;
+
     public int global_emp_stat = 0;
+    #endregion
+
+    public int humanity { 
+        get {
+
+            return global_emp_stat * 10;
+        } 
+    }
 
     public int[] skills = { };
 
+    #region staticRuleInformation
     public static string[] solo_skills_name = {
         "Чувство боя(соло)",
                 "Осведомлённость/наблюдательность",
@@ -295,4 +317,5 @@ public class Character
          "Оружейник"
         };
 
+    #endregion
 }
