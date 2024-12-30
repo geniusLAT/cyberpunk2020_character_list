@@ -15,7 +15,7 @@ internal partial class CyberwareChooseMenu : Form
         _form1 = form1;
         _character = character;
 
-        renderTree();
+        RenderTree();
     }
 
     private Button add_chosen_cyberware_button;
