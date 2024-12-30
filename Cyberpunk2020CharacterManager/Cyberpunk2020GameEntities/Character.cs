@@ -14,21 +14,7 @@ public class Character
         inventory,
         finished
     }
-
-    public enum role
-    {
-        none,
-        solo,
-        rocker,
-        netrunner,
-        media,
-        nomad,
-        fixer,
-        cop,
-        corp,
-        tech,
-        medtech
-    }
+   
     public CreateStep createStep = CreateStep.Name;
     public string name = "";
     public role Role = role.none;
