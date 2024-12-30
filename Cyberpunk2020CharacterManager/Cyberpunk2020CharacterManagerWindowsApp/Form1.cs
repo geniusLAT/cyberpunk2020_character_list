@@ -1,14 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Cyberpunk2020GameEntities;
+using Cyberpunk2020GameEntities.Cybernetics;
+using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp;
 
@@ -44,6 +37,11 @@ public partial class Form1 : Form
         const_num_numeric.Enabled = false;
         const_num_numeric.Visible = false;
         RenderSkills(31,178);
+
+        //test block
+        _chosenCharacter = new Character();
+        _chosenCharacter.BodyParts.Add(new NasalFilters());
+        RenderCyberwares(0,0);
     }
 
     bool IsProfessionalSkill(string skill)
@@ -99,6 +97,66 @@ public partial class Form1 : Form
                 else CreateButton.Enabled = false;
 
             }
+        }
+    }
+
+    Control RenderCyberwarePanel(BodyPart part, int i)
+    {
+        int g = 14;
+        int text_size = 180;
+        int extra_size = 60;
+
+        Panel CyberwarePanel = new Panel();
+        _panels.Add(CyberwarePanel);
+        tabPage2.Controls.Add(CyberwarePanel);
+        Label that_label = new()
+        {
+            Size = new Size(text_size, g)
+        };
+
+        CyberwarePanel.Controls.Add(that_label);
+        CyberwarePanel.Size = new Size(extra_size + text_size, g);
+        CyberwarePanel.BackColor = Color.Yellow;
+        that_label.Text = part.Name;
+
+        ////that_label.Text =  "skill" + i.ToString();
+        CyberwarePanel.Location = new Point(0, i * g);
+
+
+        //if (header)
+        //{
+
+
+        //    that_label.Font = new Font(that_label.Font, that_label.Font.Style | FontStyle.Bold);
+
+        //}
+        //else
+        //{
+        //    NumericUpDown skillNumeric = new NumericUpDown();
+        //    //skillNumeric.Enabled= false;
+        //    skill_panel.Controls.Add(skillNumeric);
+        //    skillNumeric.Location = new Point(l, 0);
+        //    //that_label.Text = skillNumeric.Size.Width.ToString()+", "+ skillNumeric.Size.Height.ToString();
+        //    skillNumeric.Size = new Size(s, 20);
+        //    skillNumeric.Value = 0;
+        //    skillNumeric.Minimum = 0;
+        //    skillNumeric.Maximum = 10;
+        //    skillNumeric.ValueChanged += SkillPointChanged;
+        //}
+        return CyberwarePanel;
+
+    }
+
+    void RenderCyberwares(int s, int l) 
+    {
+        if(_chosenCharacter is null)
+        {
+            return;
+        }
+
+        for (int i = 0; i < _chosenCharacter.BodyParts.Count; i++)
+        {
+            RenderCyberwarePanel(_chosenCharacter.BodyParts[i], i+2);
         }
     }
 
@@ -548,8 +606,6 @@ public partial class Form1 : Form
 
     private void CreateButton_Click(object sender, EventArgs e)
     {
-       
-
         if (_chosenCharacter == null)
         {
             _chosenCharacter= new Character();
@@ -639,6 +695,10 @@ public partial class Form1 : Form
                     Money_numeric.Enabled = false;
                     //tabPage2.Select();
                     skills_tab_control.SelectTab(1);
+
+                    _chosenCharacter.BodyParts.Add(new NasalFilters());
+                    RenderCyberwares(0,0);
+
                     break;
                 case CreateStep.inventory:
                     break;

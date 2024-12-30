@@ -1,4 +1,6 @@
-﻿namespace Cyberpunk2020GameEntities;
+﻿using Cyberpunk2020GameEntities.Cybernetics;
+
+namespace Cyberpunk2020GameEntities;
 
 public class Character
 {
@@ -44,6 +46,9 @@ public class Character
             return global_emp_stat * 10;
         } 
     }
+    
+    public List<BodyPart> BodyParts = [];
+
 
     public int[] skills = { };
 

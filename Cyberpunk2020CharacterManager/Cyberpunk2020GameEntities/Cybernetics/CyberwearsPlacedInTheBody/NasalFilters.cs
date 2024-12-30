@@ -4,7 +4,7 @@ public  class NasalFilters : CyberwearPlacedInTheBody
 {
     public override string Name { get { return "Назальные фильтры"; } }
 
-    NasalFilters() 
+    public NasalFilters() 
     {
         SurgeryCode = SurgeryCode.Minor;
         HumanityLoss = 2;
