@@ -13,12 +13,12 @@ public class LegSlot : BodyPart
         }
     }
 
-    LegSlot(bool isLeft)
+    public LegSlot(bool isLeft)
     {
         IsLeft = isLeft;
     }
 
-    LegSlot()
+    public LegSlot()
     {
 
     }

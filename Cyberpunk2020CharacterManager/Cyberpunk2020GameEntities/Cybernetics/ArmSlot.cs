@@ -10,12 +10,12 @@ public class ArmSlot : BodyPart
             return IsLeft ? "слот левой руки" : "слот правой руки"; 
         }
     }
-    ArmSlot(bool isLeft) 
+    public ArmSlot(bool isLeft) 
     {
         IsLeft = isLeft;
     }
 
-    ArmSlot()
+    public ArmSlot()
     {
        
     }

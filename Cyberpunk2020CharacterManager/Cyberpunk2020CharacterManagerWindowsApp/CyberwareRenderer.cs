@@ -24,7 +24,7 @@ public partial class Form1 : Form
         new Label()
         {
             Size = new Size(text_size, g),
-            Text = part.Name + " " + part.BodyPlace()
+            Text = part.Name //+ " " + part.BodyPlace()
         });
 
         CyberwarePanel.Controls.Add(new Label()

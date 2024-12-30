@@ -53,7 +53,11 @@ public class Character
 
     public Character()
     {
+        LegSlot rightLegSlot = new LegSlot(false);
+        LegSlot leftLegSlot = new LegSlot(true);
 
+        NaturalLeg rightLeg = new() {BodyPlace=rightLegSlot.Guid };
+        NaturalLeg lefttLeg = new() { BodyPlace = leftLegSlot.Guid };
 
         //BodyParts.AddRange([new NaturalLeg(), new NaturalLeg()]);
     }
