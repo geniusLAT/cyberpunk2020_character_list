@@ -10,45 +10,33 @@ public partial class Form1 : Form
         int text_size = 180;
         int extra_size = 60;
 
+        int HumanilyLossLabelMargin = 180;
+        int HumanilyLossLabelSize = 25;
+
         Panel CyberwarePanel = new Panel();
         _panels.Add(CyberwarePanel);
         tabPage2.Controls.Add(CyberwarePanel);
-        Label that_label = new()
+
+        Label NamePanel = new()
         {
             Size = new Size(text_size, g)
         };
 
-        CyberwarePanel.Controls.Add(that_label);
+        CyberwarePanel.Controls.Add(NamePanel);
         CyberwarePanel.Size = new Size(extra_size + text_size, g);
-        CyberwarePanel.BackColor = Color.Yellow;
-        that_label.Text = part.Name;
-
-        ////that_label.Text =  "skill" + i.ToString();
+        
+        NamePanel.Text = part.Name;
         CyberwarePanel.Location = new Point(0, i * g);
 
+        CyberwarePanel.Controls.Add(new Label()
+        {
+            Location = new Point(HumanilyLossLabelMargin, 0),
+            Text = part.HumanityLoss.ToString(),
+            Size = new Size(HumanilyLossLabelSize, g)
+        }
+            );
 
-        //if (header)
-        //{
-
-
-        //    that_label.Font = new Font(that_label.Font, that_label.Font.Style | FontStyle.Bold);
-
-        //}
-        //else
-        //{
-        //    NumericUpDown skillNumeric = new NumericUpDown();
-        //    //skillNumeric.Enabled= false;
-        //    skill_panel.Controls.Add(skillNumeric);
-        //    skillNumeric.Location = new Point(l, 0);
-        //    //that_label.Text = skillNumeric.Size.Width.ToString()+", "+ skillNumeric.Size.Height.ToString();
-        //    skillNumeric.Size = new Size(s, 20);
-        //    skillNumeric.Value = 0;
-        //    skillNumeric.Minimum = 0;
-        //    skillNumeric.Maximum = 10;
-        //    skillNumeric.ValueChanged += SkillPointChanged;
-        //}
         return CyberwarePanel;
-
     }
 
     void RenderCyberwares(int s, int l)
