@@ -29,7 +29,7 @@ public abstract class Implant : BodyPart
             if (this.GetType() == part.GetType())
             {
 
-                return $"{Name} не может быть имлантирован в двух экземплярах";
+                return $"{Name} не может быть имлантирован в двух экземплярах\n";
             }
         }
         return string.Empty;
