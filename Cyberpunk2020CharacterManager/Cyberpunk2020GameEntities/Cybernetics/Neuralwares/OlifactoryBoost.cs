@@ -3,23 +3,25 @@ using System.Text;
 
 namespace Cyberpunk2020GameEntities.Cybernetics.Neuralwares;
 
-public class PainEditor : Neuralware
+public class OlifactoryBoost : Neuralware
 {
-    public override string Name { get { return "Редактор боли"; } }
+    public override string Name { get { return "Обонятельное усиление"; } }
 
-    public PainEditor()
+    public OlifactoryBoost()
     {
         SurgeryCode = SurgeryCode.Negligible;
-        Description = "Этот сопроцессор переоп- ределяет болевые рецепторы мозга, делая человека невосприимчивым к пыткам, " +
-            "лишениям или физическим трудностям. Это не значит, что он не пострадает, просто он не заметит этого, пока не рухнет" +
-            " (ты совершаешь проверки на Выносливость, но на два уровня сложности ниже, чем обычно)";
-        HumanityLossFormula = "2D6";
-        Cost = 200;
+        Description = "Увеличивает результат любого броска Осведомлённости на +2 при изучении запаха. " +
+            "Кроме того, субъект добавляет +2 к своим навыкам Скрытное наблюдение (он может отслеживать по " +
+            "запаху и имеет 50% шанс найти аромат, с которого можно начать отслеживание, если только цель не " +
+            "приложит особых усилий, чтобы скрыть свой запах). Усиление может быть включено или выключено по желанию, " +
+            "для этого требуется один ход";
+        HumanityLossFormula = "2";
+        Cost = 100;
     }
 
     public override void GenerateHumanLoss(Random random)
     {
-        HumanityLoss = random.Next(1, 7) + random.Next(1, 7);
+        HumanityLoss = random.Next(1, 7);
     }
 
     public override string BarriersForChipIn(Character character)

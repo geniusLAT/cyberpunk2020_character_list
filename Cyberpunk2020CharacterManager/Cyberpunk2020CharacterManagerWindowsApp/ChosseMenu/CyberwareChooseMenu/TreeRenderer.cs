@@ -127,7 +127,7 @@ internal partial class CyberwareChooseMenu : Form
         var problems = implant.BarriersForChipIn(_character);
         problems += PricePotentialProblem(implant);
 
-        var potentialsParents = implant.PotantialParents(_character);
+        var potentialsParents = implant.PotentialParents(_character);
 
         if (potentialsParents != null)
         {

@@ -3,23 +3,23 @@ using System.Text;
 
 namespace Cyberpunk2020GameEntities.Cybernetics.Neuralwares;
 
-public class PainEditor : Neuralware
+public class ChipwareSocket : Neuralware
 {
-    public override string Name { get { return "Редактор боли"; } }
+    public override string Name { get { return "Комплект разъёмов для чипсета"; } }
 
-    public PainEditor()
+    public ChipwareSocket()
     {
         SurgeryCode = SurgeryCode.Negligible;
-        Description = "Этот сопроцессор переоп- ределяет болевые рецепторы мозга, делая человека невосприимчивым к пыткам, " +
-            "лишениям или физическим трудностям. Это не значит, что он не пострадает, просто он не заметит этого, пока не рухнет" +
-            " (ты совершаешь проверки на Выносливость, но на два уровня сложности ниже, чем обычно)";
-        HumanityLossFormula = "2D6";
+        Description = " несколько небольших разъёмов, используемых только для вставки чипсета. C помощью Комплекта разъёмов для чипсета ты можешь использовать " +
+            "интерфейсные разъёмы для управления другими объектами (например, оружием или транспортным средством), сохраняя при этом доступ к информации ЧПАМ и ЧРЕФ." +
+            " Вмещает 10 чипов.";
+        HumanityLossFormula = "1D6/2";
         Cost = 200;
     }
 
     public override void GenerateHumanLoss(Random random)
     {
-        HumanityLoss = random.Next(1, 7) + random.Next(1, 7);
+        HumanityLoss = random.Next(1, 7) /2;
     }
 
     public override string BarriersForChipIn(Character character)
@@ -29,8 +29,6 @@ public class PainEditor : Neuralware
         {
             result.Append("Требуется основной нейронный процессор\n");
         }
-
-        result.Append(UniquenessPotentialProblem(character));
 
         return result.ToString();
     }

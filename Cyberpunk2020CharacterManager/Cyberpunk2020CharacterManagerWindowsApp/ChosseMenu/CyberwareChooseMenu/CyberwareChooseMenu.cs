@@ -46,7 +46,7 @@ internal partial class CyberwareChooseMenu : Form
         // 
         add_chosen_cyberware_button.Location = new Point(12, 582);
         add_chosen_cyberware_button.Name = "add_chosen_cyberware_button";
-        add_chosen_cyberware_button.Size = new Size(423, 23);
+        add_chosen_cyberware_button.Size = new Size(529, 23);
         add_chosen_cyberware_button.TabIndex = 0;
         add_chosen_cyberware_button.Text = "Добавить выбранное кибероснащение";
         add_chosen_cyberware_button.UseVisualStyleBackColor = true;
@@ -64,9 +64,9 @@ internal partial class CyberwareChooseMenu : Form
         Implant_Description.AutoSize = true;
         Implant_Description.ImageAlign = ContentAlignment.TopLeft;
         Implant_Description.Location = new Point(278, 47);
-        Implant_Description.MaximumSize = new Size(155, 300);
+        Implant_Description.MaximumSize = new Size(268, 300);
         Implant_Description.Name = "Implant_Description";
-        Implant_Description.Size = new Size(151, 300);
+        Implant_Description.Size = new Size(268, 300);
         Implant_Description.TabIndex = 2;
         Implant_Description.Text = resources.GetString("Implant_Description.Text");
         // 
@@ -75,9 +75,9 @@ internal partial class CyberwareChooseMenu : Form
         problem_list_table.AutoSize = true;
         problem_list_table.ImageAlign = ContentAlignment.TopLeft;
         problem_list_table.Location = new Point(278, 426);
-        problem_list_table.MaximumSize = new Size(155, 150);
+        problem_list_table.MaximumSize = new Size(268, 150);
         problem_list_table.Name = "problem_list_table";
-        problem_list_table.Size = new Size(151, 150);
+        problem_list_table.Size = new Size(268, 150);
         problem_list_table.TabIndex = 3;
         problem_list_table.Text = resources.GetString("problem_list_table.Text");
         // 
@@ -86,12 +86,13 @@ internal partial class CyberwareChooseMenu : Form
         potentialParentComboBox.FormattingEnabled = true;
         potentialParentComboBox.Location = new Point(278, 359);
         potentialParentComboBox.Name = "potentialParentComboBox";
-        potentialParentComboBox.Size = new Size(157, 23);
+        potentialParentComboBox.Size = new Size(263, 23);
         potentialParentComboBox.TabIndex = 4;
+        potentialParentComboBox.SelectedIndexChanged += potentialParentComboBox_SelectedIndexChanged;
         // 
         // CyberwareChooseMenu
         // 
-        ClientSize = new Size(447, 617);
+        ClientSize = new Size(553, 617);
         Controls.Add(potentialParentComboBox);
         Controls.Add(problem_list_table);
         Controls.Add(Implant_Description);
@@ -105,16 +106,27 @@ internal partial class CyberwareChooseMenu : Form
 
     private void add_chosen_cyberware_button_Click(object sender, EventArgs e)
     {
-        if(_chosenImplant is null)
+        if (_chosenImplant is null)
         {
             add_chosen_cyberware_button.Enabled = false;
             this.Close();
             return;
         }
 
+        var parents = _chosenImplant.PotentialParents(_character);
+        if (parents is not null)
+        {
+            _chosenImplant!.BodyPlace = parents[potentialParentComboBox.SelectedIndex].Guid;
+        }
+       
         _chosenImplant.ChipIn(_character, _random);
 
         _form1.CyberwareAdded();
         this.Close();
+    }
+
+    private void potentialParentComboBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        
     }
 }
