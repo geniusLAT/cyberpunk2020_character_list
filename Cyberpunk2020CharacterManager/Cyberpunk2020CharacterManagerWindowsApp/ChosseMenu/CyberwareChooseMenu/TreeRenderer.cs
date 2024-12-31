@@ -131,8 +131,6 @@ internal partial class CyberwareChooseMenu : Form
 
         if (potentialsParents != null)
         {
-            MessageBox.Show(potentialsParents.Count.ToString());
-
             potentialParentComboBox.Visible =
             potentialParentComboBox.Enabled = true;
 
