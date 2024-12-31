@@ -20,26 +20,18 @@ internal partial class CyberwareChooseMenu : Form
 
         var assembly = Assembly.Load("Cyberpunk2020GameEntities");
         var types = assembly.GetTypes();
-
-        
-        string output2 = "";
         List<Type> classes = [];
-        foreach (var type in types) 
+
+        foreach (var type in types)
         { 
-
-           
-
             if (type.FullName.Contains(baseDirectory) && type.IsClass)
             {
-               
-
                 try
                 {
                     var instance = CreateInstance(type.FullName);
                     if (instance is BodyPart) 
                     {
                         result.Add(type.FullName, instance.Name);
-                        output2 += type.FullName + " "+instance.Name+" \n\n";
                     }
                 }
                 catch (Exception ex) 
@@ -48,8 +40,6 @@ internal partial class CyberwareChooseMenu : Form
                 }
             }
         }
-        MessageBox.Show(output2);
-
         return result;
     }
 
@@ -77,7 +67,7 @@ internal partial class CyberwareChooseMenu : Form
        
         AvaliableCyberWareTreeView.Nodes.Clear();
 
-        RenderTreePart("Нейро-оснащение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.neuralware"));
+        RenderTreePart("Нейро-оснащение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.Neuralwares"));
         RenderTreePart("Кибер-оснащение, размещенное в теле", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody"));
 
         AvaliableCyberWareTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
