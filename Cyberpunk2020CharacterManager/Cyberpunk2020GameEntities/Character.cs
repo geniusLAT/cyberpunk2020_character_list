@@ -41,9 +41,9 @@ public class Character
     public int global_emp_stat = 0;
     #endregion
 
-    private int _totalHumanityLoss = 0;
+    private float _totalHumanityLoss = 0;
 
-    public int totalHumanityLoss 
+    public float totalHumanityLoss 
     {
         get 
         { 
@@ -56,7 +56,7 @@ public class Character
         }
     }
 
-    public int humanity { 
+    public float humanity { 
         get {
 
             return global_emp_stat * 10 - _totalHumanityLoss;
