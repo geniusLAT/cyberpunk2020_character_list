@@ -53,13 +53,24 @@ public class Character
 
     public Character()
     {
-        LegSlot rightLegSlot = new LegSlot(false);
-        LegSlot leftLegSlot = new LegSlot(true);
+       GenerateOrgansStarterPack();
+    }
 
-        NaturalLeg rightLeg = new() {BodyPlace=rightLegSlot.Guid };
+    private void GenerateOrgansStarterPack()
+    {
+        LegSlot rightLegSlot = new(false);
+        LegSlot leftLegSlot = new(true);
+
+        NaturalLeg rightLeg = new() { BodyPlace = rightLegSlot.Guid };
         NaturalLeg lefttLeg = new() { BodyPlace = leftLegSlot.Guid };
 
-        //BodyParts.AddRange([new NaturalLeg(), new NaturalLeg()]);
+        ArmSlot rightArmSlot = new(false);
+        ArmSlot leftArmSlot = new(true);
+
+        NaturalArm rightArm = new() { BodyPlace = rightLegSlot.Guid };
+        NaturalArm leftArm = new() { BodyPlace = leftLegSlot.Guid };
+
+        BodyParts.AddRange([rightLegSlot, rightLeg, leftLegSlot, lefttLeg, rightArmSlot, rightArm, leftArmSlot, leftArm]);
     }
 
     public int[] skills = { };

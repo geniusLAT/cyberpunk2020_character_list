@@ -3,4 +3,6 @@
 public class NaturalLeg: Leg
 {
     public override bool IsImplant => false;
+
+    public override string Name { get { return "биологическая нога"; } }
 }
