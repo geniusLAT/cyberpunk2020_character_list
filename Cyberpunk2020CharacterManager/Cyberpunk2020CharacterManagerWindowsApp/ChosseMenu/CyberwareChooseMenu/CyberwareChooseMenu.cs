@@ -17,13 +17,15 @@ internal partial class CyberwareChooseMenu : Form
 
     Character _character;
 
-    private Random _random;
+    private Random _random = new();
 
     public CyberwareChooseMenu(Form1 form1, Character character)
     {
         InitializeComponent();
         _form1 = form1;
         _character = character;
+
+        add_chosen_cyberware_button!.Text = "Назад";
 
         RenderTree();
     }
@@ -103,7 +105,14 @@ internal partial class CyberwareChooseMenu : Form
 
     private void add_chosen_cyberware_button_Click(object sender, EventArgs e)
     {
-        new NasalFilters().ChipIn(_character, _random);
+        if(_chosenImplant is null)
+        {
+            add_chosen_cyberware_button.Enabled = false;
+            this.Close();
+            return;
+        }
+
+        _chosenImplant.ChipIn(_character, _random);
 
         _form1.CyberwareAdded();
         this.Close();

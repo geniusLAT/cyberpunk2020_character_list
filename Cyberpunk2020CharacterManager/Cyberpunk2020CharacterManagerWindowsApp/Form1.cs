@@ -545,12 +545,14 @@ public partial class Form1 : Form
 
     private void ShowHumanity()
     {
-        var humanity = _chosenCharacter!.humanity;
-        humanity_counter_label.Text = $"Человечность: {_chosenCharacter.humanity}";
+        var humanity = _chosenCharacter?.humanity ?? 100;
+        humanity_counter_label.Text = $"Человечность: {humanity}";
         if (humanity < 1)
         {
             humanity_counter_label.Text += " КИБЕРПСИХОЗ";
         }
+
+        cur_emp_numeric.Value = _chosenCharacter?.cur_emp_stat ?? 0;
     }
 
     private void NameEntered(object sender, EventArgs e)

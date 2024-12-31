@@ -1,7 +1,4 @@
-﻿
-using System;
-
-namespace Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
+﻿namespace Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
 
 public  class Gills : CyberwearPlacedInTheBody
 {

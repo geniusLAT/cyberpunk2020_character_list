@@ -47,6 +47,8 @@ public partial class Form1 : Form
 
     void RenderCyberwares(int s, int l)
     {
+        ShowHumanity();
+
         if (_chosenCharacter is null)
         {
             return;
