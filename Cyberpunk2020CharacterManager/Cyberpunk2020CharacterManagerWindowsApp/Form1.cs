@@ -554,7 +554,12 @@ public partial class Form1 : Form
             humanity_counter_label.Text += " КИБЕРПСИХОЗ";
         }
 
-        cur_emp_numeric.Value = _chosenCharacter?.cur_emp_stat ?? 0;
+        var emp = _chosenCharacter?.cur_emp_stat ?? 0;
+        if (emp< cur_emp_numeric.Minimum)
+        {
+            cur_emp_numeric.Minimum = emp;
+        }
+        cur_emp_numeric.Value = emp;
     }
 
     private void NameEntered(object sender, EventArgs e)

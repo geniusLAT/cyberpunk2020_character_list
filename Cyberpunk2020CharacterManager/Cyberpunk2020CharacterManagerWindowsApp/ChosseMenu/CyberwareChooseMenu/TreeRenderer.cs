@@ -121,11 +121,41 @@ internal partial class CyberwareChooseMenu : Form
         Implant_Description.Text = implant.Name +
             $"\n\nСтоимость: {implant.Cost} " +
             $"\nПотеря человечности: {implant.HumanityLossFormula} " +
-            $"\nХирургический код: {implant.SurgeryCode}\n"
+            $"\nХирургический код: {implant.SurgeryCode}\n\n"
             + implant.Description;
 
         var problems = implant.BarriersForChipIn(_character);
         problems += PricePotentialProblem(implant);
+
+        var potentialsParents = implant.PotantialParents(_character);
+
+        if (potentialsParents != null)
+        {
+            MessageBox.Show(potentialsParents.Count.ToString());
+
+            potentialParentComboBox.Visible =
+            potentialParentComboBox.Enabled = true;
+
+            potentialParentComboBox.Items.Clear();
+
+            if(potentialsParents.Count > 0)
+            {
+                foreach (var potentialsParent in potentialsParents)
+                {
+                    potentialParentComboBox.Items.Add(potentialsParent.Name);
+                }
+            }
+            else
+            {
+                potentialParentComboBox.Items.Add("Нет опций");
+            }
+            potentialParentComboBox.SelectedIndex = 0;
+        }
+        else
+        {
+            potentialParentComboBox.Visible = 
+            potentialParentComboBox.Enabled = false;
+        }
 
         problem_list_table.Text = problems;
         if(problems == string.Empty) 

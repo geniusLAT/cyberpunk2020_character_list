@@ -13,7 +13,7 @@ internal partial class CyberwareChooseMenu : Form
 
     private Label problem_list_table;
 
-    private ComboBox comboBox1;
+    private ComboBox potentialParentComboBox;
 
     private readonly Character _character;
 
@@ -39,7 +39,7 @@ internal partial class CyberwareChooseMenu : Form
         AvaliableCyberWareTreeView = new TreeView();
         Implant_Description = new Label();
         problem_list_table = new Label();
-        comboBox1 = new ComboBox();
+        potentialParentComboBox = new ComboBox();
         SuspendLayout();
         // 
         // add_chosen_cyberware_button
@@ -81,18 +81,18 @@ internal partial class CyberwareChooseMenu : Form
         problem_list_table.TabIndex = 3;
         problem_list_table.Text = resources.GetString("problem_list_table.Text");
         // 
-        // comboBox1
+        // potentialParentComboBox
         // 
-        comboBox1.FormattingEnabled = true;
-        comboBox1.Location = new Point(278, 359);
-        comboBox1.Name = "comboBox1";
-        comboBox1.Size = new Size(157, 23);
-        comboBox1.TabIndex = 4;
+        potentialParentComboBox.FormattingEnabled = true;
+        potentialParentComboBox.Location = new Point(278, 359);
+        potentialParentComboBox.Name = "potentialParentComboBox";
+        potentialParentComboBox.Size = new Size(157, 23);
+        potentialParentComboBox.TabIndex = 4;
         // 
         // CyberwareChooseMenu
         // 
         ClientSize = new Size(447, 617);
-        Controls.Add(comboBox1);
+        Controls.Add(potentialParentComboBox);
         Controls.Add(problem_list_table);
         Controls.Add(Implant_Description);
         Controls.Add(AvaliableCyberWareTreeView);
