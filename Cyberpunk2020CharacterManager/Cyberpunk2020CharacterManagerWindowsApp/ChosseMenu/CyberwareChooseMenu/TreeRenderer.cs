@@ -77,6 +77,7 @@ internal partial class CyberwareChooseMenu : Form
        
         AvaliableCyberWareTreeView.Nodes.Clear();
 
+        RenderTreePart("Нейро-оснащение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.neuralware"));
         RenderTreePart("Кибер-оснащение, размещенное в теле", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody"));
 
         AvaliableCyberWareTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
