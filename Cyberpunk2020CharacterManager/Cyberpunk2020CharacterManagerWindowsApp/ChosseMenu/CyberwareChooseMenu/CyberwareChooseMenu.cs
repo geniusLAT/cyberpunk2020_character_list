@@ -15,9 +15,9 @@ internal partial class CyberwareChooseMenu : Form
 
     private ComboBox comboBox1;
 
-    Character _character;
+    private readonly Character _character;
 
-    private Random _random = new();
+    private readonly Random _random = new();
 
     public CyberwareChooseMenu(Form1 form1, Character character)
     {
