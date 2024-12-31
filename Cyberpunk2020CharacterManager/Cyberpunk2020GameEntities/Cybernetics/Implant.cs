@@ -24,7 +24,6 @@ public abstract class Implant : BodyPart
 
     protected string UniquenessPotentialProblem(Character character) 
     {
-        var AlreadyChippedIn = false;
         foreach (var part in character.BodyParts)
         {
             if (this.GetType() == part.GetType())

@@ -12,5 +12,5 @@ public abstract class BodyPart
 
     public Guid BodyPlace { get; set; }
 
-    public int HumanityLoss { get; set; } = 0;
+    public float HumanityLoss { get; set; } = 0;
 }
