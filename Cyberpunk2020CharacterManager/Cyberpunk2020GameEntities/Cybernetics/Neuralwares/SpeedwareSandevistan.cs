@@ -5,12 +5,12 @@ namespace Cyberpunk2020GameEntities.Cybernetics.Neuralwares;
 
 public class SpeedwareSandevistan : ReflexBooster
 {
-    public override string Name { get { return "Ускоряющее Оснащение (также известное как Сандвистан)"; } }
+    public override string Name { get { return "Ускоряющее Оснащение"; } }
 
     public SpeedwareSandevistan()
     {
         SurgeryCode = SurgeryCode.Negligible;
-        Description = "включается только по желанию, устраняя большую часть необходимости " +
+        Description = "Ускоряющее Оснащение (также известное как Сандвистан) включается только по желанию, устраняя большую часть необходимости " +
             "приспосабливать всю свою жизнь нечеловечески быстрому времени реакции. " +
             "Персонаж должен сначала суб-вокально произнести про себя умственное командное" +
             " слово для активации ускорения, a затем подождать один ход, прежде чем ускорение " +
