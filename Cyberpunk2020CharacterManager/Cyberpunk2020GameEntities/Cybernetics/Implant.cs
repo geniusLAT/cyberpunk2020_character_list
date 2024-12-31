@@ -4,6 +4,10 @@ public abstract class Implant : BodyPart
 {
     public SurgeryCode SurgeryCode { get; set; }
 
+    public string HumanityLossFormula { get; set; } = "0";
+
+    public virtual void GenerateHumanLoss(Random random) { HumanityLoss = 0; }
+
     public override bool IsImplant 
     { 
         get {
