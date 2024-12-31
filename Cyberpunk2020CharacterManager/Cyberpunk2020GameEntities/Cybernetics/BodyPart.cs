@@ -14,7 +14,7 @@ public abstract class BodyPart
 
     public float HumanityLoss { get; set; } = 0;
 
-    public virtual List<BodyPart>? PotantialParents(Character character)
+    public virtual List<BodyPart>? PotentialParents(Character character)
     {
         return null;
     }

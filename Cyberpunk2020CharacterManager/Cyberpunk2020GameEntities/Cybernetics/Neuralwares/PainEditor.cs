@@ -25,7 +25,7 @@ public class PainEditor : Neuralware
     public override string BarriersForChipIn(Character character)
     {
         var result = new StringBuilder();
-        if(PotantialParents(character).Count == 0)
+        if(PotentialParents(character).Count == 0)
         {
             result.Append("Требуется основной нейронный процессор\n");
         }
@@ -37,7 +37,7 @@ public class PainEditor : Neuralware
 
     List<BodyPart>? cashedPotentialParents = null;
 
-    public override List<BodyPart>? PotantialParents(Character character)
+    public override List<BodyPart>? PotentialParents(Character character)
     {
         if(cashedPotentialParents != null)
         {
