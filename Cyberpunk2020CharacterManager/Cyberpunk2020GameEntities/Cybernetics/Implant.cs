@@ -17,4 +17,18 @@ public abstract class Implant : BodyPart
     {
         return string.Empty;
     }
+
+    protected string UniquenessPotentialProblem(Character character) 
+    {
+        var AlreadyChippedIn = false;
+        foreach (var part in character.BodyParts)
+        {
+            if (this.GetType() == part.GetType())
+            {
+
+                return $"{Name} не может быть имлантирован в двух экземплярах";
+            }
+        }
+        return string.Empty;
+    }
 }

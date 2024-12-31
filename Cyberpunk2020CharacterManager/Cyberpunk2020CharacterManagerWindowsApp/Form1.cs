@@ -39,11 +39,8 @@ public partial class Form1 : Form
         RenderSkills(31, 178);
 
         //test block
-        _chosenCharacter = new Character();
-        _chosenCharacter.BodyParts.Add(new NasalFilters());
-        _chosenCharacter.BodyParts.Add(new NasalFilters());
-        _chosenCharacter.BodyParts.Add(new NasalFilters());
-        _chosenCharacter.BodyParts.Add(new NasalFilters());
+        //_chosenCharacter = new Character();
+        //_chosenCharacter.BodyParts.Add(new NasalFilters());
         RenderCyberwares(0, 0);
     }
 
@@ -55,8 +52,6 @@ public partial class Form1 : Form
         if (professionals.Contains(skill)) { return true; }
         return false;
     }
-
-
 
     int CountSkillSum(bool professinal)
     {
@@ -755,6 +750,12 @@ public partial class Form1 : Form
 
     private void add_cyberware_button_Click(object sender, EventArgs e)
     {
+        if (_chosenCharacter is null)
+        {
+            MessageBox.Show("Нет активного персонажа для выбора кибернетики");
+            return;
+        }
+
         CyberwareChooseMenu cyberwareChooseMenu = new(this, _chosenCharacter);
         cyberwareChooseMenu.ShowDialog();
     }

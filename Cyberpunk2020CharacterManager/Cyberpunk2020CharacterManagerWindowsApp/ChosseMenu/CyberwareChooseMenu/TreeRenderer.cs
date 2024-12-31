@@ -129,7 +129,7 @@ internal partial class CyberwareChooseMenu : Form
     {
         if (implant.Cost > _character.CurrentMoney)
         {
-            return $"для покупки не хватает {implant.Cost - _character.CurrentMoney} евродолларов.";
+            return $"\nДля покупки не хватает {implant.Cost - _character.CurrentMoney} евродолларов.";
         }
         return string.Empty;
     }
