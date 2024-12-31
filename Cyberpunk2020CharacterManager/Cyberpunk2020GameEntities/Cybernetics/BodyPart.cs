@@ -10,7 +10,7 @@ public abstract class BodyPart
 
     public int Cost { get; set; }
 
-    public virtual string BodyPlace() {  return string.Empty; }
+    public Guid BodyPlace { get; set; }
 
     public int HumanityLoss { get; set; } = 0;
 }

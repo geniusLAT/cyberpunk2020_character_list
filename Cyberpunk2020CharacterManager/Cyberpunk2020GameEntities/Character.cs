@@ -1,4 +1,5 @@
 ﻿using Cyberpunk2020GameEntities.Cybernetics;
+using Cyberpunk2020GameEntities.Cybernetics.Natural;
 
 namespace Cyberpunk2020GameEntities;
 
@@ -49,6 +50,28 @@ public class Character
     
     public List<BodyPart> BodyParts = [];
 
+
+    public Character()
+    {
+       GenerateOrgansStarterPack();
+    }
+
+    private void GenerateOrgansStarterPack()
+    {
+        LegSlot rightLegSlot = new(false);
+        LegSlot leftLegSlot = new(true);
+
+        NaturalLeg rightLeg = new() { BodyPlace = rightLegSlot.Guid };
+        NaturalLeg lefttLeg = new() { BodyPlace = leftLegSlot.Guid };
+
+        ArmSlot rightArmSlot = new(false);
+        ArmSlot leftArmSlot = new(true);
+
+        NaturalArm rightArm = new() { BodyPlace = rightLegSlot.Guid };
+        NaturalArm leftArm = new() { BodyPlace = leftLegSlot.Guid };
+
+        BodyParts.AddRange([rightLegSlot, rightLeg, leftLegSlot, lefttLeg, rightArmSlot, rightArm, leftArmSlot, leftArm]);
+    }
 
     public int[] skills = { };
 

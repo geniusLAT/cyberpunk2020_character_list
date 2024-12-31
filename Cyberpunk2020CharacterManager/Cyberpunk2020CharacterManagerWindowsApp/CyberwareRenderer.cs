@@ -1,4 +1,5 @@
 ﻿using Cyberpunk2020GameEntities.Cybernetics;
+using System.Linq;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp;
 
@@ -24,7 +25,7 @@ public partial class Form1 : Form
         new Label()
         {
             Size = new Size(text_size, g),
-            Text = part.Name + " " + part.BodyPlace()
+            Text = part.Name //+ " " + part.BodyPlace()
         });
 
         CyberwarePanel.Controls.Add(new Label()
@@ -51,9 +52,18 @@ public partial class Form1 : Form
             return;
         }
 
-        for (int i = 0; i < _chosenCharacter.BodyParts.Count; i++)
+        var count = 2;
+        foreach (var part in from part in _chosenCharacter.BodyParts
+                             where part.IsImplant
+                             select part)
         {
-            RenderCyberwarePanel(_chosenCharacter.BodyParts[i], i + 2);
+            RenderCyberwarePanel(part, count++);
         }
+
+
+        //for (int i = 0; i < _chosenCharacter.BodyParts.Count; i++)
+        //{
+        //    RenderCyberwarePanel(_chosenCharacter.BodyParts[i], i + 2);
+        //}
     }
 }

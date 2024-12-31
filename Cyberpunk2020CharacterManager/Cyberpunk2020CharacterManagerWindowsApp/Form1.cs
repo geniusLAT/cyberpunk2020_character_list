@@ -1,4 +1,5 @@
 using System.Text;
+using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
 using Cyberpunk2020GameEntities;
 using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
 
@@ -6,7 +7,7 @@ namespace Cyberpunk2020CharacterManagerWindowsApp;
 
 public partial class Form1 : Form
 {
-    
+
     private int _constantSum = 0;
 
     private Random _random = new();
@@ -35,7 +36,7 @@ public partial class Form1 : Form
         gen_way_panel.Visible = false;
         const_num_numeric.Enabled = false;
         const_num_numeric.Visible = false;
-        RenderSkills(31,178);
+        RenderSkills(31, 178);
 
         //test block
         _chosenCharacter = new Character();
@@ -43,7 +44,7 @@ public partial class Form1 : Form
         _chosenCharacter.BodyParts.Add(new NasalFilters());
         _chosenCharacter.BodyParts.Add(new NasalFilters());
         _chosenCharacter.BodyParts.Add(new NasalFilters());
-        RenderCyberwares(0,0);
+        RenderCyberwares(0, 0);
     }
 
     bool IsProfessionalSkill(string skill)
@@ -51,23 +52,23 @@ public partial class Form1 : Form
         if (_chosenCharacter == null) return false;
 
         string[] professionals = _chosenCharacter.GetProfessionalSkillsNames(_chosenCharacter.Role);
-        if(professionals.Contains(skill)) { return true; }
+        if (professionals.Contains(skill)) { return true; }
         return false;
     }
 
-    
+
 
     int CountSkillSum(bool professinal)
     {
         int count = 0;
         foreach (Control item in _panels)
         {
-            if(item.Controls.Count <2) continue;  
+            if (item.Controls.Count < 2) continue;
             string skill_name = ((Label)item.Controls[0]).Text;
-            if(IsProfessionalSkill(skill_name.Replace("_",""))==professinal)
+            if (IsProfessionalSkill(skill_name.Replace("_", "")) == professinal)
             {
 
-                count += (int) ((NumericUpDown)item.Controls[1]).Value;
+                count += (int)((NumericUpDown)item.Controls[1]).Value;
             }
         }
         return count;
@@ -76,7 +77,7 @@ public partial class Form1 : Form
     private void SkillPointChanged(object sender, EventArgs e)
     {
         label16.Text = ">";
-        if(sender is NumericUpDown)
+        if (sender is NumericUpDown)
         {
             NumericUpDown numeric = (NumericUpDown)sender;
             Panel ParentPanel = (Panel)numeric.Parent!;
@@ -87,14 +88,14 @@ public partial class Form1 : Form
             {
                 int sum = CountSkillSum(true);
                 CommentLabel.Text = "Необходимая сумма:40\nТекущая сумма:" + sum.ToString();
-                if(sum==40)CreateButton.Enabled = true;
-                else CreateButton.Enabled = false;  
+                if (sum == 40) CreateButton.Enabled = true;
+                else CreateButton.Enabled = false;
 
             }
             if (_chosenCharacter.createStep == CreateStep.unprof)
             {
                 int sum = CountSkillSum(false);
-                CommentLabel.Text = "Необходимая сумма:"+(_chosenCharacter.global_ref_stat+_chosenCharacter.int_stat).ToString()+ "\nТекущая сумма:" + sum.ToString();
+                CommentLabel.Text = "Необходимая сумма:" + (_chosenCharacter.global_ref_stat + _chosenCharacter.int_stat).ToString() + "\nТекущая сумма:" + sum.ToString();
                 if (sum == _chosenCharacter.global_ref_stat + _chosenCharacter.int_stat) CreateButton.Enabled = true;
                 else CreateButton.Enabled = false;
 
@@ -125,12 +126,12 @@ public partial class Form1 : Form
         // Open the stream and read it back.
         using (StreamReader sr = File.OpenText(path))
         {
-            
+
             string s = "";
             while ((s = sr.ReadLine()) != null)
             {
                 Console.WriteLine(s);
-                result+= s;
+                result += s;
             }
         }
         return result;
@@ -151,7 +152,7 @@ public partial class Form1 : Form
     //        panel2.Controls.Add(that_label);
     //        if (i == 0) label1.Text = that_label.Location.ToString();
 
-            
+
 
     //    }
     //}
@@ -216,11 +217,11 @@ public partial class Form1 : Form
                 ErrorLabel.Text = "Надо выбрать роль";
                 RoleChoser.Enabled = true;
                 return false;
-                
+
                 break;
         }
 
-        
+
     }
 
     private void global_numeric_Click(object sender, EventArgs e)
@@ -230,35 +231,35 @@ public partial class Form1 : Form
         {
             sum += (int)item.Value;
         }
-        sum_label.Text ="Текущая сумма:   "+ sum.ToString()+
-                        "\nТребуемая сумма: "+_constantSum.ToString();
-        if(sum==_constantSum) CreateButton.Enabled = true;
+        sum_label.Text = "Текущая сумма:   " + sum.ToString() +
+                        "\nТребуемая сумма: " + _constantSum.ToString();
+        if (sum == _constantSum) CreateButton.Enabled = true;
         else CreateButton.Enabled = false;
     }
 
     void CalculateState()
     {
-        if(_chosenCharacter is null)
+        if (_chosenCharacter is null)
         {
             return;
         }
 
         _chosenCharacter.int_stat = (int)numeric_int.Value;
-        _chosenCharacter.cur_ref_stat=
-        _chosenCharacter.global_ref_stat=
+        _chosenCharacter.cur_ref_stat =
+        _chosenCharacter.global_ref_stat =
         (int)global_ref_numeric.Value;
-        cur_reflex_numeric.Value= global_ref_numeric.Value;
-        _chosenCharacter.tech_stat=(int)tech_numeric.Value;
-        _chosenCharacter.cool_stat=(int)cool_numeric.Value;
-        _chosenCharacter.attr_stat=(int)attr_numeric.Value;
+        cur_reflex_numeric.Value = global_ref_numeric.Value;
+        _chosenCharacter.tech_stat = (int)tech_numeric.Value;
+        _chosenCharacter.cool_stat = (int)cool_numeric.Value;
+        _chosenCharacter.attr_stat = (int)attr_numeric.Value;
 
         _chosenCharacter.cur_luck_stat =
         _chosenCharacter.global_luck_stat =
         (int)global_luck_numeric.Value;
         cur_luck_numeric.Value = global_luck_numeric.Value;
 
-        _chosenCharacter.body_stat=(int)body_numeric.Value;
-        _chosenCharacter.movement_stat=(int)move_numeric.Value;
+        _chosenCharacter.body_stat = (int)body_numeric.Value;
+        _chosenCharacter.movement_stat = (int)move_numeric.Value;
 
         _chosenCharacter.cur_emp_stat =
         _chosenCharacter.global_emp_stat =
@@ -266,8 +267,8 @@ public partial class Form1 : Form
         cur_emp_numeric.Value = global_emp_numeric.Value;
 
         Extra_stat_label.Text = "Бег:" + (_chosenCharacter.movement_stat * 3).ToString() +
-        " прыжок:" + (_chosenCharacter.movement_stat * 4).ToString() 
-        + " перенести:" + (_chosenCharacter.body_stat*10).ToString() 
+        " прыжок:" + (_chosenCharacter.movement_stat * 4).ToString()
+        + " перенести:" + (_chosenCharacter.body_stat * 10).ToString()
         + " поднять:" + (_chosenCharacter.body_stat * 40).ToString();
     }
 
@@ -282,7 +283,7 @@ public partial class Form1 : Form
         bool first = true;
         foreach (Panel that_panel in _panels)
         {
-            if(that_panel.Controls.Count<2)
+            if (that_panel.Controls.Count < 2)
             {
                 if (first)
                 {
@@ -295,7 +296,7 @@ public partial class Form1 : Form
             NumericUpDown numeric = (NumericUpDown)that_panel.Controls[1];
             if (numeric.Value > 0)
             {
-                roleSkill=(int)numeric.Value; break;    
+                roleSkill = (int)numeric.Value; break;
             }
         }
 
@@ -343,7 +344,7 @@ public partial class Form1 : Form
                 if (roleSkill == 7) _chosenCharacter.MonthIncome = 3000;
                 if (roleSkill == 6) _chosenCharacter.MonthIncome = 1200;
 
-                
+
                 break;
             case role.nomad:
                 _chosenCharacter.MonthIncome = 1000;
@@ -410,20 +411,20 @@ public partial class Form1 : Form
         }
 
         int random_hit = _random.Next(1, 7);
-        MoneyLabel.Text = "Доход:" + _chosenCharacter.MonthIncome.ToString() + " ("+random_hit.ToString()+") Баланс:";
-        _chosenCharacter.CurrentMoney =(int)(random_hit * _chosenCharacter.MonthIncome / 3.0f);
+        MoneyLabel.Text = "Доход:" + _chosenCharacter.MonthIncome.ToString() + " (" + random_hit.ToString() + ") Баланс:";
+        _chosenCharacter.CurrentMoney = (int)(random_hit * _chosenCharacter.MonthIncome / 3.0f);
         Money_numeric.Enabled = true;
         Money_numeric.Value = _chosenCharacter.CurrentMoney;
 
     }
 
-  
+
 
     private void CreateButton_Click(object sender, EventArgs e)
     {
         if (_chosenCharacter == null)
         {
-            _chosenCharacter= new Character();
+            _chosenCharacter = new Character();
             NameField.Enabled = true;
             ErrorLabel.Text = " ";
             CreateButton.Text = "Далее";
@@ -445,7 +446,7 @@ public partial class Form1 : Form
             switch (_chosenCharacter.createStep)
             {
                 case CreateStep.Name:
-                    if(!ValidateName())return;
+                    if (!ValidateName()) return;
                     NameField.Enabled = false;
                     _chosenCharacter.createStep = CreateStep.Role;
                     _chosenCharacter.name = NameField.Text;
@@ -512,7 +513,7 @@ public partial class Form1 : Form
                     skills_tab_control.SelectTab(1);
 
                     _chosenCharacter.BodyParts.Add(new NasalFilters());
-                    RenderCyberwares(0,0);
+                    RenderCyberwares(0, 0);
 
                     break;
                 case CreateStep.inventory:
@@ -648,7 +649,7 @@ public partial class Form1 : Form
             _constantSum += (int)item.Value;
         }
         CreateButton.Enabled = true;
-        random_char.Enabled= random_stat_sum_button.Enabled = const_stat_num_button.Enabled = false;
+        random_char.Enabled = random_stat_sum_button.Enabled = const_stat_num_button.Enabled = false;
         sum_label.Text = "Текущая сумма:   " + _constantSum.ToString();
     }
 
@@ -664,20 +665,21 @@ public partial class Form1 : Form
             random_char.Enabled = random_stat_sum_button.Enabled = const_stat_num_button.Enabled = false;
         }
         global_numeric_Click(null, null);
-        
+
 
     }
 
     private void const_stat_num_button_Click(object sender, EventArgs e)
     {
-        if (const_num_numeric.Enabled) {
+        if (const_num_numeric.Enabled)
+        {
             const_stat_num_button.Text = "Заданное число";
             const_num_numeric.Enabled = false;
             const_num_numeric.Visible = false;
             const_stat_num_button.Enabled = false;
             _constantSum = (int)const_num_numeric.Value;
 
-            global_numeric_Click(null,null);
+            global_numeric_Click(null, null);
 
         }
         else
@@ -715,7 +717,7 @@ public partial class Form1 : Form
         {
             if (that_panel.Controls.Count < 2) continue;
             NumericUpDown numeric = (NumericUpDown)that_panel.Controls[1];
-            numeric.Enabled = false;    
+            numeric.Enabled = false;
         }
     }
     void Activate_professionals()
@@ -724,23 +726,23 @@ public partial class Form1 : Form
     }
     void Activate_professionals(bool professinal)
     {
-        string[] professional_skills=_chosenCharacter.GetProfessionalSkillsNames(_chosenCharacter.Role);
+        string[] professional_skills = _chosenCharacter.GetProfessionalSkillsNames(_chosenCharacter.Role);
         foreach (Panel that_panel in _panels)
         {
             if (that_panel.Controls.Count < 2) continue;
             Label label = (Label)that_panel.Controls[0];
             if (label == null) continue;
             //label.Text = chosen_character.name;
-            
+
             NumericUpDown numeric = (NumericUpDown)that_panel.Controls[1];
             if (professinal == professional_skills.Contains(label.Text.Replace("_", "")))
             {
-                if(professinal)label.ForeColor = Color.Blue;
-                if(professinal || (!professinal && !Character.role_skills_name.Contains(label.Text.Replace("_", ""))))numeric.Enabled=true;
+                if (professinal) label.ForeColor = Color.Blue;
+                if (professinal || (!professinal && !Character.role_skills_name.Contains(label.Text.Replace("_", "")))) numeric.Enabled = true;
                 else numeric.Enabled = false;
 
             }
-            else                numeric.Enabled = false;
+            else numeric.Enabled = false;
 
 
         }
@@ -749,5 +751,16 @@ public partial class Form1 : Form
     private void Money_numeric_ValueChanged(object sender, EventArgs e)
     {
 
+    }
+
+    private void add_cyberware_button_Click(object sender, EventArgs e)
+    {
+        CyberwareChooseMenu cyberwareChooseMenu = new(this, _chosenCharacter);
+        cyberwareChooseMenu.ShowDialog();
+    }
+
+    public void CyberwareAdded()
+    {
+        RenderCyberwares(0, 0);
     }
 }

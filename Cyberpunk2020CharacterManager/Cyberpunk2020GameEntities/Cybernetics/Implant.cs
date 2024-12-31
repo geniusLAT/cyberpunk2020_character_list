@@ -11,6 +11,8 @@ public abstract class Implant : BodyPart
         } 
     }
 
+    public string Description { get; set; } = string.Empty;
+
     public virtual string BarriersForChipIn(Character character)
     {
         return string.Empty;
