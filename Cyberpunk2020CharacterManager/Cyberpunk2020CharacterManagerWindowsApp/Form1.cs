@@ -39,11 +39,8 @@ public partial class Form1 : Form
         RenderSkills(31, 178);
 
         //test block
-        _chosenCharacter = new Character();
-        _chosenCharacter.BodyParts.Add(new NasalFilters());
-        _chosenCharacter.BodyParts.Add(new NasalFilters());
-        _chosenCharacter.BodyParts.Add(new NasalFilters());
-        _chosenCharacter.BodyParts.Add(new NasalFilters());
+        //_chosenCharacter = new Character();
+        //_chosenCharacter.BodyParts.Add(new NasalFilters());
         RenderCyberwares(0, 0);
     }
 
@@ -55,8 +52,6 @@ public partial class Form1 : Form
         if (professionals.Contains(skill)) { return true; }
         return false;
     }
-
-
 
     int CountSkillSum(bool professinal)
     {
@@ -81,28 +76,45 @@ public partial class Form1 : Form
         {
             NumericUpDown numeric = (NumericUpDown)sender;
             Panel ParentPanel = (Panel)numeric.Parent!;
+
+            if (_chosenCharacter is null)
+            {
+                numeric.Value = 0;
+                return;
+            }
+
             //label16.Text +=ParentPanel.Controls.ToString();
             string skill_name = ((Label)ParentPanel.Controls[0]).Text;
 
             if (_chosenCharacter!.createStep == CreateStep.prof)
             {
-                int sum = CountSkillSum(true);
-                CommentLabel.Text = "Необходимая сумма:40\nТекущая сумма:" + sum.ToString();
-                if (sum == 40) CreateButton.Enabled = true;
-                else CreateButton.Enabled = false;
+                ShowRequiredSum(true);
+                //int sum = CountSkillSum(true);
+                //CommentLabel.Text = "Необходимая сумма:40\nТекущая сумма:" + sum.ToString();
+                //if (sum == 40) CreateButton.Enabled = true;
+                //else CreateButton.Enabled = false;
 
             }
             if (_chosenCharacter.createStep == CreateStep.unprof)
             {
-                int sum = CountSkillSum(false);
-                CommentLabel.Text = "Необходимая сумма:" + (_chosenCharacter.global_ref_stat + _chosenCharacter.int_stat).ToString() + "\nТекущая сумма:" + sum.ToString();
-                if (sum == _chosenCharacter.global_ref_stat + _chosenCharacter.int_stat) CreateButton.Enabled = true;
-                else CreateButton.Enabled = false;
+                ShowRequiredSum(false);
+                //int sum = CountSkillSum(false);
+                //CommentLabel.Text = "Необходимая сумма:" + (_chosenCharacter.global_ref_stat + _chosenCharacter.int_stat).ToString() + "\nТекущая сумма:" + sum.ToString();
+                //if (sum == _chosenCharacter.global_ref_stat + _chosenCharacter.int_stat) CreateButton.Enabled = true;
+                //else CreateButton.Enabled = false;
 
             }
         }
     }
 
+    void ShowRequiredSum(bool isProfessional)
+    {
+        int sum = CountSkillSum(isProfessional);
+        var required = isProfessional ? 40 : _chosenCharacter.global_ref_stat + _chosenCharacter.int_stat;
+        CommentLabel.Text = "Необходимая сумма:" + (required).ToString() + "\nТекущая сумма:" + sum.ToString();
+        if (sum == required) CreateButton.Enabled = true;
+        else CreateButton.Enabled = false;
+    }
 
     public static string ReadFiles()
     {
@@ -438,6 +450,8 @@ public partial class Form1 : Form
             cur_emp_numeric.Enabled = global_emp_numeric.Enabled =
             false;
 
+            Deactivate_skills(true);
+
             MoneyLabel.Text = "";
 
         }
@@ -447,6 +461,7 @@ public partial class Form1 : Form
             {
                 case CreateStep.Name:
                     if (!ValidateName()) return;
+                    add_cyberware_button.Enabled = false;
                     NameField.Enabled = false;
                     _chosenCharacter.createStep = CreateStep.Role;
                     _chosenCharacter.name = NameField.Text;
@@ -485,9 +500,9 @@ public partial class Form1 : Form
                     CalculateState();
                     //Render_skills(31, 178);
                     Activate_professionals();
-                    CreateButton.Enabled = false;
+                    //CreateButton.Enabled = false;
                     _chosenCharacter.createStep = CreateStep.prof;
-                    CommentLabel.Text = "Необходимая сумма:40\nТекущая сумма:0";
+                    ShowRequiredSum(true);
                     ShowHumanity();
                     break;
                 case CreateStep.prof:
@@ -496,6 +511,7 @@ public partial class Form1 : Form
                     Activate_professionals(false);
                     CreateButton.Enabled = false;
                     _chosenCharacter.createStep = CreateStep.unprof;
+                    ShowRequiredSum(false);
                     break;
                 case CreateStep.unprof:
                     skills_tab_control.SelectTab(0);
@@ -512,11 +528,12 @@ public partial class Form1 : Form
                     //tabPage2.Select();
                     skills_tab_control.SelectTab(1);
 
-                    _chosenCharacter.BodyParts.Add(new NasalFilters());
+                    add_cyberware_button.Enabled = true;                   
                     RenderCyberwares(0, 0);
 
                     break;
                 case CreateStep.inventory:
+                    add_cyberware_button.Enabled = false;
                     break;
                 case CreateStep.finished:
                     break;
@@ -528,12 +545,14 @@ public partial class Form1 : Form
 
     private void ShowHumanity()
     {
-        var humanity = _chosenCharacter!.humanity;
-        humanity_counter_label.Text = $"Человечность: {_chosenCharacter.humanity}";
+        var humanity = _chosenCharacter?.humanity ?? 100;
+        humanity_counter_label.Text = $"Человечность: {humanity}";
         if (humanity < 1)
         {
             humanity_counter_label.Text += " КИБЕРПСИХОЗ";
         }
+
+        cur_emp_numeric.Value = _chosenCharacter?.cur_emp_stat ?? 0;
     }
 
     private void NameEntered(object sender, EventArgs e)
@@ -711,12 +730,13 @@ public partial class Form1 : Form
     }
 
 
-    void Deactivate_skills()
+    void Deactivate_skills(bool nullificate = false)
     {
         foreach (Panel that_panel in _panels)
         {
             if (that_panel.Controls.Count < 2) continue;
             NumericUpDown numeric = (NumericUpDown)that_panel.Controls[1];
+            if (nullificate) numeric.Value = 0;
             numeric.Enabled = false;
         }
     }
@@ -755,6 +775,18 @@ public partial class Form1 : Form
 
     private void add_cyberware_button_Click(object sender, EventArgs e)
     {
+        if (_chosenCharacter is null)
+        {
+            MessageBox.Show("Нет активного персонажа для выбора кибернетики");
+            return;
+        }
+
+        if (_chosenCharacter.createStep != CreateStep.implants && _chosenCharacter.createStep != CreateStep.finished)
+        {
+            MessageBox.Show("На данном этапе создания персонажа нет доступен выбор имплантов");
+            return;
+        }
+
         CyberwareChooseMenu cyberwareChooseMenu = new(this, _chosenCharacter);
         cyberwareChooseMenu.ShowDialog();
     }
@@ -762,5 +794,7 @@ public partial class Form1 : Form
     public void CyberwareAdded()
     {
         RenderCyberwares(0, 0);
+
+        Money_numeric.Value = _chosenCharacter!.CurrentMoney;
     }
 }

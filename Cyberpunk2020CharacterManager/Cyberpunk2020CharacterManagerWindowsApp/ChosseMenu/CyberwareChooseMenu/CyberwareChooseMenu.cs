@@ -6,17 +6,26 @@ namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu
 internal partial class CyberwareChooseMenu : Form
 {
     Form1 _form1;
+
     private TreeView AvaliableCyberWareTreeView;
+
     private Label Implant_Description;
+
     private Label problem_list_table;
+
     private ComboBox comboBox1;
+
     Character _character;
+
+    private Random _random = new();
 
     public CyberwareChooseMenu(Form1 form1, Character character)
     {
         InitializeComponent();
         _form1 = form1;
         _character = character;
+
+        add_chosen_cyberware_button!.Text = "Назад";
 
         RenderTree();
     }
@@ -96,7 +105,14 @@ internal partial class CyberwareChooseMenu : Form
 
     private void add_chosen_cyberware_button_Click(object sender, EventArgs e)
     {
-        _character.BodyParts.Add(new NasalFilters());
+        if(_chosenImplant is null)
+        {
+            add_chosen_cyberware_button.Enabled = false;
+            this.Close();
+            return;
+        }
+
+        _chosenImplant.ChipIn(_character, _random);
 
         _form1.CyberwareAdded();
         this.Close();

@@ -7,7 +7,7 @@ namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu
 
 internal partial class CyberwareChooseMenu : Form
 {
-    Implant _chosenImplant;
+    Implant? _chosenImplant;
 
     private void RenderTree()
     {
@@ -18,8 +18,8 @@ internal partial class CyberwareChooseMenu : Form
     {
         string baseNamespace = "Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody.";
 
-        string[] namesToShow = new string[] { "Назальные фильтры" };
-        string[] namesToCall = new string[] { $"{baseNamespace}NasalFilters" };
+        string[] namesToShow = new string[] { "Назальные фильтры", "Имплантируемые жабры" };
+        string[] namesToCall = new string[] { $"{baseNamespace}NasalFilters", $"{baseNamespace}Gills" };
 
         RenderTreePart("Кибер-оснащение, размещенное в теле",namesToShow,namesToCall);
     }
@@ -116,10 +116,12 @@ internal partial class CyberwareChooseMenu : Form
         if(problems == string.Empty) 
         {
             add_chosen_cyberware_button.Enabled = true;
+            _chosenImplant = implant;
         }
         else
         {
             add_chosen_cyberware_button.Enabled = false;
+            _chosenImplant = null;
         }
 
         add_chosen_cyberware_button.Text = "Добавить выбранное кибероснащение";
@@ -129,7 +131,7 @@ internal partial class CyberwareChooseMenu : Form
     {
         if (implant.Cost > _character.CurrentMoney)
         {
-            return $"для покупки не хватает {implant.Cost - _character.CurrentMoney} евродолларов.";
+            return $"\nДля покупки не хватает {implant.Cost - _character.CurrentMoney} евродолларов.";
         }
         return string.Empty;
     }

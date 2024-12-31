@@ -41,10 +41,25 @@ public class Character
     public int global_emp_stat = 0;
     #endregion
 
+    private int _totalHumanityLoss = 0;
+
+    public int totalHumanityLoss 
+    {
+        get 
+        { 
+            return _totalHumanityLoss;
+        }
+        set
+        {
+            _totalHumanityLoss = value;
+            cur_emp_stat = global_emp_stat - (int)(value / 10);
+        }
+    }
+
     public int humanity { 
         get {
 
-            return global_emp_stat * 10;
+            return global_emp_stat * 10 - _totalHumanityLoss;
         } 
     }
     
