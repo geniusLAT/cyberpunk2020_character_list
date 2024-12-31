@@ -14,34 +14,57 @@ internal partial class CyberwareChooseMenu : Form
         PopulateTreeView();
     }
 
-    private void RenderCyberwearPlaceInTheBodyTreePart()
+    private Dictionary<string, string> GetDictionaryForTreeReflected(string baseDirectory)
     {
-        string baseNamespace = "Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody.";
+        Dictionary<string, string> result = [];
 
-        string[] namesToShow = new string[] { "Назальные фильтры", "Имплантируемые жабры" };
-        string[] namesToCall = new string[] { $"{baseNamespace}NasalFilters", $"{baseNamespace}Gills" };
+        var assembly = Assembly.Load("Cyberpunk2020GameEntities");
+        var types = assembly.GetTypes();
 
-        RenderTreePart("Кибер-оснащение, размещенное в теле",namesToShow,namesToCall);
+        
+        string output2 = "";
+        List<Type> classes = [];
+        foreach (var type in types) 
+        { 
+
+           
+
+            if (type.FullName.Contains(baseDirectory) && type.IsClass)
+            {
+               
+
+                try
+                {
+                    var instance = CreateInstance(type.FullName);
+                    if (instance is BodyPart) 
+                    {
+                        result.Add(type.FullName, instance.Name);
+                        output2 += type.FullName + " "+instance.Name+" \n\n";
+                    }
+                }
+                catch (Exception ex) 
+                {
+                    continue;
+                }
+            }
+        }
+        MessageBox.Show(output2);
+
+        return result;
     }
 
-
-    private void RenderTreePart(string TreePartName, string[] namesToShow, string[] namesToCall)
+    private void RenderTreePart(string TreePartName, Dictionary<string, string> valuePairs)
     {
-        if (namesToShow.Length != namesToCall.Length)
-        {
-            throw new ApplicationException();
-        }
-
         TreeNode rootNode = new(TreePartName)
         {
             Name = TreePartName
         };
 
-        for (int j = 0; j < namesToShow.Length; j++)
+        foreach (var pair in valuePairs)
         {
-            TreeNode childNode = new TreeNode(namesToShow[j])
+            TreeNode childNode = new TreeNode(pair.Value)
             {
-                Name = namesToCall[j]
+                Name =pair.Key
             };
             rootNode.Nodes.Add(childNode);
         }
@@ -54,7 +77,7 @@ internal partial class CyberwareChooseMenu : Form
        
         AvaliableCyberWareTreeView.Nodes.Clear();
 
-        RenderCyberwearPlaceInTheBodyTreePart();
+        RenderTreePart("Кибер-оснащение, размещенное в теле", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody"));
 
         AvaliableCyberWareTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
     }
@@ -106,6 +129,7 @@ internal partial class CyberwareChooseMenu : Form
     {
         Implant_Description.Text = implant.Name +
             $"\n\nСтоимость: {implant.Cost} " +
+            $"\nПотеря человечности: {implant.HumanityLossFormula} " +
             $"\nХирургический код: {implant.SurgeryCode}\n"
             + implant.Description;
 

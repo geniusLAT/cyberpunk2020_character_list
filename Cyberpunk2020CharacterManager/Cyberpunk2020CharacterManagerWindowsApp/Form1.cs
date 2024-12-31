@@ -39,7 +39,9 @@ public partial class Form1 : Form
         RenderSkills(31, 178);
 
         //test block
-        //_chosenCharacter = new Character();
+        _chosenCharacter = new Character();
+        _chosenCharacter.CurrentMoney = 1000000;
+        _chosenCharacter.createStep = CreateStep.finished;
         //_chosenCharacter.BodyParts.Add(new NasalFilters());
         RenderCyberwares(0, 0);
     }
