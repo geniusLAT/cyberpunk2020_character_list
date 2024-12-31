@@ -96,7 +96,7 @@ internal partial class CyberwareChooseMenu : Form
 
     private void add_chosen_cyberware_button_Click(object sender, EventArgs e)
     {
-        _character.BodyParts.Add(new NasalFilters());
+        new NasalFilters().ChipIn(_character);
 
         _form1.CyberwareAdded();
         this.Close();

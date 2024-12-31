@@ -35,4 +35,12 @@ public abstract class Implant : BodyPart
         }
         return string.Empty;
     }
+
+    public virtual void ChipIn(Character character, Random random)
+    {
+        character.BodyParts.Add(this);
+        character.CurrentMoney -=Cost;
+        GenerateHumanLoss(random);
+        character.totalHumanityLoss +=HumanityLoss;
+    }
 }
