@@ -76,7 +76,7 @@ partial class Form1
         add_cyberware_button = new Button();
         humanity_counter_label = new Label();
         inventoryTab = new TabPage();
-        inventoryScroll = new VScrollBar();
+        inventoryScrollPanel = new Panel();
         AddEquipment = new Button();
         SkillPanel = new Panel();
         label18 = new Label();
@@ -618,7 +618,7 @@ partial class Form1
         // 
         // inventoryTab
         // 
-        inventoryTab.Controls.Add(inventoryScroll);
+        inventoryTab.Controls.Add(inventoryScrollPanel);
         inventoryTab.Controls.Add(AddEquipment);
         inventoryTab.Location = new Point(4, 24);
         inventoryTab.Name = "inventoryTab";
@@ -628,13 +628,13 @@ partial class Form1
         inventoryTab.Text = "Инвентарь";
         inventoryTab.UseVisualStyleBackColor = true;
         // 
-        // inventoryScroll
+        // inventoryScrollPanel
         // 
-        inventoryScroll.Location = new Point(442, 0);
-        inventoryScroll.Name = "inventoryScroll";
-        inventoryScroll.Size = new Size(17, 695);
-        inventoryScroll.TabIndex = 4;
-        inventoryScroll.Scroll += inventoryScroll_Scroll;
+        inventoryScrollPanel.AutoScroll = true;
+        inventoryScrollPanel.Location = new Point(2, 5);
+        inventoryScrollPanel.Name = "inventoryScrollPanel";
+        inventoryScrollPanel.Size = new Size(437, 678);
+        inventoryScrollPanel.TabIndex = 5;
         // 
         // AddEquipment
         // 
@@ -859,5 +859,5 @@ partial class Form1
     private Button add_cyberware_button;
     private TabPage inventoryTab;
     private Button AddEquipment;
-    private VScrollBar inventoryScroll;
+    private Panel inventoryScrollPanel;
 }

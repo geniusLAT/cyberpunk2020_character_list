@@ -20,6 +20,8 @@ public partial class Form1 : Form
 
     private List<Panel> _panels = [];
 
+    private List<Panel> _inventoryPanels = [];
+
     public Form1()
     {
         InitializeComponent();
@@ -52,7 +54,7 @@ public partial class Form1 : Form
             _chosenCharacter.equipments.Add(new MastoidCommo());
         }
 
-        RenderInventory(31, 178);
+        RenderInventory(31, 178, 0);
     }
 
     bool IsProfessionalSkill(string skill)
@@ -835,10 +837,5 @@ public partial class Form1 : Form
 
         InventoryChooseMenu inventoryChooseMenu = new(this, _chosenCharacter);
         inventoryChooseMenu.ShowDialog();
-    }
-
-    private void inventoryScroll_Scroll(object sender, ScrollEventArgs e)
-    {
-        CommentLabel.Text = inventoryScroll.Value.ToString();
     }
 }
