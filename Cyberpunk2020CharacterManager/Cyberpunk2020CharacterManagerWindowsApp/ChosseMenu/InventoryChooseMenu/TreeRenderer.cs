@@ -44,7 +44,7 @@ internal partial class InventoryChooseMenu : Form
         return result;
     }
 
-    private void RenderTreePart(string TreePartName, Dictionary<string, string> valuePairs)
+    private void RenderTreePart(TreeNode? higherNode,string TreePartName, Dictionary<string, string> valuePairs)
     {
         TreeNode rootNode = new(TreePartName)
         {
@@ -59,8 +59,14 @@ internal partial class InventoryChooseMenu : Form
             };
             rootNode.Nodes.Add(childNode);
         }
-
-        AvaliableCyberWareTreeView.Nodes.Add(rootNode);
+        if (higherNode != null)
+        {
+            higherNode.Nodes.Add(rootNode);
+        }
+        else
+        {
+            AvaliableCyberWareTreeView.Nodes.Add(rootNode);
+        }
     }
 
     private void PopulateTreeView()
@@ -68,22 +74,25 @@ internal partial class InventoryChooseMenu : Form
        
         AvaliableCyberWareTreeView.Nodes.Clear();
 
-        RenderTreePart("Связь", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Communications"));
-        RenderTreePart("Наблюдение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Surveillance"));
-        RenderTreePart("Инструменты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Tools"));
-        RenderTreePart("Мебель", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Furnishings"));
-        RenderTreePart("Личная Электроника", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.PersonalElectronics"));
-        //RenderTreePart("Кибер-оснащение, размещенное в теле", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody"));
+        TreeNode rootNode = new("Лист снаряжения")
+        {
+            Name = "Лист снаряжения"
+        };
+        AvaliableCyberWareTreeView.Nodes.Add(rootNode);
+
+        RenderTreePart(rootNode, "Связь", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Communications"));
+        RenderTreePart(rootNode, "Наблюдение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Surveillance"));
+        RenderTreePart(rootNode, "Инструменты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Tools"));
+        RenderTreePart(rootNode, "Мебель", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Furnishings"));
+        RenderTreePart(rootNode, "Личная Электроника", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.PersonalElectronics"));
 
         AvaliableCyberWareTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
     }
 
     private void AvaliableCyberWareTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
     {
-       
-        if (e.Node.Level == 1) 
+        if (e.Node.Level == 2) 
         {
-            
             HandleChildClick(e.Node.Name);
         }
     }
