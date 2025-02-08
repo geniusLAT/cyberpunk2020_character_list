@@ -1,7 +1,4 @@
-﻿using Cyberpunk2020GameEntities;
-using Cyberpunk2020GameEntities.Cybernetics;
-using Cyberpunk2020GameEntities.Equipments;
-using System.Data.Common;
+﻿using Cyberpunk2020GameEntities.Equipments;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp;
 
@@ -9,34 +6,6 @@ public partial class Form1 : Form
 {
     int pixelsForOneEquipmentPanel = 14;
     Label _clickedInventoryLabel;
-
-    private void EquipmentLabel_Click(object sender, EventArgs e)
-    {
-        var control = (Control)sender;
-        try
-        {
-            int index = int.Parse(control.Name);
-            ChooseEquipment(_chosenCharacter.equipments[index]);
-        }
-        catch (Exception)
-        {
-            return;
-        }
-
-        if (_clickedInventoryLabel != null)
-        {
-            ((Panel)_clickedInventoryLabel.Parent).BackColor = Color.White;
-            _clickedInventoryLabel.ForeColor = Color.Black;
-        }
-        ((Panel)control.Parent).BackColor = Color.Blue;
-        _clickedInventoryLabel = (Label)control;
-        _clickedInventoryLabel.ForeColor = Color.White;
-    }
-
-    private void ChooseEquipment(Equipment equipment)
-    {
-        _chosenEquipment = equipment;
-    }
 
     Control RenderEquipmentPanel(string text, int i, int column, int s, int l)
     {

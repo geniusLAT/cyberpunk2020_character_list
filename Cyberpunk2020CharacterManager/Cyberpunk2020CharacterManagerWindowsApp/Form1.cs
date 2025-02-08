@@ -838,4 +838,9 @@ public partial class Form1 : Form
         InventoryChooseMenu inventoryChooseMenu = new(this, _chosenCharacter);
         inventoryChooseMenu.ShowDialog();
     }
+
+    private void chosenEquipmentDescriptionLabel_Click(object sender, EventArgs e)
+    {
+
+    }
 }
