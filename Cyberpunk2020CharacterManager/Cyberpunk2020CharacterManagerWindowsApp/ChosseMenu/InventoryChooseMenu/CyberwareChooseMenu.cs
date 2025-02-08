@@ -16,7 +16,10 @@ internal partial class InventoryChooseMenu : Form
     private ComboBox potentialParentComboBox;
 
     private readonly Character _character;
-
+    private RadioButton radioButton1;
+    private RadioButton radioButton2;
+    private NumericUpDown equipmentQuantityNumerucUpDown;
+    private Label label1;
     private readonly Random _random = new();
 
     public InventoryChooseMenu(Form1 form1, Character character)
@@ -40,6 +43,11 @@ internal partial class InventoryChooseMenu : Form
         Implant_Description = new Label();
         problem_list_table = new Label();
         potentialParentComboBox = new ComboBox();
+        radioButton1 = new RadioButton();
+        radioButton2 = new RadioButton();
+        equipmentQuantityNumerucUpDown = new NumericUpDown();
+        label1 = new Label();
+        ((System.ComponentModel.ISupportInitialize)equipmentQuantityNumerucUpDown).BeginInit();
         SuspendLayout();
         // 
         // add_chosen_cyberware_button
@@ -75,10 +83,10 @@ internal partial class InventoryChooseMenu : Form
         // 
         problem_list_table.AutoSize = true;
         problem_list_table.ImageAlign = ContentAlignment.TopLeft;
-        problem_list_table.Location = new Point(278, 426);
-        problem_list_table.MaximumSize = new Size(268, 150);
+        problem_list_table.Location = new Point(278, 439);
+        problem_list_table.MaximumSize = new Size(268, 130);
         problem_list_table.Name = "problem_list_table";
-        problem_list_table.Size = new Size(268, 150);
+        problem_list_table.Size = new Size(268, 130);
         problem_list_table.TabIndex = 3;
         problem_list_table.Text = resources.GetString("problem_list_table.Text");
         // 
@@ -91,9 +99,59 @@ internal partial class InventoryChooseMenu : Form
         potentialParentComboBox.TabIndex = 4;
         potentialParentComboBox.SelectedIndexChanged += potentialParentComboBox_SelectedIndexChanged;
         // 
+        // radioButton1
+        // 
+        radioButton1.AutoSize = true;
+        radioButton1.Enabled = false;
+        radioButton1.Location = new Point(278, 388);
+        radioButton1.Name = "radioButton1";
+        radioButton1.Size = new Size(72, 19);
+        radioButton1.TabIndex = 6;
+        radioButton1.TabStop = true;
+        radioButton1.Text = "Покупка";
+        radioButton1.UseVisualStyleBackColor = true;
+        radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+        // 
+        // radioButton2
+        // 
+        radioButton2.AutoSize = true;
+        radioButton2.Enabled = false;
+        radioButton2.Location = new Point(356, 388);
+        radioButton2.Name = "radioButton2";
+        radioButton2.Size = new Size(178, 19);
+        radioButton2.TabIndex = 7;
+        radioButton2.TabStop = true;
+        radioButton2.Text = "Альтернативное получение";
+        radioButton2.UseVisualStyleBackColor = true;
+        radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+        // 
+        // equipmentQuantityNumerucUpDown
+        // 
+        equipmentQuantityNumerucUpDown.Enabled = false;
+        equipmentQuantityNumerucUpDown.Location = new Point(421, 413);
+        equipmentQuantityNumerucUpDown.Maximum = new decimal(new int[] { -1593835521, 466537709, 54210, 0 });
+        equipmentQuantityNumerucUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+        equipmentQuantityNumerucUpDown.Name = "equipmentQuantityNumerucUpDown";
+        equipmentQuantityNumerucUpDown.Size = new Size(120, 23);
+        equipmentQuantityNumerucUpDown.TabIndex = 8;
+        equipmentQuantityNumerucUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        // 
+        // label1
+        // 
+        label1.AutoSize = true;
+        label1.Location = new Point(278, 415);
+        label1.Name = "label1";
+        label1.Size = new Size(75, 15);
+        label1.TabIndex = 9;
+        label1.Text = "Количество:";
+        // 
         // InventoryChooseMenu
         // 
         ClientSize = new Size(553, 617);
+        Controls.Add(label1);
+        Controls.Add(equipmentQuantityNumerucUpDown);
+        Controls.Add(radioButton2);
+        Controls.Add(radioButton1);
         Controls.Add(potentialParentComboBox);
         Controls.Add(problem_list_table);
         Controls.Add(Implant_Description);
@@ -101,6 +159,7 @@ internal partial class InventoryChooseMenu : Form
         Controls.Add(add_chosen_cyberware_button);
         Name = "InventoryChooseMenu";
         Text = "Добавление снаряжения";
+        ((System.ComponentModel.ISupportInitialize)equipmentQuantityNumerucUpDown).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -120,9 +179,16 @@ internal partial class InventoryChooseMenu : Form
         //    _chosenEquipment!.BodyPlace = parents[potentialParentComboBox.SelectedIndex].Guid;
         //}
 
-        _chosenEquipment.Buy(_character, _random);
+        if (buingMode)
+        {
+            _chosenEquipment.Buy(_character, _random);
+        }
+        else
+        {
+            _chosenEquipment.Add(_character, _random);
+        }
 
-        _form1.CyberwareAdded();
+        _form1.EquipmentChanged();
         this.Close();
     }
 
@@ -134,5 +200,23 @@ internal partial class InventoryChooseMenu : Form
     private void Implant_Description_Click(object sender, EventArgs e)
     {
 
+    }
+
+    bool buingMode = true;
+
+    private void radioButton2_CheckedChanged(object sender, EventArgs e)
+    {
+        if(_chosenEquipment is null) return;
+        add_chosen_cyberware_button.Text = "Получить";
+        buingMode = false;
+        LookForProblemForEquipment(_chosenEquipment);
+    }
+
+    private void radioButton1_CheckedChanged(object sender, EventArgs e)
+    {
+        if (_chosenEquipment is null) return;
+        add_chosen_cyberware_button.Text = "Купить";
+        buingMode = true;
+        LookForProblemForEquipment(_chosenEquipment);
     }
 }

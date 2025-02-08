@@ -93,6 +93,7 @@ partial class Form1
         CommentLabel = new Label();
         MoneyLabel = new Label();
         Money_numeric = new NumericUpDown();
+        RemoveEquipmentButton = new Button();
         panel1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)global_emp_numeric).BeginInit();
         ((System.ComponentModel.ISupportInitialize)cur_emp_numeric).BeginInit();
@@ -638,6 +639,7 @@ partial class Form1
         // 
         // inventoryInfoPanel
         // 
+        inventoryInfoPanel.Controls.Add(RemoveEquipmentButton);
         inventoryInfoPanel.Controls.Add(chosenEquipmentDescriptionLabel);
         inventoryInfoPanel.Controls.Add(chosenEquipmentQuantityLabel);
         inventoryInfoPanel.Controls.Add(chosenEquipmentCostLabel);
@@ -799,6 +801,15 @@ partial class Form1
         Money_numeric.TabIndex = 15;
         Money_numeric.ValueChanged += Money_numeric_ValueChanged;
         // 
+        // RemoveEquipmentButton
+        // 
+        RemoveEquipmentButton.Location = new Point(20, 4);
+        RemoveEquipmentButton.Name = "RemoveEquipmentButton";
+        RemoveEquipmentButton.Size = new Size(160, 23);
+        RemoveEquipmentButton.TabIndex = 7;
+        RemoveEquipmentButton.Text = "Отказаться от снаряжения";
+        RemoveEquipmentButton.UseVisualStyleBackColor = true;
+        // 
         // Form1
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -924,4 +935,5 @@ partial class Form1
     private Label chosenEquipmentQuantityLabel;
     private Label chosenEquipmentCostLabel;
     private Label chosenEquipmentNameLabel;
+    private Button RemoveEquipmentButton;
 }

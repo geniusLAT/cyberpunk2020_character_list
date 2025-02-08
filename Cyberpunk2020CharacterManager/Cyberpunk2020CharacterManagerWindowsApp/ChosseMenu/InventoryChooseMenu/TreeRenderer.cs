@@ -119,11 +119,15 @@ internal partial class InventoryChooseMenu : Form
 
     private void ChooseEquipment(Equipment equipmentItem)
     {
+        radioButton1.Enabled = radioButton2.Enabled = equipmentQuantityNumerucUpDown.Enabled = true;
+        equipmentQuantityNumerucUpDown.Value = 1;
+        radioButton1.Checked = true;
+
         Implant_Description.Text = equipmentItem.Name +
             $"\n\nСтоимость: {equipmentItem.Cost} \n\n"
             + equipmentItem.Description;
 
-         var problems = PricePotentialProblem(equipmentItem);
+
 
         //var potentialsParents = equipmentItem.PotentialParents(_character);
 
@@ -152,25 +156,30 @@ internal partial class InventoryChooseMenu : Form
         //    potentialParentComboBox.Visible = 
         //    potentialParentComboBox.Enabled = false;
         //}
+        
+        _chosenEquipment = equipmentItem;
+        LookForProblemForEquipment(equipmentItem);
+        add_chosen_cyberware_button.Text = "Купить";
+    }
 
+    void LookForProblemForEquipment(Equipment equipment)
+    {
+
+        var problems = buingMode ? PricePotentialProblem(equipment) : string.Empty;
         problem_list_table.Text = problems;
         if (problems == string.Empty)
         {
             add_chosen_cyberware_button.Enabled = true;
-            _chosenEquipment = equipmentItem;
         }
         else
         {
             add_chosen_cyberware_button.Enabled = false;
-            _chosenEquipment = null;
         }
-
-        add_chosen_cyberware_button.Text = "Купить";
     }
 
     private string PricePotentialProblem(Equipment equipmentItem)
     {
-        if (equipmentItem.Cost > _character.CurrentMoney)
+        if (equipmentItem.Cost * equipmentItem.Quantity > _character.CurrentMoney && buingMode)
         {
             return $"\nДля покупки не хватает {equipmentItem.Cost - _character.CurrentMoney} евродолларов.";
         }

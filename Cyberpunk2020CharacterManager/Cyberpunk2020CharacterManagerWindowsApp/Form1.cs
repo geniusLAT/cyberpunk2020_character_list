@@ -44,7 +44,7 @@ public partial class Form1 : Form
 
         //test block
         _chosenCharacter = new Character();
-        _chosenCharacter.CurrentMoney = 1000000;
+        _chosenCharacter.CurrentMoney = 100;// 0000;
         _chosenCharacter.createStep = CreateStep.finished;
         _chosenCharacter.BodyParts.Add(new NasalFilters());
         RenderCyberwares(0, 0);
@@ -817,6 +817,13 @@ public partial class Form1 : Form
     public void CyberwareAdded()
     {
         RenderCyberwares(0, 0);
+
+        Money_numeric.Value = _chosenCharacter!.CurrentMoney;
+    }
+
+    public void EquipmentChanged()
+    {
+        RenderInventory(0, 0);
 
         Money_numeric.Value = _chosenCharacter!.CurrentMoney;
     }
