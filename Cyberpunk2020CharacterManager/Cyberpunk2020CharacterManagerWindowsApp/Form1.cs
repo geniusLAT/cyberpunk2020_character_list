@@ -54,7 +54,7 @@ public partial class Form1 : Form
             _chosenCharacter.equipments.Add(new MastoidCommo());
         }
 
-        RenderInventory(31, 178, 0);
+        RenderInventory(31, 178);
     }
 
     bool IsProfessionalSkill(string skill)

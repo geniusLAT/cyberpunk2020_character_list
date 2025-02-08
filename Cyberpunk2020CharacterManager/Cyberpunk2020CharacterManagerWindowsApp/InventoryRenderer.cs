@@ -8,7 +8,7 @@ public partial class Form1 : Form
 {
     int pixelsForOneEquipmentPanel = 14;
 
-    Control RenderEquipmentPanel(string text, int i, int column, bool header, int s, int l, int margin)
+    Control RenderEquipmentPanel(string text, int i, int column, bool header, int s, int l)
     {
         int text_size = 180;
         int extra_size = 20;
@@ -57,7 +57,7 @@ public partial class Form1 : Form
 
     }
 
-    void RenderInventory(int s, int l, int margin)
+    void RenderInventory(int s, int l)
     {
         int n = 0;
         int c = 0;
@@ -69,7 +69,7 @@ public partial class Form1 : Form
         foreach (var item in _chosenCharacter.equipments)
         {
 
-            RenderEquipmentPanel(item.Name, n++, c, false, s, l, margin);
+            RenderEquipmentPanel(item.Name, n++, c, false, s, l);
         }
     }
 }
