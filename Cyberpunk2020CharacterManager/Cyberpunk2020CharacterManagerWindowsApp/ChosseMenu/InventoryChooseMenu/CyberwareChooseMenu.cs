@@ -48,7 +48,7 @@ internal partial class InventoryChooseMenu : Form
         add_chosen_cyberware_button.Name = "add_chosen_cyberware_button";
         add_chosen_cyberware_button.Size = new Size(529, 23);
         add_chosen_cyberware_button.TabIndex = 0;
-        add_chosen_cyberware_button.Text = "Добавить выбранное кибероснащение";
+        add_chosen_cyberware_button.Text = "Купить";
         add_chosen_cyberware_button.UseVisualStyleBackColor = true;
         add_chosen_cyberware_button.Click += add_chosen_cyberware_button_Click;
         // 
@@ -107,20 +107,20 @@ internal partial class InventoryChooseMenu : Form
 
     private void add_chosen_cyberware_button_Click(object sender, EventArgs e)
     {
-        if (_chosenImplant is null)
+        if (_chosenEquipment is null)
         {
             add_chosen_cyberware_button.Enabled = false;
             this.Close();
             return;
         }
 
-        var parents = _chosenImplant.PotentialParents(_character);
-        if (parents is not null)
-        {
-            _chosenImplant!.BodyPlace = parents[potentialParentComboBox.SelectedIndex].Guid;
-        }
+        //var parents = _chosenEquipment.PotentialParents(_character);
+        //if (parents is not null)
+        //{
+        //    _chosenEquipment!.BodyPlace = parents[potentialParentComboBox.SelectedIndex].Guid;
+        //}
 
-        _chosenImplant.ChipIn(_character, _random);
+        _chosenEquipment.Buy(_character, _random);
 
         _form1.CyberwareAdded();
         this.Close();

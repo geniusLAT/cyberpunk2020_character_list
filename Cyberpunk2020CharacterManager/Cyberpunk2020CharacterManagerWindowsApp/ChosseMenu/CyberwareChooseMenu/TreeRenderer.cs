@@ -1,6 +1,4 @@
-﻿using Cyberpunk2020GameEntities;
-using Cyberpunk2020GameEntities.Cybernetics;
-using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
+﻿using Cyberpunk2020GameEntities.Cybernetics;
 using System.Reflection;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;

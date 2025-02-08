@@ -8,7 +8,7 @@ namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu
 
 internal partial class InventoryChooseMenu : Form
 {
-    Implant? _chosenImplant;
+    Equipment? _chosenEquipment;
 
     private void RenderTree()
     {
@@ -23,12 +23,10 @@ internal partial class InventoryChooseMenu : Form
         var types = assembly.GetTypes();
         List<Type> classes = [];
 
-        
         foreach (var type in types)
         { 
             if (type.FullName.Contains(baseDirectory) && type.IsClass)
             {
-                MessageBox.Show($"{type.FullName}");
                 try
                 {
                     var instance = CreateInstance(type.FullName);
@@ -43,7 +41,6 @@ internal partial class InventoryChooseMenu : Form
                 }
             }
         }
-        MessageBox.Show($"{result.Count()}");
         return result;
     }
 
@@ -89,7 +86,7 @@ internal partial class InventoryChooseMenu : Form
 
     private void HandleChildClick(string childName)
     {
-        //ChooseCyberware( CreateInstance(childName));
+        ChooseEquipment( CreateInstance(childName));
     }
 
     static Equipment CreateInstance(string className)
@@ -120,65 +117,62 @@ internal partial class InventoryChooseMenu : Form
         }
     }
 
-    private void ChooseCyberware(Implant implant)
+    private void ChooseEquipment(Equipment equipmentItem)
     {
-        Implant_Description.Text = implant.Name +
-            $"\n\nСтоимость: {implant.Cost} " +
-            $"\nПотеря человечности: {implant.HumanityLossFormula} " +
-            $"\nХирургический код: {implant.SurgeryCode}\n\n"
-            + implant.Description;
+        Implant_Description.Text = equipmentItem.Name +
+            $"\n\nСтоимость: {equipmentItem.Cost} \n\n"
+            + equipmentItem.Description;
 
-        var problems = implant.BarriersForChipIn(_character);
-        problems += PricePotentialProblem(implant);
+         var problems = PricePotentialProblem(equipmentItem);
 
-        var potentialsParents = implant.PotentialParents(_character);
+        //var potentialsParents = equipmentItem.PotentialParents(_character);
 
-        if (potentialsParents != null)
-        {
-            potentialParentComboBox.Visible =
-            potentialParentComboBox.Enabled = true;
+        //if (potentialsParents != null)
+        //{
+        //    potentialParentComboBox.Visible =
+        //    potentialParentComboBox.Enabled = true;
 
-            potentialParentComboBox.Items.Clear();
+        //    potentialParentComboBox.Items.Clear();
 
-            if(potentialsParents.Count > 0)
-            {
-                foreach (var potentialsParent in potentialsParents)
-                {
-                    potentialParentComboBox.Items.Add(potentialsParent.Name);
-                }
-            }
-            else
-            {
-                potentialParentComboBox.Items.Add("Нет опций");
-            }
-            potentialParentComboBox.SelectedIndex = 0;
-        }
-        else
-        {
-            potentialParentComboBox.Visible = 
-            potentialParentComboBox.Enabled = false;
-        }
+        //    //if(potentialsParents.Count > 0)
+        //    //{
+        //    //    foreach (var potentialsParent in potentialsParents)
+        //    //    {
+        //    //        potentialParentComboBox.Items.Add(potentialsParent.Name);
+        //    //    }
+        //    //}
+        //    //else
+        //    //{
+        //    //    potentialParentComboBox.Items.Add("Нет опций");
+        //    //}
+        //    potentialParentComboBox.SelectedIndex = 0;
+        //}
+        //else
+        //{
+        //    potentialParentComboBox.Visible = 
+        //    potentialParentComboBox.Enabled = false;
+        //}
 
         problem_list_table.Text = problems;
-        if(problems == string.Empty) 
+        if (problems == string.Empty)
         {
             add_chosen_cyberware_button.Enabled = true;
-            _chosenImplant = implant;
+            _chosenEquipment = equipmentItem;
         }
         else
         {
             add_chosen_cyberware_button.Enabled = false;
-            _chosenImplant = null;
+            _chosenEquipment = null;
         }
 
-        add_chosen_cyberware_button.Text = "Добавить выбранное кибероснащение";
+        add_chosen_cyberware_button.Text = "Купить";
     }
 
-    private string PricePotentialProblem(Implant implant)
+    private string PricePotentialProblem(Equipment equipmentItem)
     {
-        if (implant.Cost > _character.CurrentMoney)
+        if (equipmentItem.Cost > _character.CurrentMoney)
         {
-            return $"\nДля покупки не хватает {implant.Cost - _character.CurrentMoney} евродолларов.";
+            return $"\nДля покупки не хватает {equipmentItem.Cost - _character.CurrentMoney} евродолларов.";
         }
         return string.Empty;
     }

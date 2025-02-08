@@ -14,4 +14,15 @@ public abstract class Equipment
     //{
     //    return null;
     //}
+
+    public virtual void Add(Character character, Random random)
+    {
+        character.equipments.Add(this);
+    }
+
+    public virtual void Buy(Character character, Random random)
+    {
+        Add(character, random);
+        character.CurrentMoney -= Cost;
+    }
 }

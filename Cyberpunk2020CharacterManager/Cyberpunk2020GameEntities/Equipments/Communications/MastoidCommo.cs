@@ -1,6 +1,4 @@
-﻿using Cyberpunk2020GameEntities.Cybernetics;
-
-namespace Cyberpunk2020GameEntities.Equipments.Communications;
+﻿namespace Cyberpunk2020GameEntities.Equipments.Communications;
 
 public  class MastoidCommo : Equipment
 {
