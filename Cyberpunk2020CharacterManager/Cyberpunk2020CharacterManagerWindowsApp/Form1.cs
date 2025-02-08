@@ -1,5 +1,6 @@
 using System.Text;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
+using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
 using Cyberpunk2020GameEntities;
 using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
 
@@ -42,7 +43,7 @@ public partial class Form1 : Form
         _chosenCharacter = new Character();
         _chosenCharacter.CurrentMoney = 1000000;
         _chosenCharacter.createStep = CreateStep.finished;
-        //_chosenCharacter.BodyParts.Add(new NasalFilters());
+        _chosenCharacter.BodyParts.Add(new NasalFilters());
         RenderCyberwares(0, 0);
     }
 
@@ -455,7 +456,8 @@ public partial class Form1 : Form
             Deactivate_skills(true);
 
             MoneyLabel.Text = "";
-
+            AddEquipment.Enabled = false;
+            add_cyberware_button.Enabled = false;
         }
         else
         {
@@ -524,18 +526,22 @@ public partial class Form1 : Form
                     break;
                 case CreateStep.Money:
                     _chosenCharacter.createStep = CreateStep.implants;
-                    break;
-                case CreateStep.implants:
                     Money_numeric.Enabled = false;
                     //tabPage2.Select();
                     skills_tab_control.SelectTab(1);
 
-                    add_cyberware_button.Enabled = true;                   
+                    add_cyberware_button.Enabled = true;
                     RenderCyberwares(0, 0);
+                    break;
+                case CreateStep.implants:
+                    add_cyberware_button.Enabled = false;
+                    _chosenCharacter.createStep = CreateStep.inventory;
+                    skills_tab_control.SelectTab(2);
+                    AddEquipment.Enabled = true;
 
                     break;
                 case CreateStep.inventory:
-                    add_cyberware_button.Enabled = false;
+                    _chosenCharacter.createStep = CreateStep.finished;
                     break;
                 case CreateStep.finished:
                     break;
@@ -555,7 +561,7 @@ public partial class Form1 : Form
         }
 
         var emp = _chosenCharacter?.cur_emp_stat ?? 0;
-        if (emp< cur_emp_numeric.Minimum)
+        if (emp < cur_emp_numeric.Minimum)
         {
             cur_emp_numeric.Minimum = emp;
         }
@@ -803,5 +809,23 @@ public partial class Form1 : Form
         RenderCyberwares(0, 0);
 
         Money_numeric.Value = _chosenCharacter!.CurrentMoney;
+    }
+
+    private void AddEquipment_Click(object sender, EventArgs e)
+    {
+        if (_chosenCharacter is null)
+        {
+            MessageBox.Show("Нет активного персонажа для выбора кибернетики");
+            return;
+        }
+
+        if (_chosenCharacter.createStep != CreateStep.inventory && _chosenCharacter.createStep != CreateStep.finished)
+        {
+            MessageBox.Show("На данном этапе создания персонажа нет доступен выбор снаряжения");
+            return;
+        }
+
+        InventoryChooseMenu inventoryChooseMenu = new(this, _chosenCharacter);
+        inventoryChooseMenu.ShowDialog();
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Cyberpunk2020GameEntities;
 using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
 
-namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
+namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
 
-internal partial class CyberwareChooseMenu : Form
+internal partial class InventoryChooseMenu : Form
 {
     Form1 _form1;
 
@@ -16,9 +16,10 @@ internal partial class CyberwareChooseMenu : Form
     private ComboBox potentialParentComboBox;
 
     private readonly Character _character;
+
     private readonly Random _random = new();
 
-    public CyberwareChooseMenu(Form1 form1, Character character)
+    public InventoryChooseMenu(Form1 form1, Character character)
     {
         InitializeComponent();
         _form1 = form1;
@@ -33,7 +34,7 @@ internal partial class CyberwareChooseMenu : Form
 
     private void InitializeComponent()
     {
-        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CyberwareChooseMenu));
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryChooseMenu));
         add_chosen_cyberware_button = new Button();
         AvaliableCyberWareTreeView = new TreeView();
         Implant_Description = new Label();
@@ -47,7 +48,7 @@ internal partial class CyberwareChooseMenu : Form
         add_chosen_cyberware_button.Name = "add_chosen_cyberware_button";
         add_chosen_cyberware_button.Size = new Size(529, 23);
         add_chosen_cyberware_button.TabIndex = 0;
-        add_chosen_cyberware_button.Text = "Добавить выбранное кибероснащение";
+        add_chosen_cyberware_button.Text = "Купить";
         add_chosen_cyberware_button.UseVisualStyleBackColor = true;
         add_chosen_cyberware_button.Click += add_chosen_cyberware_button_Click;
         // 
@@ -68,6 +69,7 @@ internal partial class CyberwareChooseMenu : Form
         Implant_Description.Size = new Size(268, 300);
         Implant_Description.TabIndex = 2;
         Implant_Description.Text = resources.GetString("Implant_Description.Text");
+        Implant_Description.Click += Implant_Description_Click;
         // 
         // problem_list_table
         // 
@@ -89,7 +91,7 @@ internal partial class CyberwareChooseMenu : Form
         potentialParentComboBox.TabIndex = 4;
         potentialParentComboBox.SelectedIndexChanged += potentialParentComboBox_SelectedIndexChanged;
         // 
-        // CyberwareChooseMenu
+        // InventoryChooseMenu
         // 
         ClientSize = new Size(553, 617);
         Controls.Add(potentialParentComboBox);
@@ -97,28 +99,28 @@ internal partial class CyberwareChooseMenu : Form
         Controls.Add(Implant_Description);
         Controls.Add(AvaliableCyberWareTreeView);
         Controls.Add(add_chosen_cyberware_button);
-        Name = "CyberwareChooseMenu";
-        Text = "Добавление кибероснашения";
+        Name = "InventoryChooseMenu";
+        Text = "Добавление снаряжения";
         ResumeLayout(false);
         PerformLayout();
     }
 
     private void add_chosen_cyberware_button_Click(object sender, EventArgs e)
     {
-        if (_chosenImplant is null)
+        if (_chosenEquipment is null)
         {
             add_chosen_cyberware_button.Enabled = false;
             this.Close();
             return;
         }
 
-        var parents = _chosenImplant.PotentialParents(_character);
-        if (parents is not null)
-        {
-            _chosenImplant!.BodyPlace = parents[potentialParentComboBox.SelectedIndex].Guid;
-        }
-       
-        _chosenImplant.ChipIn(_character, _random);
+        //var parents = _chosenEquipment.PotentialParents(_character);
+        //if (parents is not null)
+        //{
+        //    _chosenEquipment!.BodyPlace = parents[potentialParentComboBox.SelectedIndex].Guid;
+        //}
+
+        _chosenEquipment.Buy(_character, _random);
 
         _form1.CyberwareAdded();
         this.Close();
@@ -126,6 +128,11 @@ internal partial class CyberwareChooseMenu : Form
 
     private void potentialParentComboBox_SelectedIndexChanged(object sender, EventArgs e)
     {
-        
+
+    }
+
+    private void Implant_Description_Click(object sender, EventArgs e)
+    {
+
     }
 }

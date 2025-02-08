@@ -73,7 +73,9 @@ partial class Form1
         tabPage1 = new TabPage();
         label19 = new Label();
         tabPage2 = new TabPage();
+        add_cyberware_button = new Button();
         humanity_counter_label = new Label();
+        inventoryTab = new TabPage();
         SkillPanel = new Panel();
         label18 = new Label();
         label17 = new Label();
@@ -83,7 +85,7 @@ partial class Form1
         CommentLabel = new Label();
         MoneyLabel = new Label();
         Money_numeric = new NumericUpDown();
-        add_cyberware_button = new Button();
+        AddEquipment = new Button();
         panel1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)global_emp_numeric).BeginInit();
         ((System.ComponentModel.ISupportInitialize)cur_emp_numeric).BeginInit();
@@ -103,6 +105,7 @@ partial class Form1
         skills_tab_control.SuspendLayout();
         tabPage1.SuspendLayout();
         tabPage2.SuspendLayout();
+        inventoryTab.SuspendLayout();
         SkillPanel.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)skillNumeric2).BeginInit();
         ((System.ComponentModel.ISupportInitialize)Skill_numeric).BeginInit();
@@ -550,6 +553,7 @@ partial class Form1
         // 
         skills_tab_control.Controls.Add(tabPage1);
         skills_tab_control.Controls.Add(tabPage2);
+        skills_tab_control.Controls.Add(inventoryTab);
         skills_tab_control.Location = new Point(14, 342);
         skills_tab_control.Margin = new Padding(4, 3, 4, 3);
         skills_tab_control.Name = "skills_tab_control";
@@ -592,6 +596,16 @@ partial class Form1
         tabPage2.Text = "Кибернетика";
         tabPage2.UseVisualStyleBackColor = true;
         // 
+        // add_cyberware_button
+        // 
+        add_cyberware_button.Location = new Point(763, 3);
+        add_cyberware_button.Name = "add_cyberware_button";
+        add_cyberware_button.Size = new Size(161, 23);
+        add_cyberware_button.TabIndex = 2;
+        add_cyberware_button.Text = "Добавить кибернетику";
+        add_cyberware_button.UseVisualStyleBackColor = true;
+        add_cyberware_button.Click += add_cyberware_button_Click;
+        // 
         // humanity_counter_label
         // 
         humanity_counter_label.AutoSize = true;
@@ -600,6 +614,17 @@ partial class Form1
         humanity_counter_label.Size = new Size(88, 15);
         humanity_counter_label.TabIndex = 1;
         humanity_counter_label.Text = "Человечность:";
+        // 
+        // inventoryTab
+        // 
+        inventoryTab.Controls.Add(AddEquipment);
+        inventoryTab.Location = new Point(4, 24);
+        inventoryTab.Name = "inventoryTab";
+        inventoryTab.Padding = new Padding(3);
+        inventoryTab.Size = new Size(931, 767);
+        inventoryTab.TabIndex = 2;
+        inventoryTab.Text = "Инвентарь";
+        inventoryTab.UseVisualStyleBackColor = true;
         // 
         // SkillPanel
         // 
@@ -697,15 +722,15 @@ partial class Form1
         Money_numeric.TabIndex = 15;
         Money_numeric.ValueChanged += Money_numeric_ValueChanged;
         // 
-        // add_cyberware_button
+        // AddEquipment
         // 
-        add_cyberware_button.Location = new Point(763, 3);
-        add_cyberware_button.Name = "add_cyberware_button";
-        add_cyberware_button.Size = new Size(161, 23);
-        add_cyberware_button.TabIndex = 2;
-        add_cyberware_button.Text = "Добавить кибернетику";
-        add_cyberware_button.UseVisualStyleBackColor = true;
-        add_cyberware_button.Click += add_cyberware_button_Click;
+        AddEquipment.Location = new Point(764, 6);
+        AddEquipment.Name = "AddEquipment";
+        AddEquipment.Size = new Size(161, 23);
+        AddEquipment.TabIndex = 3;
+        AddEquipment.Text = "Добавить снаряжение";
+        AddEquipment.UseVisualStyleBackColor = true;
+        AddEquipment.Click += AddEquipment_Click;
         // 
         // Form1
         // 
@@ -754,6 +779,7 @@ partial class Form1
         tabPage1.PerformLayout();
         tabPage2.ResumeLayout(false);
         tabPage2.PerformLayout();
+        inventoryTab.ResumeLayout(false);
         SkillPanel.ResumeLayout(false);
         SkillPanel.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)skillNumeric2).EndInit();
@@ -821,4 +847,6 @@ partial class Form1
     private System.Windows.Forms.NumericUpDown Money_numeric;
     private Label humanity_counter_label;
     private Button add_cyberware_button;
+    private TabPage inventoryTab;
+    private Button AddEquipment;
 }

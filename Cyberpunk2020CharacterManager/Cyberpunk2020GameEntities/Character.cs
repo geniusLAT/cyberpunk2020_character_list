@@ -1,5 +1,6 @@
 ﻿using Cyberpunk2020GameEntities.Cybernetics;
 using Cyberpunk2020GameEntities.Cybernetics.Natural;
+using Cyberpunk2020GameEntities.Equipments;
 
 namespace Cyberpunk2020GameEntities;
 
@@ -64,6 +65,7 @@ public class Character
     }
     
     public List<BodyPart> BodyParts = [];
+    public List<Equipment> equipments = [];
 
 
     public Character()

@@ -1,11 +1,14 @@
-﻿using Cyberpunk2020GameEntities.Cybernetics;
+﻿using Cyberpunk2020GameEntities;
+using Cyberpunk2020GameEntities.Cybernetics;
+using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
+using Cyberpunk2020GameEntities.Equipments;
 using System.Reflection;
 
-namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
+namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
 
-internal partial class CyberwareChooseMenu : Form
+internal partial class InventoryChooseMenu : Form
 {
-    Implant? _chosenImplant;
+    Equipment? _chosenEquipment;
 
     private void RenderTree()
     {
@@ -19,6 +22,7 @@ internal partial class CyberwareChooseMenu : Form
         var assembly = Assembly.Load("Cyberpunk2020GameEntities");
         var types = assembly.GetTypes();
         List<Type> classes = [];
+
         foreach (var type in types)
         { 
             if (type.FullName.Contains(baseDirectory) && type.IsClass)
@@ -26,7 +30,7 @@ internal partial class CyberwareChooseMenu : Form
                 try
                 {
                     var instance = CreateInstance(type.FullName);
-                    if (instance is BodyPart) 
+                    if (instance is Equipment) 
                     {
                         result.Add(type.FullName, instance.Name);
                     }
@@ -64,8 +68,8 @@ internal partial class CyberwareChooseMenu : Form
        
         AvaliableCyberWareTreeView.Nodes.Clear();
 
-        RenderTreePart("Нейро-оснащение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.Neuralwares"));
-        RenderTreePart("Кибер-оснащение, размещенное в теле", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody"));
+        RenderTreePart("Связь", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Communications"));
+        //RenderTreePart("Кибер-оснащение, размещенное в теле", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody"));
 
         AvaliableCyberWareTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
     }
@@ -82,10 +86,10 @@ internal partial class CyberwareChooseMenu : Form
 
     private void HandleChildClick(string childName)
     {
-        ChooseCyberware( CreateInstance(childName));
+        ChooseEquipment( CreateInstance(childName));
     }
 
-    static Implant CreateInstance(string className)
+    static Equipment CreateInstance(string className)
     {
         var assembly = Assembly.Load("Cyberpunk2020GameEntities");
         var type = assembly.GetType(className);
@@ -97,9 +101,9 @@ internal partial class CyberwareChooseMenu : Form
 
             if (instance is null) throw new NullReferenceException();
 
-            if(instance is Implant)
+            if(instance is Equipment)
             {
-                return (Implant)instance;
+                return (Equipment)instance;
             }
             else
             {
@@ -113,65 +117,62 @@ internal partial class CyberwareChooseMenu : Form
         }
     }
 
-    private void ChooseCyberware(Implant implant)
+    private void ChooseEquipment(Equipment equipmentItem)
     {
-        Implant_Description.Text = implant.Name +
-            $"\n\nСтоимость: {implant.Cost} " +
-            $"\nПотеря человечности: {implant.HumanityLossFormula} " +
-            $"\nХирургический код: {implant.SurgeryCode}\n\n"
-            + implant.Description;
+        Implant_Description.Text = equipmentItem.Name +
+            $"\n\nСтоимость: {equipmentItem.Cost} \n\n"
+            + equipmentItem.Description;
 
-        var problems = implant.BarriersForChipIn(_character);
-        problems += PricePotentialProblem(implant);
+         var problems = PricePotentialProblem(equipmentItem);
 
-        var potentialsParents = implant.PotentialParents(_character);
+        //var potentialsParents = equipmentItem.PotentialParents(_character);
 
-        if (potentialsParents != null)
-        {
-            potentialParentComboBox.Visible =
-            potentialParentComboBox.Enabled = true;
+        //if (potentialsParents != null)
+        //{
+        //    potentialParentComboBox.Visible =
+        //    potentialParentComboBox.Enabled = true;
 
-            potentialParentComboBox.Items.Clear();
+        //    potentialParentComboBox.Items.Clear();
 
-            if(potentialsParents.Count > 0)
-            {
-                foreach (var potentialsParent in potentialsParents)
-                {
-                    potentialParentComboBox.Items.Add(potentialsParent.Name);
-                }
-            }
-            else
-            {
-                potentialParentComboBox.Items.Add("Нет опций");
-            }
-            potentialParentComboBox.SelectedIndex = 0;
-        }
-        else
-        {
-            potentialParentComboBox.Visible = 
-            potentialParentComboBox.Enabled = false;
-        }
+        //    //if(potentialsParents.Count > 0)
+        //    //{
+        //    //    foreach (var potentialsParent in potentialsParents)
+        //    //    {
+        //    //        potentialParentComboBox.Items.Add(potentialsParent.Name);
+        //    //    }
+        //    //}
+        //    //else
+        //    //{
+        //    //    potentialParentComboBox.Items.Add("Нет опций");
+        //    //}
+        //    potentialParentComboBox.SelectedIndex = 0;
+        //}
+        //else
+        //{
+        //    potentialParentComboBox.Visible = 
+        //    potentialParentComboBox.Enabled = false;
+        //}
 
         problem_list_table.Text = problems;
-        if(problems == string.Empty) 
+        if (problems == string.Empty)
         {
             add_chosen_cyberware_button.Enabled = true;
-            _chosenImplant = implant;
+            _chosenEquipment = equipmentItem;
         }
         else
         {
             add_chosen_cyberware_button.Enabled = false;
-            _chosenImplant = null;
+            _chosenEquipment = null;
         }
 
-        add_chosen_cyberware_button.Text = "Добавить выбранное кибероснащение";
+        add_chosen_cyberware_button.Text = "Купить";
     }
 
-    private string PricePotentialProblem(Implant implant)
+    private string PricePotentialProblem(Equipment equipmentItem)
     {
-        if (implant.Cost > _character.CurrentMoney)
+        if (equipmentItem.Cost > _character.CurrentMoney)
         {
-            return $"\nДля покупки не хватает {implant.Cost - _character.CurrentMoney} евродолларов.";
+            return $"\nДля покупки не хватает {equipmentItem.Cost - _character.CurrentMoney} евродолларов.";
         }
         return string.Empty;
     }
