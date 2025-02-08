@@ -7,6 +7,6 @@ public  class MiniCellPhone : Equipment
     public MiniCellPhone()
     {
         Description = " Помещается в пачку сигарет";
-        Cost = 100;
+        Cost = 800;
     }
 }

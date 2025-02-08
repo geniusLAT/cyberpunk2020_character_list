@@ -8,7 +8,11 @@ public abstract class Equipment
 
     public int Cost { get; set; }
 
+    public int Quantity { get; set; } = 1;
+
     public string Description { get; set; } = string.Empty;
+
+    public string UserNote { get; set; } = string.Empty;
 
     //public virtual List<BodyPart>? PotentialParents(Character character)
     //{
@@ -23,6 +27,7 @@ public abstract class Equipment
     public virtual void Buy(Character character, Random random)
     {
         Add(character, random);
-        character.CurrentMoney -= Cost;
+        character.CurrentMoney -= Cost * Quantity;
+
     }
 }
