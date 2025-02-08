@@ -3,6 +3,7 @@ using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
 using Cyberpunk2020GameEntities;
 using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
+using Cyberpunk2020GameEntities.Equipments.Communications;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp;
 
@@ -45,6 +46,13 @@ public partial class Form1 : Form
         _chosenCharacter.createStep = CreateStep.finished;
         _chosenCharacter.BodyParts.Add(new NasalFilters());
         RenderCyberwares(0, 0);
+        for (var i = 0; i < 100; i++)
+        {
+            _chosenCharacter.equipments.Add(new CellularPhone());
+            _chosenCharacter.equipments.Add(new MastoidCommo());
+        }
+
+        RenderInventory(31, 178);
     }
 
     bool IsProfessionalSkill(string skill)
@@ -827,5 +835,10 @@ public partial class Form1 : Form
 
         InventoryChooseMenu inventoryChooseMenu = new(this, _chosenCharacter);
         inventoryChooseMenu.ShowDialog();
+    }
+
+    private void inventoryScroll_Scroll(object sender, ScrollEventArgs e)
+    {
+        CommentLabel.Text = inventoryScroll.Value.ToString();
     }
 }

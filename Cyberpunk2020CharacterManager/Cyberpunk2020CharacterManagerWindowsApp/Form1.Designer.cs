@@ -76,6 +76,8 @@ partial class Form1
         add_cyberware_button = new Button();
         humanity_counter_label = new Label();
         inventoryTab = new TabPage();
+        inventoryScroll = new VScrollBar();
+        AddEquipment = new Button();
         SkillPanel = new Panel();
         label18 = new Label();
         label17 = new Label();
@@ -85,7 +87,6 @@ partial class Form1
         CommentLabel = new Label();
         MoneyLabel = new Label();
         Money_numeric = new NumericUpDown();
-        AddEquipment = new Button();
         panel1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)global_emp_numeric).BeginInit();
         ((System.ComponentModel.ISupportInitialize)cur_emp_numeric).BeginInit();
@@ -617,6 +618,7 @@ partial class Form1
         // 
         // inventoryTab
         // 
+        inventoryTab.Controls.Add(inventoryScroll);
         inventoryTab.Controls.Add(AddEquipment);
         inventoryTab.Location = new Point(4, 24);
         inventoryTab.Name = "inventoryTab";
@@ -625,6 +627,24 @@ partial class Form1
         inventoryTab.TabIndex = 2;
         inventoryTab.Text = "Инвентарь";
         inventoryTab.UseVisualStyleBackColor = true;
+        // 
+        // inventoryScroll
+        // 
+        inventoryScroll.Location = new Point(442, 0);
+        inventoryScroll.Name = "inventoryScroll";
+        inventoryScroll.Size = new Size(17, 695);
+        inventoryScroll.TabIndex = 4;
+        inventoryScroll.Scroll += inventoryScroll_Scroll;
+        // 
+        // AddEquipment
+        // 
+        AddEquipment.Location = new Point(764, 6);
+        AddEquipment.Name = "AddEquipment";
+        AddEquipment.Size = new Size(161, 23);
+        AddEquipment.TabIndex = 3;
+        AddEquipment.Text = "Добавить снаряжение";
+        AddEquipment.UseVisualStyleBackColor = true;
+        AddEquipment.Click += AddEquipment_Click;
         // 
         // SkillPanel
         // 
@@ -721,16 +741,6 @@ partial class Form1
         Money_numeric.Size = new Size(107, 23);
         Money_numeric.TabIndex = 15;
         Money_numeric.ValueChanged += Money_numeric_ValueChanged;
-        // 
-        // AddEquipment
-        // 
-        AddEquipment.Location = new Point(764, 6);
-        AddEquipment.Name = "AddEquipment";
-        AddEquipment.Size = new Size(161, 23);
-        AddEquipment.TabIndex = 3;
-        AddEquipment.Text = "Добавить снаряжение";
-        AddEquipment.UseVisualStyleBackColor = true;
-        AddEquipment.Click += AddEquipment_Click;
         // 
         // Form1
         // 
@@ -849,4 +859,5 @@ partial class Form1
     private Button add_cyberware_button;
     private TabPage inventoryTab;
     private Button AddEquipment;
+    private VScrollBar inventoryScroll;
 }
