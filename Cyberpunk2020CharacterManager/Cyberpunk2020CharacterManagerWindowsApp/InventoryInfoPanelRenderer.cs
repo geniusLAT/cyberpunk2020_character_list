@@ -21,12 +21,24 @@ public partial class Form1 : Form
 
         if (_clickedInventoryLabel != null)
         {
-            ((Panel)_clickedInventoryLabel.Parent).BackColor = Color.White;
-            _clickedInventoryLabel.ForeColor = Color.Black;
+            Panel oldPanel = (Panel)_clickedInventoryLabel.Parent;
+            oldPanel.BackColor = Color.White;
+            recolorChildrenLabels(oldPanel, Color.Black);
         }
-        ((Panel)control.Parent).BackColor = Color.Blue;
+        Panel newPanel = (Panel)control.Parent;
+        (newPanel).BackColor = Color.Blue;
         _clickedInventoryLabel = (Label)control;
-        _clickedInventoryLabel.ForeColor = Color.White;
+        recolorChildrenLabels(newPanel, Color.White);
+    }
+
+    void recolorChildrenLabels(Panel panel, Color color)
+    {
+        foreach (var child in panel.Controls) {
+            if (child is Label) 
+            {
+                ((Label)child).ForeColor = color;
+            }
+        }
     }
 
     private void ChooseEquipment(Equipment equipment)
