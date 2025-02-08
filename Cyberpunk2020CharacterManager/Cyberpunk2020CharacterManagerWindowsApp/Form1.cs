@@ -48,7 +48,7 @@ public partial class Form1 : Form
         _chosenCharacter.createStep = CreateStep.finished;
         _chosenCharacter.BodyParts.Add(new NasalFilters());
         RenderCyberwares(0, 0);
-        for (var i = 0; i < 100; i++)
+        for (var i = 0; i < 1; i++)
         {
             _chosenCharacter.equipments.Add(new CellularPhone());
             _chosenCharacter.equipments.Add(new MastoidCommo());
