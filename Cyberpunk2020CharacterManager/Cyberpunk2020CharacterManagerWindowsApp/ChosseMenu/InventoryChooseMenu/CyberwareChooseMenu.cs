@@ -135,6 +135,7 @@ internal partial class InventoryChooseMenu : Form
         equipmentQuantityNumerucUpDown.Size = new Size(120, 23);
         equipmentQuantityNumerucUpDown.TabIndex = 8;
         equipmentQuantityNumerucUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        equipmentQuantityNumerucUpDown.ValueChanged += equipmentQuantityNumerucUpDown_ValueChanged;
         // 
         // label1
         // 
@@ -206,7 +207,7 @@ internal partial class InventoryChooseMenu : Form
 
     private void radioButton2_CheckedChanged(object sender, EventArgs e)
     {
-        if(_chosenEquipment is null) return;
+        if (_chosenEquipment is null) return;
         add_chosen_cyberware_button.Text = "Получить";
         buingMode = false;
         LookForProblemForEquipment(_chosenEquipment);
@@ -218,5 +219,11 @@ internal partial class InventoryChooseMenu : Form
         add_chosen_cyberware_button.Text = "Купить";
         buingMode = true;
         LookForProblemForEquipment(_chosenEquipment);
+    }
+
+    private void equipmentQuantityNumerucUpDown_ValueChanged(object sender, EventArgs e)
+    {
+        _chosenEquipment.Quantity = (int)equipmentQuantityNumerucUpDown.Value;
+        LookForProblemForEquipment( _chosenEquipment);
     }
 }

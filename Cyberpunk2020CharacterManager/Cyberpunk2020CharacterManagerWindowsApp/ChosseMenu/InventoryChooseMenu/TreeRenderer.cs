@@ -179,9 +179,11 @@ internal partial class InventoryChooseMenu : Form
 
     private string PricePotentialProblem(Equipment equipmentItem)
     {
-        if (equipmentItem.Cost * equipmentItem.Quantity > _character.CurrentMoney && buingMode)
+        var moneyNeeded = equipmentItem.Cost *equipmentItem.Quantity;
+        if (moneyNeeded > _character.CurrentMoney && buingMode)
         {
-            return $"\nДля покупки не хватает {equipmentItem.Cost - _character.CurrentMoney} евродолларов.";
+            var quntityNote = equipmentItem.Quantity != 1 ? $"({equipmentItem.Quantity} шт.)" : string.Empty;
+            return $"\nДля покупки {quntityNote} не хватает {moneyNeeded - _character.CurrentMoney} евродолларов.";
         }
         return string.Empty;
     }
