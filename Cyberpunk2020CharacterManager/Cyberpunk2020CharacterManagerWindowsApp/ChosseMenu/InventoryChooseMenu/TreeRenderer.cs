@@ -127,11 +127,28 @@ internal partial class InventoryChooseMenu : Form
         equipmentQuantityNumerucUpDown.Value = 1;
         radioButton1.Checked = true;
 
+        var extraCostNote = string.Empty;
+        if (equipmentItem.MaxCost is not null)
+        {
+            extraCostNote = $"-{equipmentItem.MaxCost}";
+        }
+
         Implant_Description.Text = equipmentItem.Name +
-            $"\n\nСтоимость: {equipmentItem.Cost} \n\n"
+            $"\n\nСтоимость: {equipmentItem.Cost}{extraCostNote} \n\n"
             + equipmentItem.Description;
 
-
+        if(equipmentItem.MaxCost is null)
+        {
+            ExtraCostTrackBar.Enabled = ExtraCostTrackBar.Visible = ExtraCostLabel.Visible = false;
+        }
+        else
+        {
+            ExtraCostLabel.Text = $"Цена: {equipmentItem.Cost}";
+            ExtraCostTrackBar.Enabled = ExtraCostTrackBar.Visible = ExtraCostLabel.Visible = true;
+            ExtraCostTrackBar.Minimum = equipmentItem.Cost;
+            ExtraCostTrackBar.Value = equipmentItem.Cost;
+            ExtraCostTrackBar.Maximum = equipmentItem.MaxCost ?? 0;
+        }
 
         //var potentialsParents = equipmentItem.PotentialParents(_character);
 
@@ -183,7 +200,14 @@ internal partial class InventoryChooseMenu : Form
 
     private string PricePotentialProblem(Equipment equipmentItem)
     {
-        var moneyNeeded = equipmentItem.Cost *equipmentItem.Quantity;
+
+        var practicalCostPerOne = equipmentItem.Cost;
+
+        if (ExtraCostTrackBar.Enabled)
+        {
+            practicalCostPerOne = ExtraCostTrackBar.Value;
+        }
+        var moneyNeeded = practicalCostPerOne * equipmentItem.Quantity;
         if (moneyNeeded > _character.CurrentMoney && buingMode)
         {
             var quntityNote = equipmentItem.Quantity != 1 ? $"({equipmentItem.Quantity} шт.)" : string.Empty;

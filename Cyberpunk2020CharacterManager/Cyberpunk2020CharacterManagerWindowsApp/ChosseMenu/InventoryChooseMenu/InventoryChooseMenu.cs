@@ -20,6 +20,8 @@ internal partial class InventoryChooseMenu : Form
     private RadioButton radioButton2;
     private NumericUpDown equipmentQuantityNumerucUpDown;
     private Label label1;
+    private TrackBar ExtraCostTrackBar;
+    private Label ExtraCostLabel;
     private readonly Random _random = new();
 
     public InventoryChooseMenu(Form1 form1, Character character)
@@ -47,7 +49,10 @@ internal partial class InventoryChooseMenu : Form
         radioButton2 = new RadioButton();
         equipmentQuantityNumerucUpDown = new NumericUpDown();
         label1 = new Label();
+        ExtraCostTrackBar = new TrackBar();
+        ExtraCostLabel = new Label();
         ((System.ComponentModel.ISupportInitialize)equipmentQuantityNumerucUpDown).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)ExtraCostTrackBar).BeginInit();
         SuspendLayout();
         // 
         // add_chosen_cyberware_button
@@ -72,9 +77,9 @@ internal partial class InventoryChooseMenu : Form
         Implant_Description.AutoSize = true;
         Implant_Description.ImageAlign = ContentAlignment.TopLeft;
         Implant_Description.Location = new Point(278, 47);
-        Implant_Description.MaximumSize = new Size(268, 300);
+        Implant_Description.MaximumSize = new Size(268, 260);
         Implant_Description.Name = "Implant_Description";
-        Implant_Description.Size = new Size(268, 300);
+        Implant_Description.Size = new Size(268, 260);
         Implant_Description.TabIndex = 2;
         Implant_Description.Text = resources.GetString("Implant_Description.Text");
         Implant_Description.Click += Implant_Description_Click;
@@ -146,9 +151,28 @@ internal partial class InventoryChooseMenu : Form
         label1.TabIndex = 9;
         label1.Text = "Количество:";
         // 
+        // ExtraCostTrackBar
+        // 
+        ExtraCostTrackBar.Location = new Point(407, 310);
+        ExtraCostTrackBar.Name = "ExtraCostTrackBar";
+        ExtraCostTrackBar.Size = new Size(134, 45);
+        ExtraCostTrackBar.TabIndex = 10;
+        ExtraCostTrackBar.Scroll += ExtraCostTrackBar_Scroll;
+        // 
+        // ExtraCostLabel
+        // 
+        ExtraCostLabel.AutoSize = true;
+        ExtraCostLabel.Location = new Point(279, 321);
+        ExtraCostLabel.Name = "ExtraCostLabel";
+        ExtraCostLabel.Size = new Size(38, 15);
+        ExtraCostLabel.TabIndex = 11;
+        ExtraCostLabel.Text = "label2";
+        // 
         // InventoryChooseMenu
         // 
         ClientSize = new Size(553, 617);
+        Controls.Add(ExtraCostLabel);
+        Controls.Add(ExtraCostTrackBar);
         Controls.Add(label1);
         Controls.Add(equipmentQuantityNumerucUpDown);
         Controls.Add(radioButton2);
@@ -161,6 +185,7 @@ internal partial class InventoryChooseMenu : Form
         Name = "InventoryChooseMenu";
         Text = "Добавление снаряжения";
         ((System.ComponentModel.ISupportInitialize)equipmentQuantityNumerucUpDown).EndInit();
+        ((System.ComponentModel.ISupportInitialize)ExtraCostTrackBar).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -179,6 +204,10 @@ internal partial class InventoryChooseMenu : Form
         //{
         //    _chosenEquipment!.BodyPlace = parents[potentialParentComboBox.SelectedIndex].Guid;
         //}
+        if (ExtraCostTrackBar.Enabled)
+        {
+            _chosenEquipment.Cost = ExtraCostTrackBar.Value;
+        }
 
         if (buingMode)
         {
@@ -224,6 +253,12 @@ internal partial class InventoryChooseMenu : Form
     private void equipmentQuantityNumerucUpDown_ValueChanged(object sender, EventArgs e)
     {
         _chosenEquipment.Quantity = (int)equipmentQuantityNumerucUpDown.Value;
-        LookForProblemForEquipment( _chosenEquipment);
+        LookForProblemForEquipment(_chosenEquipment);
+    }
+
+    private void ExtraCostTrackBar_Scroll(object sender, EventArgs e)
+    {
+        ExtraCostLabel.Text = $"Цена: {ExtraCostTrackBar.Value}";
+        LookForProblemForEquipment(_chosenEquipment);
     }
 }

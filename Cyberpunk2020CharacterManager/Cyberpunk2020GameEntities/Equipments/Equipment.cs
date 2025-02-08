@@ -8,6 +8,8 @@ public abstract class Equipment
 
     public int Cost { get; set; }
 
+    public int? MaxCost { get; set; }
+
     public int Quantity { get; set; } = 1;
 
     public string Description { get; set; } = string.Empty;
