@@ -4,6 +4,8 @@ public class BreathingMask : Equipment
 {
     public override string Name { get { return "Дыхательная маска"; } }
 
+    public override int BookIndex { get; set; } = 11;
+
     public BreathingMask()
     {
         Description = "распространённая среди стрит-арт художников. " +

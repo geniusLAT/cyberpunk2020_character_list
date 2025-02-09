@@ -4,6 +4,8 @@ public class CuttingTorch : Equipment
 {
     public override string Name { get { return "Газовый резак"; } }
 
+    public override int BookIndex { get; set; } = 2;
+
     public CuttingTorch()
     {
         Description = "обычно кислородноацетиленовая смесь в ручном баллоне, около 30 см в длину. " +

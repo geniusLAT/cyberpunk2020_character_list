@@ -4,6 +4,8 @@ public class Glowstick : Equipment
 {
     public override string Name { get { return "Светящаяся палочка"; } }
 
+    public override int BookIndex { get; set; } = 7;
+
     public Glowstick()
     {
         Description = " химический источник света в 15 см трубке. " +
