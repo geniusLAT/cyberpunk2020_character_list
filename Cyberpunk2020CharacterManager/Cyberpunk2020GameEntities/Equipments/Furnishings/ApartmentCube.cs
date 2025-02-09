@@ -4,6 +4,8 @@ public class ApartmentCube : Equipment
 {
     public override string Name { get { return "Квартира-Куб"; } }
 
+    public override int BookIndex { get; set; } = 6;
+
     public ApartmentCube()
     {
         Description = "жилой модуль 3х3х2,4 метра, в котором вся основная мебель и техника спрятаны в скрытых углублениях " +

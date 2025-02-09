@@ -33,7 +33,6 @@ internal partial class InventoryChooseMenu : Form
                     var instance = CreateInstance(type.FullName);
                     if (instance is Equipment) 
                     {
-                        //MessageBox.Show($"{instance.GetType() == type}");
                         exampleInstances.Add(instance);
                     }
                 }

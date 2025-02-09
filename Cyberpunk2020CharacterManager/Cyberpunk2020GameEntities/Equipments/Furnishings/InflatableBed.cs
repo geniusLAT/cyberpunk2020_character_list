@@ -4,6 +4,8 @@ public class InflatableBed : Equipment
 {
     public override string Name { get { return "Надувной матрас"; } }
 
+    public override int BookIndex { get; set; } = 2;
+
     public InflatableBed()
     {
         Description = "самонадувающийся пакет с высокой степенью сжатия. Около 15 х 5 х 10 см в сложенном состоянии.";
