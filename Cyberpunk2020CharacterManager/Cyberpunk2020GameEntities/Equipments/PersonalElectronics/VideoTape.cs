@@ -4,6 +4,8 @@ public class VideoTape : Equipment
 {
     public override string Name { get { return "Видео плёнка"; } }
 
+    public override int BookIndex { get; set; } = 8;
+
     public VideoTape()
     {
         Description = "   для Видеокамеры. Примечание: " +

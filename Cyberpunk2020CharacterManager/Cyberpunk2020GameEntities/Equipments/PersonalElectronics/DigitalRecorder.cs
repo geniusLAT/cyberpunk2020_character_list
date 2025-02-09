@@ -4,6 +4,8 @@ public class DigitalRecorder : Equipment
 {
     public override string Name { get { return "Цифровой диктофон"; } }
 
+    public override int BookIndex { get; set; } = 4;
+
     public DigitalRecorder()
     {
         Description = " устройство записи звука, использующее технологию чипов данных. Большинство из" +

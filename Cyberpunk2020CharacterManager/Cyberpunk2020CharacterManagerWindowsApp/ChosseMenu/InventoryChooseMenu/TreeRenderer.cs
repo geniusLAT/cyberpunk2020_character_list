@@ -17,6 +17,7 @@ internal partial class InventoryChooseMenu : Form
 
     private Dictionary<string, string> GetDictionaryForTreeReflected(string baseDirectory)
     {
+        List<Equipment> exampleInstances = [];
         Dictionary<string, string> result = [];
 
         var assembly = Assembly.Load("Cyberpunk2020GameEntities");
@@ -32,7 +33,8 @@ internal partial class InventoryChooseMenu : Form
                     var instance = CreateInstance(type.FullName);
                     if (instance is Equipment) 
                     {
-                        result.Add(type.FullName, instance.Name);
+                        //MessageBox.Show($"{instance.GetType() == type}");
+                        exampleInstances.Add(instance);
                     }
                 }
                 catch (Exception ex) 
@@ -40,6 +42,11 @@ internal partial class InventoryChooseMenu : Form
                     continue;
                 }
             }
+        }
+        exampleInstances.Sort();
+        foreach (var instance in exampleInstances)
+        {
+            result.Add(instance.GetType().FullName, instance.Name);
         }
         return result;
     }

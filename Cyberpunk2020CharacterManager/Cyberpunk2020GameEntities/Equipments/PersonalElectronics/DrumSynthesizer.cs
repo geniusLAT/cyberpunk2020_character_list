@@ -4,6 +4,8 @@ public class DrumSynthesizer : Equipment
 {
     public override string Name { get { return "Синтезатор ударных"; } }
 
+    public override int BookIndex { get; set; } = 14;
+
     public DrumSynthesizer()
     {
         Description = "обычное музыкальное оборудование \"новой волны\". Серия ударных пластин и звуковой блок. " +

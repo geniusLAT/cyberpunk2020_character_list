@@ -4,6 +4,8 @@ public class DigitalMusicChip : Equipment
 {
     public override string Name { get { return "Цифровой Музыкальный Чип)"; } }
 
+    public override int BookIndex { get; set; } = 11;
+
     public DigitalMusicChip()
     {
         Description = " от 1 до 6 любимых поп-альбомов (или любой другой музыки) " +

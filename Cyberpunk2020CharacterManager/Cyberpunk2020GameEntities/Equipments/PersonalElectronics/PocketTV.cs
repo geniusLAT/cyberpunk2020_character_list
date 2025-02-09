@@ -4,6 +4,8 @@ public class PocketTV : Equipment
 {
     public override string Name { get { return "Карманный телевизор"; } }
 
+    public override int BookIndex { get; set; } = 9;
+
     public PocketTV()
     {
         Description = " использует монитор с плоским экраном, в корпусе 12 х 12 х 2 см или меньше. " +

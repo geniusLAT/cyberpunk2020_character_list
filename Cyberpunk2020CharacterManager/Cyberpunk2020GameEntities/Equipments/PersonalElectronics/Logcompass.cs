@@ -4,6 +4,8 @@ public class Logcompass : Equipment
 {
     public override string Name { get { return "Лог-компас"; } }
 
+    public override int BookIndex { get; set; } = 3;
+
     public Logcompass()
     {
         Description = " вид программируемого инерционного компаса, который" +

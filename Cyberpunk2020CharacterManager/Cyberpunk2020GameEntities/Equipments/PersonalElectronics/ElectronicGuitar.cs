@@ -4,6 +4,8 @@ public class ElectronicGuitar : Equipment
 {
     public override string Name { get { return "Электрогитара"; } }
 
+    public override int BookIndex { get; set; } = 12;
+
     public ElectronicGuitar()
     {
         Description = "больше не классический \"топор\", теперь она легче, " +

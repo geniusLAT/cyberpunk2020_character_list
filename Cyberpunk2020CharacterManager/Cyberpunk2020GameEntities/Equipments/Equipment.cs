@@ -1,6 +1,6 @@
 ﻿namespace Cyberpunk2020GameEntities.Equipments;
 
-public abstract class Equipment
+public abstract class Equipment : IComparable<Equipment>
 {
     public Guid Guid { get; set; } = new Guid();
 
@@ -20,6 +20,14 @@ public abstract class Equipment
     //{
     //    return null;
     //}
+
+    public virtual int BookIndex { get; set; }
+
+    public virtual int CompareTo(Equipment other)
+    {
+        if (other == null) return 1; 
+        return this.BookIndex.CompareTo(other.BookIndex); 
+    }
 
     public virtual void Add(Character character, Random random)
     {

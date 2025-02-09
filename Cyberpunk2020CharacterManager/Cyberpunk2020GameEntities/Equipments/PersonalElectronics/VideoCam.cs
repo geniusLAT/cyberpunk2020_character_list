@@ -4,6 +4,8 @@ public class VideoCam : Equipment, IPotentialUnlimitedCost
 {
     public override string Name { get { return "Видеокамера"; } }
 
+    public override int BookIndex { get; set; } = 6;
+
     public VideoCam()
     {
         Description = "  может быть установлена на гарнитуре, зажиме на плече или на руке в зависимости от" +
