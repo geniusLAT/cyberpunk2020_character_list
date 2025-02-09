@@ -229,8 +229,7 @@ internal partial class InventoryChooseMenu : Form
 
     private string PricePotentialProblem(Equipment equipmentItem)
     {
-
-        var practicalCostPerOne = equipmentItem.Cost;
+        var practicalCostPerOne = equipmentItem.Cost * equipmentItem.GetOptionPriceModifier(potentialOptionComboBox.Text);
 
         if (ExtraCostTrackBar.Enabled)
         {

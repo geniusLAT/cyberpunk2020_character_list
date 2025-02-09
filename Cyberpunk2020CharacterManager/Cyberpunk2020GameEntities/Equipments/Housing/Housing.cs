@@ -1,7 +1,10 @@
-﻿namespace Cyberpunk2020GameEntities.Equipments.Housing;
+﻿
+namespace Cyberpunk2020GameEntities.Equipments.Housing;
 
 public abstract class Housing : Equipment
 {
+    string lastOptionChosen = string.Empty;
+
     static Dictionary<string, int> HousingLocation = new Dictionary<string, int>()
     {
         {"Боевая зона (1х цена)",1 },
@@ -18,5 +21,24 @@ public abstract class Housing : Equipment
             result.Add(item.Key);
         }
         return result;
+    }
+
+    public override int GetOptionPriceModifier(string option)
+    {
+        var PriceModifier = 1;
+        HousingLocation.TryGetValue(option, out PriceModifier);
+        return PriceModifier;
+    }
+
+    public override void ChangeOption(string newOption)
+    {
+        lastOptionChosen = newOption;
+    }
+
+    public override void Add(Character character, Random random)
+    {
+        Detail += lastOptionChosen;
+        Cost *= GetOptionPriceModifier(lastOptionChosen);
+        base.Add(character, random);    
     }
 }

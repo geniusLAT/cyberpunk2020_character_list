@@ -209,6 +209,8 @@ internal partial class InventoryChooseMenu : Form
             _chosenEquipment.Cost = ExtraCostTrackBar.Value;
         }
 
+        _chosenEquipment.ChangeOption(potentialOptionComboBox.Text);
+
         if (buingMode)
         {
             _chosenEquipment.Buy(_character, _random);
@@ -224,7 +226,11 @@ internal partial class InventoryChooseMenu : Form
 
     private void potentialParentComboBox_SelectedIndexChanged(object sender, EventArgs e)
     {
-
+        if (_chosenEquipment is not null)
+        {
+            _chosenEquipment.ChangeOption(potentialOptionComboBox.Text);
+            LookForProblemForEquipment(_chosenEquipment);
+        }
     }
 
     private void Implant_Description_Click(object sender, EventArgs e)
