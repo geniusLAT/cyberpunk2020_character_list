@@ -45,7 +45,7 @@ public partial class Form1 : Form
     {
         _chosenEquipment = equipment;
 
-        chosenEquipmentNameLabel.Text = equipment.Name;
+        chosenEquipmentNameLabel.Text = $"{equipment.Name} {equipment.Detail}";
         chosenEquipmentCostLabel.Text = $"Цена за штуку: {equipment.Cost} ed";
         chosenEquipmentDescriptionLabel.Text = equipment.Description;
     }

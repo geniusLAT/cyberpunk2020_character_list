@@ -19,7 +19,7 @@ public partial class Form1 : Form
         nameLabel.Name = i.ToString();
         nameLabel.Click += new EventHandler(EquipmentLabel_Click);
         nameLabel.Size = new Size(text_size, pixelsForOneEquipmentPanel);
-        nameLabel.Text = equipment.Name;
+        nameLabel.Text = $"{equipment.Name} {equipment.Detail}";
        
         Label quantityLabel = new Label();
         quantityLabel.Name = i.ToString();
