@@ -1,12 +1,12 @@
 ﻿namespace Cyberpunk2020GameEntities.Equipments.PersonalElectronics;
 
-public class ElectronicGuitar : Equipment
+public class ElectricGuitar : Equipment
 {
     public override string Name { get { return "Электрогитара"; } }
 
     public override int BookIndex { get; set; } = 12;
 
-    public ElectronicGuitar()
+    public ElectricGuitar()
     {
         Description = "больше не классический \"топор\", теперь она легче, " +
             "более гибкая в применении, а иногда даже в не опознаваемой форме." +
