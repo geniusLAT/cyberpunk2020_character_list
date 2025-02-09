@@ -159,6 +159,7 @@ internal partial class InventoryChooseMenu : Form
             {
                 potentialOptionComboBox.Items.Add(option);
             }
+            potentialOptionComboBox.SelectedIndex = 0;
         }
         else
         {

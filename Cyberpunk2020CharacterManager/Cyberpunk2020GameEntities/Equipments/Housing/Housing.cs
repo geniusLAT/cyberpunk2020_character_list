@@ -1,13 +1,13 @@
 ﻿namespace Cyberpunk2020GameEntities.Equipments.Housing;
 
-public class Housing : Equipment
+public abstract class Housing : Equipment
 {
     static Dictionary<string, int> HousingLocation = new Dictionary<string, int>()
     {
-        {"Боевая зона",1 },
-        {"Умеренная зона", 2},
-        {"Корпоративная зона", 4},
-        {"зона для должностных лиц", 6},
+        {"Боевая зона (1х цена)",1 },
+        {"Умеренная зона (2х цена)", 2},
+        {"Корпоративная зона (4х цена)", 4},
+        {"зона для должностных лиц (6х цена)", 6},
     };
 
     public override List<string> GetOptions()
