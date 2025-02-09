@@ -4,6 +4,8 @@ public class LightBoosterGoggles : Equipment
 {
     public override string Name { get { return "Усиливающие свет очки"; } }
 
+    public override int BookIndex { get; set; } = 3;
+
     public LightBoosterGoggles()
     {
         Description = "усилители света, усиливающие окружающий свет для ночного видения с помощью технологии" +

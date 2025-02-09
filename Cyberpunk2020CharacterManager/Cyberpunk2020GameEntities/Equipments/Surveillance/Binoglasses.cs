@@ -4,6 +4,8 @@ public class Binoglasses : Equipment
 {
     public override string Name { get { return "Очки-бинокли"; } }
 
+    public override int BookIndex { get; set; } = 0;
+
     public Binoglasses()
     {
         Description = "эти высокотехнологичные средства визуального наблюдения" +
