@@ -28,6 +28,7 @@ partial class Form1
     /// </summary>
     private void InitializeComponent()
     {
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
         panel1 = new Panel();
         Extra_stat_label = new Label();
         label14 = new Label();
@@ -76,6 +77,14 @@ partial class Form1
         add_cyberware_button = new Button();
         humanity_counter_label = new Label();
         inventoryTab = new TabPage();
+        inventoryInfoPanel = new Panel();
+        RemoveEquipmentButton = new Button();
+        chosenEquipmentDescriptionLabel = new Label();
+        chosenEquipmentQuantityLabel = new Label();
+        chosenEquipmentCostLabel = new Label();
+        chosenEquipmentNameLabel = new Label();
+        inventoryScrollPanel = new Panel();
+        AddEquipment = new Button();
         SkillPanel = new Panel();
         label18 = new Label();
         label17 = new Label();
@@ -85,7 +94,7 @@ partial class Form1
         CommentLabel = new Label();
         MoneyLabel = new Label();
         Money_numeric = new NumericUpDown();
-        AddEquipment = new Button();
+        inventoryListTitleLabel = new Label();
         panel1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)global_emp_numeric).BeginInit();
         ((System.ComponentModel.ISupportInitialize)cur_emp_numeric).BeginInit();
@@ -106,6 +115,7 @@ partial class Form1
         tabPage1.SuspendLayout();
         tabPage2.SuspendLayout();
         inventoryTab.SuspendLayout();
+        inventoryInfoPanel.SuspendLayout();
         SkillPanel.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)skillNumeric2).BeginInit();
         ((System.ComponentModel.ISupportInitialize)Skill_numeric).BeginInit();
@@ -617,6 +627,9 @@ partial class Form1
         // 
         // inventoryTab
         // 
+        inventoryTab.Controls.Add(inventoryListTitleLabel);
+        inventoryTab.Controls.Add(inventoryInfoPanel);
+        inventoryTab.Controls.Add(inventoryScrollPanel);
         inventoryTab.Controls.Add(AddEquipment);
         inventoryTab.Location = new Point(4, 24);
         inventoryTab.Name = "inventoryTab";
@@ -625,6 +638,83 @@ partial class Form1
         inventoryTab.TabIndex = 2;
         inventoryTab.Text = "Инвентарь";
         inventoryTab.UseVisualStyleBackColor = true;
+        // 
+        // inventoryInfoPanel
+        // 
+        inventoryInfoPanel.Controls.Add(RemoveEquipmentButton);
+        inventoryInfoPanel.Controls.Add(chosenEquipmentDescriptionLabel);
+        inventoryInfoPanel.Controls.Add(chosenEquipmentQuantityLabel);
+        inventoryInfoPanel.Controls.Add(chosenEquipmentCostLabel);
+        inventoryInfoPanel.Controls.Add(chosenEquipmentNameLabel);
+        inventoryInfoPanel.Location = new Point(445, 48);
+        inventoryInfoPanel.Name = "inventoryInfoPanel";
+        inventoryInfoPanel.Size = new Size(479, 635);
+        inventoryInfoPanel.TabIndex = 6;
+        // 
+        // RemoveEquipmentButton
+        // 
+        RemoveEquipmentButton.Location = new Point(20, 4);
+        RemoveEquipmentButton.Name = "RemoveEquipmentButton";
+        RemoveEquipmentButton.Size = new Size(160, 23);
+        RemoveEquipmentButton.TabIndex = 7;
+        RemoveEquipmentButton.Text = "Отказаться от снаряжения";
+        RemoveEquipmentButton.UseVisualStyleBackColor = true;
+        // 
+        // chosenEquipmentDescriptionLabel
+        // 
+        chosenEquipmentDescriptionLabel.AutoSize = true;
+        chosenEquipmentDescriptionLabel.Location = new Point(20, 110);
+        chosenEquipmentDescriptionLabel.MaximumSize = new Size(450, 450);
+        chosenEquipmentDescriptionLabel.Name = "chosenEquipmentDescriptionLabel";
+        chosenEquipmentDescriptionLabel.Size = new Size(448, 450);
+        chosenEquipmentDescriptionLabel.TabIndex = 3;
+        chosenEquipmentDescriptionLabel.Text = resources.GetString("chosenEquipmentDescriptionLabel.Text");
+        chosenEquipmentDescriptionLabel.Click += chosenEquipmentDescriptionLabel_Click;
+        // 
+        // chosenEquipmentQuantityLabel
+        // 
+        chosenEquipmentQuantityLabel.AutoSize = true;
+        chosenEquipmentQuantityLabel.Location = new Point(20, 80);
+        chosenEquipmentQuantityLabel.Name = "chosenEquipmentQuantityLabel";
+        chosenEquipmentQuantityLabel.Size = new Size(44, 15);
+        chosenEquipmentQuantityLabel.TabIndex = 2;
+        chosenEquipmentQuantityLabel.Text = "label20";
+        // 
+        // chosenEquipmentCostLabel
+        // 
+        chosenEquipmentCostLabel.AutoSize = true;
+        chosenEquipmentCostLabel.Location = new Point(20, 55);
+        chosenEquipmentCostLabel.Name = "chosenEquipmentCostLabel";
+        chosenEquipmentCostLabel.Size = new Size(44, 15);
+        chosenEquipmentCostLabel.TabIndex = 1;
+        chosenEquipmentCostLabel.Text = "label20";
+        // 
+        // chosenEquipmentNameLabel
+        // 
+        chosenEquipmentNameLabel.AutoSize = true;
+        chosenEquipmentNameLabel.Location = new Point(20, 30);
+        chosenEquipmentNameLabel.Name = "chosenEquipmentNameLabel";
+        chosenEquipmentNameLabel.Size = new Size(44, 15);
+        chosenEquipmentNameLabel.TabIndex = 0;
+        chosenEquipmentNameLabel.Text = "label20";
+        // 
+        // inventoryScrollPanel
+        // 
+        inventoryScrollPanel.AutoScroll = true;
+        inventoryScrollPanel.Location = new Point(2, 20);
+        inventoryScrollPanel.Name = "inventoryScrollPanel";
+        inventoryScrollPanel.Size = new Size(437, 663);
+        inventoryScrollPanel.TabIndex = 5;
+        // 
+        // AddEquipment
+        // 
+        AddEquipment.Location = new Point(764, 6);
+        AddEquipment.Name = "AddEquipment";
+        AddEquipment.Size = new Size(161, 23);
+        AddEquipment.TabIndex = 3;
+        AddEquipment.Text = "Добавить снаряжение";
+        AddEquipment.UseVisualStyleBackColor = true;
+        AddEquipment.Click += AddEquipment_Click;
         // 
         // SkillPanel
         // 
@@ -722,15 +812,14 @@ partial class Form1
         Money_numeric.TabIndex = 15;
         Money_numeric.ValueChanged += Money_numeric_ValueChanged;
         // 
-        // AddEquipment
+        // inventoryListTitleLabel
         // 
-        AddEquipment.Location = new Point(764, 6);
-        AddEquipment.Name = "AddEquipment";
-        AddEquipment.Size = new Size(161, 23);
-        AddEquipment.TabIndex = 3;
-        AddEquipment.Text = "Добавить снаряжение";
-        AddEquipment.UseVisualStyleBackColor = true;
-        AddEquipment.Click += AddEquipment_Click;
+        inventoryListTitleLabel.AutoSize = true;
+        inventoryListTitleLabel.Location = new Point(6, 3);
+        inventoryListTitleLabel.Name = "inventoryListTitleLabel";
+        inventoryListTitleLabel.Size = new Size(421, 15);
+        inventoryListTitleLabel.TabIndex = 8;
+        inventoryListTitleLabel.Text = "Название                                                                                                   Количество";
         // 
         // Form1
         // 
@@ -780,6 +869,9 @@ partial class Form1
         tabPage2.ResumeLayout(false);
         tabPage2.PerformLayout();
         inventoryTab.ResumeLayout(false);
+        inventoryTab.PerformLayout();
+        inventoryInfoPanel.ResumeLayout(false);
+        inventoryInfoPanel.PerformLayout();
         SkillPanel.ResumeLayout(false);
         SkillPanel.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)skillNumeric2).EndInit();
@@ -849,4 +941,12 @@ partial class Form1
     private Button add_cyberware_button;
     private TabPage inventoryTab;
     private Button AddEquipment;
+    private Panel inventoryScrollPanel;
+    private Panel inventoryInfoPanel;
+    private Label chosenEquipmentDescriptionLabel;
+    private Label chosenEquipmentQuantityLabel;
+    private Label chosenEquipmentCostLabel;
+    private Label chosenEquipmentNameLabel;
+    private Button RemoveEquipmentButton;
+    private Label inventoryListTitleLabel;
 }

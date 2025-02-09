@@ -3,6 +3,7 @@ using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
 using Cyberpunk2020GameEntities;
 using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
+using Cyberpunk2020GameEntities.Equipments.Communications;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp;
 
@@ -18,6 +19,8 @@ public partial class Form1 : Form
     private Character? _chosenCharacter = null;
 
     private List<Panel> _panels = [];
+
+    private List<Panel> _inventoryPanels = [];
 
     public Form1()
     {
@@ -39,12 +42,19 @@ public partial class Form1 : Form
         const_num_numeric.Visible = false;
         RenderSkills(31, 178);
 
-        //test block
-        _chosenCharacter = new Character();
-        _chosenCharacter.CurrentMoney = 1000000;
-        _chosenCharacter.createStep = CreateStep.finished;
-        _chosenCharacter.BodyParts.Add(new NasalFilters());
-        RenderCyberwares(0, 0);
+        ////test block
+        //_chosenCharacter = new Character();
+        //_chosenCharacter.CurrentMoney = 100;// 0000;
+        //_chosenCharacter.createStep = CreateStep.finished;
+        //_chosenCharacter.BodyParts.Add(new NasalFilters());
+        //RenderCyberwares(0, 0);
+        //for (var i = 0; i < 1; i++)
+        //{
+        //    _chosenCharacter.equipments.Add(new CellularPhone());
+        //    _chosenCharacter.equipments.Add(new MastoidCommo());
+        //}
+
+        //RenderInventory(31, 178);
     }
 
     bool IsProfessionalSkill(string skill)
@@ -811,6 +821,13 @@ public partial class Form1 : Form
         Money_numeric.Value = _chosenCharacter!.CurrentMoney;
     }
 
+    public void EquipmentChanged()
+    {
+        RenderInventory(0, 0);
+
+        Money_numeric.Value = _chosenCharacter!.CurrentMoney;
+    }
+
     private void AddEquipment_Click(object sender, EventArgs e)
     {
         if (_chosenCharacter is null)
@@ -827,5 +844,10 @@ public partial class Form1 : Form
 
         InventoryChooseMenu inventoryChooseMenu = new(this, _chosenCharacter);
         inventoryChooseMenu.ShowDialog();
+    }
+
+    private void chosenEquipmentDescriptionLabel_Click(object sender, EventArgs e)
+    {
+
     }
 }

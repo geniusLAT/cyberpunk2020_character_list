@@ -1,7 +1,4 @@
-﻿using Cyberpunk2020GameEntities;
-using Cyberpunk2020GameEntities.Cybernetics;
-using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
-using Cyberpunk2020GameEntities.Equipments;
+﻿using Cyberpunk2020GameEntities.Equipments;
 using System.Reflection;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
@@ -17,6 +14,7 @@ internal partial class InventoryChooseMenu : Form
 
     private Dictionary<string, string> GetDictionaryForTreeReflected(string baseDirectory)
     {
+        List<Equipment> exampleInstances = [];
         Dictionary<string, string> result = [];
 
         var assembly = Assembly.Load("Cyberpunk2020GameEntities");
@@ -32,7 +30,7 @@ internal partial class InventoryChooseMenu : Form
                     var instance = CreateInstance(type.FullName);
                     if (instance is Equipment) 
                     {
-                        result.Add(type.FullName, instance.Name);
+                        exampleInstances.Add(instance);
                     }
                 }
                 catch (Exception ex) 
@@ -41,10 +39,15 @@ internal partial class InventoryChooseMenu : Form
                 }
             }
         }
+        exampleInstances.Sort();
+        foreach (var instance in exampleInstances)
+        {
+            result.Add(instance.GetType().FullName, instance.Name);
+        }
         return result;
     }
 
-    private void RenderTreePart(string TreePartName, Dictionary<string, string> valuePairs)
+    private void RenderTreePart(TreeNode? higherNode,string TreePartName, Dictionary<string, string> valuePairs)
     {
         TreeNode rootNode = new(TreePartName)
         {
@@ -59,8 +62,14 @@ internal partial class InventoryChooseMenu : Form
             };
             rootNode.Nodes.Add(childNode);
         }
-
-        AvaliableCyberWareTreeView.Nodes.Add(rootNode);
+        if (higherNode != null)
+        {
+            higherNode.Nodes.Add(rootNode);
+        }
+        else
+        {
+            AvaliableCyberWareTreeView.Nodes.Add(rootNode);
+        }
     }
 
     private void PopulateTreeView()
@@ -68,18 +77,33 @@ internal partial class InventoryChooseMenu : Form
        
         AvaliableCyberWareTreeView.Nodes.Clear();
 
-        RenderTreePart("Связь", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Communications"));
-        //RenderTreePart("Кибер-оснащение, размещенное в теле", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody"));
+        TreeNode rootNode = new("Лист снаряжения")
+        {
+            Name = "Лист снаряжения"
+        };
+        AvaliableCyberWareTreeView.Nodes.Add(rootNode);
+
+        RenderTreePart(rootNode, "Инструменты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Tools"));
+        RenderTreePart(rootNode, "Личная Электроника", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.PersonalElectronics"));
+        RenderTreePart(rootNode, "DataSystems", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.DataSystems"));
+        RenderTreePart(rootNode, "Связь", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Communications"));
+        RenderTreePart(rootNode, "Наблюдение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Surveillance"));
+        RenderTreePart(rootNode, "Entertaiment", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Entertaiment"));
+        RenderTreePart(rootNode, "Security", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Security"));
+        RenderTreePart(rootNode, "Medical", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Medical"));
+        RenderTreePart(rootNode, "Мебель", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Furnishings"));
+        RenderTreePart(rootNode, "Транспорт", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Vehicles"));
+        RenderTreePart(rootNode, "LifeStyle", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.LifeStyle"));
+        RenderTreePart(rootNode, "Бакалея", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Groceries"));
+        RenderTreePart(rootNode, "Жильё", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Housing"));
 
         AvaliableCyberWareTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
     }
 
     private void AvaliableCyberWareTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
     {
-       
-        if (e.Node.Level == 1) 
+        if (e.Node.Level == 2) 
         {
-            
             HandleChildClick(e.Node.Name);
         }
     }
@@ -119,11 +143,48 @@ internal partial class InventoryChooseMenu : Form
 
     private void ChooseEquipment(Equipment equipmentItem)
     {
+        radioButton1.Enabled = radioButton2.Enabled = equipmentQuantityNumerucUpDown.Enabled = true;
+        equipmentQuantityNumerucUpDown.Value = 1;
+        radioButton1.Checked = true;
+
+        var extraCostNote = string.Empty;
+        if (equipmentItem.MaxCost is not null)
+        {
+            extraCostNote = $"-{equipmentItem.MaxCost}";
+        }
+
         Implant_Description.Text = equipmentItem.Name +
-            $"\n\nСтоимость: {equipmentItem.Cost} \n\n"
+            $"\n\nСтоимость: {equipmentItem.Cost}{extraCostNote} \n\n"
             + equipmentItem.Description;
 
-         var problems = PricePotentialProblem(equipmentItem);
+        potentialOptionComboBox.Items.Clear();
+        var options = equipmentItem.GetOptions();
+        if (options.Any())
+        {
+            potentialOptionComboBox.Visible = potentialOptionComboBox.Enabled = true;
+            foreach (var option in options)
+            {
+                potentialOptionComboBox.Items.Add(option);
+            }
+            potentialOptionComboBox.SelectedIndex = 0;
+        }
+        else
+        {
+            potentialOptionComboBox.Visible = potentialOptionComboBox.Enabled = false;
+        }
+
+        if(equipmentItem.MaxCost is null)
+        {
+            ExtraCostTrackBar.Enabled = ExtraCostTrackBar.Visible = ExtraCostLabel.Visible = false;
+        }
+        else
+        {
+            ExtraCostLabel.Text = $"Цена: {equipmentItem.Cost}";
+            ExtraCostTrackBar.Enabled = ExtraCostTrackBar.Visible = ExtraCostLabel.Visible = true;
+            ExtraCostTrackBar.Minimum = equipmentItem.Cost;
+            ExtraCostTrackBar.Value = equipmentItem.Cost;
+            ExtraCostTrackBar.Maximum = equipmentItem.MaxCost ?? 0;
+        }
 
         //var potentialsParents = equipmentItem.PotentialParents(_character);
 
@@ -152,27 +213,40 @@ internal partial class InventoryChooseMenu : Form
         //    potentialParentComboBox.Visible = 
         //    potentialParentComboBox.Enabled = false;
         //}
+        
+        _chosenEquipment = equipmentItem;
+        LookForProblemForEquipment(equipmentItem);
+        add_chosen_cyberware_button.Text = "Купить";
+    }
 
+    void LookForProblemForEquipment(Equipment equipment)
+    {
+
+        var problems = buingMode ? PricePotentialProblem(equipment) : string.Empty;
         problem_list_table.Text = problems;
         if (problems == string.Empty)
         {
             add_chosen_cyberware_button.Enabled = true;
-            _chosenEquipment = equipmentItem;
         }
         else
         {
             add_chosen_cyberware_button.Enabled = false;
-            _chosenEquipment = null;
         }
-
-        add_chosen_cyberware_button.Text = "Купить";
     }
 
     private string PricePotentialProblem(Equipment equipmentItem)
     {
-        if (equipmentItem.Cost > _character.CurrentMoney)
+        var practicalCostPerOne = equipmentItem.Cost * equipmentItem.GetOptionPriceModifier(potentialOptionComboBox.Text);
+
+        if (ExtraCostTrackBar.Enabled)
         {
-            return $"\nДля покупки не хватает {equipmentItem.Cost - _character.CurrentMoney} евродолларов.";
+            practicalCostPerOne = ExtraCostTrackBar.Value;
+        }
+        var moneyNeeded = practicalCostPerOne * equipmentItem.Quantity;
+        if (moneyNeeded > _character.CurrentMoney && buingMode)
+        {
+            var quntityNote = equipmentItem.Quantity != 1 ? $"({equipmentItem.Quantity} шт.)" : string.Empty;
+            return $"\nДля покупки {quntityNote} не хватает {moneyNeeded - _character.CurrentMoney} евродолларов.";
         }
         return string.Empty;
     }

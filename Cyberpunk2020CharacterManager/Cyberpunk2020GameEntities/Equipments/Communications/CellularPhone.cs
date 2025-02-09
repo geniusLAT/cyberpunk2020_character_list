@@ -4,6 +4,8 @@ public  class CellularPhone : Equipment
 {
     public override string Name { get { return "Сотовый Телефон"; } }
 
+    public override int BookIndex { get; set; } = 3;
+
     public CellularPhone()
     {
         Description = "Связь в движении, в любом месте в пределах " +

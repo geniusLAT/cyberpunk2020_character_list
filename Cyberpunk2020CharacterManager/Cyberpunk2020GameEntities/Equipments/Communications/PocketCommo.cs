@@ -4,6 +4,8 @@ public  class PocketCommo : Equipment
 {
     public override string Name { get { return "Карманный Коммуникатор"; } }
 
+    public override int BookIndex { get; set; } = 1;
+
     public PocketCommo()
     {
         Description = " Типичная маленькая рация. Дистанция 10 миль.";
