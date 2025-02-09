@@ -40,4 +40,14 @@ public abstract class Equipment : IComparable<Equipment>
         character.CurrentMoney -= Cost * Quantity;
 
     }
+
+    public virtual List<string> GetOptions()
+    {
+        return new List<string>();
+    }
+
+    public virtual void ChangeOption(string newOption)
+    {
+
+    }
 }

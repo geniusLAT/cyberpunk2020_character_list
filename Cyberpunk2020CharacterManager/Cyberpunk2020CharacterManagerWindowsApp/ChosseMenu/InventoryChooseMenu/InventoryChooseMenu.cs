@@ -13,7 +13,7 @@ internal partial class InventoryChooseMenu : Form
 
     private Label problem_list_table;
 
-    private ComboBox potentialParentComboBox;
+    private ComboBox potentialOptionComboBox;
 
     private readonly Character _character;
     private RadioButton radioButton1;
@@ -44,7 +44,7 @@ internal partial class InventoryChooseMenu : Form
         AvaliableCyberWareTreeView = new TreeView();
         Implant_Description = new Label();
         problem_list_table = new Label();
-        potentialParentComboBox = new ComboBox();
+        potentialOptionComboBox = new ComboBox();
         radioButton1 = new RadioButton();
         radioButton2 = new RadioButton();
         equipmentQuantityNumerucUpDown = new NumericUpDown();
@@ -95,14 +95,14 @@ internal partial class InventoryChooseMenu : Form
         problem_list_table.TabIndex = 3;
         problem_list_table.Text = resources.GetString("problem_list_table.Text");
         // 
-        // potentialParentComboBox
+        // potentialOptionComboBox
         // 
-        potentialParentComboBox.FormattingEnabled = true;
-        potentialParentComboBox.Location = new Point(278, 359);
-        potentialParentComboBox.Name = "potentialParentComboBox";
-        potentialParentComboBox.Size = new Size(263, 23);
-        potentialParentComboBox.TabIndex = 4;
-        potentialParentComboBox.SelectedIndexChanged += potentialParentComboBox_SelectedIndexChanged;
+        potentialOptionComboBox.FormattingEnabled = true;
+        potentialOptionComboBox.Location = new Point(278, 359);
+        potentialOptionComboBox.Name = "potentialOptionComboBox";
+        potentialOptionComboBox.Size = new Size(263, 23);
+        potentialOptionComboBox.TabIndex = 4;
+        potentialOptionComboBox.SelectedIndexChanged += potentialParentComboBox_SelectedIndexChanged;
         // 
         // radioButton1
         // 
@@ -177,7 +177,7 @@ internal partial class InventoryChooseMenu : Form
         Controls.Add(equipmentQuantityNumerucUpDown);
         Controls.Add(radioButton2);
         Controls.Add(radioButton1);
-        Controls.Add(potentialParentComboBox);
+        Controls.Add(potentialOptionComboBox);
         Controls.Add(problem_list_table);
         Controls.Add(Implant_Description);
         Controls.Add(AvaliableCyberWareTreeView);

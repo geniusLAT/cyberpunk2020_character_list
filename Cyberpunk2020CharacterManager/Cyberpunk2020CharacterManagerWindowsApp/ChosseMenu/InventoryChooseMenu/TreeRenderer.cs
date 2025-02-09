@@ -1,7 +1,4 @@
-﻿using Cyberpunk2020GameEntities;
-using Cyberpunk2020GameEntities.Cybernetics;
-using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
-using Cyberpunk2020GameEntities.Equipments;
+﻿using Cyberpunk2020GameEntities.Equipments;
 using System.Reflection;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
@@ -91,6 +88,7 @@ internal partial class InventoryChooseMenu : Form
         RenderTreePart(rootNode, "Инструменты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Tools"));
         RenderTreePart(rootNode, "Мебель", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Furnishings"));
         RenderTreePart(rootNode, "Личная Электроника", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.PersonalElectronics"));
+        RenderTreePart(rootNode, "Жильё", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Housing"));
 
         AvaliableCyberWareTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
     }
@@ -151,6 +149,21 @@ internal partial class InventoryChooseMenu : Form
         Implant_Description.Text = equipmentItem.Name +
             $"\n\nСтоимость: {equipmentItem.Cost}{extraCostNote} \n\n"
             + equipmentItem.Description;
+
+        potentialOptionComboBox.Items.Clear();
+        var options = equipmentItem.GetOptions();
+        if (options.Any())
+        {
+            potentialOptionComboBox.Visible = potentialOptionComboBox.Enabled = true;
+            foreach (var option in options)
+            {
+                potentialOptionComboBox.Items.Add(option);
+            }
+        }
+        else
+        {
+            potentialOptionComboBox.Visible = potentialOptionComboBox.Enabled = false;
+        }
 
         if(equipmentItem.MaxCost is null)
         {
