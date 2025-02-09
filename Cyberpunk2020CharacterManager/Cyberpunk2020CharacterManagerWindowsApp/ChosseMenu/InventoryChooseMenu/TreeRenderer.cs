@@ -83,11 +83,17 @@ internal partial class InventoryChooseMenu : Form
         };
         AvaliableCyberWareTreeView.Nodes.Add(rootNode);
 
+        RenderTreePart(rootNode, "Инструменты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Tools"));
+        RenderTreePart(rootNode, "Личная Электроника", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.PersonalElectronics"));
+        RenderTreePart(rootNode, "DataSystems", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.DataSystems"));
         RenderTreePart(rootNode, "Связь", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Communications"));
         RenderTreePart(rootNode, "Наблюдение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Surveillance"));
-        RenderTreePart(rootNode, "Инструменты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Tools"));
+        RenderTreePart(rootNode, "Entertaiment", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Entertaiment"));
+        RenderTreePart(rootNode, "Security", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Security"));
+        RenderTreePart(rootNode, "Medical", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Medical"));
         RenderTreePart(rootNode, "Мебель", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Furnishings"));
-        RenderTreePart(rootNode, "Личная Электроника", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.PersonalElectronics"));
+        RenderTreePart(rootNode, "Транспорт", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Vehicles"));
+        RenderTreePart(rootNode, "LifeStyle", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.LifeStyle"));
         RenderTreePart(rootNode, "Бакалея", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Groceries"));
         RenderTreePart(rootNode, "Жильё", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Housing"));
 
