@@ -88,6 +88,7 @@ internal partial class InventoryChooseMenu : Form
         RenderTreePart(rootNode, "Инструменты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Tools"));
         RenderTreePart(rootNode, "Мебель", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Furnishings"));
         RenderTreePart(rootNode, "Личная Электроника", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.PersonalElectronics"));
+        RenderTreePart(rootNode, "Бакалея", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Groceries"));
         RenderTreePart(rootNode, "Жильё", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Housing"));
 
         AvaliableCyberWareTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
