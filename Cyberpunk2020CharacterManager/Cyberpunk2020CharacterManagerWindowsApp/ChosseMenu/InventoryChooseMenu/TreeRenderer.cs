@@ -88,7 +88,7 @@ internal partial class InventoryChooseMenu : Form
         RenderTreePart(rootNode, "DataSystems", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.DataSystems"));
         RenderTreePart(rootNode, "Связь", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Communications"));
         RenderTreePart(rootNode, "Наблюдение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Surveillance"));
-        RenderTreePart(rootNode, "Entertaiment", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Entertaiment"));
+        RenderTreePart(rootNode, "Развлечения", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Entertainment"));
         RenderTreePart(rootNode, "Security", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Security"));
         RenderTreePart(rootNode, "Medical", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Medical"));
         RenderTreePart(rootNode, "Мебель", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Furnishings"));
