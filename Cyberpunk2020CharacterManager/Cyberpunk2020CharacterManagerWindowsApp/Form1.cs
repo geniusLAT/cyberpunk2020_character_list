@@ -43,18 +43,18 @@ public partial class Form1 : Form
         RenderSkills(31, 178);
 
         ////test block
-        //_chosenCharacter = new Character();
-        //_chosenCharacter.CurrentMoney = 100;// 0000;
-        //_chosenCharacter.createStep = CreateStep.finished;
-        //_chosenCharacter.BodyParts.Add(new NasalFilters());
-        //RenderCyberwares(0, 0);
-        //for (var i = 0; i < 1; i++)
-        //{
-        //    _chosenCharacter.equipments.Add(new CellularPhone());
-        //    _chosenCharacter.equipments.Add(new MastoidCommo());
-        //}
+        _chosenCharacter = new Character();
+        _chosenCharacter.CurrentMoney = 100;// 0000;
+        _chosenCharacter.createStep = CreateStep.finished;
+        _chosenCharacter.BodyParts.Add(new NasalFilters());
+        RenderCyberwares(0, 0);
+        for (var i = 0; i < 1; i++)
+        {
+            _chosenCharacter.equipments.Add(new CellularPhone());
+            _chosenCharacter.equipments.Add(new MastoidCommo());
+        }
 
-        //RenderInventory(31, 178);
+        RenderInventory(31, 178);
     }
 
     bool IsProfessionalSkill(string skill)
@@ -439,7 +439,7 @@ public partial class Form1 : Form
         MoneyLabel.Text = "Доход:" + _chosenCharacter.MonthIncome.ToString() + " (" + random_hit.ToString() + ") Баланс:";
         _chosenCharacter.CurrentMoney = (int)(random_hit * _chosenCharacter.MonthIncome / 3.0f);
         Money_numeric.Enabled = true;
-        Money_numeric.Value = _chosenCharacter.CurrentMoney;
+        Money_numeric.Value = (decimal)_chosenCharacter.CurrentMoney;
 
     }
 
@@ -818,14 +818,14 @@ public partial class Form1 : Form
     {
         RenderCyberwares(0, 0);
 
-        Money_numeric.Value = _chosenCharacter!.CurrentMoney;
+        Money_numeric.Value = (decimal)_chosenCharacter!.CurrentMoney;
     }
 
     public void EquipmentChanged()
     {
         RenderInventory(0, 0);
 
-        Money_numeric.Value = _chosenCharacter!.CurrentMoney;
+        Money_numeric.Value = (decimal)_chosenCharacter!.CurrentMoney;
     }
 
     private void AddEquipment_Click(object sender, EventArgs e)

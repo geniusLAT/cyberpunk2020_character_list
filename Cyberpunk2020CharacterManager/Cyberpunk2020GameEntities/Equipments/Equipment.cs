@@ -8,7 +8,7 @@ public abstract class Equipment : IComparable<Equipment>
 
     public virtual string Detail { get; set; } = string.Empty;
 
-    public int Cost { get; set; }
+    public float Cost { get; set; }
 
     public int? MaxCost { get; set; }
 

@@ -14,7 +14,7 @@ public class Character
 
     public int MonthIncome = 0;
 
-    public int CurrentMoney = 0;
+    public float CurrentMoney = 0;
 
     #region stats
     public int int_stat = 0;
