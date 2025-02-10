@@ -8,7 +8,7 @@ public class CredChipAccount : Equipment
 
     public CredChipAccount()
     {
-        Description = "";
+        Description = " \"дебетовая карта\", которую ты используешь для переноса наличных денег заместо кошелька.";
         Cost = 20;
     }
 }
