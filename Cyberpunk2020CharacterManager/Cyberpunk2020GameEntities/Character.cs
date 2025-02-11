@@ -6,40 +6,40 @@ namespace Cyberpunk2020GameEntities;
 
 public class Character
 {
-    public CreateStep createStep = CreateStep.Name;
+    public CreateStep createStep { get; set; } = CreateStep.Name;
 
-    public string name = "";
+    public string name { get; set; } = "";
 
-    public role Role = role.none;
+    public role Role { get; set; } = role.none;
 
-    public int MonthIncome = 0;
+    public int MonthIncome { get; set; } = 0;
 
-    public float CurrentMoney = 0;
+    public float CurrentMoney { get; set; } = 0;
 
     #region stats
-    public int int_stat = 0;
+    public int int_stat { get; set; } = 0;
 
-    public int cur_ref_stat = 0;
+    public int cur_ref_stat { get; set; } = 0;
 
-    public int global_ref_stat = 0;
+    public int global_ref_stat { get; set; } = 0;
 
-    public int tech_stat = 0;
+    public int tech_stat { get; set; } = 0;
 
-    public int cool_stat = 0;
+    public int cool_stat { get; set; } = 0;
 
-    public int attr_stat = 0;
+    public int attr_stat { get; set; } = 0;
 
-    public int cur_luck_stat = 0;
+    public int cur_luck_stat { get; set; } = 0;
 
-    public int global_luck_stat = 0;
+    public int global_luck_stat { get; set; } = 0;
 
-    public int movement_stat = 0;
+    public int movement_stat { get; set; } = 0;
 
-    public int body_stat = 0;
+    public int body_stat { get; set; } = 0;
 
-    public int cur_emp_stat = 0;
+    public int cur_emp_stat { get; set; } = 0;
 
-    public int global_emp_stat = 0;
+    public int global_emp_stat { get; set; } = 0;
     #endregion
 
     private float _totalHumanityLoss = 0;
@@ -64,8 +64,8 @@ public class Character
         } 
     }
     
-    public List<BodyPart> BodyParts = [];
-    public List<Equipment> equipments = [];
+    public List<BodyPart> BodyParts { get; set; } = [];
+    public List<Equipment> equipments { get; set; } = [];
 
 
     public Character()

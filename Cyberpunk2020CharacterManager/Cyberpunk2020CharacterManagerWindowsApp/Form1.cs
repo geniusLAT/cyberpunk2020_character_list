@@ -1,4 +1,6 @@
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
 using Cyberpunk2020GameEntities;
@@ -44,6 +46,7 @@ public partial class Form1 : Form
 
         ////test block
         _chosenCharacter = new Character();
+        _chosenCharacter.attr_stat = 4;
         _chosenCharacter.CurrentMoney = 100;// 0000;
         _chosenCharacter.createStep = CreateStep.finished;
         _chosenCharacter.BodyParts.Add(new NasalFilters());
@@ -849,5 +852,36 @@ public partial class Form1 : Form
     private void chosenEquipmentDescriptionLabel_Click(object sender, EventArgs e)
     {
 
+    }
+
+    private void saveCharacterButton_Click(object sender, EventArgs e)
+    {
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+        };
+        //JsonConverter jsonConverter = new JsonConverter();
+        var serialized = JsonSerializer.Serialize(_chosenCharacter, options);
+        SaveCharacterToFile(serialized);
+        MessageBox.Show(serialized);
+    }
+
+    private void SaveCharacterToFile(string serialized)
+    {
+        try
+        {
+            StreamWriter sw = new StreamWriter("test.txt");   
+            sw.Write(serialized);
+            sw.Close();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception: " + e.Message);
+        }
+        finally
+        {
+            Console.WriteLine("Executing finally block.");
+        }
     }
 }
