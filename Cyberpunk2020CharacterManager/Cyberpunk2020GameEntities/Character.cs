@@ -1,45 +1,48 @@
 ﻿using Cyberpunk2020GameEntities.Cybernetics;
 using Cyberpunk2020GameEntities.Cybernetics.Natural;
 using Cyberpunk2020GameEntities.Equipments;
+using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
+using System.Reflection;
 
 namespace Cyberpunk2020GameEntities;
 
 public class Character
 {
-    public CreateStep createStep = CreateStep.Name;
+    public CreateStep createStep { get; set; } = CreateStep.Name;
 
-    public string name = "";
+    public string name { get; set; } = "";
 
-    public role Role = role.none;
+    public role Role { get; set; } = role.none;
 
-    public int MonthIncome = 0;
+    public int MonthIncome { get; set; } = 0;
 
-    public int CurrentMoney = 0;
+    public float CurrentMoney { get; set; } = 0;
 
     #region stats
-    public int int_stat = 0;
+    public int int_stat { get; set; } = 0;
 
-    public int cur_ref_stat = 0;
+    public int cur_ref_stat { get; set; } = 0;
 
-    public int global_ref_stat = 0;
+    public int global_ref_stat { get; set; } = 0;
 
-    public int tech_stat = 0;
+    public int tech_stat { get; set; } = 0;
 
-    public int cool_stat = 0;
+    public int cool_stat { get; set; } = 0;
 
-    public int attr_stat = 0;
+    public int attr_stat { get; set; } = 0;
 
-    public int cur_luck_stat = 0;
+    public int cur_luck_stat { get; set; } = 0;
 
-    public int global_luck_stat = 0;
+    public int global_luck_stat { get; set; } = 0;
 
-    public int movement_stat = 0;
+    public int movement_stat { get; set; } = 0;
 
-    public int body_stat = 0;
+    public int body_stat { get; set; } = 0;
 
-    public int cur_emp_stat = 0;
+    public int cur_emp_stat { get; set; } = 0;
 
-    public int global_emp_stat = 0;
+    public int global_emp_stat { get; set; } = 0;
     #endregion
 
     private float _totalHumanityLoss = 0;
@@ -64,7 +67,84 @@ public class Character
         } 
     }
     
+    public void SerializeInnerFields()
+    {
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+        };
+
+        BodyPartsSerialized = [];
+        foreach (var BodyPart in BodyParts)
+        {
+            var serialized = JsonSerializer.Serialize(BodyPart, options);
+            BodyPartsSerialized.Add(serialized);
+        }
+
+        EquipmentsSerialized= [];
+        foreach (var equipment in equipments)
+        {
+            var serialized = JsonSerializer.Serialize(equipment, options);
+            EquipmentsSerialized.Add(serialized);
+        }
+    }
+
+    public class TypeHolder
+    {
+        public string type { get; set; }
+    }
+
+    public void DeserializeInnerFields()
+    {
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+        };
+        var assembly = Assembly.Load("Cyberpunk2020GameEntities");
+
+        BodyParts = [];
+        foreach (var BodyPartSerialized in BodyPartsSerialized)
+        {
+            var typeHolder = JsonSerializer.Deserialize<TypeHolder>(BodyPartSerialized, options);
+            var type = assembly.GetType(typeHolder.type);
+            try
+            {
+                var deserialized = JsonSerializer.Deserialize(BodyPartSerialized, type, options);
+                var result = (BodyPart)deserialized;
+                BodyParts.Add(result);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        equipments = [];
+        foreach (var EquipmentSerialized in EquipmentsSerialized)
+        {
+            var typeHolder = JsonSerializer.Deserialize<TypeHolder>(EquipmentSerialized, options);
+            var type = assembly.GetType(typeHolder.type);
+            try
+            {
+                var deserialized = JsonSerializer.Deserialize(EquipmentSerialized, type, options);
+                var result = (Equipment)deserialized;
+                equipments.Add(result);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+    }
+
+    public List<string> BodyPartsSerialized { get; set; }
+
     public List<BodyPart> BodyParts = [];
+
+    public List<string> EquipmentsSerialized { get; set; }
+
     public List<Equipment> equipments = [];
 
 
@@ -90,7 +170,7 @@ public class Character
         BodyParts.AddRange([rightLegSlot, rightLeg, leftLegSlot, lefttLeg, rightArmSlot, rightArm, leftArmSlot, leftArm]);
     }
 
-    public int[] skills = { };
+    public int[] skills { get; set; } = new int[91];
 
     #region staticRuleInformation
     public static string[] solo_skills_name = {

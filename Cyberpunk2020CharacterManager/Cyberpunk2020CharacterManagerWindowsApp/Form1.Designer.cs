@@ -77,6 +77,7 @@ partial class Form1
         add_cyberware_button = new Button();
         humanity_counter_label = new Label();
         inventoryTab = new TabPage();
+        inventoryListTitleLabel = new Label();
         inventoryInfoPanel = new Panel();
         RemoveEquipmentButton = new Button();
         chosenEquipmentDescriptionLabel = new Label();
@@ -94,7 +95,8 @@ partial class Form1
         CommentLabel = new Label();
         MoneyLabel = new Label();
         Money_numeric = new NumericUpDown();
-        inventoryListTitleLabel = new Label();
+        saveCharacterButton = new Button();
+        loadCharacterButton = new Button();
         panel1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)global_emp_numeric).BeginInit();
         ((System.ComponentModel.ISupportInitialize)cur_emp_numeric).BeginInit();
@@ -639,6 +641,15 @@ partial class Form1
         inventoryTab.Text = "Инвентарь";
         inventoryTab.UseVisualStyleBackColor = true;
         // 
+        // inventoryListTitleLabel
+        // 
+        inventoryListTitleLabel.AutoSize = true;
+        inventoryListTitleLabel.Location = new Point(6, 3);
+        inventoryListTitleLabel.Name = "inventoryListTitleLabel";
+        inventoryListTitleLabel.Size = new Size(421, 15);
+        inventoryListTitleLabel.TabIndex = 8;
+        inventoryListTitleLabel.Text = "Название                                                                                                   Количество";
+        // 
         // inventoryInfoPanel
         // 
         inventoryInfoPanel.Controls.Add(RemoveEquipmentButton);
@@ -812,20 +823,36 @@ partial class Form1
         Money_numeric.TabIndex = 15;
         Money_numeric.ValueChanged += Money_numeric_ValueChanged;
         // 
-        // inventoryListTitleLabel
+        // saveCharacterButton
         // 
-        inventoryListTitleLabel.AutoSize = true;
-        inventoryListTitleLabel.Location = new Point(6, 3);
-        inventoryListTitleLabel.Name = "inventoryListTitleLabel";
-        inventoryListTitleLabel.Size = new Size(421, 15);
-        inventoryListTitleLabel.TabIndex = 8;
-        inventoryListTitleLabel.Text = "Название                                                                                                   Количество";
+        saveCharacterButton.Enabled = false;
+        saveCharacterButton.Location = new Point(798, 52);
+        saveCharacterButton.Margin = new Padding(4, 3, 4, 3);
+        saveCharacterButton.Name = "saveCharacterButton";
+        saveCharacterButton.Size = new Size(155, 27);
+        saveCharacterButton.TabIndex = 13;
+        saveCharacterButton.Text = "Сохранить";
+        saveCharacterButton.UseVisualStyleBackColor = true;
+        saveCharacterButton.Click += saveCharacterButton_Click;
+        // 
+        // loadCharacterButton
+        // 
+        loadCharacterButton.Location = new Point(798, 88);
+        loadCharacterButton.Margin = new Padding(4, 3, 4, 3);
+        loadCharacterButton.Name = "loadCharacterButton";
+        loadCharacterButton.Size = new Size(155, 27);
+        loadCharacterButton.TabIndex = 16;
+        loadCharacterButton.Text = "Открыть";
+        loadCharacterButton.UseVisualStyleBackColor = true;
+        loadCharacterButton.Click += loadCharacterButton_Click;
         // 
         // Form1
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1731, 1061);
+        Controls.Add(loadCharacterButton);
+        Controls.Add(saveCharacterButton);
         Controls.Add(Money_numeric);
         Controls.Add(MoneyLabel);
         Controls.Add(CommentLabel);
@@ -949,4 +976,6 @@ partial class Form1
     private Label chosenEquipmentNameLabel;
     private Button RemoveEquipmentButton;
     private Label inventoryListTitleLabel;
+    private Button saveCharacterButton;
+    private Button loadCharacterButton;
 }

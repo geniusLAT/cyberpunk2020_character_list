@@ -1,4 +1,6 @@
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
 using Cyberpunk2020GameEntities;
@@ -42,8 +44,9 @@ public partial class Form1 : Form
         const_num_numeric.Visible = false;
         RenderSkills(31, 178);
 
-        ////test block
+        //test block
         //_chosenCharacter = new Character();
+        //_chosenCharacter.attr_stat = 4;
         //_chosenCharacter.CurrentMoney = 100;// 0000;
         //_chosenCharacter.createStep = CreateStep.finished;
         //_chosenCharacter.BodyParts.Add(new NasalFilters());
@@ -98,6 +101,9 @@ public partial class Form1 : Form
 
             //label16.Text +=ParentPanel.Controls.ToString();
             string skill_name = ((Label)ParentPanel.Controls[0]).Text;
+
+            var skillNumber = int.Parse(numeric.Name);
+            _chosenCharacter.skills[skillNumber] = (int)numeric.Value;
 
             if (_chosenCharacter!.createStep == CreateStep.prof)
             {
@@ -192,6 +198,72 @@ public partial class Form1 : Form
         if (NameField.Text.Length > 2) return true;
         ErrorLabel.Text = "Вы не ввели имя";
         return false;
+    }
+
+
+    void RenderHeader()
+    {
+        NameField.Text = _chosenCharacter.name;
+        RoleChoser.Text = getRoleName(_chosenCharacter.Role);
+
+        numeric_int.Value = _chosenCharacter.int_stat;
+        cur_reflex_numeric.Value = _chosenCharacter.cur_ref_stat;
+        global_ref_numeric.Value = _chosenCharacter.global_ref_stat;
+        tech_numeric.Value = _chosenCharacter.tech_stat;
+        cool_numeric.Value = _chosenCharacter.cool_stat;
+        attr_numeric.Value = _chosenCharacter.attr_stat;
+        cur_luck_numeric.Value = _chosenCharacter.cur_luck_stat;
+        global_luck_numeric.Value = _chosenCharacter.global_luck_stat;
+        move_numeric.Value = _chosenCharacter.movement_stat;
+        body_numeric.Value = _chosenCharacter.body_stat;
+        cur_emp_numeric.Value = _chosenCharacter.cur_emp_stat;
+        global_emp_numeric.Value = _chosenCharacter.global_emp_stat;
+
+        Extra_stat_label.Text = "Бег:" + (_chosenCharacter.movement_stat * 3).ToString() +
+        " прыжок:" + (_chosenCharacter.movement_stat * 4).ToString()
+        + " перенести:" + (_chosenCharacter.body_stat * 10).ToString()
+        + " поднять:" + (_chosenCharacter.body_stat * 40).ToString();
+    }
+
+    string getRoleName(role role)
+    {
+        switch (role)
+        {
+            case role.none:
+                return string.Empty;
+                break;
+            case role.solo:
+                return "соло";
+                break;
+            case role.rocker:
+                return "рокер";
+                break;
+            case role.netrunner:
+                return "нетраннер";
+                break;
+            case role.media:
+                return "медиа";
+                break;
+            case role.nomad:
+                return "номад";
+                break;
+            case role.fixer:
+                return "фиксер";
+                break;
+            case role.cop:
+                return "коп";
+                break;
+            case role.corp:
+                return "корп";
+                break;
+            case role.tech:
+                return "техник";
+                break;
+            case role.medtech:
+                return "медтехник";
+                break;
+        }
+        return string.Empty;
     }
 
     bool ValidateRole()
@@ -439,7 +511,7 @@ public partial class Form1 : Form
         MoneyLabel.Text = "Доход:" + _chosenCharacter.MonthIncome.ToString() + " (" + random_hit.ToString() + ") Баланс:";
         _chosenCharacter.CurrentMoney = (int)(random_hit * _chosenCharacter.MonthIncome / 3.0f);
         Money_numeric.Enabled = true;
-        Money_numeric.Value = _chosenCharacter.CurrentMoney;
+        Money_numeric.Value = (decimal)_chosenCharacter.CurrentMoney;
 
     }
 
@@ -451,6 +523,7 @@ public partial class Form1 : Form
         {
             _chosenCharacter = new Character();
             NameField.Enabled = true;
+            saveCharacterButton.Enabled = false;
             ErrorLabel.Text = " ";
             CreateButton.Text = "Далее";
 
@@ -552,6 +625,9 @@ public partial class Form1 : Form
                     break;
                 case CreateStep.inventory:
                     _chosenCharacter.createStep = CreateStep.finished;
+                    CreateButton.Enabled = false;
+                    CreateButton.Visible = false;
+                    saveCharacterButton.Enabled = true;
                     break;
                 case CreateStep.finished:
                     break;
@@ -818,14 +894,14 @@ public partial class Form1 : Form
     {
         RenderCyberwares(0, 0);
 
-        Money_numeric.Value = _chosenCharacter!.CurrentMoney;
+        Money_numeric.Value = (decimal)_chosenCharacter!.CurrentMoney;
     }
 
     public void EquipmentChanged()
     {
         RenderInventory(0, 0);
 
-        Money_numeric.Value = _chosenCharacter!.CurrentMoney;
+        Money_numeric.Value = (decimal)_chosenCharacter!.CurrentMoney;
     }
 
     private void AddEquipment_Click(object sender, EventArgs e)
@@ -849,5 +925,100 @@ public partial class Form1 : Form
     private void chosenEquipmentDescriptionLabel_Click(object sender, EventArgs e)
     {
 
+    }
+
+    private void saveCharacterButton_Click(object sender, EventArgs e)
+    {
+        if(_chosenCharacter is null) 
+        { 
+            return;
+        }
+
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+        };
+        //JsonConverter jsonConverter = new JsonConverter();
+        _chosenCharacter.SerializeInnerFields();
+
+        //foreach (var item in _chosenCharacter.BodyPartsSerialized)
+        //{
+        //    MessageBox.Show(item);
+        //}
+
+        var serialized = JsonSerializer.Serialize(_chosenCharacter, options);
+        SaveCharacterToFile(serialized);
+        //MessageBox.Show(serialized);
+    }
+
+    private void SaveCharacterToFile(string serialized)
+    {
+        try
+        {
+            StreamWriter sw = new StreamWriter("test.txt");
+            sw.Write(serialized);
+            sw.Close();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception: " + e.Message);
+        }
+        finally
+        {
+            Console.WriteLine("Executing finally block.");
+        }
+    }
+
+    JsonSerializerOptions options = new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+    };
+
+    private void loadCharacterButton_Click(object sender, EventArgs e)
+    {
+        var serialized = LoadCharacterFromFile();
+
+        if(serialized == string.Empty)
+        {
+            MessageBox.Show($"Не обнаружено ранее сохранённого персонажа");
+            return;
+        }
+              
+        var character = JsonSerializer.Deserialize<Character>(serialized, options);
+        character.DeserializeInnerFields();
+
+        _chosenCharacter = character;
+
+        //MessageBox.Show(character.equipments.Count().ToString());
+
+        RenderSkills(31, 178);
+        RenderHeader();
+        RenderCyberwares(0, 0);
+        RenderInventory(31, 178);
+
+        saveCharacterButton.Enabled = true;
+    }
+
+    private string LoadCharacterFromFile()
+    {
+        try
+        {
+            string serialized;
+            StreamReader sw = new StreamReader("test.txt");
+            serialized= sw.ReadToEnd();
+            sw.Close();
+            return serialized;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception: " + e.Message);
+        }
+        finally
+        {
+            Console.WriteLine("Executing finally block.");
+        }
+        return string.Empty;
     }
 }

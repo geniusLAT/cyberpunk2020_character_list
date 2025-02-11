@@ -18,4 +18,10 @@ public abstract class BodyPart
     {
         return null;
     }
+
+    public string type { get
+        {
+            return this.GetType().FullName;
+        }
+    }
 }

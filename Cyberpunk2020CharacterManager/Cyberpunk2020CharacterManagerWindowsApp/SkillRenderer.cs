@@ -5,7 +5,7 @@ namespace Cyberpunk2020CharacterManagerWindowsApp;
 
 public partial class Form1 : Form
 {
-    Control RenderSkillPanel(string text, int i, int column, bool header, int s, int l)
+    Control RenderSkillPanel(string text, int i, int column, bool header, int s, int l, int skillNumber = 0,int value = 0)
     {
         int g = 14;
         int text_size = 180;
@@ -46,9 +46,13 @@ public partial class Form1 : Form
             skillNumeric.Location = new Point(l, 0);
             //that_label.Text = skillNumeric.Size.Width.ToString()+", "+ skillNumeric.Size.Height.ToString();
             skillNumeric.Size = new Size(s, 20);
-            skillNumeric.Value = 0;
+            skillNumeric.Value = value;
+            
             skillNumeric.Minimum = 0;
             skillNumeric.Maximum = 10;
+            skillNumeric.Name = skillNumber.ToString();
+            //skillNumeric.Maximum = skillNumber;
+            //skillNumeric.Value = skillNumber;
             skillNumeric.ValueChanged += SkillPointChanged;
         }
         return skill_panel;
@@ -59,6 +63,7 @@ public partial class Form1 : Form
     {
         int n = 0;
         int c = 0;
+        int skillNumber = 0;
 
         foreach (Control item in _panels)
         {
@@ -69,7 +74,8 @@ public partial class Form1 : Form
         for (int i = 0; i < Character.role_skills_name.Length; i++)
         {
 
-            RenderSkillPanel(Character.role_skills_name[i], n++, c, false, s, l);
+            RenderSkillPanel(Character.role_skills_name[i], n++, c, false, s, l, skillNumber, _chosenCharacter?.skills[skillNumber] ?? 0);
+            skillNumber++;
         }
 
         RenderSkillPanel(" ", n++, c, true, s, l);
@@ -77,7 +83,8 @@ public partial class Form1 : Form
         for (int i = 0; i < Character.attr_skills_name.Length; i++)
         {
 
-            RenderSkillPanel(Character.attr_skills_name[i], n++, c, false, s, l);
+            RenderSkillPanel(Character.attr_skills_name[i], n++, c, false, s, l, skillNumber, _chosenCharacter?.skills[skillNumber] ?? 0);
+            skillNumber++;
         }
 
         RenderSkillPanel(" ", n++, c, true, s, l);
@@ -85,7 +92,8 @@ public partial class Form1 : Form
         for (int i = 0; i < Character.cool_skills_name.Length; i++)
         {
 
-            RenderSkillPanel(Character.cool_skills_name[i], n++, c, false, s, l);
+            RenderSkillPanel(Character.cool_skills_name[i], n++, c, false, s, l, skillNumber, _chosenCharacter?.skills[skillNumber] ?? 0);
+            skillNumber++;
         }
 
         RenderSkillPanel(" ", n++, c, true, s, l);
@@ -93,7 +101,8 @@ public partial class Form1 : Form
         for (int i = 0; i < Character.emp_skills_name.Length; i++)
         {
 
-            RenderSkillPanel(Character.emp_skills_name[i], n++, c, false, s, l);
+            RenderSkillPanel(Character.emp_skills_name[i], n++, c, false, s, l, skillNumber, _chosenCharacter?.skills[skillNumber] ?? 0);
+            skillNumber++;
         }
 
         RenderSkillPanel(" ", n++, c, true, s, l);
@@ -102,7 +111,8 @@ public partial class Form1 : Form
         {
 
 
-            RenderSkillPanel(Character.int_skills_name[i], n++, c, false, s, l);
+            RenderSkillPanel(Character.int_skills_name[i], n++, c, false, s, l, skillNumber, _chosenCharacter?.skills[skillNumber] ?? 0);
+            skillNumber++;
             if (Character.int_skills_name[i] == "Скрываться/Избегать")
             {
                 c++;
@@ -115,7 +125,8 @@ public partial class Form1 : Form
         for (int i = 0; i < Character.ref_skills_name.Length; i++)
         {
 
-            RenderSkillPanel(Character.ref_skills_name[i], n++, c, false, s, l);
+            RenderSkillPanel(Character.ref_skills_name[i], n++, c, false, s, l, skillNumber, _chosenCharacter?.skills[skillNumber] ?? 0);
+            skillNumber++;
         }
 
         RenderSkillPanel(" ", n++, c, true, s, l);
@@ -124,7 +135,8 @@ public partial class Form1 : Form
         {
 
 
-            RenderSkillPanel(Character.tech_skills_name[i], n++, c, false, s, l);
+            RenderSkillPanel(Character.tech_skills_name[i], n++, c, false, s, l, skillNumber, _chosenCharacter?.skills[skillNumber] ?? 0);
+            skillNumber++;
             if (Character.tech_skills_name[i] == "Маскировка")
             {
                 c++;

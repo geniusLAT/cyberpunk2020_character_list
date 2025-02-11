@@ -88,12 +88,12 @@ internal partial class InventoryChooseMenu : Form
         RenderTreePart(rootNode, "DataSystems", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.DataSystems"));
         RenderTreePart(rootNode, "Связь", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Communications"));
         RenderTreePart(rootNode, "Наблюдение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Surveillance"));
-        RenderTreePart(rootNode, "Entertaiment", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Entertaiment"));
+        RenderTreePart(rootNode, "Развлечения", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Entertainment"));
         RenderTreePart(rootNode, "Security", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Security"));
         RenderTreePart(rootNode, "Medical", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Medical"));
         RenderTreePart(rootNode, "Мебель", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Furnishings"));
         RenderTreePart(rootNode, "Транспорт", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Vehicles"));
-        RenderTreePart(rootNode, "LifeStyle", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.LifeStyle"));
+        RenderTreePart(rootNode, "Образ жизни", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.LifeStyle"));
         RenderTreePart(rootNode, "Бакалея", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Groceries"));
         RenderTreePart(rootNode, "Жильё", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Housing"));
 
@@ -181,8 +181,8 @@ internal partial class InventoryChooseMenu : Form
         {
             ExtraCostLabel.Text = $"Цена: {equipmentItem.Cost}";
             ExtraCostTrackBar.Enabled = ExtraCostTrackBar.Visible = ExtraCostLabel.Visible = true;
-            ExtraCostTrackBar.Minimum = equipmentItem.Cost;
-            ExtraCostTrackBar.Value = equipmentItem.Cost;
+            ExtraCostTrackBar.Minimum = (int)equipmentItem.Cost;
+            ExtraCostTrackBar.Value = (int)equipmentItem.Cost;
             ExtraCostTrackBar.Maximum = equipmentItem.MaxCost ?? 0;
         }
 
