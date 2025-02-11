@@ -96,6 +96,7 @@ partial class Form1
         MoneyLabel = new Label();
         Money_numeric = new NumericUpDown();
         saveCharacterButton = new Button();
+        loadCharacterButton = new Button();
         panel1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)global_emp_numeric).BeginInit();
         ((System.ComponentModel.ISupportInitialize)cur_emp_numeric).BeginInit();
@@ -833,11 +834,23 @@ partial class Form1
         saveCharacterButton.UseVisualStyleBackColor = true;
         saveCharacterButton.Click += saveCharacterButton_Click;
         // 
+        // loadCharacterButton
+        // 
+        loadCharacterButton.Location = new Point(798, 88);
+        loadCharacterButton.Margin = new Padding(4, 3, 4, 3);
+        loadCharacterButton.Name = "loadCharacterButton";
+        loadCharacterButton.Size = new Size(155, 27);
+        loadCharacterButton.TabIndex = 16;
+        loadCharacterButton.Text = "Открыть";
+        loadCharacterButton.UseVisualStyleBackColor = true;
+        loadCharacterButton.Click += loadCharacterButton_Click;
+        // 
         // Form1
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1731, 1061);
+        Controls.Add(loadCharacterButton);
         Controls.Add(saveCharacterButton);
         Controls.Add(Money_numeric);
         Controls.Add(MoneyLabel);
@@ -963,4 +976,5 @@ partial class Form1
     private Button RemoveEquipmentButton;
     private Label inventoryListTitleLabel;
     private Button saveCharacterButton;
+    private Button loadCharacterButton;
 }

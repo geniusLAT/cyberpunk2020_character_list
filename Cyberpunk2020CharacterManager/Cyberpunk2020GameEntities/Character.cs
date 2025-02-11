@@ -1,6 +1,9 @@
 ﻿using Cyberpunk2020GameEntities.Cybernetics;
 using Cyberpunk2020GameEntities.Cybernetics.Natural;
 using Cyberpunk2020GameEntities.Equipments;
+using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
+using System.Reflection;
 
 namespace Cyberpunk2020GameEntities;
 
@@ -64,8 +67,69 @@ public class Character
         } 
     }
     
-    public List<BodyPart> BodyParts { get; set; } = [];
-    public List<Equipment> equipments { get; set; } = [];
+    public void SerializeInnerFields()
+    {
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+        };
+
+        BodyPartsSerialized = [];
+        foreach (var BodyPart in BodyParts)
+        {
+            var serialized = JsonSerializer.Serialize(BodyPart, options);
+            BodyPartsSerialized.Add(serialized);
+        }
+    }
+
+    public class TypeHolder
+    {
+        public string type { get; set; }
+    }
+
+    public void DeserializeInnerFields()
+    {
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+        };
+
+        BodyParts = [];
+        foreach (var BodyPartSerialized in BodyPartsSerialized)
+        {
+            var typeHolder = JsonSerializer.Deserialize<TypeHolder>(BodyPartSerialized, options);
+            //throw new Exception(typeHolder.type.ToString());
+            var assembly = Assembly.Load("Cyberpunk2020GameEntities");
+            //var types = assembly.GetTypes();
+            //var typeName = string.Empty;
+
+            //foreach (var item in collection)
+            //{
+
+            //}
+
+            var type = assembly.GetType(typeHolder.type);
+            //Type type = Type.GetType(typeHolder.type);
+            //throw new Exception($"{typeHolder.type ?? "null"} {type?.ToString() ?? "null"}  {assembly?.ToString() ?? "null"}");
+            try
+            {
+                var deserialized = JsonSerializer.Deserialize(BodyPartSerialized, type, options);
+                var result = (BodyPart)deserialized;
+                BodyParts.Add(result);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+    }
+
+    public List<string> BodyPartsSerialized { get; set; }
+
+    public List<BodyPart> BodyParts  = [];
+    public List<Equipment> equipments = [];
 
 
     public Character()

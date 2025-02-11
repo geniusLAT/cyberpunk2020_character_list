@@ -44,7 +44,7 @@ public partial class Form1 : Form
         const_num_numeric.Visible = false;
         RenderSkills(31, 178);
 
-        ////test block
+        //test block
         _chosenCharacter = new Character();
         _chosenCharacter.attr_stat = 4;
         _chosenCharacter.CurrentMoney = 100;// 0000;
@@ -862,16 +862,23 @@ public partial class Form1 : Form
             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
         };
         //JsonConverter jsonConverter = new JsonConverter();
+        _chosenCharacter.SerializeInnerFields();
+
+        //foreach (var item in _chosenCharacter.BodyPartsSerialized)
+        //{
+        //    MessageBox.Show(item);
+        //}
+
         var serialized = JsonSerializer.Serialize(_chosenCharacter, options);
         SaveCharacterToFile(serialized);
-        MessageBox.Show(serialized);
+        //MessageBox.Show(serialized);
     }
 
     private void SaveCharacterToFile(string serialized)
     {
         try
         {
-            StreamWriter sw = new StreamWriter("test.txt");   
+            StreamWriter sw = new StreamWriter("test.txt");
             sw.Write(serialized);
             sw.Close();
         }
@@ -883,5 +890,53 @@ public partial class Form1 : Form
         {
             Console.WriteLine("Executing finally block.");
         }
+    }
+
+    JsonSerializerOptions options = new JsonSerializerOptions
+    {
+        WriteIndented = true,
+        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+    };
+
+    private void loadCharacterButton_Click(object sender, EventArgs e)
+    {
+        var serialized = LoadCharacterFromFile();
+        //MessageBox.Show(serialized);
+              
+        var character = JsonSerializer.Deserialize<Character>(serialized, options);
+        character.DeserializeInnerFields();
+
+        _chosenCharacter = character;
+
+        //MessageBox.Show(character.BodyParts.Count().ToString());
+        RenderCyberwares(0, 0);
+        for (var i = 0; i < 1; i++)
+        {
+            _chosenCharacter.equipments.Add(new CellularPhone());
+            _chosenCharacter.equipments.Add(new MastoidCommo());
+        }
+
+        RenderInventory(31, 178);
+    }
+
+    private string LoadCharacterFromFile()
+    {
+        try
+        {
+            string serialized;
+            StreamReader sw = new StreamReader("test.txt");
+            serialized= sw.ReadToEnd();
+            sw.Close();
+            return serialized;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception: " + e.Message);
+        }
+        finally
+        {
+            Console.WriteLine("Executing finally block.");
+        }
+        return string.Empty;
     }
 }
