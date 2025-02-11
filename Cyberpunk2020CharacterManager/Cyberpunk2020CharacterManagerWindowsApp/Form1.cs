@@ -523,6 +523,7 @@ public partial class Form1 : Form
         {
             _chosenCharacter = new Character();
             NameField.Enabled = true;
+            saveCharacterButton.Enabled = false;
             ErrorLabel.Text = " ";
             CreateButton.Text = "Далее";
 
@@ -624,6 +625,9 @@ public partial class Form1 : Form
                     break;
                 case CreateStep.inventory:
                     _chosenCharacter.createStep = CreateStep.finished;
+                    CreateButton.Enabled = false;
+                    CreateButton.Visible = false;
+                    saveCharacterButton.Enabled = true;
                     break;
                 case CreateStep.finished:
                     break;
@@ -925,6 +929,11 @@ public partial class Form1 : Form
 
     private void saveCharacterButton_Click(object sender, EventArgs e)
     {
+        if(_chosenCharacter is null) 
+        { 
+            return;
+        }
+
         var options = new JsonSerializerOptions
         {
             WriteIndented = true,
@@ -970,7 +979,12 @@ public partial class Form1 : Form
     private void loadCharacterButton_Click(object sender, EventArgs e)
     {
         var serialized = LoadCharacterFromFile();
-        //MessageBox.Show(serialized);
+
+        if(serialized == string.Empty)
+        {
+            MessageBox.Show($"Не обнаружено ранее сохранённого персонажа");
+            return;
+        }
               
         var character = JsonSerializer.Deserialize<Character>(serialized, options);
         character.DeserializeInnerFields();
@@ -983,6 +997,8 @@ public partial class Form1 : Form
         RenderHeader();
         RenderCyberwares(0, 0);
         RenderInventory(31, 178);
+
+        saveCharacterButton.Enabled = true;
     }
 
     private string LoadCharacterFromFile()

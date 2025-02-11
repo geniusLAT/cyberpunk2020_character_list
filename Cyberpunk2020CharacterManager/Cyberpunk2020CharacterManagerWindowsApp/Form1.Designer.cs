@@ -825,6 +825,7 @@ partial class Form1
         // 
         // saveCharacterButton
         // 
+        saveCharacterButton.Enabled = false;
         saveCharacterButton.Location = new Point(798, 52);
         saveCharacterButton.Margin = new Padding(4, 3, 4, 3);
         saveCharacterButton.Name = "saveCharacterButton";
