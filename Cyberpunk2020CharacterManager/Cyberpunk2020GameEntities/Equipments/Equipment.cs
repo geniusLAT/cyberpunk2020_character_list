@@ -57,4 +57,12 @@ public abstract class Equipment : IComparable<Equipment>
     {
 
     }
+
+    public string type
+    {
+        get
+        {
+            return this.GetType().FullName;
+        }
+    }
 }

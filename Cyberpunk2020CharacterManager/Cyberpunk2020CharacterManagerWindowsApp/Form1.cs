@@ -45,19 +45,19 @@ public partial class Form1 : Form
         RenderSkills(31, 178);
 
         //test block
-        _chosenCharacter = new Character();
-        _chosenCharacter.attr_stat = 4;
-        _chosenCharacter.CurrentMoney = 100;// 0000;
-        _chosenCharacter.createStep = CreateStep.finished;
-        _chosenCharacter.BodyParts.Add(new NasalFilters());
-        RenderCyberwares(0, 0);
-        for (var i = 0; i < 1; i++)
-        {
-            _chosenCharacter.equipments.Add(new CellularPhone());
-            _chosenCharacter.equipments.Add(new MastoidCommo());
-        }
+        //_chosenCharacter = new Character();
+        //_chosenCharacter.attr_stat = 4;
+        //_chosenCharacter.CurrentMoney = 100;// 0000;
+        //_chosenCharacter.createStep = CreateStep.finished;
+        //_chosenCharacter.BodyParts.Add(new NasalFilters());
+        //RenderCyberwares(0, 0);
+        //for (var i = 0; i < 1; i++)
+        //{
+        //    _chosenCharacter.equipments.Add(new CellularPhone());
+        //    _chosenCharacter.equipments.Add(new MastoidCommo());
+        //}
 
-        RenderInventory(31, 178);
+        //RenderInventory(31, 178);
     }
 
     bool IsProfessionalSkill(string skill)
@@ -908,14 +908,8 @@ public partial class Form1 : Form
 
         _chosenCharacter = character;
 
-        //MessageBox.Show(character.BodyParts.Count().ToString());
+        //MessageBox.Show(character.equipments.Count().ToString());
         RenderCyberwares(0, 0);
-        for (var i = 0; i < 1; i++)
-        {
-            _chosenCharacter.equipments.Add(new CellularPhone());
-            _chosenCharacter.equipments.Add(new MastoidCommo());
-        }
-
         RenderInventory(31, 178);
     }
 

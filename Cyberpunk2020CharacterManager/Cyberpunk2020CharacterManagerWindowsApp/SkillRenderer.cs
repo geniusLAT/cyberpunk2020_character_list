@@ -55,6 +55,11 @@ public partial class Form1 : Form
 
     }
 
+    void RenderHeader()
+    {
+
+    }
+
     void RenderSkills(int s, int l)
     {
         int n = 0;

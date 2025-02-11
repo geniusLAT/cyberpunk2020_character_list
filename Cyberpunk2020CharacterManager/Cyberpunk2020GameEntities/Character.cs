@@ -81,6 +81,13 @@ public class Character
             var serialized = JsonSerializer.Serialize(BodyPart, options);
             BodyPartsSerialized.Add(serialized);
         }
+
+        EquipmentsSerialized= [];
+        foreach (var equipment in equipments)
+        {
+            var serialized = JsonSerializer.Serialize(equipment, options);
+            EquipmentsSerialized.Add(serialized);
+        }
     }
 
     public class TypeHolder
@@ -95,24 +102,13 @@ public class Character
             WriteIndented = true,
             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
         };
+        var assembly = Assembly.Load("Cyberpunk2020GameEntities");
 
         BodyParts = [];
         foreach (var BodyPartSerialized in BodyPartsSerialized)
         {
             var typeHolder = JsonSerializer.Deserialize<TypeHolder>(BodyPartSerialized, options);
-            //throw new Exception(typeHolder.type.ToString());
-            var assembly = Assembly.Load("Cyberpunk2020GameEntities");
-            //var types = assembly.GetTypes();
-            //var typeName = string.Empty;
-
-            //foreach (var item in collection)
-            //{
-
-            //}
-
             var type = assembly.GetType(typeHolder.type);
-            //Type type = Type.GetType(typeHolder.type);
-            //throw new Exception($"{typeHolder.type ?? "null"} {type?.ToString() ?? "null"}  {assembly?.ToString() ?? "null"}");
             try
             {
                 var deserialized = JsonSerializer.Deserialize(BodyPartSerialized, type, options);
@@ -124,11 +120,31 @@ public class Character
 
             }
         }
+
+        equipments = [];
+        foreach (var EquipmentSerialized in EquipmentsSerialized)
+        {
+            var typeHolder = JsonSerializer.Deserialize<TypeHolder>(EquipmentSerialized, options);
+            var type = assembly.GetType(typeHolder.type);
+            try
+            {
+                var deserialized = JsonSerializer.Deserialize(EquipmentSerialized, type, options);
+                var result = (Equipment)deserialized;
+                equipments.Add(result);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 
     public List<string> BodyPartsSerialized { get; set; }
 
-    public List<BodyPart> BodyParts  = [];
+    public List<BodyPart> BodyParts = [];
+
+    public List<string> EquipmentsSerialized { get; set; }
+
     public List<Equipment> equipments = [];
 
 
