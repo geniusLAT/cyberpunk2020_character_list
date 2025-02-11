@@ -197,6 +197,56 @@ public partial class Form1 : Form
         return false;
     }
 
+
+    void RenderHeader()
+    {
+        NameField.Text = _chosenCharacter.name;
+        RoleChoser.Text = getRoleName(_chosenCharacter.Role);
+
+        
+    }
+
+    string getRoleName(role role)
+    {
+        switch (role)
+        {
+            case role.none:
+                return string.Empty;
+                break;
+            case role.solo:
+                return "соло";
+                break;
+            case role.rocker:
+                return "рокер";
+                break;
+            case role.netrunner:
+                return "нетраннер";
+                break;
+            case role.media:
+                return "медиа";
+                break;
+            case role.nomad:
+                return "номад";
+                break;
+            case role.fixer:
+                return "фиксер";
+                break;
+            case role.cop:
+                return "коп";
+                break;
+            case role.corp:
+                return "корп";
+                break;
+            case role.tech:
+                return "техник";
+                break;
+            case role.medtech:
+                return "медтехник";
+                break;
+        }
+        return string.Empty;
+    }
+
     bool ValidateRole()
     {
         switch (RoleChoser.Text.ToLower())
@@ -909,6 +959,7 @@ public partial class Form1 : Form
         _chosenCharacter = character;
 
         //MessageBox.Show(character.equipments.Count().ToString());
+        RenderHeader();
         RenderCyberwares(0, 0);
         RenderInventory(31, 178);
     }
