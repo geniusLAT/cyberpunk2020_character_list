@@ -203,7 +203,23 @@ public partial class Form1 : Form
         NameField.Text = _chosenCharacter.name;
         RoleChoser.Text = getRoleName(_chosenCharacter.Role);
 
-        
+        numeric_int.Value = _chosenCharacter.int_stat;
+        cur_reflex_numeric.Value = _chosenCharacter.cur_ref_stat;
+        global_ref_numeric.Value = _chosenCharacter.global_ref_stat;
+        tech_numeric.Value = _chosenCharacter.tech_stat;
+        cool_numeric.Value = _chosenCharacter.cool_stat;
+        attr_numeric.Value = _chosenCharacter.attr_stat;
+        cur_luck_numeric.Value = _chosenCharacter.cur_luck_stat;
+        global_luck_numeric.Value = _chosenCharacter.global_luck_stat;
+        move_numeric.Value = _chosenCharacter.movement_stat;
+        body_numeric.Value = _chosenCharacter.body_stat;
+        cur_emp_numeric.Value = _chosenCharacter.cur_emp_stat;
+        global_emp_numeric.Value = _chosenCharacter.global_emp_stat;
+
+        Extra_stat_label.Text = "Бег:" + (_chosenCharacter.movement_stat * 3).ToString() +
+        " прыжок:" + (_chosenCharacter.movement_stat * 4).ToString()
+        + " перенести:" + (_chosenCharacter.body_stat * 10).ToString()
+        + " поднять:" + (_chosenCharacter.body_stat * 40).ToString();
     }
 
     string getRoleName(role role)
@@ -959,6 +975,8 @@ public partial class Form1 : Form
         _chosenCharacter = character;
 
         //MessageBox.Show(character.equipments.Count().ToString());
+
+        RenderSkills(31, 178);
         RenderHeader();
         RenderCyberwares(0, 0);
         RenderInventory(31, 178);
