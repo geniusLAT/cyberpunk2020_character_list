@@ -170,7 +170,7 @@ public class Character
         BodyParts.AddRange([rightLegSlot, rightLeg, leftLegSlot, lefttLeg, rightArmSlot, rightArm, leftArmSlot, leftArm]);
     }
 
-    public int[] skills = { };
+    public int[] skills { get; set; } = new int[91];
 
     #region staticRuleInformation
     public static string[] solo_skills_name = {

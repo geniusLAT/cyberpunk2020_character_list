@@ -102,6 +102,9 @@ public partial class Form1 : Form
             //label16.Text +=ParentPanel.Controls.ToString();
             string skill_name = ((Label)ParentPanel.Controls[0]).Text;
 
+            var skillNumber = int.Parse(numeric.Name);
+            _chosenCharacter.skills[skillNumber] = (int)numeric.Value;
+
             if (_chosenCharacter!.createStep == CreateStep.prof)
             {
                 ShowRequiredSum(true);
