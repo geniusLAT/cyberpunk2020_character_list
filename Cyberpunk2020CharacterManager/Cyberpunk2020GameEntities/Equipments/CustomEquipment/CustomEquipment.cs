@@ -2,17 +2,16 @@
 
 public class CustomEquipment : Equipment
 {
-    private string _name = "Кастом";
-
     public void SetName(string name)
     {
-        _name = name;
+        RealName = name;
     }
 
-    public override string Name { get { return _name; } }
+    public override string Name { get { return RealName; } }
 
     public CustomEquipment()
     {
+        RealName = "Кастом";
         Description = "";
         Cost = 10;
     }

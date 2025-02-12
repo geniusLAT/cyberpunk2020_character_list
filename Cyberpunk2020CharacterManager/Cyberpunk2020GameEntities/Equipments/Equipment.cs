@@ -4,6 +4,10 @@ public abstract class Equipment : IComparable<Equipment>
 {
     public Guid Guid { get; set; } = new Guid();
 
+    //TODO remove that horrific field
+
+    public string RealName { get; set; } = string.Empty;
+
     public virtual string Name { get { return string.Empty; } }
 
     public virtual string Detail { get; set; } = string.Empty;

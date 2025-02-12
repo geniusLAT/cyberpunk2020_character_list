@@ -2,7 +2,7 @@
 
 public class CustomCybernetic : Implant
 {
-    private string _name = "Кастом";
+    private string _name { get; set; } = "Кастом";
 
     public void SetName(string name)
     {

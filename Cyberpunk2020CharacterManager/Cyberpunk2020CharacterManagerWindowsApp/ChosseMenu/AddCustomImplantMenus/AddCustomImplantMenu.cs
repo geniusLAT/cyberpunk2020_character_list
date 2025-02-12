@@ -187,7 +187,6 @@ internal partial class AddCustomImplantMenu : Form
         customImplant.SetName(nameTextBox.Text);
 
         customImplant.ChipIn(_character, new Random());
-        _character.CurrentMoney += customImplant.Cost;
 
         _form1.CyberwareAdded();
         this.Close();
