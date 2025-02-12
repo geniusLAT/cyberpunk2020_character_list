@@ -2,7 +2,7 @@
 
 public class CustomEquipment : Equipment
 {
-    private string _name;
+    private string _name = "Кастом";
 
     public void SetName(string name)
     {

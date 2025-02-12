@@ -1023,11 +1023,4 @@ public partial class Form1 : Form
         }
         return string.Empty;
     }
-
-    public void HandleCustom()
-    {
-        var menu = new AddCustomEquipmentMenu(this, _chosenCharacter);
-        menu.Show();
-        return;
-    }
 }
