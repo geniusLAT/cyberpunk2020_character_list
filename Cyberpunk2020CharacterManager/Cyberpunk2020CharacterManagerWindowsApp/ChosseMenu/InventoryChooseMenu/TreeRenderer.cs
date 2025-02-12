@@ -77,25 +77,33 @@ internal partial class InventoryChooseMenu : Form
        
         AvaliableCyberWareTreeView.Nodes.Clear();
 
-        TreeNode rootNode = new("Лист снаряжения")
+        TreeNode GearListNode = new("Лист снаряжения")
         {
             Name = "Лист снаряжения"
         };
-        AvaliableCyberWareTreeView.Nodes.Add(rootNode);
+        AvaliableCyberWareTreeView.Nodes.Add(GearListNode);
 
-        RenderTreePart(rootNode, "Инструменты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Tools"));
-        RenderTreePart(rootNode, "Личная Электроника", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.PersonalElectronics"));
-        RenderTreePart(rootNode, "DataSystems", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.DataSystems"));
-        RenderTreePart(rootNode, "Связь", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Communications"));
-        RenderTreePart(rootNode, "Наблюдение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Surveillance"));
-        RenderTreePart(rootNode, "Развлечения", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Entertainment"));
-        RenderTreePart(rootNode, "Security", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Security"));
-        RenderTreePart(rootNode, "Medical", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Medical"));
-        RenderTreePart(rootNode, "Мебель", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Furnishings"));
-        RenderTreePart(rootNode, "Транспорт", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Vehicles"));
-        RenderTreePart(rootNode, "Образ жизни", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.LifeStyle"));
-        RenderTreePart(rootNode, "Бакалея", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Groceries"));
-        RenderTreePart(rootNode, "Жильё", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Housing"));
+        RenderTreePart(GearListNode, "Инструменты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Tools"));
+        RenderTreePart(GearListNode, "Личная Электроника", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.PersonalElectronics"));
+        RenderTreePart(GearListNode, "DataSystems", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.DataSystems"));
+        RenderTreePart(GearListNode, "Связь", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Communications"));
+        RenderTreePart(GearListNode, "Наблюдение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Surveillance"));
+        RenderTreePart(GearListNode, "Развлечения", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Entertainment"));
+        RenderTreePart(GearListNode, "Security", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Security"));
+        RenderTreePart(GearListNode, "Medical", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Medical"));
+        RenderTreePart(GearListNode, "Мебель", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Furnishings"));
+        RenderTreePart(GearListNode, "Транспорт", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Vehicles"));
+        RenderTreePart(GearListNode, "Образ жизни", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.LifeStyle"));
+        RenderTreePart(GearListNode, "Бакалея", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Groceries"));
+        RenderTreePart(GearListNode, "Жильё", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Housing"));
+
+        TreeNode otherNode = new("Прочее")
+        {
+            Name = "Прочее"
+        };
+        AvaliableCyberWareTreeView.Nodes.Add(otherNode);
+        RenderTreePart(otherNode, "Кастомные", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.CustomEquipment"));
+
 
         AvaliableCyberWareTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
     }
@@ -104,8 +112,21 @@ internal partial class InventoryChooseMenu : Form
     {
         if (e.Node.Level == 2) 
         {
+            MessageBox.Show(e.Node.Name);
+            if(e.Node.Name == "Cyberpunk2020GameEntities.Equipments.CustomEquipment.CustomEquipment")
+            {
+                HandleCustom();
+                return;
+            }
+
             HandleChildClick(e.Node.Name);
         }
+    }
+
+    private void HandleCustom()
+    {
+        this.Close();
+        return;
     }
 
     private void HandleChildClick(string childName)
