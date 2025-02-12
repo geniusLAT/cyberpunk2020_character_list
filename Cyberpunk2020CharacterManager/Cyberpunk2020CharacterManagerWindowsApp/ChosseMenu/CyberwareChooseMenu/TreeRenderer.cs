@@ -64,6 +64,7 @@ internal partial class CyberwareChooseMenu : Form
        
         AvaliableCyberWareTreeView.Nodes.Clear();
 
+        RenderTreePart("Кастом", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CustomCybernetics"));
         RenderTreePart("Нейро-оснащение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.Neuralwares"));
         RenderTreePart("Кибер-оснащение, размещенное в теле", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody"));
 
@@ -75,6 +76,11 @@ internal partial class CyberwareChooseMenu : Form
        
         if (e.Node.Level == 1) 
         {
+
+            if(e.Node.Name == "Cyberpunk2020GameEntities.Cybernetics.CustomCybernetics.CustomCybernetic")
+            {
+                MessageBox.Show(".CustomCybernetic");
+            }
             
             HandleChildClick(e.Node.Name);
         }

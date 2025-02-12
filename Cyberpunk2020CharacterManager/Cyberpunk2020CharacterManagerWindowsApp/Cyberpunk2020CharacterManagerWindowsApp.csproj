@@ -13,6 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="ChosseMenu\AddCustomImplantMenus\AddCustomImplantMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ChosseMenu\AddCustomImplantMenus\AddCustomImplantMenuLogic.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ChosseMenu\AddCustomEquipmentMenus\AddCustomEquipmentMenu.cs">
       <SubType>Form</SubType>
     </Compile>
