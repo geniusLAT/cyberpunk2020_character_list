@@ -169,6 +169,7 @@ internal partial class AddCustomImplantMenu : Form
         customImplant.SetName(nameTextBox.Text);
 
         customImplant.ChipIn(_character, new Random());
+        _character.CurrentMoney += customImplant.Cost;
 
         _form1.CyberwareAdded();
         this.Close();
@@ -176,18 +177,19 @@ internal partial class AddCustomImplantMenu : Form
 
     private void buyButton_Click(object sender, EventArgs e)
     {
-        //CustomEquipment customEquipment = new CustomEquipment()
-        //{
-        //    Description = descriptionTextBox.Text,
-        //    Cost = (float)costNumericUpDown.Value,
-        //    Quantity = (int)humanityLossNumericUpDown.Value
+        var customImplant = new CustomCybernetic()
+        {
+            Description = descriptionTextBox.Text,
+            Cost = (int)costNumericUpDown.Value,
+            HumanityLoss = (int)humanityLossNumericUpDown.Value
 
-        //};
-        //customEquipment.SetName(nameTextBox.Text);
+        };
+        customImplant.SetName(nameTextBox.Text);
 
-        //customEquipment.Buy(_character, new Random());
-        //_form1.EquipmentChanged();
-        ////_character.equipments.Add(customEquipment);
-        //this.Close();
+        customImplant.ChipIn(_character, new Random());
+        _character.CurrentMoney += customImplant.Cost;
+
+        _form1.CyberwareAdded();
+        this.Close();
     }
 }
