@@ -2,19 +2,18 @@
 
 public class CustomCybernetic : Implant
 {
-    private string _name { get; set; } = "Кастом";
-
     public void SetName(string name)
     {
-        _name = name;
+        RealName = name;
     }
 
-    public override string Name { get { return _name; } }
+    public override string Name { get { return RealName; } }
 
     public override void GenerateHumanLoss(Random random) {  }
 
     public CustomCybernetic()
     {
+        RealName = "Кастом";
         Description = "";
         Cost = 10;
     }
