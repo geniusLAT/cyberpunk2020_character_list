@@ -1000,6 +1000,8 @@ public partial class Form1 : Form
         RenderCyberwares(0, 0);
         RenderInventory(31, 178);
 
+        Money_numeric.Value = (decimal) character.CurrentMoney;
+
         saveCharacterButton.Enabled = true;
     }
 
