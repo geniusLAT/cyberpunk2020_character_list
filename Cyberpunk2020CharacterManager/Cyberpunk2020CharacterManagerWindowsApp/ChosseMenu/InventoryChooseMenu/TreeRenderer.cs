@@ -1,4 +1,5 @@
-﻿using Cyberpunk2020GameEntities.Equipments;
+﻿using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.AddCustomEquipmentMenus;
+using Cyberpunk2020GameEntities.Equipments;
 using System.Reflection;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
@@ -125,6 +126,9 @@ internal partial class InventoryChooseMenu : Form
 
     private void HandleCustom()
     {
+        var menu = new AddCustomEquipmentMenu(_form1, _character);
+        menu.Show();
+
         this.Close();
         return;
     }

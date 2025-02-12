@@ -13,6 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="ChosseMenu\AddCustomEquipmentMenus\AddCustomEquipmentMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ChosseMenu\AddCustomEquipmentMenus\AddCustomEquipmentMenuLogic.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ChosseMenu\InventoryChooseMenu\InventoryChooseMenu.cs">
       <SubType>Form</SubType>
     </Compile>
