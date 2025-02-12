@@ -116,6 +116,7 @@ internal partial class InventoryChooseMenu : Form
             MessageBox.Show(e.Node.Name);
             if(e.Node.Name == "Cyberpunk2020GameEntities.Equipments.CustomEquipment.CustomEquipment")
             {
+                this.Close();
                 HandleCustom();
                 return;
             }
@@ -128,8 +129,10 @@ internal partial class InventoryChooseMenu : Form
     {
         var menu = new AddCustomEquipmentMenu(_form1, _character);
         menu.Show();
+        menu.BringToFront(); 
+        menu.Activate();
+        menu.TopMost = true;
 
-        this.Close();
         return;
     }
 
