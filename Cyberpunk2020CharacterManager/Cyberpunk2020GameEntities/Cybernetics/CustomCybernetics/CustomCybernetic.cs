@@ -11,6 +11,8 @@ public class CustomCybernetic : Implant
 
     public override string Name { get { return _name; } }
 
+    public override void GenerateHumanLoss(Random random) {  }
+
     public CustomCybernetic()
     {
         Description = "";

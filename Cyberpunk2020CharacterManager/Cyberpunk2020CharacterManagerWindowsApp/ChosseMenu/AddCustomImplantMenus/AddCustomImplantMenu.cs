@@ -1,4 +1,5 @@
 ﻿using Cyberpunk2020GameEntities;
+using Cyberpunk2020GameEntities.Cybernetics.CustomCybernetics;
 using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
 using Cyberpunk2020GameEntities.Equipments.CustomEquipment;
 using System;
@@ -15,7 +16,7 @@ internal partial class AddCustomImplantMenu : Form
     private Label label2;
     private Label label3;
     private NumericUpDown costNumericUpDown;
-    private NumericUpDown quantityNumericUpDown;
+    private NumericUpDown humanityLossNumericUpDown;
     private Label label4;
     private Button buyButton;
     Character _character;
@@ -29,11 +30,11 @@ internal partial class AddCustomImplantMenu : Form
         label2 = new Label();
         label3 = new Label();
         costNumericUpDown = new NumericUpDown();
-        quantityNumericUpDown = new NumericUpDown();
+        humanityLossNumericUpDown = new NumericUpDown();
         label4 = new Label();
         buyButton = new Button();
         ((System.ComponentModel.ISupportInitialize)costNumericUpDown).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)quantityNumericUpDown).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)humanityLossNumericUpDown).BeginInit();
         SuspendLayout();
         // 
         // addButton
@@ -98,24 +99,24 @@ internal partial class AddCustomImplantMenu : Form
         costNumericUpDown.TabIndex = 6;
         costNumericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
         // 
-        // quantityNumericUpDown
+        // humanityLossNumericUpDown
         // 
-        quantityNumericUpDown.Location = new Point(779, 12);
-        quantityNumericUpDown.Maximum = new decimal(new int[] { 268435456, 1042612833, 542101086, 0 });
-        quantityNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-        quantityNumericUpDown.Name = "quantityNumericUpDown";
-        quantityNumericUpDown.Size = new Size(215, 23);
-        quantityNumericUpDown.TabIndex = 7;
-        quantityNumericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
+        humanityLossNumericUpDown.Location = new Point(793, 13);
+        humanityLossNumericUpDown.Maximum = new decimal(new int[] { 120, 0, 0, 0 });
+        humanityLossNumericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+        humanityLossNumericUpDown.Name = "humanityLossNumericUpDown";
+        humanityLossNumericUpDown.Size = new Size(215, 23);
+        humanityLossNumericUpDown.TabIndex = 7;
+        humanityLossNumericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
         // 
         // label4
         // 
         label4.AutoSize = true;
-        label4.Location = new Point(703, 17);
+        label4.Location = new Point(656, 15);
         label4.Name = "label4";
-        label4.Size = new Size(75, 15);
+        label4.Size = new Size(131, 15);
         label4.TabIndex = 8;
-        label4.Text = "Количество:";
+        label4.Text = "Потеря человечности:";
         // 
         // buyButton
         // 
@@ -125,14 +126,14 @@ internal partial class AddCustomImplantMenu : Form
         buyButton.TabIndex = 9;
         buyButton.Text = "Купить";
         buyButton.UseVisualStyleBackColor = true;
-        buyButton.Click += this.buyButton_Click;
+        buyButton.Click += buyButton_Click;
         // 
         // AddCustomImplantMenu
         // 
         ClientSize = new Size(1038, 261);
         Controls.Add(buyButton);
         Controls.Add(label4);
-        Controls.Add(quantityNumericUpDown);
+        Controls.Add(humanityLossNumericUpDown);
         Controls.Add(costNumericUpDown);
         Controls.Add(label3);
         Controls.Add(label2);
@@ -143,7 +144,7 @@ internal partial class AddCustomImplantMenu : Form
         Name = "AddCustomImplantMenu";
         Text = "Добавить свой имплант";
         ((System.ComponentModel.ISupportInitialize)costNumericUpDown).EndInit();
-        ((System.ComponentModel.ISupportInitialize)quantityNumericUpDown).EndInit();
+        ((System.ComponentModel.ISupportInitialize)humanityLossNumericUpDown).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -158,35 +159,35 @@ internal partial class AddCustomImplantMenu : Form
 
     private void addButton_Click(object sender, EventArgs e)
     {
-        CustomEquipment customEquipment = new CustomEquipment()
+        var customImplant = new CustomCybernetic()
         { 
             Description = descriptionTextBox.Text,
-            Cost = (float)costNumericUpDown.Value,
-            Quantity = (int)quantityNumericUpDown.Value
+            Cost = (int)costNumericUpDown.Value,
+            HumanityLoss = (int)humanityLossNumericUpDown.Value
 
         };
-        customEquipment.SetName(nameTextBox.Text);
+        customImplant.SetName(nameTextBox.Text);
 
-        customEquipment.Add(_character, new Random());
-        _form1.EquipmentChanged();
-        //_character.equipments.Add(customEquipment);
+        customImplant.ChipIn(_character, new Random());
+
+        _form1.CyberwareAdded();
         this.Close();
     }
 
     private void buyButton_Click(object sender, EventArgs e)
     {
-        CustomEquipment customEquipment = new CustomEquipment()
-        {
-            Description = descriptionTextBox.Text,
-            Cost = (float)costNumericUpDown.Value,
-            Quantity = (int)quantityNumericUpDown.Value
+        //CustomEquipment customEquipment = new CustomEquipment()
+        //{
+        //    Description = descriptionTextBox.Text,
+        //    Cost = (float)costNumericUpDown.Value,
+        //    Quantity = (int)humanityLossNumericUpDown.Value
 
-        };
-        customEquipment.SetName(nameTextBox.Text);
+        //};
+        //customEquipment.SetName(nameTextBox.Text);
 
-        customEquipment.Buy(_character, new Random());
-        _form1.EquipmentChanged();
-        //_character.equipments.Add(customEquipment);
-        this.Close();
+        //customEquipment.Buy(_character, new Random());
+        //_form1.EquipmentChanged();
+        ////_character.equipments.Add(customEquipment);
+        //this.Close();
     }
 }
