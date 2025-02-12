@@ -4,6 +4,9 @@ public abstract class BodyPart
 {
     public Guid Guid { get; set; } = new Guid();
 
+    //TODO remove that field
+    public string RealName { get; set; }
+
     public virtual string Name { get { return string.Empty; } }
 
     public abstract bool IsImplant { get; }

@@ -1,4 +1,6 @@
-﻿using Cyberpunk2020GameEntities.Cybernetics;
+﻿using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.AddCustomEquipmentMenus;
+using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.AddCustomImplantMenus;
+using Cyberpunk2020GameEntities.Cybernetics;
 using System.Reflection;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
@@ -64,6 +66,7 @@ internal partial class CyberwareChooseMenu : Form
        
         AvaliableCyberWareTreeView.Nodes.Clear();
 
+        RenderTreePart("Кастом", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CustomCybernetics"));
         RenderTreePart("Нейро-оснащение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.Neuralwares"));
         RenderTreePart("Кибер-оснащение, размещенное в теле", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody"));
 
@@ -75,9 +78,27 @@ internal partial class CyberwareChooseMenu : Form
        
         if (e.Node.Level == 1) 
         {
+
+            if(e.Node.Name == "Cyberpunk2020GameEntities.Cybernetics.CustomCybernetics.CustomCybernetic")
+            {
+                this.Close();
+                HandleCustom();
+                return;
+            }
             
             HandleChildClick(e.Node.Name);
         }
+    }
+
+    private void HandleCustom()
+    {
+        var menu = new AddCustomImplantMenu(_form1, _character);
+        menu.Show();
+        menu.BringToFront();
+        menu.Activate();
+        menu.TopMost = true;
+
+        return;
     }
 
     private void HandleChildClick(string childName)

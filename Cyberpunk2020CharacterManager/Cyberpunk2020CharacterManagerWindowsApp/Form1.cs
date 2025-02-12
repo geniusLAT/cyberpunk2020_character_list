@@ -1,6 +1,8 @@
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.AddCustomEquipmentMenus;
+using System.Windows.Forms;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
 using Cyberpunk2020GameEntities;
@@ -997,6 +999,8 @@ public partial class Form1 : Form
         RenderHeader();
         RenderCyberwares(0, 0);
         RenderInventory(31, 178);
+
+        Money_numeric.Value = (decimal) character.CurrentMoney;
 
         saveCharacterButton.Enabled = true;
     }

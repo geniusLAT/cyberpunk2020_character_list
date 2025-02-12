@@ -575,6 +575,7 @@ partial class Form1
         // 
         // tabPage1
         // 
+        tabPage1.AutoScroll = true;
         tabPage1.Controls.Add(label19);
         tabPage1.Location = new Point(4, 24);
         tabPage1.Margin = new Padding(4, 3, 4, 3);
