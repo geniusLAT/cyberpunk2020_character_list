@@ -86,7 +86,7 @@ internal partial class InventoryChooseMenu : Form
 
         RenderTreePart(GearListNode, "Инструменты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Tools"));
         RenderTreePart(GearListNode, "Личная Электроника", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.PersonalElectronics"));
-        RenderTreePart(GearListNode, "DataSystems", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.DataSystems"));
+        RenderTreePart(GearListNode, "Системы данных", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.DataSystems"));
         RenderTreePart(GearListNode, "Связь", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Communications"));
         RenderTreePart(GearListNode, "Наблюдение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Surveillance"));
         RenderTreePart(GearListNode, "Развлечения", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Entertainment"));
@@ -113,7 +113,7 @@ internal partial class InventoryChooseMenu : Form
     {
         if (e.Node.Level == 2) 
         {
-            MessageBox.Show(e.Node.Name);
+            //MessageBox.Show(e.Node.Name);
             if(e.Node.Name == "Cyberpunk2020GameEntities.Equipments.CustomEquipment.CustomEquipment")
             {
                 this.Close();

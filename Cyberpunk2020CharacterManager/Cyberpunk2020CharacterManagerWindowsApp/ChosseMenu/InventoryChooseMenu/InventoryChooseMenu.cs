@@ -71,6 +71,7 @@ internal partial class InventoryChooseMenu : Form
         AvaliableCyberWareTreeView.Name = "AvaliableCyberWareTreeView";
         AvaliableCyberWareTreeView.Size = new Size(260, 529);
         AvaliableCyberWareTreeView.TabIndex = 1;
+        AvaliableCyberWareTreeView.AfterSelect += AvaliableCyberWareTreeView_AfterSelect;
         // 
         // Implant_Description
         // 
@@ -266,5 +267,10 @@ internal partial class InventoryChooseMenu : Form
     {
         ExtraCostLabel.Text = $"Цена: {ExtraCostTrackBar.Value}";
         LookForProblemForEquipment(_chosenEquipment);
+    }
+
+    private void AvaliableCyberWareTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+    {
+
     }
 }
