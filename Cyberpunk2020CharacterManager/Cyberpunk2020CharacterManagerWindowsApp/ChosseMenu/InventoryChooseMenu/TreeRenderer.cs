@@ -1,5 +1,6 @@
 ﻿using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.AddCustomEquipmentMenus;
 using Cyberpunk2020GameEntities.Equipments;
+using Cyberpunk2020GameEntities.Equipments.Weapons;
 using System.Reflection;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
@@ -69,20 +70,20 @@ internal partial class InventoryChooseMenu : Form
         }
         else
         {
-            AvaliableCyberWareTreeView.Nodes.Add(rootNode);
+            AvaliableEquipmentTreeView.Nodes.Add(rootNode);
         }
     }
 
     private void PopulateTreeView()
     {
        
-        AvaliableCyberWareTreeView.Nodes.Clear();
+        AvaliableEquipmentTreeView.Nodes.Clear();
 
         TreeNode GearListNode = new("Лист снаряжения")
         {
             Name = "Лист снаряжения"
         };
-        AvaliableCyberWareTreeView.Nodes.Add(GearListNode);
+        AvaliableEquipmentTreeView.Nodes.Add(GearListNode);
 
         RenderTreePart(GearListNode, "Мода", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Fashion"));
         RenderTreePart(GearListNode, "Инструменты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Tools"));
@@ -99,15 +100,32 @@ internal partial class InventoryChooseMenu : Form
         RenderTreePart(GearListNode, "Бакалея", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Groceries"));
         RenderTreePart(GearListNode, "Жильё", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Housing"));
 
+        TreeNode RangedNode = new("Дальнобойное оружие")
+        {
+            Name = "Дальнобойное оружие"
+        };
+        AvaliableEquipmentTreeView.Nodes.Add(RangedNode);
+
+        RenderTreePart(RangedNode, "Лёгкие пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.LightAutopistols"));
+        RenderTreePart(RangedNode, "Средние пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.MediumAutopistols"));
+        RenderTreePart(RangedNode, "Тяжёлые пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.HeavyAutopistols"));
+        RenderTreePart(RangedNode, "Очень тяжёлые пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.VeryHeavyAutopistols"));
+        RenderTreePart(RangedNode, "Лёгкие пистолеты-пулемёты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Submachineguns.LightSubmachineguns"));
+        RenderTreePart(RangedNode, "Средние пистолеты-пулемёты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Submachineguns.MediumSubmachineguns"));
+        RenderTreePart(RangedNode, "Тяжёлые пистолеты-пулемёты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Submachineguns.HeavySubmachineguns"));
+        RenderTreePart(RangedNode, "Штурмовые винтовки", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.AssaultRifles"));
+        RenderTreePart(RangedNode, "Дробовики", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Shotguns"));
+      
+
         TreeNode otherNode = new("Прочее")
         {
             Name = "Прочее"
         };
-        AvaliableCyberWareTreeView.Nodes.Add(otherNode);
+        AvaliableEquipmentTreeView.Nodes.Add(otherNode);
         RenderTreePart(otherNode, "Кастомные", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.CustomEquipment"));
 
 
-        AvaliableCyberWareTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
+        AvaliableEquipmentTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
     }
 
     private void AvaliableCyberWareTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -183,8 +201,13 @@ internal partial class InventoryChooseMenu : Form
         }
 
         Implant_Description.Text = equipmentItem.Name +
-            $"\n\nСтоимость: {equipmentItem.Cost}{extraCostNote} \n\n"
-            + equipmentItem.Description;
+            $"\n\nСтоимость: {equipmentItem.Cost}{extraCostNote}\n";
+        if (equipmentItem is Weapon)
+        {
+            Implant_Description.Text += ((Weapon)equipmentItem).GenerateWeaponCodeDescription();
+        }
+
+        Implant_Description.Text += " \n\n" + equipmentItem.Description;
 
         potentialOptionComboBox.Items.Clear();
         var options = equipmentItem.GetOptions();
