@@ -84,13 +84,14 @@ internal partial class InventoryChooseMenu : Form
         };
         AvaliableCyberWareTreeView.Nodes.Add(GearListNode);
 
+        RenderTreePart(GearListNode, "Мода", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Fashion"));
         RenderTreePart(GearListNode, "Инструменты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Tools"));
         RenderTreePart(GearListNode, "Личная Электроника", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.PersonalElectronics"));
-        RenderTreePart(GearListNode, "DataSystems", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.DataSystems"));
+        RenderTreePart(GearListNode, "Системы данных", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.DataSystems"));
         RenderTreePart(GearListNode, "Связь", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Communications"));
         RenderTreePart(GearListNode, "Наблюдение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Surveillance"));
         RenderTreePart(GearListNode, "Развлечения", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Entertainment"));
-        RenderTreePart(GearListNode, "Security", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Security"));
+        RenderTreePart(GearListNode, "Безопасность", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Security"));
         RenderTreePart(GearListNode, "Медицина", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Medical"));
         RenderTreePart(GearListNode, "Мебель", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Furnishings"));
         RenderTreePart(GearListNode, "Транспорт", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Vehicles"));
@@ -113,7 +114,7 @@ internal partial class InventoryChooseMenu : Form
     {
         if (e.Node.Level == 2) 
         {
-            MessageBox.Show(e.Node.Name);
+            //MessageBox.Show(e.Node.Name);
             if(e.Node.Name == "Cyberpunk2020GameEntities.Equipments.CustomEquipment.CustomEquipment")
             {
                 this.Close();
