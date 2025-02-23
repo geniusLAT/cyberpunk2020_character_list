@@ -148,6 +148,9 @@ public abstract class Weapon : Equipment
             case WeaponAmmoType.Bullet5dot56:
                 return "5.56";
                 break;
+            case WeaponAmmoType.Bullet7dot62:
+                return "7.62";
+                break;
             case WeaponAmmoType.shotshell:
                 return "Дробь";
                 break;
