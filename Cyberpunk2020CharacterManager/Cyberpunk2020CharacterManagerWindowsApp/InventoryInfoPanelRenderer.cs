@@ -1,4 +1,5 @@
 ﻿using Cyberpunk2020GameEntities.Equipments;
+using Cyberpunk2020GameEntities.Equipments.Weapons;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp;
 
@@ -47,6 +48,14 @@ public partial class Form1 : Form
 
         chosenEquipmentNameLabel.Text = $"{equipment.Name} {equipment.Detail}";
         chosenEquipmentCostLabel.Text = $"Цена за штуку: {equipment.Cost} ed";
-        chosenEquipmentDescriptionLabel.Text = equipment.Description;
+
+        if(equipment is Weapon)
+        {
+            chosenEquipmentDescriptionLabel.Text = ((Weapon)equipment).GenerateWeaponCodeDescription() +"\n\n"+ equipment.Description;
+        }
+        else
+        {
+            chosenEquipmentDescriptionLabel.Text = equipment.Description;
+        }
     }
 }
