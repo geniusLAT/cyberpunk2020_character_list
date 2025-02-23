@@ -84,6 +84,7 @@ internal partial class InventoryChooseMenu : Form
         };
         AvaliableCyberWareTreeView.Nodes.Add(GearListNode);
 
+        RenderTreePart(GearListNode, "Мода", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Fashion"));
         RenderTreePart(GearListNode, "Инструменты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Tools"));
         RenderTreePart(GearListNode, "Личная Электроника", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.PersonalElectronics"));
         RenderTreePart(GearListNode, "Системы данных", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.DataSystems"));
