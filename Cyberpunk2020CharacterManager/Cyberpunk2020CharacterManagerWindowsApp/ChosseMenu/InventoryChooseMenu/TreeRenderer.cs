@@ -1,5 +1,6 @@
 ﻿using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.AddCustomEquipmentMenus;
 using Cyberpunk2020GameEntities.Equipments;
+using Cyberpunk2020GameEntities.Equipments.Weapons;
 using System.Reflection;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
@@ -193,8 +194,13 @@ internal partial class InventoryChooseMenu : Form
         }
 
         Implant_Description.Text = equipmentItem.Name +
-            $"\n\nСтоимость: {equipmentItem.Cost}{extraCostNote} \n\n"
-            + equipmentItem.Description;
+            $"\n\nСтоимость: {equipmentItem.Cost}{extraCostNote}\n";
+        if (equipmentItem is Weapon)
+        {
+            Implant_Description.Text += ((Weapon)equipmentItem).GenerateWeaponCodeDescription();
+        }
+
+        Implant_Description.Text += " \n\n" + equipmentItem.Description;
 
         potentialOptionComboBox.Items.Clear();
         var options = equipmentItem.GetOptions();

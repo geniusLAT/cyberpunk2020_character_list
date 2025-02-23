@@ -7,5 +7,6 @@ public enum WeaponType
     Submachinegun,
     Rifle,
     Shotgun,
-    Heavy
+    Heavy,
+    Exotic
 }
