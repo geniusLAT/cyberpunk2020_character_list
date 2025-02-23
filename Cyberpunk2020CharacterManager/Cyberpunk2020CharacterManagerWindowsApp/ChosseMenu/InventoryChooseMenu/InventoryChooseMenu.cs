@@ -7,7 +7,7 @@ internal partial class InventoryChooseMenu : Form
 {
     Form1 _form1;
 
-    private TreeView AvaliableCyberWareTreeView;
+    private TreeView AvaliableEquipmentTreeView;
 
     private Label Implant_Description;
 
@@ -41,7 +41,7 @@ internal partial class InventoryChooseMenu : Form
     {
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryChooseMenu));
         add_chosen_cyberware_button = new Button();
-        AvaliableCyberWareTreeView = new TreeView();
+        AvaliableEquipmentTreeView = new TreeView();
         Implant_Description = new Label();
         problem_list_table = new Label();
         potentialOptionComboBox = new ComboBox();
@@ -67,11 +67,11 @@ internal partial class InventoryChooseMenu : Form
         // 
         // AvaliableCyberWareTreeView
         // 
-        AvaliableCyberWareTreeView.Location = new Point(12, 47);
-        AvaliableCyberWareTreeView.Name = "AvaliableCyberWareTreeView";
-        AvaliableCyberWareTreeView.Size = new Size(260, 529);
-        AvaliableCyberWareTreeView.TabIndex = 1;
-        AvaliableCyberWareTreeView.AfterSelect += AvaliableCyberWareTreeView_AfterSelect;
+        AvaliableEquipmentTreeView.Location = new Point(12, 47);
+        AvaliableEquipmentTreeView.Name = "AvaliableCyberWareTreeView";
+        AvaliableEquipmentTreeView.Size = new Size(260, 529);
+        AvaliableEquipmentTreeView.TabIndex = 1;
+        AvaliableEquipmentTreeView.AfterSelect += AvaliableCyberWareTreeView_AfterSelect;
         // 
         // Implant_Description
         // 
@@ -181,7 +181,7 @@ internal partial class InventoryChooseMenu : Form
         Controls.Add(potentialOptionComboBox);
         Controls.Add(problem_list_table);
         Controls.Add(Implant_Description);
-        Controls.Add(AvaliableCyberWareTreeView);
+        Controls.Add(AvaliableEquipmentTreeView);
         Controls.Add(add_chosen_cyberware_button);
         Name = "InventoryChooseMenu";
         Text = "Добавление снаряжения";

@@ -69,20 +69,20 @@ internal partial class InventoryChooseMenu : Form
         }
         else
         {
-            AvaliableCyberWareTreeView.Nodes.Add(rootNode);
+            AvaliableEquipmentTreeView.Nodes.Add(rootNode);
         }
     }
 
     private void PopulateTreeView()
     {
        
-        AvaliableCyberWareTreeView.Nodes.Clear();
+        AvaliableEquipmentTreeView.Nodes.Clear();
 
         TreeNode GearListNode = new("Лист снаряжения")
         {
             Name = "Лист снаряжения"
         };
-        AvaliableCyberWareTreeView.Nodes.Add(GearListNode);
+        AvaliableEquipmentTreeView.Nodes.Add(GearListNode);
 
         RenderTreePart(GearListNode, "Мода", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Fashion"));
         RenderTreePart(GearListNode, "Инструменты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Tools"));
@@ -99,15 +99,24 @@ internal partial class InventoryChooseMenu : Form
         RenderTreePart(GearListNode, "Бакалея", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Groceries"));
         RenderTreePart(GearListNode, "Жильё", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Housing"));
 
+        TreeNode RangedNode = new("Дальнобойное оружие")
+        {
+            Name = "Дальнобойное оружие"
+        };
+        AvaliableEquipmentTreeView.Nodes.Add(RangedNode);
+
+        RenderTreePart(RangedNode, "Лёгкие пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.LightAutopistols"));
+      
+
         TreeNode otherNode = new("Прочее")
         {
             Name = "Прочее"
         };
-        AvaliableCyberWareTreeView.Nodes.Add(otherNode);
+        AvaliableEquipmentTreeView.Nodes.Add(otherNode);
         RenderTreePart(otherNode, "Кастомные", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.CustomEquipment"));
 
 
-        AvaliableCyberWareTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
+        AvaliableEquipmentTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
     }
 
     private void AvaliableCyberWareTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
