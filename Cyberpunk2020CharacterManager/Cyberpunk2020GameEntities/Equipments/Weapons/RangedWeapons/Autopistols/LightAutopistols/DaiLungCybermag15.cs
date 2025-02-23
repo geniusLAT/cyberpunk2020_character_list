@@ -6,6 +6,11 @@ public class DaiLungCybermag15 : LightAutoPistol
 
     public override int BookIndex { get; set; } = 1;
 
+    public override int GenerateDamage(Random random)
+    {
+        return random.Next(1, 7) + 1;
+    }
+
     public DaiLungCybermag15()
     {
         Description = "Дешёвая Гонконгская подделка, часто используется бустерами и прочими уличными отбросами.";

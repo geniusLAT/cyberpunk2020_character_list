@@ -6,6 +6,11 @@ public class FederatedArmsX22 : LightAutoPistol
 
     public override int BookIndex { get; set; } = 1;
 
+    public override int GenerateDamage(Random random)
+    {
+        return random.Next(1, 7) + 1;
+    }
+
     public FederatedArmsX22()
     {
         Description = "Вездесущий дешёвый полимерный \"Полимерный Ван-Шот\". Доступен в дизайнерских расцветках.";

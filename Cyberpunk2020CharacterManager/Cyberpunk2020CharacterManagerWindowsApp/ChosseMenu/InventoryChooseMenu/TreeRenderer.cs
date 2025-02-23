@@ -106,6 +106,7 @@ internal partial class InventoryChooseMenu : Form
         AvaliableEquipmentTreeView.Nodes.Add(RangedNode);
 
         RenderTreePart(RangedNode, "Лёгкие пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.LightAutopistols"));
+        RenderTreePart(RangedNode, "Средние пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.MediumAutopistols"));
       
 
         TreeNode otherNode = new("Прочее")

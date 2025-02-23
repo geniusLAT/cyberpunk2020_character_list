@@ -1,10 +1,16 @@
-﻿namespace Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.LightAutopistols;
+﻿
+namespace Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.LightAutopistols;
 
 public class BudgetArmsC13 : LightAutoPistol
 {
     public override string Name { get { return "BudgetArms C-13"; } }
 
     public override int BookIndex { get; set; } = 0;
+
+    public override int GenerateDamage(Random random)
+    {
+        return random.Next(1, 7);
+    }
 
     public BudgetArmsC13()
     {
