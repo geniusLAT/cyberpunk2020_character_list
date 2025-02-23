@@ -1,5 +1,4 @@
-﻿
-namespace Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.LightAutopistols;
+﻿namespace Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.LightAutopistols;
 
 public class BudgetArmsC13 : LightAutoPistol
 {
