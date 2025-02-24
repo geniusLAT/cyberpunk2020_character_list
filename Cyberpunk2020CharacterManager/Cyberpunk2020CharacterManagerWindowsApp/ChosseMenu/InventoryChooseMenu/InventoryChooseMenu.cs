@@ -22,6 +22,7 @@ internal partial class InventoryChooseMenu : Form
     private Label label1;
     private TrackBar ExtraCostTrackBar;
     private Label ExtraCostLabel;
+    private Panel panel1;
     private readonly Random _random = new();
 
     public InventoryChooseMenu(Form1 form1, Character character)
@@ -51,8 +52,10 @@ internal partial class InventoryChooseMenu : Form
         label1 = new Label();
         ExtraCostTrackBar = new TrackBar();
         ExtraCostLabel = new Label();
+        panel1 = new Panel();
         ((System.ComponentModel.ISupportInitialize)equipmentQuantityNumerucUpDown).BeginInit();
         ((System.ComponentModel.ISupportInitialize)ExtraCostTrackBar).BeginInit();
+        panel1.SuspendLayout();
         SuspendLayout();
         // 
         // add_chosen_cyberware_button
@@ -65,22 +68,23 @@ internal partial class InventoryChooseMenu : Form
         add_chosen_cyberware_button.UseVisualStyleBackColor = true;
         add_chosen_cyberware_button.Click += add_chosen_cyberware_button_Click;
         // 
-        // AvaliableCyberWareTreeView
+        // AvaliableEquipmentTreeView
         // 
         AvaliableEquipmentTreeView.Location = new Point(12, 47);
-        AvaliableEquipmentTreeView.Name = "AvaliableCyberWareTreeView";
+        AvaliableEquipmentTreeView.Name = "AvaliableEquipmentTreeView";
         AvaliableEquipmentTreeView.Size = new Size(260, 529);
         AvaliableEquipmentTreeView.TabIndex = 1;
         AvaliableEquipmentTreeView.AfterSelect += AvaliableCyberWareTreeView_AfterSelect;
         // 
         // Implant_Description
         // 
+        Implant_Description.AllowDrop = true;
         Implant_Description.AutoSize = true;
         Implant_Description.ImageAlign = ContentAlignment.TopLeft;
-        Implant_Description.Location = new Point(278, 47);
-        Implant_Description.MaximumSize = new Size(268, 260);
+        Implant_Description.Location = new Point(3, 0);
+        Implant_Description.MaximumSize = new Size(235, 1000);
         Implant_Description.Name = "Implant_Description";
-        Implant_Description.Size = new Size(268, 260);
+        Implant_Description.Size = new Size(232, 405);
         Implant_Description.TabIndex = 2;
         Implant_Description.Text = resources.GetString("Implant_Description.Text");
         Implant_Description.Click += Implant_Description_Click;
@@ -169,9 +173,19 @@ internal partial class InventoryChooseMenu : Form
         ExtraCostLabel.TabIndex = 11;
         ExtraCostLabel.Text = "label2";
         // 
+        // panel1
+        // 
+        panel1.AutoScroll = true;
+        panel1.Controls.Add(Implant_Description);
+        panel1.Location = new Point(279, 47);
+        panel1.Name = "panel1";
+        panel1.Size = new Size(267, 257);
+        panel1.TabIndex = 12;
+        // 
         // InventoryChooseMenu
         // 
         ClientSize = new Size(553, 617);
+        Controls.Add(panel1);
         Controls.Add(ExtraCostLabel);
         Controls.Add(ExtraCostTrackBar);
         Controls.Add(label1);
@@ -180,13 +194,14 @@ internal partial class InventoryChooseMenu : Form
         Controls.Add(radioButton1);
         Controls.Add(potentialOptionComboBox);
         Controls.Add(problem_list_table);
-        Controls.Add(Implant_Description);
         Controls.Add(AvaliableEquipmentTreeView);
         Controls.Add(add_chosen_cyberware_button);
         Name = "InventoryChooseMenu";
         Text = "Добавление снаряжения";
         ((System.ComponentModel.ISupportInitialize)equipmentQuantityNumerucUpDown).EndInit();
         ((System.ComponentModel.ISupportInitialize)ExtraCostTrackBar).EndInit();
+        panel1.ResumeLayout(false);
+        panel1.PerformLayout();
         ResumeLayout(false);
         PerformLayout();
     }
