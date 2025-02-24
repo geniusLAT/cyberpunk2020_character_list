@@ -1,5 +1,4 @@
 ﻿using Cyberpunk2020GameEntities;
-using Cyberpunk2020GameEntities.Cybernetics;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp;
 
