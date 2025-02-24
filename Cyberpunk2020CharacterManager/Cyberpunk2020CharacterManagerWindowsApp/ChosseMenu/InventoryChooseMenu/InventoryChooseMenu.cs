@@ -1,5 +1,4 @@
 ﻿using Cyberpunk2020GameEntities;
-using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
 
@@ -246,6 +245,7 @@ internal partial class InventoryChooseMenu : Form
         {
             _chosenEquipment.ChangeOption(potentialOptionComboBox.Text);
             LookForProblemForEquipment(_chosenEquipment);
+            ShowDescription(_chosenEquipment);
         }
     }
 

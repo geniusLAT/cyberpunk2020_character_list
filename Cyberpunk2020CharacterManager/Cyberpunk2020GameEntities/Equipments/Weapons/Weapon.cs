@@ -154,6 +154,20 @@ public abstract class Weapon : Equipment
             case WeaponAmmoType.shotshell:
                 return "Дробь";
                 break;
+            case WeaponAmmoType.none:
+                break;
+            case WeaponAmmoType.Bullet20mm:
+                return "20мм/9";
+                break;
+            case WeaponAmmoType.Needle:
+                return "Патрон игломёта";
+                break;
+            case WeaponAmmoType.Arrow:
+                return "Стрела";
+                break;
+            case WeaponAmmoType.CrossbowBolt:
+                return "Арбалетный болт";
+                break;
         }
         return "-";
     }

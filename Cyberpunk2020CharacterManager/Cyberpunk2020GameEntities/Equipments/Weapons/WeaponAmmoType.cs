@@ -12,5 +12,8 @@ public enum WeaponAmmoType
     Bullet7dot62,
     shotshell,
     none,
-    Bullet20mm
+    Bullet20mm,
+    Needle,
+    Arrow,
+    CrossbowBolt
 }

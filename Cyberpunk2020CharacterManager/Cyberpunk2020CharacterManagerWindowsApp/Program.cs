@@ -1,5 +1,3 @@
-using Cyberpunk2020GameEntities;
-
 namespace Cyberpunk2020CharacterManagerWindowsApp;
 
 internal static class Program

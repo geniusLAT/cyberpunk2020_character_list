@@ -2,7 +2,7 @@
 
 public class Spm1Battleglove : MeleeWeapon
 {
-    public override string Name { get { return "Kendachi MonoKatana"; } }
+    public override string Name { get { return "SPM1 Battle glove"; } }
 
     public override int BookIndex { get; set; } = 2;
 

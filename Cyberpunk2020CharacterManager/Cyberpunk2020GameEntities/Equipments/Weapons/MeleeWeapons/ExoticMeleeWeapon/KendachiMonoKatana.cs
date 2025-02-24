@@ -13,7 +13,8 @@ public class KendachiMonoKatana : MeleeWeapon
 
     public KendachiMonoKatana()
     {
-        Description = "";
+        Description = "Длинная версиямономолекулярного клинка. " +
+            "Напоминает высокотехнологичную \"катану\" с молочным, почти прозрачным лезвием";
 
         type = WeaponType.Melee;
         WeaponAccuracy = +1;

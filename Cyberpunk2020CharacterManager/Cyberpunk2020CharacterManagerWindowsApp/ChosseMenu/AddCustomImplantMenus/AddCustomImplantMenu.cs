@@ -1,8 +1,5 @@
 ﻿using Cyberpunk2020GameEntities;
 using Cyberpunk2020GameEntities.Cybernetics.CustomCybernetics;
-using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
-using Cyberpunk2020GameEntities.Equipments.CustomEquipment;
-using System;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.AddCustomImplantMenus;
 

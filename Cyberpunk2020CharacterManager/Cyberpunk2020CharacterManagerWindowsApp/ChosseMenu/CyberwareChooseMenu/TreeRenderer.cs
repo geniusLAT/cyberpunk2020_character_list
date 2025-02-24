@@ -1,5 +1,4 @@
-﻿using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.AddCustomEquipmentMenus;
-using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.AddCustomImplantMenus;
+﻿using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.AddCustomImplantMenus;
 using Cyberpunk2020GameEntities.Cybernetics;
 using System.Reflection;
 

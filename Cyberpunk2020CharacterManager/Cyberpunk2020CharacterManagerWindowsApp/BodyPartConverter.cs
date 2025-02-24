@@ -1,5 +1,4 @@
-﻿using Cyberpunk2020GameEntities;
-using Cyberpunk2020GameEntities.Cybernetics;
+﻿using Cyberpunk2020GameEntities.Cybernetics;
 using Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody;
 using System.Text.Json;
 using System.Text.Json.Serialization;
