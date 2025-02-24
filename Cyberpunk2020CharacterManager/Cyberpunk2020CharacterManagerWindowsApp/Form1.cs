@@ -910,13 +910,13 @@ public partial class Form1 : Form
     {
         if (_chosenCharacter is null)
         {
-            MessageBox.Show("Нет активного персонажа для выбора кибернетики");
+            MessageBox.Show("Нет активного персонажа для выбора снаряжения");
             return;
         }
 
         if (_chosenCharacter.createStep != CreateStep.inventory && _chosenCharacter.createStep != CreateStep.finished)
         {
-            MessageBox.Show("На данном этапе создания персонажа нет доступен выбор снаряжения");
+            MessageBox.Show("На данном этапе создания персонажа не доступен выбор снаряжения");
             return;
         }
 
