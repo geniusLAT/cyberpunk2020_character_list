@@ -4,5 +4,6 @@ public enum WeaponReliability
 {
     VeryReliable,
     Standart,
-    Unreliable
+    Unreliable,
+    none
 }

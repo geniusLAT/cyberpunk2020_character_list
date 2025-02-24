@@ -1,7 +1,4 @@
-﻿
-using System.Text;
-
-namespace Cyberpunk2020GameEntities.Cybernetics.Neuralwares;
+﻿namespace Cyberpunk2020GameEntities.Cybernetics.Neuralwares;
 
 public class KerenzikovBoosterwareI : ReflexBooster
 {
