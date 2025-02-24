@@ -199,12 +199,8 @@ internal partial class InventoryChooseMenu : Form
         }
     }
 
-    private void ChooseEquipment(Equipment equipmentItem)
+    private void ShowDescription(Equipment equipmentItem)
     {
-        radioButton1.Enabled = radioButton2.Enabled = equipmentQuantityNumerucUpDown.Enabled = true;
-        equipmentQuantityNumerucUpDown.Value = 1;
-        radioButton1.Checked = true;
-
         var extraCostNote = string.Empty;
         if (equipmentItem.MaxCost is not null)
         {
@@ -219,6 +215,15 @@ internal partial class InventoryChooseMenu : Form
         }
 
         Implant_Description.Text += " \n\n" + equipmentItem.Description;
+    }
+
+    private void ChooseEquipment(Equipment equipmentItem)
+    {
+        radioButton1.Enabled = radioButton2.Enabled = equipmentQuantityNumerucUpDown.Enabled = true;
+        equipmentQuantityNumerucUpDown.Value = 1;
+        radioButton1.Checked = true;
+
+        
 
         potentialOptionComboBox.Items.Clear();
         var options = equipmentItem.GetOptions();
@@ -278,6 +283,7 @@ internal partial class InventoryChooseMenu : Form
         //}
         
         _chosenEquipment = equipmentItem;
+        ShowDescription(equipmentItem);
         LookForProblemForEquipment(equipmentItem);
         add_chosen_cyberware_button.Text = "Купить";
     }

@@ -245,6 +245,7 @@ internal partial class InventoryChooseMenu : Form
         {
             _chosenEquipment.ChangeOption(potentialOptionComboBox.Text);
             LookForProblemForEquipment(_chosenEquipment);
+            ShowDescription(_chosenEquipment);
         }
     }
 
