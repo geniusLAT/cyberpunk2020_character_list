@@ -10,5 +10,6 @@ public enum WeaponAmmoType
     Bullet12mm,
     Bullet5dot56,
     Bullet7dot62,
-    shotshell
+    shotshell,
+    none
 }

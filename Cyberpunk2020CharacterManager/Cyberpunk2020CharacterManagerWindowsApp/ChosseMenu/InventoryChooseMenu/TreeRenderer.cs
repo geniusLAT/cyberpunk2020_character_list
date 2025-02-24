@@ -115,6 +115,15 @@ internal partial class InventoryChooseMenu : Form
         RenderTreePart(RangedNode, "Тяжёлые пистолеты-пулемёты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Submachineguns.HeavySubmachineguns"));
         RenderTreePart(RangedNode, "Штурмовые винтовки", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.AssaultRifles"));
         RenderTreePart(RangedNode, "Дробовики", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Shotguns"));
+        
+        TreeNode MeleeNode = new("Оружие ближнего боя")
+        {
+            Name = "Оружие ближнего боя"
+        };
+        AvaliableEquipmentTreeView.Nodes.Add(MeleeNode);
+
+        RenderTreePart(MeleeNode, "Обычное оружие ближнего боя", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.MeleeWeapons.CommonMeleeWeapon"));
+        RenderTreePart(MeleeNode, "Экзотическое оружие ближнего боя", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.MeleeWeapons.ExoticMeleeWeapon"));
       
 
         TreeNode otherNode = new("Прочее")

@@ -2,7 +2,6 @@
 using Cyberpunk2020GameEntities.Cybernetics.Natural;
 using Cyberpunk2020GameEntities.Equipments;
 using System.Text.Json;
-using System.Text.Json.Serialization.Metadata;
 using System.Reflection;
 
 namespace Cyberpunk2020GameEntities;
