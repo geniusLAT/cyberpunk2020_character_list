@@ -13,7 +13,9 @@ public class KendachiMonoknife : MeleeWeapon
 
     public KendachiMonoknife()
     {
-        Description = "";
+        Description = "Односторонний кристаллический клинок. Невероятно острый." +
+           " В японском стиле \"танто\". " +
+           "Также доступны в форме \"нагината\" за дополнительные 100.00";
 
         type = WeaponType.Melee;
         WeaponAccuracy = +1;
