@@ -98,6 +98,31 @@ public class Character
         public string type { get; set; }
     }
 
+    public List<BodyPart> GetChildBodyParts(Guid parentGuid)
+    {
+        List<BodyPart> result = [];
+        foreach (var BodyPart in BodyParts)
+        {
+            if(BodyPart.BodyPlace == parentGuid)
+            {
+                result.Add(BodyPart);
+            }
+        }
+        return result;
+    }
+
+    public BodyPart? GetParentBodyPart(Guid childGuid)
+    {
+        foreach (var BodyPart in BodyParts)
+        {
+            if (BodyPart.Guid == childGuid)
+            {
+                return BodyPart;
+            }
+        }
+        return null;
+    }
+
     public void DeserializeInnerFields()
     {
         var options = new JsonSerializerOptions
@@ -165,15 +190,7 @@ public class Character
         NaturalLeg lefttLeg = new() { BodyPlace = leftLegSlot.Guid };
 
         ArmSlot rightArmSlot = new(false);
-        if (rightArmSlot.IsLeft)
-        {
-            throw new Exception("правая рука считает себя левой");
-        }
         ArmSlot leftArmSlot = new(true);
-        if (!leftArmSlot.IsLeft)
-        {
-            throw new Exception("левая рука считает себя правой");
-        }
 
         NaturalArm rightArm = new() { BodyPlace = rightArmSlot.Guid };
         NaturalArm leftArm = new() { BodyPlace = leftArmSlot.Guid };
