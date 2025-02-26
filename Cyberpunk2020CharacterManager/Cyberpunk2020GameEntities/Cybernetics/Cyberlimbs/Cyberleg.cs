@@ -2,9 +2,9 @@
 
 namespace Cyberpunk2020GameEntities.Cybernetics.Cyberlimbs;
 
-public class Cyberarm : Implant, IArm
+public class Cyberleg : Implant, IArm
 {
-    public override string Name { get { return namePrefix +"Киберрука"; } }
+    public override string Name { get { return namePrefix +"Кибернога"; } }
 
     public string namePrefix { get; set; }
 
@@ -16,14 +16,14 @@ public class Cyberarm : Implant, IArm
 
     public int FunctionSdpThreshold { get; set; }
 
-    public int CurrentSdp {  get; set; }
+    public int CurrentSdp { get; set; }
 
-    public Cyberarm()
+    public Cyberleg()
     {
-        SurgeryCode = SurgeryCode.Minor;
+        SurgeryCode = SurgeryCode.Critical;
         Description = "";
         HumanityLossFormula = "2D6";
-        Cost = 3000;
+        Cost = 2000;
     }
 
     public override void GenerateHumanLoss(Random random)
@@ -36,7 +36,7 @@ public class Cyberarm : Implant, IArm
         var result = new StringBuilder();
         if (PotentialParents(character).Count == 0)
         {
-            result.Append("Эту руку некуда прикрепить\n");
+            result.Append("Эту ногу некуда прикрепить\n");
         }
 
         return result.ToString();
@@ -54,10 +54,10 @@ public class Cyberarm : Implant, IArm
         cashedPotentialParents = [];
         foreach (var bodyPart in character.BodyParts)
         {
-            if (bodyPart is ArmSlot)
+            if (bodyPart is LegSlot)
             {
                
-                if (character.GetChildBodyParts(bodyPart.Guid).First() is Cyberarm)
+                if (character.GetChildBodyParts(bodyPart.Guid).First() is Cyberleg)
                 {
                     continue;
                 }
@@ -70,15 +70,15 @@ public class Cyberarm : Implant, IArm
 
     public override void ChipIn(Character character, Random random)
     {
-        var otherHands = character.GetChildBodyParts(BodyPlace);
-        if (otherHands.Any()) {
-            character.BodyParts.Remove(otherHands.First());
+        var otherLegs = character.GetChildBodyParts(BodyPlace);
+        if (otherLegs.Any()) {
+            character.BodyParts.Remove(otherLegs.First());
         }
 
         var slot = character.GetBodyPart(BodyPlace);
         if (slot == null) { throw new Exception("lost parent"); }
 
-        if (((ArmSlot)slot).IsLeft)
+        if (((LegSlot)slot).IsLeft)
         {
             namePrefix = "Левая ";
         }
@@ -87,7 +87,7 @@ public class Cyberarm : Implant, IArm
             namePrefix = "Правая ";
         }
 
-        OptionsAlloweded = 4;
+        OptionsAlloweded = 3;
 
         base.ChipIn(character, random);
     }
