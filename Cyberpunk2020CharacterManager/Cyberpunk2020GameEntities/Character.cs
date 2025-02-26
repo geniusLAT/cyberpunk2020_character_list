@@ -75,16 +75,20 @@ public class Character
         };
 
         BodyPartsSerialized = [];
-        foreach (var BodyPart in BodyParts)
+        foreach (var TheBodyPart in BodyParts)
         {
-            var serialized = JsonSerializer.Serialize(BodyPart, options);
+            Type type = TheBodyPart.GetType();
+
+            var serialized = JsonSerializer.Serialize(TheBodyPart, type, options);
             BodyPartsSerialized.Add(serialized);
         }
 
         EquipmentsSerialized= [];
         foreach (var equipment in equipments)
         {
-            var serialized = JsonSerializer.Serialize(equipment, options);
+            Type type = equipment.GetType();
+
+            var serialized = JsonSerializer.Serialize(equipment, type, options);
             EquipmentsSerialized.Add(serialized);
         }
     }
