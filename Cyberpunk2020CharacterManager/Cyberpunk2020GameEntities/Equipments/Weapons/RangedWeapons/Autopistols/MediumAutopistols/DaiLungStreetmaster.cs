@@ -15,7 +15,7 @@ public class DaiLungStreetmaster : MediumAutoPistol
     {
         Description = "Ещё один дешевый Dai Lung, сконструированный для Улиц.";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Excellent;

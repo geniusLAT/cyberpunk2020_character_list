@@ -17,7 +17,7 @@ public class MilitechElectronicsTaser : AutoPistol
     {
         Description = "Шокер. Размером примерно с ручной фонарик. Смотри детали в разделе ПвПВ, стр. 107.";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = -1;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Common;

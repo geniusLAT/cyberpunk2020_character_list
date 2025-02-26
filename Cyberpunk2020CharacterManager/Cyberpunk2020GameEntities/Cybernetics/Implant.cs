@@ -8,6 +8,8 @@ public abstract class Implant : BodyPart
 
     public virtual void GenerateHumanLoss(Random random) { HumanityLoss = 0; }
 
+    public int OptionsAlloweded { get; set; }
+
     public override bool IsImplant 
     { 
         get {

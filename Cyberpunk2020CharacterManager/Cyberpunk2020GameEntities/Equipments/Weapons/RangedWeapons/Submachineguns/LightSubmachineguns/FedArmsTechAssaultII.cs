@@ -16,7 +16,7 @@ public class FedArmsTechAssaultII : LightSubmachinegun
         Description = "Обновлённая версия почтенного \"Tech Assault I\", " +
             "имеет увеличенный магазин, улучшенный автоматический огонь, не плавится. Честно.";
 
-        type = WeaponType.Submachinegun;
+        weaponType = WeaponType.Submachinegun;
         WeaponAccuracy = +1;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Common;

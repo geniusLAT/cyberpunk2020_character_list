@@ -15,7 +15,7 @@ public class FederatedArmsX9mm : MediumAutoPistol
     {
         Description = "Надёжное оружие для Соло, используемое в качестве стандартного военного оружия в США и ЕЭС.";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Excellent;

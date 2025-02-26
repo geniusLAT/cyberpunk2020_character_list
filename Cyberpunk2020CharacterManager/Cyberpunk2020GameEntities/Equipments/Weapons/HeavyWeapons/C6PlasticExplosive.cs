@@ -16,7 +16,7 @@ public class C6PlasticExplosive : Weapon
     {
         Description = "Блок серого пластика, может быть взорван таймером, натяжением растяжки или сигналом.";
 
-        type = WeaponType.Heavy;
+        weaponType = WeaponType.Heavy;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.Pocket;
         Avaliability = WeaponAvaliability.Poor;

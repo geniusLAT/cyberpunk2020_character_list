@@ -2,7 +2,7 @@
 
 public abstract class Equipment : IComparable<Equipment>
 {
-    public Guid Guid { get; set; } = new Guid();
+    public Guid Guid { get; set; } = Guid.NewGuid();
 
     //TODO remove that horrific field
 

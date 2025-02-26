@@ -18,7 +18,7 @@ public class MilitechElectLaserCannon : AssaultRifle
         Description = "Специальная военная лазерная пушка, которую мало кто видел. " +
             "Смотри детали в разделе ПвПВ, стр. 108.";
 
-        type = WeaponType.Rifle;
+        weaponType = WeaponType.Rifle;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Rare;

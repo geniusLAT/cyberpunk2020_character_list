@@ -16,7 +16,7 @@ public class ArasakaMinami10 : MediumSubmachinegun
         Description = "Стандартное оружие службы безопасности \"Arasaka\"," +
             " распространено по всему миру. Хорошее, универсальное оружие.";
 
-        type = WeaponType.Submachinegun;
+        weaponType = WeaponType.Submachinegun;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Excellent;

@@ -15,7 +15,7 @@ public class SternmeyerStakeout10 : Shotgun
     {
         Description = "Лёгкий патрульный дробовик, используемый городскими полицейскими департаментами.";
 
-        type = WeaponType.Shotgun;
+        weaponType = WeaponType.Shotgun;
         WeaponAccuracy = -2;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Rare;

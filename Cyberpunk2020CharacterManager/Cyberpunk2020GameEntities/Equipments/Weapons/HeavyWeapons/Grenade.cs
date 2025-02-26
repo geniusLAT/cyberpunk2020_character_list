@@ -65,7 +65,7 @@ public class Grenade : Weapon
             " Звуковые (Утрата слуха на 4 хода)," +
             " Газовые (см. ПвПВ (Перестрелка в пятницу вечером) Таблица газов).";
 
-        type = WeaponType.Heavy;
+        weaponType = WeaponType.Heavy;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.Pocket;
         Avaliability = WeaponAvaliability.Poor;

@@ -18,7 +18,7 @@ public class BarretArasakaLight20mm : Weapon
             " со сверхзвуковой скоростью. Тяжелый бронебойный подкалиберный " +
             "снаряд повреждает броню на 2 пункта за попадание.";
 
-        type = WeaponType.Heavy;
+        weaponType = WeaponType.Heavy;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Rare;

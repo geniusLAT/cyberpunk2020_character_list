@@ -17,7 +17,7 @@ public class MilitechArmsRpgA : Weapon
         Description = "Устанавливаемый на плечо, реактивный пусковой гранатомёт.Массово применялся " +
             "центрально-амери- канских конфликтах под названием \"RPG-A\"";
 
-        type = WeaponType.Heavy;
+        weaponType = WeaponType.Heavy;
         WeaponAccuracy = -2;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Rare;

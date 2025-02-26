@@ -16,7 +16,7 @@ public class SternmeyerType35 : HeavyAutoPistol
         Description = "Прочный, надёжный, с отличной останавливающей способностью." +
             " Ещё один запрещенный ЕЭС продукт из Объединенной Германий.";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Common;

@@ -18,7 +18,7 @@ public class AvanteP1135Needlegun : AutoPistol
         Description = "Лёгкий, пластиковый, мощная пневматика. " +
             "Может быть заправлен препаратами или ядом. Смотри детали в разделе ПВПВ, стр. 107.";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.Pocket;
         Avaliability = WeaponAvaliability.Poor;

@@ -17,7 +17,7 @@ public class Scorpion16MissleLauncher : Weapon
         Description = "Третье поколение ракетной пусковой установки \"Stinger\"," +
             " это наплечная установка, запускающая одну ракету.";
 
-        type = WeaponType.Heavy;
+        weaponType = WeaponType.Heavy;
         WeaponAccuracy = -1;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Rare;

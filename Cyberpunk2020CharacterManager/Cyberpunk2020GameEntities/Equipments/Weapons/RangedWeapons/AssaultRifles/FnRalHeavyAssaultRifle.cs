@@ -17,7 +17,7 @@ public class FnRalHeavyAssaultRifle : AssaultRifle
         Description = "Стандартное штурмовое оружие НАТО для работы на поле боя." +
             " Конструкция Булл-пап, телескопический приклад.";
 
-        type = WeaponType.Rifle;
+        weaponType = WeaponType.Rifle;
         WeaponAccuracy = -1;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Common;

@@ -75,16 +75,20 @@ public class Character
         };
 
         BodyPartsSerialized = [];
-        foreach (var BodyPart in BodyParts)
+        foreach (var TheBodyPart in BodyParts)
         {
-            var serialized = JsonSerializer.Serialize(BodyPart, options);
+            Type type = TheBodyPart.GetType();
+
+            var serialized = JsonSerializer.Serialize(TheBodyPart, type, options);
             BodyPartsSerialized.Add(serialized);
         }
 
         EquipmentsSerialized= [];
         foreach (var equipment in equipments)
         {
-            var serialized = JsonSerializer.Serialize(equipment, options);
+            Type type = equipment.GetType();
+
+            var serialized = JsonSerializer.Serialize(equipment, type, options);
             EquipmentsSerialized.Add(serialized);
         }
     }
@@ -92,6 +96,44 @@ public class Character
     public class TypeHolder
     {
         public string type { get; set; }
+    }
+
+    public BodyPart? GetBodyPart(Guid guid)
+    {
+        BodyPart? result = null;
+        foreach (var BodyPart in BodyParts)
+        {
+            if (BodyPart.Guid == guid)
+            {
+                result = BodyPart;
+            }
+        }
+        return result;
+    }
+
+    public List<BodyPart> GetChildBodyParts(Guid parentGuid)
+    {
+        List<BodyPart> result = [];
+        foreach (var BodyPart in BodyParts)
+        {
+            if(BodyPart.BodyPlace == parentGuid)
+            {
+                result.Add(BodyPart);
+            }
+        }
+        return result;
+    }
+
+    public BodyPart? GetParentBodyPart(Guid childGuid)
+    {
+        foreach (var BodyPart in BodyParts)
+        {
+            if (BodyPart.Guid == childGuid)
+            {
+                return BodyPart;
+            }
+        }
+        return null;
     }
 
     public void DeserializeInnerFields()
@@ -133,7 +175,7 @@ public class Character
             }
             catch (Exception ex)
             {
-
+                throw;
             }
         }
     }
@@ -163,8 +205,8 @@ public class Character
         ArmSlot rightArmSlot = new(false);
         ArmSlot leftArmSlot = new(true);
 
-        NaturalArm rightArm = new() { BodyPlace = rightLegSlot.Guid };
-        NaturalArm leftArm = new() { BodyPlace = leftLegSlot.Guid };
+        NaturalArm rightArm = new() { BodyPlace = rightArmSlot.Guid };
+        NaturalArm leftArm = new() { BodyPlace = leftArmSlot.Guid };
 
         BodyParts.AddRange([rightLegSlot, rightLeg, leftLegSlot, lefttLeg, rightArmSlot, rightArm, leftArmSlot, leftArm]);
     }

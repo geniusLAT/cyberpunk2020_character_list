@@ -15,7 +15,7 @@ public class BrassKnuckles : MeleeWeapon
     {
         Description = "";
 
-        type = WeaponType.Melee;
+        weaponType = WeaponType.Melee;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.Pocket;
         Avaliability = WeaponAvaliability.Common;

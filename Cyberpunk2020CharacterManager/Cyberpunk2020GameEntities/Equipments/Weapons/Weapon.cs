@@ -4,7 +4,7 @@ namespace Cyberpunk2020GameEntities.Equipments.Weapons;
 
 public abstract class Weapon : Equipment
 {
-    public WeaponType type { get; set; }
+    public WeaponType weaponType { get; set; } = WeaponType.Melee;//Default to be deleted
 
     public int WeaponAccuracy { get; set; }
 
@@ -30,7 +30,7 @@ public abstract class Weapon : Equipment
     {
         StringBuilder stringBuilder = new();
         stringBuilder.Append("Тип: ");
-        stringBuilder.Append(TypeToHumanReadableFormat(type));
+        stringBuilder.Append(TypeToHumanReadableFormat(weaponType));
         stringBuilder.Append("\nТочность: ");
         stringBuilder.Append(WeaponAccuracy);
         stringBuilder.Append("\nСкрытность: ");

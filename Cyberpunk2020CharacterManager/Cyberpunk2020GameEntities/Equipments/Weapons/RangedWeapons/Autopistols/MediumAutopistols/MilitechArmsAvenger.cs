@@ -15,7 +15,7 @@ public class MilitechArmsAvenger : MediumAutoPistol
     {
         Description = "Хорошо сделанный пистолет с неплохой дальностью и точностью. Выбор профи.";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Excellent;

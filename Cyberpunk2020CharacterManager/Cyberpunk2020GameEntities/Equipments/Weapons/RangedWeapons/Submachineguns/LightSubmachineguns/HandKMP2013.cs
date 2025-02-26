@@ -16,7 +16,7 @@ public class HandKMP2013 : LightSubmachinegun
         Description = "Обновление \"Heckler & Koch\" модели \"MP - 5K classic\" " +
             "c использованием сложных пластиков и встроенным глушителем.";
 
-        type = WeaponType.Submachinegun;
+        weaponType = WeaponType.Submachinegun;
         WeaponAccuracy = +1;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Common;

@@ -16,7 +16,7 @@ public class Akr20MediumAssault : AssaultRifle
         Description = "Обновлённый АКМ из пластика и углеродного волокна, " +
             "который распространён в том, что осталось от советского блока.";
 
-        type = WeaponType.Rifle;
+        weaponType = WeaponType.Rifle;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Common;

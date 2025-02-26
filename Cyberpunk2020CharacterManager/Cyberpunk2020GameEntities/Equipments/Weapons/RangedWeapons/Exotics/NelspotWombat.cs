@@ -19,7 +19,7 @@ public class NelspotWombat : AutoPistol
             " Может стрелять кислотой, краской, препаратами, ядом. " +
             "Смотри детали в разделе ПвПВ, стр. 108.";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = -1;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Common;

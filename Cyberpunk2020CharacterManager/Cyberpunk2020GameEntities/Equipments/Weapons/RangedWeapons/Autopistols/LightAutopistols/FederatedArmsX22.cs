@@ -15,7 +15,7 @@ public class FederatedArmsX22 : LightAutoPistol
     {
         Description = "Вездесущий дешёвый полимерный \"Полимерный Ван-Шот\". Доступен в дизайнерских расцветках.";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.Pocket;
         Avaliability = WeaponAvaliability.Excellent;

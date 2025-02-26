@@ -16,7 +16,7 @@ public class ColtAmtModel2000 : VeryHeavyAutoPistol
         Description = "Разработанный для испытаний в качестве альтернативного " +
             "вспомогательного оружия армии США 1998 года..";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Excellent;

@@ -15,7 +15,7 @@ public class BudgetArmsAuto3 : HeavyAutoPistol
     {
         Description = "Оно дешёвое. Оно мощное. Иногда взрывается. Чего ещё ты хотел?";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = -1;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Excellent;

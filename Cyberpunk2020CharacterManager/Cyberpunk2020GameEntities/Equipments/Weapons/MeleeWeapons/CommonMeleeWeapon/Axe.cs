@@ -15,7 +15,7 @@ public class Axe : MeleeWeapon //Nunchaku
     {
         Description = "";
 
-        type = WeaponType.Melee;
+        weaponType = WeaponType.Melee;
         WeaponAccuracy = -1;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Common;

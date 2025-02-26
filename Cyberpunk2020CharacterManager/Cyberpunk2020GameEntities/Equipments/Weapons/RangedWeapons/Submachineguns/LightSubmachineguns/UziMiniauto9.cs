@@ -17,7 +17,7 @@ public class UziMiniauto9 : LightSubmachinegun
             "C электрическим роторным магазином и регулируемым спуском." +
             " Выбор многих Соло отвечающих за безопасность.";
 
-        type = WeaponType.Submachinegun;
+        weaponType = WeaponType.Submachinegun;
         WeaponAccuracy = +1;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Excellent;

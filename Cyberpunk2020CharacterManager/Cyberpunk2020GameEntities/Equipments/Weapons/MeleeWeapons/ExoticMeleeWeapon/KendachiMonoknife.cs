@@ -57,7 +57,7 @@ public class KendachiMonoknife : MeleeWeapon
            " В японском стиле \"танто\". " +
            "Также доступны в форме \"нагината\" за дополнительные 100.00";
 
-        type = WeaponType.Melee;
+        weaponType = WeaponType.Melee;
         WeaponAccuracy = +1;
         Concealability = WeaponConcealability.Pocket;
         Avaliability = WeaponAvaliability.Poor;

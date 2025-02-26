@@ -16,7 +16,7 @@ public class HandKMpk9 : MediumSubmachinegun
         Description = "Лёгкий композитный пистолет-пулемёт CO встроенными прицелами. " +
             "Используется многими (Euro Solos) Евро Соло.";
 
-        type = WeaponType.Submachinegun;
+        weaponType = WeaponType.Submachinegun;
         WeaponAccuracy = +1;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Common;
