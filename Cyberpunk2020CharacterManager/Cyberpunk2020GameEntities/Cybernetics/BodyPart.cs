@@ -2,7 +2,7 @@
 
 public abstract class BodyPart
 {
-    public Guid Guid { get; set; } = new Guid();
+    public Guid Guid { get; set; } = Guid.NewGuid();
 
     //TODO remove that field
     public string RealName { get; set; }

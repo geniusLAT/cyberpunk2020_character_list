@@ -175,8 +175,8 @@ public class Character
             throw new Exception("левая рука считает себя правой");
         }
 
-        NaturalArm rightArm = new() { BodyPlace = rightLegSlot.Guid };
-        NaturalArm leftArm = new() { BodyPlace = leftLegSlot.Guid };
+        NaturalArm rightArm = new() { BodyPlace = rightArmSlot.Guid };
+        NaturalArm leftArm = new() { BodyPlace = leftArmSlot.Guid };
 
         BodyParts.AddRange([rightLegSlot, rightLeg, leftLegSlot, lefttLeg, rightArmSlot, rightArm, leftArmSlot, leftArm]);
     }
