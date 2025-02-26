@@ -4,7 +4,9 @@ namespace Cyberpunk2020GameEntities.Cybernetics.Cyberlimbs;
 
 public class Cyberarm : Implant, IArm
 {
-    public override string Name { get { return "Киберрука"; } }
+    public override string Name { get { return namePrefix +"Киберрука"; } }
+
+    public string namePrefix { get; set; }
 
     public Cyberarm()
     {
@@ -44,9 +46,37 @@ public class Cyberarm : Implant, IArm
         {
             if (bodyPart is ArmSlot)
             {
+               
+                if (character.GetChildBodyParts(bodyPart.Guid).First() is Cyberarm)
+                {
+                    continue;
+                }
+                
                 cashedPotentialParents.Add(bodyPart);
             }
         }
         return cashedPotentialParents;
+    }
+
+    public override void ChipIn(Character character, Random random)
+    {
+        var otherHands = character.GetChildBodyParts(BodyPlace);
+        if (otherHands.Any()) {
+            character.BodyParts.Remove(otherHands.First());
+        }
+
+        var slot = character.GetBodyPart(BodyPlace);
+        if (slot == null) { throw new Exception("lost parent"); }
+
+        if (((ArmSlot)slot).IsLeft)
+        {
+            namePrefix = "Левая ";
+        }
+        else
+        {
+            namePrefix = "Правая ";
+        }
+
+        base.ChipIn(character, random);
     }
 }

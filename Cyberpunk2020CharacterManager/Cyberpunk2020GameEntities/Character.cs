@@ -98,6 +98,19 @@ public class Character
         public string type { get; set; }
     }
 
+    public BodyPart? GetBodyPart(Guid guid)
+    {
+        BodyPart? result = null;
+        foreach (var BodyPart in BodyParts)
+        {
+            if (BodyPart.Guid == guid)
+            {
+                result = BodyPart;
+            }
+        }
+        return result;
+    }
+
     public List<BodyPart> GetChildBodyParts(Guid parentGuid)
     {
         List<BodyPart> result = [];
