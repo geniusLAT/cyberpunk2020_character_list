@@ -1,5 +1,6 @@
 ﻿using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.AddCustomEquipmentMenus;
 using Cyberpunk2020GameEntities.Equipments;
+using Cyberpunk2020GameEntities.Equipments.Armor;
 using Cyberpunk2020GameEntities.Equipments.Weapons;
 using System.Reflection;
 
@@ -126,7 +127,13 @@ internal partial class InventoryChooseMenu : Form
 
         RenderTreePart(MeleeNode, "Обычное оружие ближнего боя", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.MeleeWeapons.CommonMeleeWeapon"));
         RenderTreePart(MeleeNode, "Экзотическое оружие ближнего боя", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.MeleeWeapons.ExoticMeleeWeapon"));
-      
+
+        TreeNode ArmorNode = new("Броня и особое снаряжение")
+        {
+            Name = "Броня и особое снаряжение"
+        };
+        AvaliableEquipmentTreeView.Nodes.Add(ArmorNode);
+        RenderTreePart(ArmorNode, "Броня для тела", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Armor"));
 
         TreeNode otherNode = new("Прочее")
         {
@@ -212,6 +219,10 @@ internal partial class InventoryChooseMenu : Form
         if (equipmentItem is Weapon)
         {
             Implant_Description.Text += ((Weapon)equipmentItem).GenerateWeaponCodeDescription();
+        }
+        if (equipmentItem is Armor)
+        {
+            Implant_Description.Text += ((Armor)equipmentItem).GenerateArmorCodeDescription();
         }
 
         Implant_Description.Text += " \n\n" + equipmentItem.Description;
