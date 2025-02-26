@@ -17,7 +17,7 @@ public class Armalite44 : VeryHeavyAutoPistol
             "вспомогательным оружие в армии США, М-2000 хорошо послужил в войнах" +
             " Центральной Америки.";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Common;

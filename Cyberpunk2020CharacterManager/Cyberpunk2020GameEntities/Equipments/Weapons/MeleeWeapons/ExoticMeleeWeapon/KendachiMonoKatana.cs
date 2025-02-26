@@ -16,7 +16,7 @@ public class KendachiMonoKatana : MeleeWeapon
         Description = "Длинная версиямономолекулярного клинка. " +
             "Напоминает высокотехнологичную \"катану\" с молочным, почти прозрачным лезвием";
 
-        type = WeaponType.Melee;
+        weaponType = WeaponType.Melee;
         WeaponAccuracy = +1;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Rare;

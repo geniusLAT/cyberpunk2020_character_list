@@ -18,7 +18,7 @@ public class Spm1Battleglove : MeleeWeapon
             " 2D6 урона ударом и имеет три разъёма для любого стандартного оружия или опции для " +
             "кибер-рук, кроме Гидравлических Поршней.";
 
-        type = WeaponType.Melee;
+        weaponType = WeaponType.Melee;
         WeaponAccuracy = -2;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Poor;

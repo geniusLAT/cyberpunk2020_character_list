@@ -1,6 +1,6 @@
 ﻿namespace Cyberpunk2020GameEntities.Cybernetics.Natural;
 
-public class NaturalArm : Arm
+public class NaturalArm : BodyPart, IArm
 {
     public override bool IsImplant => false;
 

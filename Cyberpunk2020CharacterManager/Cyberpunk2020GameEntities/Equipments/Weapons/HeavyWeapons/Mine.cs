@@ -15,7 +15,7 @@ public class Mine : Weapon
     {
         Description = "Может быть взорвана таймером, натяжением растяжки, сигналом или датчиком движения.";
 
-        type = WeaponType.Heavy;
+        weaponType = WeaponType.Heavy;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Poor;

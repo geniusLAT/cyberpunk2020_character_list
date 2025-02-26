@@ -17,7 +17,7 @@ public class Techtronica15Microwaver : AutoPistol
     {
         Description = "Излучатель микроволн размером с фонарик. Смотри детали в разделе ПвПВ, стр. 108.";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Poor;

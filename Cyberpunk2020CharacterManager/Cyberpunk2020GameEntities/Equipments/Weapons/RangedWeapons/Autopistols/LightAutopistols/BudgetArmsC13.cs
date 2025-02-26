@@ -15,7 +15,7 @@ public class BudgetArmsC13 : LightAutoPistol
     {
         Description = "Маломощный пистолет, используемый как скрытое или как \"оружие леди\".";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = -1;
         Concealability = WeaponConcealability.Pocket;
         Avaliability = WeaponAvaliability.Excellent;

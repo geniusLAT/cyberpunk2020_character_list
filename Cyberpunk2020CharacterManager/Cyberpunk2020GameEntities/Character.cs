@@ -133,7 +133,7 @@ public class Character
             }
             catch (Exception ex)
             {
-
+                throw;
             }
         }
     }
@@ -161,7 +161,15 @@ public class Character
         NaturalLeg lefttLeg = new() { BodyPlace = leftLegSlot.Guid };
 
         ArmSlot rightArmSlot = new(false);
+        if (rightArmSlot.IsLeft)
+        {
+            throw new Exception("правая рука считает себя левой");
+        }
         ArmSlot leftArmSlot = new(true);
+        if (!leftArmSlot.IsLeft)
+        {
+            throw new Exception("левая рука считает себя правой");
+        }
 
         NaturalArm rightArm = new() { BodyPlace = rightLegSlot.Guid };
         NaturalArm leftArm = new() { BodyPlace = leftLegSlot.Guid };

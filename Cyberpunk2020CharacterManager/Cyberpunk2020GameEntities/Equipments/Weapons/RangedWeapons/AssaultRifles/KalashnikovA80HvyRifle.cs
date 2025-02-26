@@ -16,7 +16,7 @@ public class KalashnikovA80HvyRifle : AssaultRifle
     {
         Description = "Ещё один восстановленный советский проект, с улучшенным прицелом и облегчёнными компонентами.";
 
-        type = WeaponType.Rifle;
+        weaponType = WeaponType.Rifle;
         WeaponAccuracy = -1;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Excellent;

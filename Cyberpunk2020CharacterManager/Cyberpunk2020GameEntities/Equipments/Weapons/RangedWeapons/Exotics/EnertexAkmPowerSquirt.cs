@@ -18,7 +18,7 @@ public class EnertexAkmPowerSquirt : AutoPistol
         Description = "Водяной пистолет. Да, мощный водяной пистолет." +
             " Прежде чем рассмеяться, посмотри детали в разделе ПвПВ, стр. 108.";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = -2;
         Concealability = WeaponConcealability.Jacket;
         Avaliability = WeaponAvaliability.Common;

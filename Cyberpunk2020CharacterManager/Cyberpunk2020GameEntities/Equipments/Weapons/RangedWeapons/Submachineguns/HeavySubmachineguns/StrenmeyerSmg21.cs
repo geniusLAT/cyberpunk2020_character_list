@@ -16,7 +16,7 @@ public class StrenmeyerSmg21 : HeavySubmachinegun
         Description = "Лучшая позиция \"Sternmeyer\" антитеррористической категории, " +
             "широким использованием в командах \"C - SWAT\" и \"Psycho Squads\".";
 
-        type = WeaponType.Submachinegun;
+        weaponType = WeaponType.Submachinegun;
         WeaponAccuracy = -1;
         Concealability = WeaponConcealability.LongCoat;
         Avaliability = WeaponAvaliability.Excellent;

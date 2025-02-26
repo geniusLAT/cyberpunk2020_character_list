@@ -15,7 +15,7 @@ public class EagleTechTomcatCBow : RangedWeapon
     {
         Description = "Гиростабилизированный составной лук. Тихий и смертоносный.";
 
-        type = WeaponType.Exotic;
+        weaponType = WeaponType.Exotic;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Common;

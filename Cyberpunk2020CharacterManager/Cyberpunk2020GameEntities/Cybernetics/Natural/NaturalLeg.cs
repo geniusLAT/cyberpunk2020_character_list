@@ -1,6 +1,6 @@
 ﻿namespace Cyberpunk2020GameEntities.Cybernetics.Natural;
 
-public class NaturalLeg: Leg
+public class NaturalLeg: BodyPart, ILeg
 {
     public override bool IsImplant => false;
 

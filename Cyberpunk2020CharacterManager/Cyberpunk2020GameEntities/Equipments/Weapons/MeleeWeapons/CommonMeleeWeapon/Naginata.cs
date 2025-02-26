@@ -15,7 +15,7 @@ public class Naginata : MeleeWeapon //Nunchaku
     {
         Description = "";
 
-        type = WeaponType.Melee;
+        weaponType = WeaponType.Melee;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Poor;

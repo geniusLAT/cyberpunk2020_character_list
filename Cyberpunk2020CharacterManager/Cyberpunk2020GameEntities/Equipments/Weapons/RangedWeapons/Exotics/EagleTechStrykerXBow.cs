@@ -16,7 +16,7 @@ public class EagleTechStrykerXBow : RangedWeapon
         Description = "Арбалет из пластика и биметалла. Тихо, смертоносно, и " +
             "обычно ты получаешь свои боеприпасы назад.";
 
-        type = WeaponType.Exotic;
+        weaponType = WeaponType.Exotic;
         WeaponAccuracy = -1;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Common;

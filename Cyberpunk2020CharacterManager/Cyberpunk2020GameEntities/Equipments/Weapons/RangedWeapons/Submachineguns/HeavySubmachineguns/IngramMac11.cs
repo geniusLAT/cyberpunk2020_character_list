@@ -21,7 +21,7 @@ public class IngramMac11 : HeavySubmachinegun
             "Булл - пап, стандартного ПП, штурмового " +
             "карабина и с креплением для гранатомёта.";
 
-        type = WeaponType.Submachinegun;
+        weaponType = WeaponType.Submachinegun;
         WeaponAccuracy = -2;
         Concealability = WeaponConcealability.LongCoat;
         Avaliability = WeaponAvaliability.Excellent;

@@ -15,7 +15,7 @@ public class DaiLungCybermag15 : LightAutoPistol
     {
         Description = "Дешёвая Гонконгская подделка, часто используется бустерами и прочими уличными отбросами.";
 
-        type = WeaponType.Pistol;
+        weaponType = WeaponType.Pistol;
         WeaponAccuracy = -1;
         Concealability = WeaponConcealability.Pocket;
         Avaliability = WeaponAvaliability.Common;

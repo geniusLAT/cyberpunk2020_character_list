@@ -16,7 +16,7 @@ public class ArasakaRapidAssault12 : Shotgun
         Description = "Автоматический дробовик высокой мощности со смертоносной огневой мощью. " +
             "Используется \"Arasaka\" по всему миру ещё одна веская причина избегать \"Парней в Чёрном\".";
 
-        type = WeaponType.Shotgun;
+        weaponType = WeaponType.Shotgun;
         WeaponAccuracy = -1;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Common;

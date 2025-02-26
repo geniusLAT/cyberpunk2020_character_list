@@ -2,7 +2,7 @@
 
 namespace Cyberpunk2020GameEntities;
 
-public  abstract class Leg : Limb
+public  interface ILeg : ILimb
 {
 
 }

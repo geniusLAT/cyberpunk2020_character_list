@@ -16,7 +16,7 @@ public class KaF253Flamethrower : Weapon
         Description = "Распылитель жидкого напалма. Наспинный и громоздкий." +
             " Наносит дополнительный урон после первого попадания (см. ПвПВ, стр. 110).";
 
-        type = WeaponType.Heavy;
+        weaponType = WeaponType.Heavy;
         WeaponAccuracy = -2;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Rare;

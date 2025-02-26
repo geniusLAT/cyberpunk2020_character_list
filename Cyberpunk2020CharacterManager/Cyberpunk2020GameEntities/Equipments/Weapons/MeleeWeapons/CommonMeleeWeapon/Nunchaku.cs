@@ -15,7 +15,7 @@ public class Nunchaku : MeleeWeapon //Nunchaku
     {
         Description = "";
 
-        type = WeaponType.Melee;
+        weaponType = WeaponType.Melee;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.LongCoat;
         Avaliability = WeaponAvaliability.Common;

@@ -15,7 +15,7 @@ public class Chainsaw : MeleeWeapon
     {
         Description = "";
 
-        type = WeaponType.Melee;
+        weaponType = WeaponType.Melee;
         WeaponAccuracy = -3;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Common;

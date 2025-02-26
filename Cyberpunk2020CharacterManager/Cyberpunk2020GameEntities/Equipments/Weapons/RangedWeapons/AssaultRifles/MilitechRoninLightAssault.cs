@@ -15,7 +15,7 @@ public class MilitechRoninLightAssault : AssaultRifle
     {
         Description = "Лёгкая, универсальная новинка, схожая с \"М-16В\".";
 
-        type = WeaponType.Rifle;
+        weaponType = WeaponType.Rifle;
         WeaponAccuracy = +1;
         Concealability = WeaponConcealability.CantBeHidden;
         Avaliability = WeaponAvaliability.Common;

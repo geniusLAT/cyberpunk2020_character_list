@@ -21,7 +21,7 @@ public class HandKMpk11 : HeavySubmachinegun
             "Булл - пап, стандартного ПП, штурмового " +
             "карабина и с креплением для гранатомёта.";
 
-        type = WeaponType.Submachinegun;
+        weaponType = WeaponType.Submachinegun;
         WeaponAccuracy = 0;
         Concealability = WeaponConcealability.LongCoat;
         Avaliability = WeaponAvaliability.Common;

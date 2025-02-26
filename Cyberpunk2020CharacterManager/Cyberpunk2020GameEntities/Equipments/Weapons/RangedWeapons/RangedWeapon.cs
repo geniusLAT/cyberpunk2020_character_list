@@ -12,7 +12,7 @@ public abstract class RangedWeapon : Weapon
 
     public override List<string> GetOptions()
     {
-        if(type == WeaponType.Heavy)
+        if(weaponType == WeaponType.Heavy)
         {
             return new List<string>();
         }
