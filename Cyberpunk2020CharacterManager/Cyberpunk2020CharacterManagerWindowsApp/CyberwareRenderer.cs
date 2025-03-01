@@ -60,20 +60,6 @@ public partial class Form1 : Form
         ShowHumanity();
 
         renderCyberwaresHierarchically();
-
-        //var count = 2;
-        //foreach (var part in from part in _chosenCharacter.BodyParts
-        //                     where part.IsImplant
-        //                     select part)
-        //{
-        //    RenderCyberwarePanel(part, count++);
-        //}
-
-
-        //for (int i = 0; i < _chosenCharacter.BodyParts.Count; i++)
-        //{
-        //    RenderCyberwarePanel(_chosenCharacter.BodyParts[i], i + 2);
-        //}
     }
 
     private void renderCyberwaresHierarchically()
@@ -91,11 +77,35 @@ public partial class Form1 : Form
 
     private void renderCyberwareAndChildren(BodyPart bodyPart, int childGrade = 0)
     {
-        RenderCyberwarePanel(bodyPart, _cyberwareRenderCount++, childGrade);
+        var hidden = shouldBodyPartBeHidden(bodyPart);
+        var nextChildGrade = childGrade;
+        if (!hidden)
+        {
+            RenderCyberwarePanel(bodyPart, _cyberwareRenderCount++, childGrade);
+            nextChildGrade = childGrade + 1;
+        }
         var children = _chosenCharacter.GetChildBodyParts(bodyPart.Guid);
         foreach (var child in children)
         {
-            renderCyberwareAndChildren(child, childGrade + 1);
+            renderCyberwareAndChildren(child, nextChildGrade);
         }
+    }
+
+    static private bool shouldBodyPartBeHidden(BodyPart bodyPart)
+    {
+        if(bodyPart is Implant)
+        {
+            return false;
+        }
+
+        if (bodyPart is LimbSlot) { 
+            var limbSlot = bodyPart as LimbSlot;
+            if (limbSlot.HasQuickMount)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
