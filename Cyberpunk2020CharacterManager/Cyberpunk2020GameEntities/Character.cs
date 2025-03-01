@@ -59,6 +59,19 @@ public class Character
         }
     }
 
+    public void RecalculateTotalHumanityLoss()
+    {
+        var newHumanityLoss = 0f;
+        foreach (var bodyPart in BodyParts)
+        {
+            if (!bodyPart.IsQuickMounted)
+            {
+                newHumanityLoss += bodyPart.HumanityLoss;
+            }
+        }
+        totalHumanityLoss = newHumanityLoss;
+    }
+
     public float humanity { 
         get {
 

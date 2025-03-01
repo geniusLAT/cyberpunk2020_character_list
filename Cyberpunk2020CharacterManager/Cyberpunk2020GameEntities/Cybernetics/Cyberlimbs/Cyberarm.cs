@@ -2,21 +2,9 @@
 
 namespace Cyberpunk2020GameEntities.Cybernetics.Cyberlimbs;
 
-public class Cyberarm : Implant, IArm
+public class Cyberarm : Cyberlimb, IArm
 {
-    public override string Name { get { return namePrefix +"Киберрука"; } }
-
-    public string namePrefix { get; set; }
-
-    public int MaxStoppingPower { get; set; }
-
-    public int CurrentStoppingPower { get; set; }
-
-    public int MaxSdp { get; set; }
-
-    public int FunctionSdpThreshold { get; set; }
-
-    public int CurrentSdp {  get; set; }
+    public override string Name { get { return NamePrefix + "Киберрука" +NamePostFix; } }
 
     public Cyberarm()
     {
@@ -24,6 +12,8 @@ public class Cyberarm : Implant, IArm
         Description = "";
         HumanityLossFormula = "2D6";
         Cost = 3000;
+
+        OptionsAlloweded = 4;
     }
 
     public override void GenerateHumanLoss(Random random)
@@ -56,39 +46,34 @@ public class Cyberarm : Implant, IArm
         {
             if (bodyPart is ArmSlot)
             {
-               
-                if (character.GetChildBodyParts(bodyPart.Guid).First() is Cyberarm)
+                var ChilBodyParts = character.GetChildBodyParts(bodyPart.Guid);
+                if (ChilBodyParts.Any())
                 {
-                    continue;
+                    var firstArmAtTheSlot = ChilBodyParts.First();
+                    if (firstArmAtTheSlot is Cyberarm)
+                    {
+                        var IsThatArmQuicjMounted = false;
+                        var firstCyberArmAtTheSlot = (Cyberarm)firstArmAtTheSlot;
+                        var children = character.GetChildBodyParts(firstCyberArmAtTheSlot.Guid);
+                        foreach (var child in children)
+                        {
+                            if (child is QuickChangeMount)
+                            {
+                                IsThatArmQuicjMounted = true;
+                                break;
+                            }
+                        }
+
+                        if (!IsThatArmQuicjMounted)
+                        {
+                            continue;
+                        }
+                    }
                 }
-                
+
                 cashedPotentialParents.Add(bodyPart);
             }
         }
         return cashedPotentialParents;
-    }
-
-    public override void ChipIn(Character character, Random random)
-    {
-        var otherHands = character.GetChildBodyParts(BodyPlace);
-        if (otherHands.Any()) {
-            character.BodyParts.Remove(otherHands.First());
-        }
-
-        var slot = character.GetBodyPart(BodyPlace);
-        if (slot == null) { throw new Exception("lost parent"); }
-
-        if (((ArmSlot)slot).IsLeft)
-        {
-            namePrefix = "Левая ";
-        }
-        else
-        {
-            namePrefix = "Правая ";
-        }
-
-        OptionsAlloweded = 4;
-
-        base.ChipIn(character, random);
     }
 }

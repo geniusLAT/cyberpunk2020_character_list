@@ -46,12 +46,12 @@ public partial class Form1 : Form
 
     void RenderCyberwares(int s, int l)
     {
-        ShowHumanity();
-
         if (_chosenCharacter is null)
         {
             return;
         }
+
+        ShowHumanity();
 
         var count = 2;
         foreach (var part in from part in _chosenCharacter.BodyParts

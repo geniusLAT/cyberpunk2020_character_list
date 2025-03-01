@@ -42,6 +42,6 @@ public abstract class Implant : BodyPart
         character.BodyParts.Add(this);
         character.CurrentMoney -=Cost;
         GenerateHumanLoss(random);
-        character.totalHumanityLoss +=HumanityLoss;
+        character.RecalculateTotalHumanityLoss();
     }
 }

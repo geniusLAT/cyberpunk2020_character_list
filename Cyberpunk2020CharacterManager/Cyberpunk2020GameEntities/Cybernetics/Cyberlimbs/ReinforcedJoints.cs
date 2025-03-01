@@ -2,14 +2,29 @@
 
 namespace Cyberpunk2020GameEntities.Cybernetics.Cyberlimbs;
 
-public abstract class CyberlimbCovering : Implant
+public class ReinforcedJoints : Implant
 {
+    public override string Name { get { return "Усиленные суставы"; } }
+
+    public ReinforcedJoints()
+    {
+        SurgeryCode = SurgeryCode.Negligible;
+        Description = " они сделаны из титановой стали вместо нержавеющей, и добавляют +5 SDP к киберконечности.";
+        HumanityLossFormula = "1";
+        Cost = 300;
+    }
+
+    public override void GenerateHumanLoss(Random random)
+    {
+        HumanityLoss = 1;
+    }
+
     public override string BarriersForChipIn(Character character)
     {
         var result = new StringBuilder();
         if (PotentialParents(character).Count == 0)
         {
-            result.Append("Нет непокрытой конечности, куда можно это нанести\n");
+            result.Append("Нет подходящей конечности\n");
         }
 
         return result.ToString();
@@ -30,18 +45,18 @@ public abstract class CyberlimbCovering : Implant
             if ((bodyPart is Cyberarm) || (bodyPart is Cyberleg))
             {
 
-                var alreadyHasCovering = false;
+                var alreadyHasShielding = false;
                 foreach (var child in character.GetChildBodyParts(bodyPart.Guid))
                 {
-                    if (child is CyberlimbCovering)
+                    if (child is MicrowaveEmpShielding)
                     {
-                        alreadyHasCovering = true;
+                        alreadyHasShielding = true;
                         continue;
                     }
 
                 }
 
-                if (alreadyHasCovering)
+                if (alreadyHasShielding)
                 {
                     continue;
                 }
@@ -62,7 +77,22 @@ public abstract class CyberlimbCovering : Implant
     public override void ChipIn(Character character, Random random)
     {
         var slot = character.GetBodyPart(BodyPlace);
-        ((Implant)slot).OptionsAlloweded--;
+
+        if(slot is Cyberarm)
+        {
+            var arm = (Cyberarm)slot;
+            arm.MaxSdp += 5;
+            arm.CurrentSdp += 5;
+            arm.OptionsAlloweded--;
+        }
+
+        if (slot is Cyberleg)
+        {
+            var leg = (Cyberleg)slot;
+            leg.MaxSdp += 5;
+            leg.CurrentSdp += 5;
+            leg.OptionsAlloweded--;
+        }
 
         base.ChipIn(character, random);
     }

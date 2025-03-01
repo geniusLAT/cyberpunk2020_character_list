@@ -1,15 +1,14 @@
 ﻿namespace Cyberpunk2020GameEntities.Cybernetics;
 
-public class LegSlot : BodyPart
+public class LegSlot : LimbSlot
 {
-    public bool IsLeft;
-    public override bool IsImplant => false;
-
     public override string Name
     {
         get
         {
-            return IsLeft ? "слот левой ноги" : "слот правой ноги";
+            var noteAboutSide = IsLeft ? "левой" : "правой";
+            var noteAboutQuickMount = HasQuickMount ? "быстросменный " : "";
+            return $"{noteAboutQuickMount}слот {noteAboutSide} ноги";
         }
     }
 
