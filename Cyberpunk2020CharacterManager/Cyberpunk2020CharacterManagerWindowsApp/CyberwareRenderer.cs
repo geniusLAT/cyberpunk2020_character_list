@@ -64,6 +64,12 @@ public partial class Form1 : Form
 
     private void renderCyberwaresHierarchically()
     {
+        foreach (var panel in _panels)
+        {
+            tabPage2.Controls.Remove(panel);
+        }
+        _panels.Clear();
+
         var rootCyberwares = (from part in _chosenCharacter.BodyParts
                                        where part.BodyPlace == new Guid()
                                        select part);
