@@ -27,11 +27,13 @@ public abstract class LimbSlot : BodyPart
             foreach (var grandChild in grandChildren)
             {
                 child.IsQuickMounted = true;
+                //throw new Exception(grandChild.HumanityLoss.ToString());
                 humanityLossOfThatChild += grandChild.HumanityLoss;
             }
             result += humanityLossOfThatChild;
         }
         var average = result / children.Count;
+        //throw new Exception(average.ToString());
         HumanityLoss = average * 2;
     }
 }
