@@ -17,6 +17,8 @@ public abstract class BodyPart
 
     public float HumanityLoss { get; set; } = 0;
 
+    public bool IsQuickMounted { get; set; }
+
     public virtual List<BodyPart>? PotentialParents(Character character)
     {
         return null;

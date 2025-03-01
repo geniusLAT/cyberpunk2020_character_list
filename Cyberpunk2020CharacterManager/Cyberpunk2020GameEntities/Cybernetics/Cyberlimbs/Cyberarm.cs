@@ -2,21 +2,9 @@
 
 namespace Cyberpunk2020GameEntities.Cybernetics.Cyberlimbs;
 
-public class Cyberarm : Implant, IArm
+public class Cyberarm : Cyberlimb, IArm
 {
-    public override string Name { get { return namePrefix +"Киберрука"; } }
-
-    public string namePrefix { get; set; }
-
-    public int MaxStoppingPower { get; set; }
-
-    public int CurrentStoppingPower { get; set; }
-
-    public int MaxSdp { get; set; }
-
-    public int FunctionSdpThreshold { get; set; }
-
-    public int CurrentSdp {  get; set; }
+    public override string Name { get { return namePrefix + "Киберрука"; } }
 
     public Cyberarm()
     {
@@ -57,12 +45,30 @@ public class Cyberarm : Implant, IArm
             if (bodyPart is ArmSlot)
             {
                 var ChilBodyParts = character.GetChildBodyParts(bodyPart.Guid);
-
-                if (ChilBodyParts.Any() && ChilBodyParts.First() is Cyberarm)
+                if (ChilBodyParts.Any()) 
                 {
-                    continue;
+                    var firstArmAtTheSlot = ChilBodyParts.First();
+                    if (firstArmAtTheSlot is Cyberarm)
+                    {
+                        var IsThatArmQuicjMounted = false;
+                        var firstCyberArmAtTheSlot = (Cyberarm)firstArmAtTheSlot;
+                        var children = character.GetChildBodyParts(firstCyberArmAtTheSlot.Guid);
+                        foreach (var child in children)
+                        {
+                            if (child is QuickChangeMount)
+                            {
+                                IsThatArmQuicjMounted = true;
+                                break;
+                            }
+                        }
+
+                        if (!IsThatArmQuicjMounted)
+                        {
+                            continue;
+                        }
+                    }
                 }
-                
+
                 cashedPotentialParents.Add(bodyPart);
             }
         }
@@ -72,7 +78,8 @@ public class Cyberarm : Implant, IArm
     public override void ChipIn(Character character, Random random)
     {
         var otherHands = character.GetChildBodyParts(BodyPlace);
-        if (otherHands.Any()) {
+        if (otherHands.Any())
+        {
             character.BodyParts.Remove(otherHands.First());
         }
 
@@ -97,5 +104,17 @@ public class Cyberarm : Implant, IArm
         OptionsAlloweded = 4;
 
         base.ChipIn(character, random);
+    }
+
+    public float CalculateHumanityLoss(Character character)
+    {
+        var result = 0f;
+        var children = character.GetChildBodyParts(Guid);
+
+        foreach (var child in children)
+        {
+            result += ((Implant)child).HumanityLoss;
+        }
+        return result;
     }
 }

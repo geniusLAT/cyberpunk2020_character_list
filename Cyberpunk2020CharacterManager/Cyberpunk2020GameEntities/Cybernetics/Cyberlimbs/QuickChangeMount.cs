@@ -81,8 +81,21 @@ public class QuickChangeMount : Implant
 
     public override void ChipIn(Character character, Random random)
     {
-        var slot = character.GetBodyPart(BodyPlace);
-        ((Implant)slot).OptionsAlloweded--;
+        var slot = (Cyberlimb)character.GetBodyPart(BodyPlace);
+        (slot).OptionsAlloweded--;
+
+      
+            slot.namePrefix += "быстросменная ";
+        
+
+       
+            slot.namePrefix += "быстросменная ";
+        
+
+        var limbSlot = (LimbSlot)character.GetBodyPart(slot.BodyPlace);
+
+       limbSlot.HasQuickMount = true;
+       
 
         base.ChipIn(character, random);
     }
