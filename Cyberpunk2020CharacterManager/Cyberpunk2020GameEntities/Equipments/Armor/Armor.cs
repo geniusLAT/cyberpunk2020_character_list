@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices.JavaScript;
-using System.Text;
+﻿using System.Text;
 
 namespace Cyberpunk2020GameEntities.Equipments.Armor;
 

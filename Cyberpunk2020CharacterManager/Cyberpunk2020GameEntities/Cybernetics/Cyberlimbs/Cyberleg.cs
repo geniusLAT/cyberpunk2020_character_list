@@ -12,6 +12,8 @@ public class Cyberleg : Cyberlimb, IArm
         Description = "";
         HumanityLossFormula = "2D6";
         Cost = 2000;
+
+        OptionsAlloweded = 3;
     }
 
     public override void GenerateHumanLoss(Random random)
@@ -44,39 +46,34 @@ public class Cyberleg : Cyberlimb, IArm
         {
             if (bodyPart is LegSlot)
             {
-               
-                if (character.GetChildBodyParts(bodyPart.Guid).First() is Cyberleg)
+                var ChilBodyParts = character.GetChildBodyParts(bodyPart.Guid);
+                if (ChilBodyParts.Any())
                 {
-                    continue;
+                    var firstLegAtTheSlot = ChilBodyParts.First();
+                    if (firstLegAtTheSlot is Cyberleg)
+                    {
+                        var IsThatLegQuicjMounted = false;
+                        var firstCyberLegAtTheSlot = (Cyberleg)firstLegAtTheSlot;
+                        var children = character.GetChildBodyParts(firstCyberLegAtTheSlot.Guid);
+                        foreach (var child in children)
+                        {
+                            if (child is QuickChangeMount)
+                            {
+                                IsThatLegQuicjMounted = true;
+                                break;
+                            }
+                        }
+
+                        if (!IsThatLegQuicjMounted)
+                        {
+                            continue;
+                        }
+                    }
                 }
-                
+
                 cashedPotentialParents.Add(bodyPart);
             }
         }
         return cashedPotentialParents;
-    }
-
-    public override void ChipIn(Character character, Random random)
-    {
-        var otherLegs = character.GetChildBodyParts(BodyPlace);
-        if (otherLegs.Any()) {
-            character.BodyParts.Remove(otherLegs.First());
-        }
-
-        var slot = character.GetBodyPart(BodyPlace);
-        if (slot == null) { throw new Exception("lost parent"); }
-
-        if (((LegSlot)slot).IsLeft)
-        {
-            namePrefix = "Левая ";
-        }
-        else
-        {
-            namePrefix = "Правая ";
-        }
-
-        OptionsAlloweded = 3;
-
-        base.ChipIn(character, random);
     }
 }

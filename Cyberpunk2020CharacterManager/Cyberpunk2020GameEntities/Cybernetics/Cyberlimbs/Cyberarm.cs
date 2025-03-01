@@ -12,6 +12,8 @@ public class Cyberarm : Cyberlimb, IArm
         Description = "";
         HumanityLossFormula = "2D6";
         Cost = 3000;
+
+        OptionsAlloweded = 4;
     }
 
     public override void GenerateHumanLoss(Random random)
@@ -45,7 +47,7 @@ public class Cyberarm : Cyberlimb, IArm
             if (bodyPart is ArmSlot)
             {
                 var ChilBodyParts = character.GetChildBodyParts(bodyPart.Guid);
-                if (ChilBodyParts.Any()) 
+                if (ChilBodyParts.Any())
                 {
                     var firstArmAtTheSlot = ChilBodyParts.First();
                     if (firstArmAtTheSlot is Cyberarm)
@@ -73,48 +75,5 @@ public class Cyberarm : Cyberlimb, IArm
             }
         }
         return cashedPotentialParents;
-    }
-
-    public override void ChipIn(Character character, Random random)
-    {
-        var otherHands = character.GetChildBodyParts(BodyPlace);
-        if (otherHands.Any())
-        {
-            character.BodyParts.Remove(otherHands.First());
-        }
-
-        var slot = character.GetBodyPart(BodyPlace);
-        if (slot == null) { throw new Exception("lost parent"); }
-
-        var armSlot = (ArmSlot)slot;
-        if (armSlot.IsLeft)
-        {
-            namePrefix = "Левая ";
-        }
-        else
-        {
-            namePrefix = "Правая ";
-        }
-
-        if (armSlot.IsAdditional)
-        {
-            namePrefix += "нижняя ";
-        }
-
-        OptionsAlloweded = 4;
-
-        base.ChipIn(character, random);
-    }
-
-    public float CalculateHumanityLoss(Character character)
-    {
-        var result = 0f;
-        var children = character.GetChildBodyParts(Guid);
-
-        foreach (var child in children)
-        {
-            result += ((Implant)child).HumanityLoss;
-        }
-        return result;
     }
 }

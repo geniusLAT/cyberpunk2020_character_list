@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace Cyberpunk2020GameEntities.Cybernetics.Cyberlimbs;
+﻿namespace Cyberpunk2020GameEntities.Cybernetics.Cyberlimbs;
 
 public class ArtificialShoulderMount : Implant
 {

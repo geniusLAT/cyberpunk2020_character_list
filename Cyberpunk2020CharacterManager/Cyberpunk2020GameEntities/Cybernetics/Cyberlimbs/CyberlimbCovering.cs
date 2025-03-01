@@ -1,5 +1,4 @@
-﻿using Cyberpunk2020GameEntities.Cybernetics.HandsAndFeet;
-using System.Text;
+﻿using System.Text;
 
 namespace Cyberpunk2020GameEntities.Cybernetics.Cyberlimbs;
 
