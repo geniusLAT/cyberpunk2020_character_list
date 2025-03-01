@@ -56,8 +56,9 @@ public class Cyberarm : Implant, IArm
         {
             if (bodyPart is ArmSlot)
             {
-               
-                if (character.GetChildBodyParts(bodyPart.Guid).First() is Cyberarm)
+                var ChilBodyParts = character.GetChildBodyParts(bodyPart.Guid);
+
+                if (ChilBodyParts.Any() && ChilBodyParts.First() is Cyberarm)
                 {
                     continue;
                 }
@@ -78,13 +79,19 @@ public class Cyberarm : Implant, IArm
         var slot = character.GetBodyPart(BodyPlace);
         if (slot == null) { throw new Exception("lost parent"); }
 
-        if (((ArmSlot)slot).IsLeft)
+        var armSlot = (ArmSlot)slot;
+        if (armSlot.IsLeft)
         {
             namePrefix = "Левая ";
         }
         else
         {
             namePrefix = "Правая ";
+        }
+
+        if (armSlot.IsAdditional)
+        {
+            namePrefix += "нижняя ";
         }
 
         OptionsAlloweded = 4;

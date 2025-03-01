@@ -6,11 +6,12 @@ public class ArmSlot : BodyPart
 
     public override bool IsImplant => false;
 
-    public bool IsAdditional => false;
+    public bool IsAdditional;
 
     public override string Name { get 
-        { 
-            return IsLeft ? "слот левой руки" : "слот правой руки"; 
+        {
+            var noteAboutAddition = IsAdditional ? "нижней" : string.Empty;
+            return IsLeft ? $"слот {noteAboutAddition} левой руки" : $"слот {noteAboutAddition} правой руки";
         }
     }
 
