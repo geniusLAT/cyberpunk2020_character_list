@@ -4,7 +4,9 @@ namespace Cyberpunk2020CharacterManagerWindowsApp;
 
 public partial class Form1 : Form
 {
-    Control RenderCyberwarePanel(BodyPart part, int i)
+    private int _cyberwareRenderCount = 2;
+
+    Control RenderCyberwarePanel(BodyPart part, int i, int childGrade = 0)
     {
         int g = 14;
         int text_size = 180;
@@ -53,18 +55,43 @@ public partial class Form1 : Form
 
         ShowHumanity();
 
-        var count = 2;
-        foreach (var part in from part in _chosenCharacter.BodyParts
-                             where part.IsImplant
-                             select part)
-        {
-            RenderCyberwarePanel(part, count++);
-        }
+        renderCyberwaresHierarchically();
+
+        //var count = 2;
+        //foreach (var part in from part in _chosenCharacter.BodyParts
+        //                     where part.IsImplant
+        //                     select part)
+        //{
+        //    RenderCyberwarePanel(part, count++);
+        //}
 
 
         //for (int i = 0; i < _chosenCharacter.BodyParts.Count; i++)
         //{
         //    RenderCyberwarePanel(_chosenCharacter.BodyParts[i], i + 2);
         //}
+    }
+
+    private void renderCyberwaresHierarchically()
+    {
+        var rootCyberwares = (from part in _chosenCharacter.BodyParts
+                                       where part.BodyPlace == new Guid()
+                                       select part);
+        _cyberwareRenderCount = 2;
+        foreach (var rootCyberware in rootCyberwares)
+        {
+            //RenderCyberwarePanel(rootCyberware, count++, 0);
+            renderCyberwareAndChildren(rootCyberware);
+        }
+    }
+
+    private void renderCyberwareAndChildren(BodyPart bodyPart, int childGrade = 0)
+    {
+        RenderCyberwarePanel(bodyPart, _cyberwareRenderCount++, childGrade);
+        var children = _chosenCharacter.GetChildBodyParts(bodyPart.Guid);
+        foreach (var child in children)
+        {
+            renderCyberwareAndChildren(child, childGrade + 1);
+        }
     }
 }
