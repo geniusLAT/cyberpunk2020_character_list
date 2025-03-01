@@ -83,11 +83,12 @@ public class QuickChangeMount : Implant
     {
         var slot = (Cyberlimb)character.GetBodyPart(BodyPlace);
         slot.OptionsAlloweded--;     
-        slot.namePrefix += "быстросменная ";
+        slot.NamePrefix += "быстросменная ";
         slot.IsQuickMounted = true;
         IsQuickMounted = true ;
 
         var limbSlot = (LimbSlot)character.GetBodyPart(slot.BodyPlace);
+        slot.NamePostFix = generateNamePostfix(character, limbSlot);
 
         base.ChipIn(character, random);
 
@@ -95,5 +96,16 @@ public class QuickChangeMount : Implant
         limbSlot.CalculateHumanityLoss(character);
 
         character.RecalculateTotalHumanityLoss();
+    }
+
+    private string generateNamePostfix(Character character, LimbSlot limbSlot)
+    {
+        var otherLimbs = character.GetChildBodyParts(limbSlot.Guid);
+        var count = otherLimbs.Count;
+        if(count == 0 || count == 1)
+        {
+            return string.Empty;
+        }
+        return " " + count.ToString();
     }
 }

@@ -5,7 +5,9 @@ namespace Cyberpunk2020GameEntities.Cybernetics;
 
 public abstract class Cyberlimb :Implant
 {
-    public string namePrefix { get; set; }
+    public string NamePrefix { get; set; }
+
+    public string NamePostFix { get; set; }
 
     public int MaxStoppingPower { get; set; }
 
@@ -40,18 +42,18 @@ public abstract class Cyberlimb :Implant
         var limbSlot = (LimbSlot)slot;
         if (limbSlot.IsLeft)
         {
-            namePrefix = "Левая ";
+            NamePrefix = "Левая ";
         }
         else
         {
-            namePrefix = "Правая ";
+            NamePrefix = "Правая ";
         }
 
         if (limbSlot is ArmSlot)
         {
             if (((ArmSlot)limbSlot).IsAdditional)
             {
-                namePrefix += "нижняя ";
+                NamePrefix += "нижняя ";
             }
         }
 

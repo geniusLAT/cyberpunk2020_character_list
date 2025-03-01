@@ -4,7 +4,7 @@ namespace Cyberpunk2020GameEntities.Cybernetics.Cyberlimbs;
 
 public class Cyberarm : Cyberlimb, IArm
 {
-    public override string Name { get { return namePrefix + "Киберрука"; } }
+    public override string Name { get { return NamePrefix + "Киберрука" +NamePostFix; } }
 
     public Cyberarm()
     {
