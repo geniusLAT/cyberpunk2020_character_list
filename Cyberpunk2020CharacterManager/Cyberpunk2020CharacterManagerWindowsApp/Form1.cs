@@ -892,6 +892,7 @@ public partial class Form1 : Form
         RenderCyberwares(0, 0);
 
         Money_numeric.Value = (decimal)_chosenCharacter!.CurrentMoney;
+        RenderHeader();
     }
 
     public void EquipmentChanged()
