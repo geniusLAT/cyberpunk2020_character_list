@@ -3,27 +3,23 @@ using System.Text;
 
 namespace Cyberpunk2020GameEntities.Cybernetics.Cyberweapons;
 
-public class Scratchers : Nails
+public class BigKnucks : Cyberweapon
 {
-    public override string Name { get { return "Царапки"; } }
+    public override string Name { get { return "Большие Костяшки"; } }
 
-    public Scratchers()
+    public BigKnucks()
     {
-        SurgeryCode = SurgeryCode.Negligible;
-        Description = " Имплантированные металлические или карбоностеклянные ноги. " +
-            "Невероятная острота материала делает их такими же смертоносными, как лезвия бритвы " +
-            "(урон 1D6 / 2 от одной руки). Царапки режут кромками, требуя, чтобы пользователь" +
-            " разрезал поперечными движениями, а не делал рывки вниз. Большинство людей лакируют свои " +
-            "Царапки, делая их неотличимыми от обычных ногтей (эмаль не влияет на остроту)." +
-            " Они не считаются смертоносным (и, следовательно, запрещенными) кибер- оружием," +
-            " и их можно приобрести в любой местной клинике.";
-        HumanityLossFormula = "2D6";
-        Cost = 100;
+        SurgeryCode = SurgeryCode.Minor;
+        Description = "усиленные костяшки, придающие кулаку ударную силу пары латунных кастетов (1D6 +2). " +
+            "Они считаются формой кибероружия с Чёрного Рынка, и поэтому " +
+            "недоступны для имплантации в обычной клинике, работающей в торговом центре.";
+        HumanityLossFormula = "3D6";
+        Cost = 500;
     }
 
     public override void GenerateHumanLoss(Random random)
     {
-        HumanityLoss = random.Next(1, 7) + random.Next(1, 7);
+        HumanityLoss = random.Next(1, 7) + random.Next(1, 7) + random.Next(1, 7);
     }
 
     public override string BarriersForChipIn(Character character)
@@ -55,7 +51,7 @@ public class Scratchers : Nails
                 var alreadyHasIt = false;
                 foreach (var child in character.GetChildBodyParts(bodyPart.Guid))
                 {
-                    if (child is Nails)
+                    if (child is BigKnucks)
                     {
                         alreadyHasIt = true;
                         continue;

@@ -3,27 +3,25 @@ using System.Text;
 
 namespace Cyberpunk2020GameEntities.Cybernetics.Cyberweapons;
 
-public class Scratchers : Nails
+public class SliceNDice : Nails
 {
-    public override string Name { get { return "Царапки"; } }
+    public override string Name { get { return "Slice N' Dice (Мономолекулярная нить)"; } }
 
-    public Scratchers()
+    public SliceNDice()
     {
         SurgeryCode = SurgeryCode.Negligible;
-        Description = " Имплантированные металлические или карбоностеклянные ноги. " +
-            "Невероятная острота материала делает их такими же смертоносными, как лезвия бритвы " +
-            "(урон 1D6 / 2 от одной руки). Царапки режут кромками, требуя, чтобы пользователь" +
-            " разрезал поперечными движениями, а не делал рывки вниз. Большинство людей лакируют свои " +
-            "Царапки, делая их неотличимыми от обычных ногтей (эмаль не влияет на остроту)." +
-            " Они не считаются смертоносным (и, следовательно, запрещенными) кибер- оружием," +
-            " и их можно приобрести в любой местной клинике.";
-        HumanityLossFormula = "2D6";
-        Cost = 100;
+        Description = "катушка с моно-волоконной проволокой, закреплённая на конце одного пальца," +
+            " с фальш-ногтем утяжелителем, чтобы придать ей вес при раскручивании. Мономолекуляр- ная " +
+            "проволока прорежет практически любой органический материал и большинство пластиков." +
+            " Может использоваться как гаррота, резак или хлыст. Считается формой кибероружия с Чёрного Рынка," +
+            " и поэтому она недоступна для имплантации в обычной клинике или в торговом центре.";
+        HumanityLossFormula = "3D6";
+        Cost = 700;
     }
 
     public override void GenerateHumanLoss(Random random)
     {
-        HumanityLoss = random.Next(1, 7) + random.Next(1, 7);
+        HumanityLoss = random.Next(1, 7) + random.Next(1, 7) + random.Next(1, 7);
     }
 
     public override string BarriersForChipIn(Character character)
