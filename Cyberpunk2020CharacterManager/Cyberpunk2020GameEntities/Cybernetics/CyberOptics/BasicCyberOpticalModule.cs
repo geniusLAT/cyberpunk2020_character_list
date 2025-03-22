@@ -74,4 +74,17 @@ public class BasicCyberOpticalModule : Implant, OpticalModule
         }
         return cashedPotentialParents;
     }
+
+    public override void ChipIn(Character character, Random random)
+    {
+        var slot = character.GetBodyPart(BodyPlace);
+
+        var othersEyes = character.GetChildBodyParts(BodyPlace);
+        foreach (var other in othersEyes)
+        {
+            character.BodyParts.Remove(other);
+        }
+
+        base.ChipIn(character, random);
+    }
 }

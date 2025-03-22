@@ -39,11 +39,12 @@ public abstract class CyberOptics : Implant
                 
                 foreach (var child in character.GetChildBodyParts(bodyPart.Guid))
                 {
+                    //throw new NotImplementedException($"{child.GetType()}  {this.GetType()}");
+
                     if (child.GetType() == this.GetType())
                     {
                         continue;
                     }
-
                 }
 
                 cashedPotentialParents.Add(bodyPart);
@@ -57,6 +58,7 @@ public abstract class CyberOptics : Implant
         var slot = character.GetBodyPart(BodyPlace);
         ((Implant)slot).OptionsAlloweded -= optionsReqired;
 
+        
         base.ChipIn(character, random);
     }
 }
