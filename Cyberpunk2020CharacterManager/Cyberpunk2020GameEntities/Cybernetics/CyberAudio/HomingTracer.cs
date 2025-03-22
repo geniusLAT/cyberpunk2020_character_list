@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace Cyberpunk2020GameEntities.Cybernetics.CyberAudio;
+﻿namespace Cyberpunk2020GameEntities.Cybernetics.CyberAudio;
 
 public class HomingTracer : CyberAudio
 {
