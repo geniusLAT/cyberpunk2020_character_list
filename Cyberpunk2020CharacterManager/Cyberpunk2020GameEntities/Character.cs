@@ -218,8 +218,8 @@ public class Character
         ArmSlot rightArmSlot = new(false);
         ArmSlot leftArmSlot = new(true);
 
-        NaturalArm rightArm = new() { BodyPlace = rightArmSlot.Guid };
-        NaturalArm leftArm = new() { BodyPlace = leftArmSlot.Guid };
+        NaturalArm rightArm = new() { BodyPlace = rightArmSlot.Guid, NamePrefix = "Правая " };
+        NaturalArm leftArm = new() { BodyPlace = leftArmSlot.Guid, NamePrefix = "Левая " };
 
         EyeSocket leftEyeSocket = new(true);
         EyeSocket rightEyeSocket = new(false);
