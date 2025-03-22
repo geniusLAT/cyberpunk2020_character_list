@@ -4,7 +4,9 @@ namespace Cyberpunk2020GameEntities.Cybernetics.CyberOptics;
 
 public class BasicCyberOpticalModule : Implant, OpticalModule
 {
-    public override string Name { get { return "Базовый киберглаз "; } }
+    public override string Name { get { return $"{Prefix}Базовый киберглаз "; } }
+
+    public string Prefix {get;set;} = string.Empty;
 
     public BasicCyberOpticalModule()
     {
@@ -77,13 +79,15 @@ public class BasicCyberOpticalModule : Implant, OpticalModule
 
     public override void ChipIn(Character character, Random random)
     {
-        var slot = character.GetBodyPart(BodyPlace);
+        var slot = (EyeSocket)character.GetBodyPart(BodyPlace);
 
         var othersEyes = character.GetChildBodyParts(BodyPlace);
         foreach (var other in othersEyes)
         {
             character.BodyParts.Remove(other);
         }
+
+        Prefix = slot.generatePrefixForOptics();
 
         base.ChipIn(character, random);
     }

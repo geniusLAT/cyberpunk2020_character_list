@@ -47,6 +47,40 @@ public class EyeSocket : BodyPart
         }
     }
 
+    public string generatePrefixForOptics()
+    {
+        var prefix = string.Empty;
+        if (IsArtificial)
+        {
+            switch (number)
+            {
+                case 1:
+                    prefix = "первый";
+                    break;
+                case 2:
+                    prefix = "вторый";
+                    break;
+                case 3:
+                    prefix = "третий";
+                    break;
+                case 4:
+                    prefix = "четвёртый";
+                    break;
+                case 5:
+                    prefix = "пятый";
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            prefix = IsLeft ? "левый" : "правый";
+            //throw new NotImplementedException(note);
+        }
+        return $"{prefix} ";
+    }
+
     public EyeSocket(byte number)
     {
         this.number = number;
