@@ -4,6 +4,8 @@ namespace Cyberpunk2020GameEntities.Cybernetics.CyberOptics;
 
 public abstract class CyberOptics : Implant
 {
+    private int optionsReqired = 1;
+
     public override string BarriersForChipIn(Character character)
     {
         var result = new StringBuilder();
@@ -31,9 +33,22 @@ public abstract class CyberOptics : Implant
         {
             if (bodyPart is OpticalModule)
             {
+                var implant = (Implant)bodyPart;
+                if (implant.OptionsAlloweded < optionsReqired)
+                {
+                    continue;
+                }
                 cashedPotentialParents.Add(bodyPart);
             }
         }
         return cashedPotentialParents;
+    }
+
+    public override void ChipIn(Character character, Random random)
+    {
+        var slot = character.GetBodyPart(BodyPlace);
+        ((Implant)slot).OptionsAlloweded -= optionsReqired;
+
+        base.ChipIn(character, random);
     }
 }

@@ -1,5 +1,4 @@
-﻿using Cyberpunk2020GameEntities.Cybernetics.Cyberlimbs;
-using System.Text;
+﻿using System.Text;
 
 namespace Cyberpunk2020GameEntities.Cybernetics.CyberOptics;
 
@@ -26,6 +25,7 @@ public class BasicCyberOpticalModule : Implant, OpticalModule
             " когда передняя часть глаза раскрывается.";
         HumanityLossFormula = "2D6";
         Cost = 500;
+        OptionsAlloweded = 4;
     }
 
     public override void GenerateHumanLoss(Random random)
