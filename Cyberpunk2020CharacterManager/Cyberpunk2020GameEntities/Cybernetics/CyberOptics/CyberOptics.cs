@@ -36,15 +36,17 @@ public abstract class CyberOptics : Implant
                 {
                     continue;
                 }
-                
+                var alreadyContainsIt = false;
                 foreach (var child in character.GetChildBodyParts(bodyPart.Guid))
                 {
-                    //throw new NotImplementedException($"{child.GetType()}  {this.GetType()}");
-
                     if (child.GetType() == this.GetType())
                     {
-                        continue;
+                        alreadyContainsIt = true;
                     }
+                }
+                if (alreadyContainsIt)
+                {
+                    continue;
                 }
 
                 cashedPotentialParents.Add(bodyPart);
