@@ -31,4 +31,24 @@ public class SpikeHeelFoot : FootImplant
 
         return result.ToString();
     }
+
+    public override void ChipIn(Character character, Random random)
+    {
+        var leg = character.GetBodyPart(BodyPlace);
+        if (leg == null) { throw new Exception("lost parent"); }
+
+        var slot = character.GetBodyPart(leg.BodyPlace);
+        if (slot == null) { throw new Exception("lost grandparent"); }
+
+        if (((LegSlot)slot).IsLeft)
+        {
+            namePrefix = "Левый ";
+        }
+        else
+        {
+            namePrefix = "Правый ";
+        }
+
+        base.ChipIn(character, random);
+    }
 }
