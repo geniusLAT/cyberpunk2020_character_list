@@ -1,6 +1,6 @@
 ﻿namespace Cyberpunk2020GameEntities.Cybernetics.CyberAudio;
 
-public class BasicHearingModule : Implant
+public class BasicHearingModule : Implant, HearingModule
 {
     public override string Name { get { return "Базовый слуховой модуль"; } }
 
