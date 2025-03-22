@@ -1,10 +1,11 @@
-﻿using System.Text;
+﻿using Cyberpunk2020GameEntities.Cybernetics.Cyberlimbs;
+using System.Text;
 
 namespace Cyberpunk2020GameEntities.Cybernetics.CyberOptics;
 
 public abstract class CyberOptics : Implant
 {
-    private int optionsReqired = 1;
+    protected int optionsReqired = 1;
 
     public override string BarriersForChipIn(Character character)
     {
@@ -13,9 +14,6 @@ public abstract class CyberOptics : Implant
         {
             result.Append("Требуется оптический модуль\n");
         }
-
-        result.Append(UniquenessPotentialProblem(character));
-
         return result.ToString();
     }
 
@@ -38,6 +36,16 @@ public abstract class CyberOptics : Implant
                 {
                     continue;
                 }
+                
+                foreach (var child in character.GetChildBodyParts(bodyPart.Guid))
+                {
+                    if (child.GetType() == this.GetType())
+                    {
+                        continue;
+                    }
+
+                }
+
                 cashedPotentialParents.Add(bodyPart);
             }
         }
