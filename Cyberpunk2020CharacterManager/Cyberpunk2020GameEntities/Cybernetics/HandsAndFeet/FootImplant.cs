@@ -2,7 +2,7 @@
 
 namespace Cyberpunk2020GameEntities.Cybernetics.HandsAndFeet;
 
-public abstract class HandImplant : Implant
+public abstract class FootImplant : Implant
 {
     public string namePrefix { get; set; }
 
@@ -18,20 +18,20 @@ public abstract class HandImplant : Implant
         cashedPotentialParents = [];
         foreach (var bodyPart in character.BodyParts)
         {
-            if (bodyPart is Cyberarm)
+            if (bodyPart is Cyberleg)
             {
-                var alreadyHasHandImplant = false;
+                var alreadyHasFootImplant = false;
                 foreach (var child in character.GetChildBodyParts(bodyPart.Guid))
                 {
-                    if (child is HandImplant)
+                    if (child is FootImplant)
                     {
-                        alreadyHasHandImplant = true;
+                        alreadyHasFootImplant = true;
                         continue;
                     }
 
                 }
 
-                if (alreadyHasHandImplant) { continue; }
+                if (alreadyHasFootImplant) { continue; }
 
                 cashedPotentialParents.Add(bodyPart);
             }
@@ -41,13 +41,13 @@ public abstract class HandImplant : Implant
 
     public override void ChipIn(Character character, Random random)
     {
-        var arm = character.GetBodyPart(BodyPlace);
-        if (arm == null) { throw new Exception("lost parent"); }
+        var leg = character.GetBodyPart(BodyPlace);
+        if (leg == null) { throw new Exception("lost parent"); }
 
-        var slot = character.GetBodyPart(arm.BodyPlace);
+        var slot = character.GetBodyPart(leg.BodyPlace);
         if (slot == null) { throw new Exception("lost grandparent"); }
 
-        if (((ArmSlot)slot).IsLeft)
+        if (((LegSlot)slot).IsLeft)
         {
             namePrefix = "Левая ";
         }
