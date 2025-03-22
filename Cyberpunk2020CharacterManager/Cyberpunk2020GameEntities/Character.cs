@@ -221,7 +221,26 @@ public class Character
         NaturalArm rightArm = new() { BodyPlace = rightArmSlot.Guid };
         NaturalArm leftArm = new() { BodyPlace = leftArmSlot.Guid };
 
-        BodyParts.AddRange([rightLegSlot, rightLeg, leftLegSlot, lefttLeg, rightArmSlot, rightArm, leftArmSlot, leftArm]);
+        EyeSocket leftEyeSocket = new(true);
+        EyeSocket rightEyeSocket = new(false);
+
+        NaturalEye rightEye = new() { BodyPlace = rightEyeSocket.Guid };
+        NaturalEye leftEye = new() { BodyPlace = leftEyeSocket.Guid };
+
+        BodyParts.AddRange([
+            rightLegSlot, 
+            rightLeg, 
+            leftLegSlot, 
+            lefttLeg, 
+            rightArmSlot, 
+            rightArm, 
+            leftArmSlot, 
+            leftArm,
+            leftEyeSocket,
+            rightEyeSocket,
+            rightEye,
+            leftEye
+            ]);
     }
 
     public int[] skills { get; set; } = new int[91];
