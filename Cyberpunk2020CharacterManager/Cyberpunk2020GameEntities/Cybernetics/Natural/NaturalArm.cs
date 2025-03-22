@@ -2,6 +2,8 @@
 
 public class NaturalArm : NaturalLimb, IArm
 {
-    public override string Name { get { return "биологическая рука"; } }
+    public string NamePrefix { get; set; }
+
+    public override string Name { get { return NamePrefix + "биологическая рука"; } }
 
 }
