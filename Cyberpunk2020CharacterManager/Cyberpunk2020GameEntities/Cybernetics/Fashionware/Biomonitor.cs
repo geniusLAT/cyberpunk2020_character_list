@@ -6,7 +6,7 @@ public class Biomonitor : Implant
 
     public Biomonitor()
     {
-        SurgeryCode = SurgeryCode.Minor;
+        SurgeryCode = SurgeryCode.Negligible;
         Description = " это фаворит Соло, фанатов гаджетов и взволнованных Корпоратов," +
             " обеспокоенных их кровяным давление. Установленный под кожу предплечья " +
             "Биомонитор постоянно замеряет показатели сердцебиения, дыхания, мозговых " +
