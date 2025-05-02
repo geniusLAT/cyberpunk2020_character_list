@@ -66,6 +66,7 @@ internal partial class CyberwareChooseMenu : Form
         AvaliableCyberWareTreeView.Nodes.Clear();
 
         RenderTreePart("Кастом", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CustomCybernetics"));
+        RenderTreePart("Фэшн-оснащение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.Fashionware"));
         RenderTreePart("Нейро-оснащение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.Neuralwares"));
         RenderTreePart("Кибер-оснащение, размещенное в теле", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CyberwearsPlacedInTheBody"));
         RenderTreePart("Биоимпланты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.Bioware"));
