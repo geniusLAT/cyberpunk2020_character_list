@@ -14,7 +14,7 @@ public class GraftedMuscle : Implant
 
     public GraftedMuscle()
     {
-        SurgeryCode = SurgeryCode.Minor;
+        SurgeryCode = SurgeryCode.Major;
         Description = "это выращенные в резервуарах мышцы, прививаемые к тебе, с полным заживле- нием. " +
             "С помощью этой модификации ты можешь увеличить своё Телосложение до 2 пунктов, заплатив 1000eb " +
             "за пункт. Его можно сочетать с Оплеткой мускул и костей.";
