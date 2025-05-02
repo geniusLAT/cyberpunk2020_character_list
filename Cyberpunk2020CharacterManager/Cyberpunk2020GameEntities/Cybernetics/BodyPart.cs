@@ -13,6 +13,8 @@ public abstract class BodyPart
 
     public int Cost { get; set; }
 
+    public int MaxCost { get; set; }
+
     public Guid BodyPlace { get; set; }
 
     public float HumanityLoss { get; set; } = 0;
