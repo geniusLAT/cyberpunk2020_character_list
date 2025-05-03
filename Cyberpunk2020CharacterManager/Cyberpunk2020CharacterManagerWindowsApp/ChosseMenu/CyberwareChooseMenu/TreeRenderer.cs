@@ -78,6 +78,7 @@ internal partial class CyberwareChooseMenu : Form
         RenderTreePart("Встраиваемые элементы", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.BuiltInCyberlimbs"));
 
         RenderTreePart("Линейные рамы", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.LinearFrames"));
+        RenderTreePart("Экзоброня", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.Axoarmor"));
 
         AvaliableCyberWareTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
     }
