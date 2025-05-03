@@ -1,6 +1,4 @@
-﻿using Cyberpunk2020GameEntities.Cybernetics.Neuralwares;
-
-namespace Cyberpunk2020GameEntities.Cybernetics.BuiltInCyberlimbs;
+﻿namespace Cyberpunk2020GameEntities.Cybernetics.BuiltInCyberlimbs;
 
 public class AvTapeRecorder : BuiltInCyberlimb
 {
