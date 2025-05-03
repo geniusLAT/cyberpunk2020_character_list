@@ -43,7 +43,7 @@ internal partial class InventoryChooseMenu : Form
         _cyberwareChooseMenu = cyberwareChooseMenu;
         _character = character;
 
-        add_chosen_cyberware_button!.Text = "Назад";
+        add_chosen_cyberware_button!.Text = "Назад)";
 
         PopulateTreeViewForPopUpGun();
         //RenderTree();
@@ -249,7 +249,14 @@ internal partial class InventoryChooseMenu : Form
             _chosenEquipment.Add(_character, _random);
         }
 
-        _form1.EquipmentChanged();
+        if (_form1 is not null)
+        {
+            _form1.EquipmentChanged();
+        }
+        else
+        {
+
+        }
         this.Close();
     }
 
@@ -281,7 +288,14 @@ internal partial class InventoryChooseMenu : Form
     private void radioButton1_CheckedChanged(object sender, EventArgs e)
     {
         if (_chosenEquipment is null) return;
-        add_chosen_cyberware_button.Text = "Купить";
+        if (_form1 is not null)
+        {
+            add_chosen_cyberware_button.Text = "Купить";
+        }
+        else
+        {
+            add_chosen_cyberware_button.Text = "Добавить в имплант";
+        }
         buingMode = true;
         LookForProblemForEquipment(_chosenEquipment);
     }
