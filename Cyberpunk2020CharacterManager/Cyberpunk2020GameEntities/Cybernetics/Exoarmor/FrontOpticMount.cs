@@ -2,7 +2,7 @@
 using Cyberpunk2020GameEntities.Cybernetics.Natural;
 using System.Text;
 
-namespace Cyberpunk2020GameEntities.Cybernetics.Axoarmor;
+namespace Cyberpunk2020GameEntities.Cybernetics.Exoarmor;
 
 public class FrontOpticMount : Implant
 {

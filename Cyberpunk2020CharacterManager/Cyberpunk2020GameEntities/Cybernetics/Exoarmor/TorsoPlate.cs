@@ -1,4 +1,4 @@
-﻿namespace Cyberpunk2020GameEntities.Cybernetics.Axoarmor;
+﻿namespace Cyberpunk2020GameEntities.Cybernetics.Exoarmor;
 
 public class TorsoPlate : Implant
 {

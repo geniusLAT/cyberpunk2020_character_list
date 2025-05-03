@@ -1,6 +1,6 @@
 ﻿using Cyberpunk2020GameEntities.Cybernetics.CyberOptics;
 
-namespace Cyberpunk2020GameEntities.Cybernetics.Axoarmor;
+namespace Cyberpunk2020GameEntities.Cybernetics.Exoarmor;
 
 public class RabbitEars : Implant, OpticalModule
 {
