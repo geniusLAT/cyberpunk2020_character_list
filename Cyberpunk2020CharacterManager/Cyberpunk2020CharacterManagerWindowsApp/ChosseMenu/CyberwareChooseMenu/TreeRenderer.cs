@@ -77,6 +77,8 @@ internal partial class CyberwareChooseMenu : Form
         RenderTreePart("Кисти и стопы", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.HandsAndFeet"));
         RenderTreePart("Встраиваемые элементы", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.BuiltInCyberlimbs"));
 
+        RenderTreePart("Линейные рамы", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.LinearFrames"));
+
         AvaliableCyberWareTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
     }
 
