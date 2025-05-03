@@ -1,4 +1,5 @@
 ﻿using Cyberpunk2020GameEntities;
+using Cyberpunk2020GameEntities.Cybernetics.CybeweaponsBuiltInCyberLimb;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
 
@@ -119,8 +120,17 @@ internal partial class CyberwareChooseMenu : Form
        
         _chosenImplant.ChipIn(_character, _random);
 
-        _form1.CyberwareAdded();
-        this.Close();
+        if (_chosenImplant is PopupGun)
+        {
+            InventoryChooseMenu.InventoryChooseMenu inventoryChooseMenu = new(this, _character);
+            inventoryChooseMenu.ShowDialog();
+        }
+        else
+        {
+
+            _form1.CyberwareAdded();
+            this.Close();
+        }
     }
 
     private void potentialParentComboBox_SelectedIndexChanged(object sender, EventArgs e)

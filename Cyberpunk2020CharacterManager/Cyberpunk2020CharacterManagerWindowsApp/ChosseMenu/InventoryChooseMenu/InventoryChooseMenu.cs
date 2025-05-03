@@ -4,7 +4,9 @@ namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu
 
 internal partial class InventoryChooseMenu : Form
 {
-    Form1 _form1;
+    Form1? _form1;
+
+    CyberwareChooseMenu.CyberwareChooseMenu? _cyberwareChooseMenu;
 
     private TreeView AvaliableEquipmentTreeView;
 
@@ -33,6 +35,18 @@ internal partial class InventoryChooseMenu : Form
         add_chosen_cyberware_button!.Text = "Назад";
 
         RenderTree();
+    }
+
+    public InventoryChooseMenu(CyberwareChooseMenu.CyberwareChooseMenu cyberwareChooseMenu, Character character)
+    {
+        InitializeComponent();
+        _cyberwareChooseMenu = cyberwareChooseMenu;
+        _character = character;
+
+        add_chosen_cyberware_button!.Text = "Назад";
+
+        PopulateTreeViewForPopUpGun();
+        //RenderTree();
     }
 
     private Button add_chosen_cyberware_button;

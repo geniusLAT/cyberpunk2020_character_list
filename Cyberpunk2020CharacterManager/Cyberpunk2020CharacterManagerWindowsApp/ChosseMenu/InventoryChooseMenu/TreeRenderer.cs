@@ -75,6 +75,30 @@ internal partial class InventoryChooseMenu : Form
         }
     }
 
+    private void PopulateTreeViewForPopUpGun()
+    {
+        AvaliableEquipmentTreeView.Nodes.Clear();
+
+        TreeNode RangedNode = new("Дальнобойное оружие")
+        {
+            Name = "Дальнобойное оружие"
+        };
+        AvaliableEquipmentTreeView.Nodes.Add(RangedNode);
+
+        RenderTreePart(RangedNode, "Лёгкие пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.LightAutopistols"));
+        RenderTreePart(RangedNode, "Средние пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.MediumAutopistols"));
+        RenderTreePart(RangedNode, "Тяжёлые пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.HeavyAutopistols"));
+        RenderTreePart(RangedNode, "Очень тяжёлые пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.VeryHeavyAutopistols"));
+        RenderTreePart(RangedNode, "Лёгкие пистолеты-пулемёты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Submachineguns.LightSubmachineguns"));
+        RenderTreePart(RangedNode, "Средние пистолеты-пулемёты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Submachineguns.MediumSubmachineguns"));
+        RenderTreePart(RangedNode, "Тяжёлые пистолеты-пулемёты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Submachineguns.HeavySubmachineguns"));
+        RenderTreePart(RangedNode, "Штурмовые винтовки", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.AssaultRifles"));
+        RenderTreePart(RangedNode, "Дробовики", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Shotguns"));
+        RenderTreePart(RangedNode, "Тяжёлое вооружение", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.HeavyWeapons"));
+        RenderTreePart(RangedNode, "Экзотическое", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Exotics"));
+
+    }
+
     private void PopulateTreeView()
     {
        
