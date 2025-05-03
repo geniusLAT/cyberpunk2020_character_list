@@ -75,6 +75,38 @@ internal partial class InventoryChooseMenu : Form
         }
     }
 
+    private void PopulateTreeViewForPopUpGun()
+    {
+        AvaliableEquipmentTreeView.Nodes.Clear();
+
+        TreeNode RangedNode = new("Дальнобойное оружие")
+        {
+            Name = "Дальнобойное оружие"
+        };
+        AvaliableEquipmentTreeView.Nodes.Add(RangedNode);
+
+        RenderTreePart(RangedNode, "Лёгкие пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.LightAutopistols"));
+        if(_character.body_stat> 4) 
+        {
+            RenderTreePart(RangedNode, "Средние пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.MediumAutopistols"));
+        }
+        if (_character.body_stat > 9)
+        {
+            RenderTreePart(RangedNode, "Тяжёлые пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.HeavyAutopistols"));
+            RenderTreePart(RangedNode, "Очень тяжёлые пистолеты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Autopistols.VeryHeavyAutopistols"));
+        }
+        if (_character.body_stat > 4)
+        {
+            RenderTreePart(RangedNode, "Лёгкие пистолеты-пулемёты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Submachineguns.LightSubmachineguns"));
+        }
+        if (_character.body_stat > 9)
+        {
+            RenderTreePart(RangedNode, "Средние пистолеты-пулемёты", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Submachineguns.MediumSubmachineguns"));
+            RenderTreePart(RangedNode, "Дробовики", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons.Shotguns"));
+        }
+        AvaliableEquipmentTreeView.NodeMouseClick += AvaliableCyberWareTreeView_NodeMouseClick;
+    }
+
     private void PopulateTreeView()
     {
        
@@ -296,7 +328,14 @@ internal partial class InventoryChooseMenu : Form
         _chosenEquipment = equipmentItem;
         ShowDescription(equipmentItem);
         LookForProblemForEquipment(equipmentItem);
-        add_chosen_cyberware_button.Text = "Купить";
+        if (_form1 is not null)
+        {
+            add_chosen_cyberware_button.Text = "Купить";
+        }
+        else
+        {
+            add_chosen_cyberware_button.Text = "Добавить в имплант";
+        }
     }
 
     void LookForProblemForEquipment(Equipment equipment)
@@ -316,7 +355,8 @@ internal partial class InventoryChooseMenu : Form
 
     private string PricePotentialProblem(Equipment equipmentItem)
     {
-        var practicalCostPerOne = equipmentItem.Cost * equipmentItem.GetOptionPriceModifier(potentialOptionComboBox.Text);
+        var implantPlusCost = _form1 is not null ? 0 : 200;
+        var practicalCostPerOne = equipmentItem.Cost * equipmentItem.GetOptionPriceModifier(potentialOptionComboBox.Text) + implantPlusCost;
 
         if (ExtraCostTrackBar.Enabled)
         {

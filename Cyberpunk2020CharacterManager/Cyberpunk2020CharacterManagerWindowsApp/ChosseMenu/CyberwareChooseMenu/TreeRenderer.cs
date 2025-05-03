@@ -1,5 +1,7 @@
 ﻿using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.AddCustomImplantMenus;
 using Cyberpunk2020GameEntities.Cybernetics;
+using Cyberpunk2020GameEntities.Cybernetics.CybeweaponsBuiltInCyberLimb;
+using Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons;
 using System.Reflection;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
@@ -76,7 +78,7 @@ internal partial class CyberwareChooseMenu : Form
         RenderTreePart("Киберконечности", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.Cyberlimbs"));
         RenderTreePart("Кисти и стопы", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.HandsAndFeet"));
         RenderTreePart("Встраиваемые элементы", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.BuiltInCyberlimbs"));
-
+        RenderTreePart("Кибероружие для дальнего боя", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CybeweaponsBuiltInCyberLimb"));
         RenderTreePart("Линейные рамы", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.LinearFrames"));
         RenderTreePart("Экзоброня", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.Exoarmor"));
 
@@ -205,5 +207,18 @@ internal partial class CyberwareChooseMenu : Form
             return $"\nДля покупки не хватает {implant.Cost - _character.CurrentMoney} евродолларов.";
         }
         return string.Empty;
+    }
+
+    public void ConfigurePopUpGun(RangedWeapon rangedWeapon)
+    {
+        var PopUpGun = (PopupGun)_chosenImplant;
+        if (PopUpGun != null)
+        {
+            PopUpGun.IncludedWeapon = rangedWeapon;
+            PopUpGun.Cost = (int) rangedWeapon.Cost + 200;
+            _chosenImplant.ChipIn(_character, _random);
+            _form1.CyberwareAdded();
+            this.Close();
+        }
     }
 }

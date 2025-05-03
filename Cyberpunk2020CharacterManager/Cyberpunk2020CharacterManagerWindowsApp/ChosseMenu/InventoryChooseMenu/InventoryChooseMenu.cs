@@ -1,10 +1,13 @@
 ﻿using Cyberpunk2020GameEntities;
+using Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
 
 internal partial class InventoryChooseMenu : Form
 {
-    Form1 _form1;
+    Form1? _form1;
+
+    CyberwareChooseMenu.CyberwareChooseMenu? _cyberwareChooseMenu;
 
     private TreeView AvaliableEquipmentTreeView;
 
@@ -33,6 +36,18 @@ internal partial class InventoryChooseMenu : Form
         add_chosen_cyberware_button!.Text = "Назад";
 
         RenderTree();
+    }
+
+    public InventoryChooseMenu(CyberwareChooseMenu.CyberwareChooseMenu cyberwareChooseMenu, Character character)
+    {
+        InitializeComponent();
+        _cyberwareChooseMenu = cyberwareChooseMenu;
+        _character = character;
+
+        add_chosen_cyberware_button!.Text = "Назад)";
+
+        PopulateTreeViewForPopUpGun();
+        //RenderTree();
     }
 
     private Button add_chosen_cyberware_button;
@@ -235,7 +250,14 @@ internal partial class InventoryChooseMenu : Form
             _chosenEquipment.Add(_character, _random);
         }
 
-        _form1.EquipmentChanged();
+        if (_form1 is not null)
+        {
+            _form1.EquipmentChanged();
+        }
+        else
+        {
+            _cyberwareChooseMenu!.ConfigurePopUpGun((RangedWeapon)_chosenEquipment);
+        }
         this.Close();
     }
 
@@ -267,7 +289,14 @@ internal partial class InventoryChooseMenu : Form
     private void radioButton1_CheckedChanged(object sender, EventArgs e)
     {
         if (_chosenEquipment is null) return;
-        add_chosen_cyberware_button.Text = "Купить";
+        if (_form1 is not null)
+        {
+            add_chosen_cyberware_button.Text = "Купить";
+        }
+        else
+        {
+            add_chosen_cyberware_button.Text = "Добавить в имплант";
+        }
         buingMode = true;
         LookForProblemForEquipment(_chosenEquipment);
     }
