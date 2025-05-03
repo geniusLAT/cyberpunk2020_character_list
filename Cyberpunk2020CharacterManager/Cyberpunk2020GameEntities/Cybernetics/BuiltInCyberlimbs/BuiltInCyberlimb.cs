@@ -48,18 +48,18 @@ public abstract class BuiltInCyberlimb : Implant
             if (bodyPart is Cyberarm || bodyPart is Cyberleg)
             {
 
-                var alreadyHasShielding = false;
+                var alreadyHasThatBuiltIn = false;
                 foreach (var child in character.GetChildBodyParts(bodyPart.Guid))
                 {
-                    if (child is MicrowaveEmpShielding)
+                    if (child.GetType() == this.GetType())
                     {
-                        alreadyHasShielding = true;
+                        alreadyHasThatBuiltIn = true;
                         continue;
                     }
 
                 }
 
-                if (alreadyHasShielding)
+                if (alreadyHasThatBuiltIn)
                 {
                     continue;
                 }
