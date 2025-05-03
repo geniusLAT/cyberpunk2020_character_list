@@ -76,7 +76,7 @@ internal partial class CyberwareChooseMenu : Form
         RenderTreePart("Киберконечности", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.Cyberlimbs"));
         RenderTreePart("Кисти и стопы", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.HandsAndFeet"));
         RenderTreePart("Встраиваемые элементы", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.BuiltInCyberlimbs"));
-
+        RenderTreePart("Кибероружие для дальнего боя", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.CybeweaponsBuiltInCyberLimb"));
         RenderTreePart("Линейные рамы", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.LinearFrames"));
         RenderTreePart("Экзоброня", GetDictionaryForTreeReflected("Cyberpunk2020GameEntities.Cybernetics.Exoarmor"));
 
