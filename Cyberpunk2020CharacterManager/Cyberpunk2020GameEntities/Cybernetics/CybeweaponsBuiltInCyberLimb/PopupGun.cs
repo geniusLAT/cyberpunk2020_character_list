@@ -1,7 +1,11 @@
-﻿namespace Cyberpunk2020GameEntities.Cybernetics.CybeweaponsBuiltInCyberLimb;
+﻿using Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons;
+
+namespace Cyberpunk2020GameEntities.Cybernetics.CybeweaponsBuiltInCyberLimb;
 
 public class PopupGun : CybeweaponBuiltInCyberLimb
 {
+    public RangedWeapon IncludedWeapon { get; set; }
+
     public override string Name { get { return "Выпрыгивающее Оружие"; } }
 
     public PopupGun()

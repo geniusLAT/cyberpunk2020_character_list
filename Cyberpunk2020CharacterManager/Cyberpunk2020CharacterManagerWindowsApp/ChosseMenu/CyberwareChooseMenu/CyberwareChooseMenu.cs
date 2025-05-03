@@ -118,16 +118,15 @@ internal partial class CyberwareChooseMenu : Form
             _chosenImplant!.BodyPlace = parents[potentialParentComboBox.SelectedIndex].Guid;
         }
        
-        _chosenImplant.ChipIn(_character, _random);
-
         if (_chosenImplant is PopupGun)
         {
+            
             InventoryChooseMenu.InventoryChooseMenu inventoryChooseMenu = new(this, _character);
             inventoryChooseMenu.ShowDialog();
         }
         else
         {
-
+            _chosenImplant.ChipIn(_character, _random);
             _form1.CyberwareAdded();
             this.Close();
         }

@@ -355,7 +355,8 @@ internal partial class InventoryChooseMenu : Form
 
     private string PricePotentialProblem(Equipment equipmentItem)
     {
-        var practicalCostPerOne = equipmentItem.Cost * equipmentItem.GetOptionPriceModifier(potentialOptionComboBox.Text);
+        var implantPlusCost = _form1 is not null ? 0 : 200;
+        var practicalCostPerOne = equipmentItem.Cost * equipmentItem.GetOptionPriceModifier(potentialOptionComboBox.Text) + implantPlusCost;
 
         if (ExtraCostTrackBar.Enabled)
         {

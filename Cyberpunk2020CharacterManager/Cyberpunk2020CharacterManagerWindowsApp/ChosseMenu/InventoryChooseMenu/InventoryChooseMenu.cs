@@ -1,4 +1,5 @@
 ﻿using Cyberpunk2020GameEntities;
+using Cyberpunk2020GameEntities.Equipments.Weapons.RangedWeapons;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
 
@@ -255,7 +256,7 @@ internal partial class InventoryChooseMenu : Form
         }
         else
         {
-
+            _cyberwareChooseMenu!.ConfigurePopUpGun((RangedWeapon)_chosenEquipment);
         }
         this.Close();
     }
