@@ -2,6 +2,7 @@ using System.Text;
 using System.Text.Json;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
+using Cyberpunk2020CharacterManagerWindowsApp.ConnectionManagmentMenus;
 using Cyberpunk2020GameEntities;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp;
@@ -20,6 +21,8 @@ public partial class Form1 : Form
     private List<Panel> _panels = [];
 
     private List<Panel> _inventoryPanels = [];
+
+    private ConnectionManager _connectionManager = new ();
 
     public Form1()
     {

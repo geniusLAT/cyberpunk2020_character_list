@@ -1,6 +1,6 @@
 ﻿using Cyberpunk2020GameEntities;
 
-namespace Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
+namespace Cyberpunk2020CharacterManagerWindowsApp.ConnectionManagmentMenus;
 
 internal class ConnectionManagmentMenu : Form
 {
