@@ -57,7 +57,6 @@ partial class Form1
         numeric_int = new NumericUpDown();
         label1 = new Label();
         CreateButton = new Button();
-        panel2 = new Panel();
         label2 = new Label();
         NameField = new TextBox();
         panel3 = new Panel();
@@ -96,6 +95,7 @@ partial class Form1
         Money_numeric = new NumericUpDown();
         saveCharacterButton = new Button();
         loadCharacterButton = new Button();
+        panel2 = new Panel();
         panel1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)global_emp_numeric).BeginInit();
         ((System.ComponentModel.ISupportInitialize)cur_emp_numeric).BeginInit();
@@ -422,14 +422,6 @@ partial class Form1
         CreateButton.UseVisualStyleBackColor = true;
         CreateButton.Click += CreateButton_Click;
         // 
-        // panel2
-        // 
-        panel2.Location = new Point(14, 210);
-        panel2.Margin = new Padding(4, 3, 4, 3);
-        panel2.Name = "panel2";
-        panel2.Size = new Size(432, 123);
-        panel2.TabIndex = 1;
-        // 
         // label2
         // 
         label2.AutoSize = true;
@@ -564,11 +556,11 @@ partial class Form1
         skills_tab_control.Controls.Add(tabPage1);
         skills_tab_control.Controls.Add(tabPage2);
         skills_tab_control.Controls.Add(inventoryTab);
-        skills_tab_control.Location = new Point(14, 342);
+        skills_tab_control.Location = new Point(13, 339);
         skills_tab_control.Margin = new Padding(4, 3, 4, 3);
         skills_tab_control.Name = "skills_tab_control";
         skills_tab_control.SelectedIndex = 0;
-        skills_tab_control.Size = new Size(939, 795);
+        skills_tab_control.Size = new Size(939, 628);
         skills_tab_control.TabIndex = 8;
         // 
         // tabPage1
@@ -578,7 +570,7 @@ partial class Form1
         tabPage1.Margin = new Padding(4, 3, 4, 3);
         tabPage1.Name = "tabPage1";
         tabPage1.Padding = new Padding(4, 3, 4, 3);
-        tabPage1.Size = new Size(931, 767);
+        tabPage1.Size = new Size(931, 600);
         tabPage1.TabIndex = 0;
         tabPage1.Text = "Навыки";
         tabPage1.UseVisualStyleBackColor = true;
@@ -591,7 +583,7 @@ partial class Form1
         tabPage2.Margin = new Padding(4, 3, 4, 3);
         tabPage2.Name = "tabPage2";
         tabPage2.Padding = new Padding(4, 3, 4, 3);
-        tabPage2.Size = new Size(931, 767);
+        tabPage2.Size = new Size(931, 664);
         tabPage2.TabIndex = 1;
         tabPage2.Text = "Кибернетика";
         tabPage2.UseVisualStyleBackColor = true;
@@ -624,7 +616,7 @@ partial class Form1
         inventoryTab.Location = new Point(4, 24);
         inventoryTab.Name = "inventoryTab";
         inventoryTab.Padding = new Padding(3);
-        inventoryTab.Size = new Size(931, 767);
+        inventoryTab.Size = new Size(931, 664);
         inventoryTab.TabIndex = 2;
         inventoryTab.Text = "Инвентарь";
         inventoryTab.UseVisualStyleBackColor = true;
@@ -722,7 +714,7 @@ partial class Form1
         SkillPanel.Controls.Add(skillNumeric2);
         SkillPanel.Controls.Add(Skill_numeric);
         SkillPanel.Controls.Add(label16);
-        SkillPanel.Location = new Point(712, 330);
+        SkillPanel.Location = new Point(712, 303);
         SkillPanel.Margin = new Padding(4, 3, 4, 3);
         SkillPanel.Name = "SkillPanel";
         SkillPanel.Size = new Size(233, 30);
@@ -802,7 +794,7 @@ partial class Form1
         // Money_numeric
         // 
         Money_numeric.Enabled = false;
-        Money_numeric.Location = new Point(604, 335);
+        Money_numeric.Location = new Point(605, 310);
         Money_numeric.Margin = new Padding(4, 3, 4, 3);
         Money_numeric.Maximum = new decimal(new int[] { 1569325056, 23283064, 0, 0 });
         Money_numeric.Minimum = new decimal(new int[] { 1569325056, 23283064, 0, int.MinValue });
@@ -833,6 +825,15 @@ partial class Form1
         loadCharacterButton.Text = "Открыть";
         loadCharacterButton.UseVisualStyleBackColor = true;
         loadCharacterButton.Click += loadCharacterButton_Click;
+        // 
+        // panel2
+        // 
+        panel2.Location = new Point(14, 210);
+        panel2.Margin = new Padding(4, 3, 4, 3);
+        panel2.Name = "panel2";
+        panel2.Size = new Size(432, 123);
+        panel2.TabIndex = 1;
+        panel2.Paint += panel2_Paint;
         // 
         // Form1
         // 
@@ -899,7 +900,6 @@ partial class Form1
     private System.Windows.Forms.Panel panel1;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Button CreateButton;
-    private System.Windows.Forms.Panel panel2;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.TextBox NameField;
     private System.Windows.Forms.Panel panel3;
@@ -963,4 +963,5 @@ partial class Form1
     private Label inventoryListTitleLabel;
     private Button saveCharacterButton;
     private Button loadCharacterButton;
+    private Panel panel2;
 }

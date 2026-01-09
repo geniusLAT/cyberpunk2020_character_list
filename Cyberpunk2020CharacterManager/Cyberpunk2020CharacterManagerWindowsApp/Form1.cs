@@ -927,8 +927,8 @@ public partial class Form1 : Form
 
     private void saveCharacterButton_Click(object sender, EventArgs e)
     {
-        if(_chosenCharacter is null) 
-        { 
+        if (_chosenCharacter is null)
+        {
             return;
         }
 
@@ -978,12 +978,12 @@ public partial class Form1 : Form
     {
         var serialized = LoadCharacterFromFile();
 
-        if(serialized == string.Empty)
+        if (serialized == string.Empty)
         {
             MessageBox.Show($"Не обнаружено ранее сохранённого персонажа");
             return;
         }
-              
+
         var character = JsonSerializer.Deserialize<Character>(serialized, options);
         character.DeserializeInnerFields();
 
@@ -996,7 +996,7 @@ public partial class Form1 : Form
         RenderCyberwares(0, 0);
         RenderInventory(31, 178);
 
-        Money_numeric.Value = (decimal) character.CurrentMoney;
+        Money_numeric.Value = (decimal)character.CurrentMoney;
 
         saveCharacterButton.Enabled = true;
     }
@@ -1007,7 +1007,7 @@ public partial class Form1 : Form
         {
             string serialized;
             StreamReader sw = new StreamReader("test.txt");
-            serialized= sw.ReadToEnd();
+            serialized = sw.ReadToEnd();
             sw.Close();
             return serialized;
         }
@@ -1020,5 +1020,10 @@ public partial class Form1 : Form
             Console.WriteLine("Executing finally block.");
         }
         return string.Empty;
+    }
+
+    private void panel2_Paint(object sender, PaintEventArgs e)
+    {
+
     }
 }
