@@ -60,6 +60,7 @@ partial class Form1
         label2 = new Label();
         NameField = new TextBox();
         panel3 = new Panel();
+        saveServerComboBox = new ComboBox();
         ErrorLabel = new Label();
         label3 = new Label();
         RoleChoser = new ComboBox();
@@ -443,6 +444,7 @@ partial class Form1
         // 
         // panel3
         // 
+        panel3.Controls.Add(saveServerComboBox);
         panel3.Controls.Add(ErrorLabel);
         panel3.Controls.Add(CreateButton);
         panel3.Location = new Point(-2, 1);
@@ -450,6 +452,17 @@ partial class Form1
         panel3.Name = "panel3";
         panel3.Size = new Size(955, 45);
         panel3.TabIndex = 4;
+        // 
+        // saveServerComboBox
+        // 
+        saveServerComboBox.FormattingEnabled = true;
+        saveServerComboBox.Items.AddRange(new object[] { "локальный", "добавить новый сервер" });
+        saveServerComboBox.Location = new Point(348, 11);
+        saveServerComboBox.Name = "saveServerComboBox";
+        saveServerComboBox.Size = new Size(121, 23);
+        saveServerComboBox.TabIndex = 17;
+        saveServerComboBox.Text = "локальный";
+        saveServerComboBox.SelectedIndexChanged += saveServerComboBox_SelectedIndexChanged;
         // 
         // ErrorLabel
         // 
@@ -583,7 +596,7 @@ partial class Form1
         tabPage2.Margin = new Padding(4, 3, 4, 3);
         tabPage2.Name = "tabPage2";
         tabPage2.Padding = new Padding(4, 3, 4, 3);
-        tabPage2.Size = new Size(931, 664);
+        tabPage2.Size = new Size(931, 600);
         tabPage2.TabIndex = 1;
         tabPage2.Text = "Кибернетика";
         tabPage2.UseVisualStyleBackColor = true;
@@ -616,7 +629,7 @@ partial class Form1
         inventoryTab.Location = new Point(4, 24);
         inventoryTab.Name = "inventoryTab";
         inventoryTab.Padding = new Padding(3);
-        inventoryTab.Size = new Size(931, 664);
+        inventoryTab.Size = new Size(931, 600);
         inventoryTab.TabIndex = 2;
         inventoryTab.Text = "Инвентарь";
         inventoryTab.UseVisualStyleBackColor = true;
@@ -964,4 +977,5 @@ partial class Form1
     private Button saveCharacterButton;
     private Button loadCharacterButton;
     private Panel panel2;
+    private ComboBox saveServerComboBox;
 }

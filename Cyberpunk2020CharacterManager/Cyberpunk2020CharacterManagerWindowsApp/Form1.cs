@@ -1026,4 +1026,19 @@ public partial class Form1 : Form
     {
 
     }
+
+    private void saveServerComboBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (saveServerComboBox.Text == "локальный")
+        {
+            MessageBox.Show("Вы перешли в локальный режим");
+        }
+        if (saveServerComboBox.Text == "добавить новый сервер")
+        {
+            MessageBox.Show("Вы перешли в режим добавления нового сервера");
+            ConnectionManagmentMenu connectionManagmentMenu = new(this);
+            connectionManagmentMenu.ShowDialog();
+        }
+        return;
+    }
 }

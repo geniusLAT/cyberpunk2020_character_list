@@ -31,6 +31,9 @@
     <Compile Update="ChosseMenu\InventoryChooseMenu\TreeRenderer.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ConnectionManagmentMenu\ConnectionManagmentMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="InventoryInfoPanelRenderer.cs">
       <SubType>Form</SubType>
     </Compile>
