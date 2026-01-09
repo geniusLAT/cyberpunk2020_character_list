@@ -22,6 +22,11 @@ internal class ConnectionManager
 
     public IEnumerable<UserDto> Users { get; set; } = [];
 
+    public ConnectionManager()
+    {
+        Users = ReadCash();
+    }
+
     public async Task<string> CheckConnection(string ipAddress, string port, string username, string password)
     {
         var sb = new StringBuilder();
@@ -171,6 +176,49 @@ internal class ConnectionManager
         }
 
         return string.Empty;
+    }
+
+    public static IEnumerable<UserDto> ReadCash()
+    {
+       List<UserDto> usersList = [];
+
+       string dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+
+        if (!Directory.Exists(dataPath)) return usersList;
+
+        try
+        {
+            string[] subDirectories = Directory.GetDirectories(dataPath);
+
+            foreach (string dir in subDirectories)
+            {
+                string filePath = Path.Combine(dir, "userinfo.json");
+
+                if (File.Exists(filePath))
+                {
+                    try
+                    {
+                        string jsonContent = File.ReadAllText(filePath);
+                        var userInfo = JsonSerializer.Deserialize<UserDto>(jsonContent);
+
+                        if (userInfo != null)
+                        {
+                            usersList.Add(userInfo);
+                        }
+                    }
+                    catch (JsonException ex)
+                    {
+                        Console.WriteLine($"Ошибка парсинга JSON в {dir}: {ex.Message}");
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Ошибка при сканировании папок: {ex.Message}");
+        }
+
+        return usersList;
     }
 }
 
