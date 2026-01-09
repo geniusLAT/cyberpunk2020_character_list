@@ -72,7 +72,6 @@ partial class Form1
         random_char = new Button();
         skills_tab_control = new TabControl();
         tabPage1 = new TabPage();
-        label19 = new Label();
         tabPage2 = new TabPage();
         add_cyberware_button = new Button();
         humanity_counter_label = new Label();
@@ -114,7 +113,6 @@ partial class Form1
         gen_way_panel.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)const_num_numeric).BeginInit();
         skills_tab_control.SuspendLayout();
-        tabPage1.SuspendLayout();
         tabPage2.SuspendLayout();
         inventoryTab.SuspendLayout();
         inventoryInfoPanel.SuspendLayout();
@@ -576,7 +574,6 @@ partial class Form1
         // tabPage1
         // 
         tabPage1.AutoScroll = true;
-        tabPage1.Controls.Add(label19);
         tabPage1.Location = new Point(4, 24);
         tabPage1.Margin = new Padding(4, 3, 4, 3);
         tabPage1.Name = "tabPage1";
@@ -585,16 +582,6 @@ partial class Form1
         tabPage1.TabIndex = 0;
         tabPage1.Text = "Навыки";
         tabPage1.UseVisualStyleBackColor = true;
-        // 
-        // label19
-        // 
-        label19.AutoSize = true;
-        label19.Location = new Point(23, 351);
-        label19.Margin = new Padding(4, 0, 4, 0);
-        label19.Name = "label19";
-        label19.Size = new Size(44, 15);
-        label19.TabIndex = 0;
-        label19.Text = "label19";
         // 
         // tabPage2
         // 
@@ -892,8 +879,6 @@ partial class Form1
         gen_way_panel.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)const_num_numeric).EndInit();
         skills_tab_control.ResumeLayout(false);
-        tabPage1.ResumeLayout(false);
-        tabPage1.PerformLayout();
         tabPage2.ResumeLayout(false);
         tabPage2.PerformLayout();
         inventoryTab.ResumeLayout(false);
@@ -962,7 +947,6 @@ partial class Form1
     private System.Windows.Forms.Label label18;
     private System.Windows.Forms.Label label17;
     private System.Windows.Forms.Label CommentLabel;
-    private System.Windows.Forms.Label label19;
     private System.Windows.Forms.Label MoneyLabel;
     private System.Windows.Forms.NumericUpDown Money_numeric;
     private Label humanity_counter_label;
