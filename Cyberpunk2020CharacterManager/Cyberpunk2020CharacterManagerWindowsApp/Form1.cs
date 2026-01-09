@@ -43,6 +43,7 @@ public partial class Form1 : Form
         const_num_numeric.Enabled = false;
         const_num_numeric.Visible = false;
         RenderSkills(31, 178);
+        ShowCashedUsers();
 
         //test block
         //_chosenCharacter = new Character();
@@ -1042,6 +1043,22 @@ public partial class Form1 : Form
             ConnectionManagmentMenu connectionManagmentMenu = new(this);
             connectionManagmentMenu.ShowDialog();
         }
+
+        var chosenUser = ConnectionManager.Users.ToArray()[saveServerComboBox.SelectedIndex - 2];
+
+        MessageBox.Show(chosenUser.Username);
+
         return;
+    }
+
+    private void ShowCashedUsers()
+    {
+        saveServerComboBox.Items.Clear();
+        saveServerComboBox.Items.AddRange("локальный", "добавить новый сервер");
+
+        foreach (var user in ConnectionManager.Users)
+        {
+            saveServerComboBox.Items.Add($"{user.Username}@{user.IpAddress}");
+        }
     }
 }
