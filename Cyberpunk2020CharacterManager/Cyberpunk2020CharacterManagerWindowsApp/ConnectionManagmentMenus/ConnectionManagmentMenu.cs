@@ -142,8 +142,27 @@ internal class ConnectionManagmentMenu : Form
         PerformLayout();
     }
 
-    private void checkConnectionButton_Click(object sender, EventArgs e)
+    private async void checkConnectionButton_Click(object sender, EventArgs e)
     {
-        MessageBox.Show("Проверка соединения");
+        checkConnectionButton.Enabled = false;
+
+        string result = await _form1!.ConnectionManager.CheckConnection(
+        ipAddressTextBox.Text,
+        portTextBox.Text,
+        usernameTextBox.Text,
+        passwordTextBox.Text
+    );
+
+        string some = await _form1!.ConnectionManager.AuthAsync(
+        ipAddressTextBox.Text,
+        portTextBox.Text,
+        usernameTextBox.Text,
+        passwordTextBox.Text
+    );
+
+        MessageBox.Show(some);
+
+        checkResultLabel.Text = result;
+        checkConnectionButton.Enabled = true;
     }  
 }

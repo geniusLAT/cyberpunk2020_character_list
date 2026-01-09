@@ -22,7 +22,7 @@ public partial class Form1 : Form
 
     private List<Panel> _inventoryPanels = [];
 
-    private ConnectionManager _connectionManager = new ();
+    internal ConnectionManager ConnectionManager { get; } = new();
 
     public Form1()
     {
