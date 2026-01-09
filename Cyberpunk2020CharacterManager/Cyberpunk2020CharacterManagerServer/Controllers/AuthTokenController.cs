@@ -5,6 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Cyberpunk2020CharacterManager_network.Records;
+using Cyberpunk2020CharacterManagerServer.Services.Interfaces;
 
 namespace Cyberpunk2020CharacterManagerServer.Controllers;
 
@@ -16,16 +17,22 @@ public class AuthTokenController : ControllerBase
 
     private readonly IConfiguration _config;
 
-    public AuthTokenController(ILogger<AuthTokenController> logger, IConfiguration config)
+    private readonly IUserReader _reader;
+
+    public AuthTokenController(
+        ILogger<AuthTokenController> logger, 
+        IConfiguration config,
+        IUserReader reader)
     {
         _logger = logger;
         _config = config;
+        _reader = reader;
     }
 
     [HttpPost(Name = "Auth")]
     public async Task<IActionResult> Login([FromBody] AuthData authData)
     {
-        _logger.LogInformation($"Попытка входа пользователя: {authData.Username}");
+        _logger.LogInformation($"User attempt: {authData.Username}\n{authData.PasswordHash}");
 
         // Ваш метод проверки пользователя
         if (!await IsCorrectUser(authData))
@@ -62,6 +69,17 @@ public class AuthTokenController : ControllerBase
 
     public async Task<bool> IsCorrectUser(AuthData authData)
     {
-        return true;
+        _logger.LogInformation($"authData: {authData}");
+
+        var users = await _reader.ReadUsers();
+
+        var correctNamedUser = users.FirstOrDefault(u => u.Username == authData.Username);
+
+        if (correctNamedUser is null)
+        {
+            return false;
+        }
+
+        return correctNamedUser.PasswordHash == authData.PasswordHash;
     }
 }

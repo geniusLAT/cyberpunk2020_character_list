@@ -1036,12 +1036,14 @@ public partial class Form1 : Form
         if (saveServerComboBox.Text == "локальный")
         {
             MessageBox.Show("Вы перешли в локальный режим");
+            return;
         }
         if (saveServerComboBox.Text == "добавить новый сервер")
         {
             MessageBox.Show("Вы перешли в режим добавления нового сервера");
             ConnectionManagmentMenu connectionManagmentMenu = new(this);
             connectionManagmentMenu.ShowDialog();
+            return;
         }
 
         var chosenUser = ConnectionManager.Users.ToArray()[saveServerComboBox.SelectedIndex - 2];
@@ -1051,7 +1053,7 @@ public partial class Form1 : Form
         return;
     }
 
-    private void ShowCashedUsers()
+    public void ShowCashedUsers()
     {
         saveServerComboBox.Items.Clear();
         saveServerComboBox.Items.AddRange("локальный", "добавить новый сервер");

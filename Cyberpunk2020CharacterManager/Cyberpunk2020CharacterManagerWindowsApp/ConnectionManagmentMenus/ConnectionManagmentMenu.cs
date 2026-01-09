@@ -184,6 +184,7 @@ internal class ConnectionManagmentMenu : Form
             MessageBox.Show(errorMessage);
         }
 
-        addServerButton.Enabled = true;
+        _form1.ShowCashedUsers();
+        this.Close();
     }  
 }

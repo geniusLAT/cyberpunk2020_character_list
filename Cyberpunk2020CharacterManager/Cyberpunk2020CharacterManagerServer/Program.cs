@@ -1,3 +1,4 @@
+using Cyberpunk2020CharacterManagerServer.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -10,6 +11,8 @@ var issuer = jwtSettings["Issuer"];
 var audience = jwtSettings["Audience"];
 
 if (string.IsNullOrEmpty(key)) throw new InvalidOperationException("JWT Key is not configured.");
+
+builder.Services.AddScoped<IUserReader, UserReader>();
 
 builder.Services.AddAuthentication(options =>
 {

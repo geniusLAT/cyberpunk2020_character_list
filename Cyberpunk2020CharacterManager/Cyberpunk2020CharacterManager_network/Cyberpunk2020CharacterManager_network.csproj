@@ -10,8 +10,4 @@
     <Compile Remove="AuthData.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="Records\AuthData.cs" />
-  </ItemGroup>
-
 </Project>
