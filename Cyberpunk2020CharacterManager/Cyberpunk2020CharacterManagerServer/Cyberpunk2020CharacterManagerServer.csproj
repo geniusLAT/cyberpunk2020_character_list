@@ -11,4 +11,9 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cyberpunk2020CharacterManager_network\Cyberpunk2020CharacterManager_network.csproj" />
+    <ProjectReference Include="..\Cyberpunk2020GameEntities\Cyberpunk2020GameEntities.csproj" />
+  </ItemGroup>
+
 </Project>

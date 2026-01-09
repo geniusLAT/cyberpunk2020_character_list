@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyberpunk2020GameEntities",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyberpunk2020CharacterManagerServer", "Cyberpunk2020CharacterManagerServer\Cyberpunk2020CharacterManagerServer.csproj", "{9FA9BA8B-6483-46B1-91BF-B34A210D57DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyberpunk2020CharacterManager_network", "Cyberpunk2020CharacterManager_network\Cyberpunk2020CharacterManager_network.csproj", "{67EB735C-E25B-4695-A774-E54A823924A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9FA9BA8B-6483-46B1-91BF-B34A210D57DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FA9BA8B-6483-46B1-91BF-B34A210D57DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FA9BA8B-6483-46B1-91BF-B34A210D57DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67EB735C-E25B-4695-A774-E54A823924A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67EB735C-E25B-4695-A774-E54A823924A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67EB735C-E25B-4695-A774-E54A823924A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67EB735C-E25B-4695-A774-E54A823924A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

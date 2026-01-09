@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Cyberpunk2020CharacterManager_network.Records;
 
 namespace Cyberpunk2020CharacterManagerServer.Controllers;
 
@@ -33,7 +34,7 @@ public class AuthTokenController : ControllerBase
         }
 
         var token = GenerateJwtToken(authData.Username);
-        return Ok(new { token });
+        return Ok(new TokenDto() { Token = token});
     }
 
     private string GenerateJwtToken(string username)
@@ -63,11 +64,4 @@ public class AuthTokenController : ControllerBase
     {
         return true;
     }
-}
-
-public record AuthData
-{
-    public string Username { get; set; } = string.Empty;
-
-    public string PasswordHash { get; set; } = string.Empty;
 }

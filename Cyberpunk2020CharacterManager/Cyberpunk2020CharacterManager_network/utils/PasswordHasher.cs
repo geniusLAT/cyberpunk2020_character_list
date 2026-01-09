@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace Cyberpunk2020CharacterManagerWindowsApp.ConnectionManagmentMenus;
+namespace Cyberpunk2020CharacterManager_network.utils;
 
 public static class PasswordHasher
 {

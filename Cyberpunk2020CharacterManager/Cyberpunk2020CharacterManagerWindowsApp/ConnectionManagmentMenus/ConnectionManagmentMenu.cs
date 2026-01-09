@@ -16,6 +16,7 @@ internal class ConnectionManagmentMenu : Form
     private TextBox usernameTextBox;
     private TextBox passwordTextBox;
     private Button checkConnectionButton;
+    private Button addServerButton;
     private Label checkResultLabel;
     #endregion
 
@@ -37,6 +38,7 @@ internal class ConnectionManagmentMenu : Form
         passwordTextBox = new TextBox();
         checkConnectionButton = new Button();
         checkResultLabel = new Label();
+        addServerButton = new Button();
         SuspendLayout();
         // 
         // ipAddressLabel
@@ -123,9 +125,20 @@ internal class ConnectionManagmentMenu : Form
         checkResultLabel.TabIndex = 9;
         checkResultLabel.Text = "Введите данные";
         // 
+        // addServerButton
+        // 
+        addServerButton.Location = new Point(6, 226);
+        addServerButton.Name = "addServerButton";
+        addServerButton.Size = new Size(274, 23);
+        addServerButton.TabIndex = 10;
+        addServerButton.Text = "Добавить сервер";
+        addServerButton.UseVisualStyleBackColor = true;
+        addServerButton.Click += addServer_Click;
+        // 
         // ConnectionManagmentMenu
         // 
         ClientSize = new Size(284, 261);
+        Controls.Add(addServerButton);
         Controls.Add(checkResultLabel);
         Controls.Add(checkConnectionButton);
         Controls.Add(passwordTextBox);
@@ -153,16 +166,22 @@ internal class ConnectionManagmentMenu : Form
         passwordTextBox.Text
     );
 
-        string some = await _form1!.ConnectionManager.AuthAsync(
+        addServerButton.Enabled = true;
+    }  
+    private async void addServer_Click(object sender, EventArgs e)
+    {
+        addServerButton.Enabled = false;
+
+        string jwtToken = await _form1!.ConnectionManager.AuthAsync(
         ipAddressTextBox.Text,
         portTextBox.Text,
         usernameTextBox.Text,
         passwordTextBox.Text
     );
 
-        MessageBox.Show(some);
+        MessageBox.Show(jwtToken);
 
-        checkResultLabel.Text = result;
-        checkConnectionButton.Enabled = true;
+        checkResultLabel.Text = jwtToken;
+        addServerButton.Enabled = true;
     }  
 }

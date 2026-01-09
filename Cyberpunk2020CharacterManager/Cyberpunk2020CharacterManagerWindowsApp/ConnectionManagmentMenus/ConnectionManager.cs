@@ -1,11 +1,16 @@
-﻿using System;
+﻿using Cyberpunk2020CharacterManager_network.Records;
+using Cyberpunk2020CharacterManager_network.utils;
+using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using Cyberpunk2020CharacterManager_network.Records;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp.ConnectionManagmentMenus;
 
@@ -69,16 +74,22 @@ internal class ConnectionManager
 
         try
         {
-            using var request = new HttpRequestMessage(HttpMethod.Get, url);
+            using var request = new HttpRequestMessage(HttpMethod.Post, url);
 
             var authString = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{username}:{passwordHash}"));
             request.Headers.Authorization = new AuthenticationHeaderValue("Basic", authString);
 
-            var response = await _httpClient.SendAsync(request);
+            var authData = new AuthData(username, passwordHash);
+
+            var response = await _httpClient.PostAsJsonAsync(url, authData);
 
             if (response.IsSuccessStatusCode)
             {
-                return "Успешно: Соединение установлено.";
+                var result = await response.Content.ReadFromJsonAsync<
+                    TokenDto
+                    >();
+
+                return result?.Token ?? "Ошибка: Токен пуст";
             }
 
             return response.Content.ToString();
