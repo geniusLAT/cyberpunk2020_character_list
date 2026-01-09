@@ -1,0 +1,6 @@
+@Cyberpunk2020CharacterManagerServer_HostAddress = http://localhost:5239
+
+GET {{Cyberpunk2020CharacterManagerServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
