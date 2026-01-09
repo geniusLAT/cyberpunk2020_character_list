@@ -172,16 +172,18 @@ internal class ConnectionManagmentMenu : Form
     {
         addServerButton.Enabled = false;
 
-        string jwtToken = await _form1!.ConnectionManager.AuthAsync(
+        string errorMessage = await _form1!.ConnectionManager.AddNewServerAsync(
         ipAddressTextBox.Text,
         portTextBox.Text,
         usernameTextBox.Text,
         passwordTextBox.Text
     );
 
-        MessageBox.Show(jwtToken);
+        if (!string.IsNullOrEmpty(errorMessage))
+        {
+            MessageBox.Show(errorMessage);
+        }
 
-        checkResultLabel.Text = jwtToken;
         addServerButton.Enabled = true;
     }  
 }
