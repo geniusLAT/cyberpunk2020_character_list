@@ -1,6 +1,7 @@
 ﻿using Cyberpunk2020CharacterManager_network.Records;
 using Cyberpunk2020CharacterManager_network.Records;
 using Cyberpunk2020CharacterManager_network.utils;
+using Cyberpunk2020GameEntities;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
@@ -118,10 +119,12 @@ internal class ConnectionManager
                     TokenDto
                     >();
 
+                MessageBox.Show($"Token: {result?.Token}");
                 return result?.Token;
             }
 
-            return response.Content.ToString();
+            MessageBox.Show($"IT: {response}");
+            return null;
         }
         catch (HttpRequestException ex)
         {
@@ -219,6 +222,45 @@ internal class ConnectionManager
         }
 
         return usersList;
+    }
+
+    public async Task<string?> SaveCharacter(Character character, UserDto user)
+    {
+        var sb = new StringBuilder();
+
+        if (!IsValidIp(user.IpAddress))
+            return "Неверный ip";
+
+        if (!IsValidPort(user.Port, out int portNumber))
+            return "Неверный порт";
+
+        string url = $"http://{user.IpAddress}:{portNumber}/save-character";
+
+        try
+        {
+            using var request = new HttpRequestMessage(HttpMethod.Post, url);
+
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", user.JwtToken);
+
+            request.Content = JsonContent.Create(character);
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+            MessageBox.Show($"JWT : {user.JwtToken}");
+            return $"token:{user.JwtToken}\n message: {response.ToString()}";
+        }
+        catch (HttpRequestException ex)
+        {
+            return $"Ошибка: {ex.Message}";
+        }
+        catch (TaskCanceledException)
+        {
+            return $"Ошибка, случилась отмена";
+        }
     }
 }
 

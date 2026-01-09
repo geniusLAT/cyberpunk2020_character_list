@@ -80,6 +80,9 @@ public class AuthTokenController : ControllerBase
             return false;
         }
 
+        _logger.LogInformation($"+: [{correctNamedUser.PasswordHash}]");
+        _logger.LogInformation($"-: [{authData.PasswordHash}]");
+
         return correctNamedUser.PasswordHash == authData.PasswordHash;
     }
 }

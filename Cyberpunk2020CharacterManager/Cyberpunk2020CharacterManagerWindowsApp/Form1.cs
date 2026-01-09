@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using Cyberpunk2020CharacterManager_network.Records;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
 using Cyberpunk2020CharacterManagerWindowsApp.ConnectionManagmentMenus;
@@ -23,6 +24,9 @@ public partial class Form1 : Form
     private List<Panel> _inventoryPanels = [];
 
     internal ConnectionManager ConnectionManager { get; } = new();
+
+    //null means local
+    private UserDto? _chosenUser = null;
 
     public Form1()
     {
@@ -929,7 +933,7 @@ public partial class Form1 : Form
 
     }
 
-    private void saveCharacterButton_Click(object sender, EventArgs e)
+    private async void saveCharacterButton_Click(object sender, EventArgs e)
     {
         if (_chosenCharacter is null)
         {
@@ -950,8 +954,23 @@ public partial class Form1 : Form
         //}
 
         var serialized = JsonSerializer.Serialize(_chosenCharacter, options);
-        SaveCharacterToFile(serialized);
-        //MessageBox.Show(serialized);
+        if (_chosenUser is null)
+        {
+            SaveCharacterToFile(serialized);
+        }
+        else
+        {
+            MessageBox.Show("Сохранение на сервер");
+            var error = await ConnectionManager.SaveCharacter(_chosenCharacter, _chosenUser);
+            if (error is not null)
+            {
+                MessageBox.Show($"error name: {error}");
+            }
+            else
+            {
+                MessageBox.Show("Ok");
+            }
+        }
     }
 
     private void SaveCharacterToFile(string serialized)
@@ -1046,9 +1065,9 @@ public partial class Form1 : Form
             return;
         }
 
-        var chosenUser = ConnectionManager.Users.ToArray()[saveServerComboBox.SelectedIndex - 2];
+        _chosenUser = ConnectionManager.Users.ToArray()[saveServerComboBox.SelectedIndex - 2];
 
-        MessageBox.Show(chosenUser.Username);
+        MessageBox.Show(_chosenUser.Username);
 
         return;
     }
