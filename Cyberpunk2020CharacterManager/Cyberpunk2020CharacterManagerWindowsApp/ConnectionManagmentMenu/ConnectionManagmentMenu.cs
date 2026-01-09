@@ -6,6 +6,19 @@ internal class ConnectionManagmentMenu : Form
 {
     Form1? _form1;
 
+    #region elements
+    private Label ipAddressLabel;
+    private Label portLabel;
+    private Label usernameLabel;
+    private Label label1;
+    private TextBox ipAddressTextBox;
+    private TextBox portTextBox;
+    private TextBox usernameTextBox;
+    private TextBox passwordTextBox;
+    private Button checkConnectionButton;
+    private Label checkResultLabel;
+    #endregion
+
     public ConnectionManagmentMenu(Form1 form1)
     {
         InitializeComponent();
@@ -22,6 +35,8 @@ internal class ConnectionManagmentMenu : Form
         portTextBox = new TextBox();
         usernameTextBox = new TextBox();
         passwordTextBox = new TextBox();
+        checkConnectionButton = new Button();
+        checkResultLabel = new Label();
         SuspendLayout();
         // 
         // ipAddressLabel
@@ -89,9 +104,30 @@ internal class ConnectionManagmentMenu : Form
         passwordTextBox.Size = new Size(155, 23);
         passwordTextBox.TabIndex = 7;
         // 
+        // checkConnectionButton
+        // 
+        checkConnectionButton.Location = new Point(5, 119);
+        checkConnectionButton.Name = "checkConnectionButton";
+        checkConnectionButton.Size = new Size(274, 23);
+        checkConnectionButton.TabIndex = 8;
+        checkConnectionButton.Text = "Проверить";
+        checkConnectionButton.UseVisualStyleBackColor = true;
+        checkConnectionButton.Click += checkConnectionButton_Click;
+        // 
+        // checkResultLabel
+        // 
+        checkResultLabel.AutoSize = true;
+        checkResultLabel.Location = new Point(6, 145);
+        checkResultLabel.Name = "checkResultLabel";
+        checkResultLabel.Size = new Size(94, 15);
+        checkResultLabel.TabIndex = 9;
+        checkResultLabel.Text = "Введите данные";
+        // 
         // ConnectionManagmentMenu
         // 
         ClientSize = new Size(284, 261);
+        Controls.Add(checkResultLabel);
+        Controls.Add(checkConnectionButton);
         Controls.Add(passwordTextBox);
         Controls.Add(usernameTextBox);
         Controls.Add(portTextBox);
@@ -105,12 +141,9 @@ internal class ConnectionManagmentMenu : Form
         ResumeLayout(false);
         PerformLayout();
     }
-    private Label ipAddressLabel;
-    private Label portLabel;
-    private Label usernameLabel;
-    private Label label1;
-    private TextBox ipAddressTextBox;
-    private TextBox portTextBox;
-    private TextBox usernameTextBox;
-    private TextBox passwordTextBox;
+
+    private void checkConnectionButton_Click(object sender, EventArgs e)
+    {
+        MessageBox.Show("Проверка соединения");
+    }  
 }
