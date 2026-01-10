@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using Cyberpunk2020CharacterManager_network.Records;
 using Cyberpunk2020CharacterManagerServer.Services.Interfaces;
+using Cyberpunk2020CharacterManager_network.utils;
 
 namespace Cyberpunk2020CharacterManagerServer.Controllers;
 
@@ -37,7 +38,7 @@ public class AuthTokenController : ControllerBase
         // Ваш метод проверки пользователя
         if (!await IsCorrectUser(authData))
         {
-            return Unauthorized("Неверное имя пользователя или пароль.");
+            return Unauthorized("0_0");
         }
 
         var token = GenerateJwtToken(authData.Username);

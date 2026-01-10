@@ -35,17 +35,14 @@ public class SaveCharacterController : ControllerBase
 
         try
         {
-            // 2. Формируем пути
             string baseDataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
             string userPath = Path.Combine(baseDataPath, username);
 
-            // Создаем директорию (если существует — ничего не произойдет)
             Directory.CreateDirectory(userPath);
 
             string fileName = $"{character.name}.json";
             string filePath = Path.Combine(userPath, fileName);
 
-            // 3. Сериализация и запись
             var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
             string json = JsonSerializer.Serialize(character, jsonOptions);
 
