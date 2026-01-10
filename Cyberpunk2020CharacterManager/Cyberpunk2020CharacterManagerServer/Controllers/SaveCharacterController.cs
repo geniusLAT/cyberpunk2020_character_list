@@ -28,7 +28,7 @@ public class SaveCharacterController : ControllerBase
 
         if (string.IsNullOrEmpty(username))
         {
-            return Unauthorized("Cannot identify user by his tokenНе удалось определить пользователя из токена.");
+            return Unauthorized("Cannot identify user by his token");
         }
 
         _logger.LogInformation($"User {username} Saves {character.name}");
