@@ -1,10 +1,11 @@
-using System.Text;
-using System.Text.Json;
 using Cyberpunk2020CharacterManager_network.Records;
+using Cyberpunk2020CharacterManager_network.utils;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.CyberwareChooseMenu;
 using Cyberpunk2020CharacterManagerWindowsApp.ChosseMenu.InventoryChooseMenu;
 using Cyberpunk2020CharacterManagerWindowsApp.ConnectionManagmentMenus;
 using Cyberpunk2020GameEntities;
+using System.Text;
+using System.Text.Json;
 
 namespace Cyberpunk2020CharacterManagerWindowsApp;
 
@@ -952,7 +953,7 @@ public partial class Form1 : Form
         //{
         //    MessageBox.Show(item);
         //}
-
+        
         var serialized = JsonSerializer.Serialize(_chosenCharacter, options);
         if (_chosenUser is null)
         {

@@ -70,7 +70,8 @@ internal class ConnectionManager
 
     public async Task<string> AddNewServerAsync(string ipAddress, string port, string username, string password)
     {
-        var passwordHash = PasswordHasher.HashPassword(password);
+        //var passwordHash = PasswordHasher.HashPassword(password);
+        var passwordHash = password;
 
         var jwt = await AuthAsync(ipAddress, port, username, passwordHash);
         if (jwt is null)
